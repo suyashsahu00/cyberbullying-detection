@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardText | AI Cyberbullying Detection & Explainability</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="A clean, calm, AI-powered cyberbullying detection tool supporting English & Hinglish text with trigger-word explainability.">
+    <meta name="author" content="GuardText Team">
+    
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar navbar-expand-lg sticky-top custom-navbar">
+        <div class="container navbar-container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <span class="brand-text">GuardText <span class="brand-sub">AI</span></span>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <span class="badge badge-system-status">
+                    <span class="status-dot"></span> System Ready
+                </span>
+                <a href="#how-it-works" class="nav-link text-secondary-custom fw-500 d-none d-sm-inline-block">
+                    <i class="fa-regular fa-circle-question me-1"></i> How it works
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container py-4 py-md-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 col-xl-8">
+                
+                <!-- Hero Heading -->
+                <div class="text-center mb-4 hero-section">
+                    <h1 class="hero-title mb-2">Cyberbullying Detection Tool</h1>
+                    <p class="hero-subtitle">
+                        Paste a social media comment or tweet below to instantly detect abusive content, classify targets, and highlight trigger words in real time.
+                    </p>
+                </div>
+
+                <!-- Input Card Container -->
+                <div class="card shadow-sm border-0 main-card mb-4">
+                    <div class="card-body p-4 p-md-5">
+                        <label for="inputText" class="form-label d-flex justify-content-between align-items-center fw-600 mb-2">
+                            <span><i class="fa-regular fa-comment-dots text-primary me-2"></i> Input Text</span>
+                            <span class="char-count text-muted fs-7" id="charCounter">0 / 500 chars</span>
+                        </label>
+                        
+                        <!-- Main Text Area -->
+                        <div class="textarea-wrapper mb-3">
+                            <textarea 
+                                class="form-control custom-textarea" 
+                                id="inputText" 
+                                rows="4" 
+                                maxlength="500"
+                                placeholder="Paste a comment or tweet to analyze..."></textarea>
+                            <button class="btn btn-clear-text text-muted" id="btnClear" title="Clear text" style="display: none;">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+
+                        <!-- Sample Preset Pills -->
+                        <div class="presets-container mb-4">
+                            <span class="presets-label"><i class="fa-solid fa-bolt me-1"></i> Quick Samples:</span>
+                            <div class="d-flex flex-wrap gap-2 mt-2">
+                                <button type="button" class="preset-pill" data-text="Hope you have a wonderful day ahead with your family!">
+                                    <i class="fa-regular fa-face-smile text-success me-1"></i> Friendly
+                                </button>
+                                <button type="button" class="preset-pill" data-text="Go back to the kitchen and make me a sandwich bitch.">
+                                    <i class="fa-solid fa-venus-mars text-danger me-1"></i> Gender Bullying
+                                </button>
+                                <button type="button" class="preset-pill" data-text="Bhai tu bilkul pagal aur chutiya hai, band kar bolna.">
+                                    <i class="fa-solid fa-language text-warning me-1"></i> Hinglish Bullying
+                                </button>
+                                <button type="button" class="preset-pill" data-text="Shut up you senile old hag boomer!">
+                                    <i class="fa-solid fa-user-clock text-danger me-1"></i> Age Bullying
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="d-grid">
+                            <button type="button" class="btn btn-primary-custom btn-lg d-flex align-items-center justify-content-center gap-2" id="btnAnalyze">
+                                <span class="spinner-border spinner-border-sm d-none" id="analyzeSpinner" role="status" aria-hidden="true"></span>
+                                <i class="fa-solid fa-wand-magic-sparkles" id="analyzeIcon"></i>
+                                <span id="btnText">Analyze Comment</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Panel (Hidden until analyzed) -->
+                <div class="card shadow-sm border-0 results-card mb-4 d-none" id="resultsPanel">
+                    <div class="card-header bg-white border-bottom-0 pt-4 px-4 px-md-5 d-flex justify-content-between align-items-center">
+                        <h5 class="m-0 fw-700 text-dark-blue">
+                            <i class="fa-solid fa-chart-square text-primary me-2"></i> Analysis Results
+                        </h5>
+                        
+                        <!-- Automatic Language Indicator Badge -->
+                        <div class="language-badge" id="languageBadge" title="Detected Language">
+                            <i class="fa-solid fa-globe me-1"></i> <span id="languageName">English</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body p-4 p-md-5">
+                        
+                        <!-- Verdict & Category Header Row -->
+                        <div class="row align-items-center mb-4 g-3">
+                            <div class="col-12 col-md-7 d-flex align-items-center gap-3">
+                                <div class="verdict-icon-container" id="verdictIconContainer">
+                                    <i class="fa-solid fa-shield-check" id="verdictIcon"></i>
+                                </div>
+                                <div>
+                                    <div class="text-uppercase text-muted fs-8 fw-600 mb-1">Detection Verdict</div>
+                                    <h4 class="verdict-title m-0" id="verdictBadge">Not Cyberbullying</h4>
+                                </div>
+                            </div>
+                            
+                            <!-- Category Badge (Shown if bullying detected) -->
+                            <div class="col-12 col-md-5 text-md-end">
+                                <div id="categoryContainer" class="d-none">
+                                    <div class="text-uppercase text-muted fs-8 fw-600 mb-1">Target Category</div>
+                                    <span class="badge category-tag" id="categoryBadge">Age</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Confidence Progress Bar -->
+                        <div class="confidence-section mb-4 p-3 bg-light-soft rounded-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-600 fs-7 text-secondary">
+                                    <i class="fa-solid fa-gauge-high me-1"></i> Model Confidence
+                                </span>
+                                <span class="fw-700 fs-6 text-dark" id="confidenceValue">0.0%</span>
+                            </div>
+                            <div class="progress custom-progress" style="height: 10px;">
+                                <div 
+                                    class="progress-bar bg-success-gradient" 
+                                    id="confidenceProgressBar" 
+                                    role="progressbar" 
+                                    style="width: 0%" 
+                                    aria-valuenow="0" 
+                                    aria-valuemin="0" 
+                                    aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <!-- Text Explainability & Trigger Words Box -->
+                        <div class="explainability-box">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <label class="fw-600 fs-7 text-dark m-0">
+                                    <i class="fa-solid fa-highlighter text-warning me-1"></i> Trigger Word Explainability
+                                </label>
+                                <span class="badge bg-light text-secondary border fs-8" id="triggerCountBadge">0 triggers found</span>
+                            </div>
+                            <p class="fs-8 text-muted mb-2">
+                                Specific words and phrases identified as contributing to bullying patterns are highlighted below in red:
+                            </p>
+                            <div class="highlighted-text-container p-3 rounded-3" id="highlightedText">
+                                <!-- Dynamic highlighted text inserted here -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Collapsible "How It Works" Section -->
+                <div class="accordion custom-accordion mb-5" id="how-it-works">
+                    <div class="accordion-item border-0 shadow-sm rounded-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-600 py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHowItWorks" aria-expanded="false">
+                                <i class="fa-solid fa-microchip text-primary me-2"></i> How it works — AI & NLP Architecture
+                            </button>
+                        </h2>
+                        <div id="collapseHowItWorks" class="accordion-collapse collapse" data-bs-parent="#how-it-works">
+                            <div class="accordion-body px-4 pb-4 pt-1 text-secondary fs-7 lh-lg">
+                                <div class="row g-4 mt-1">
+                                    <div class="col-12 col-md-4">
+                                        <div class="step-card">
+                                            <div class="step-number">1</div>
+                                            <h6 class="fw-700 text-dark mb-1">Preprocessing & Language ID</h6>
+                                            <p class="m-0 text-muted fs-8">
+                                                Normalizes URLs, handles, emojis, and auto-detects English vs Hinglish code-switched text.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="step-card">
+                                            <div class="step-number">2</div>
+                                            <h6 class="fw-700 text-dark mb-1">Multilingual Classification</h6>
+                                            <p class="m-0 text-muted fs-8">
+                                                Leverages MuRIL / TF-IDF NLP transformers to categorize content into 5 target buckets: Age, Gender, Ethnicity, Religion, or Other.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="step-card">
+                                            <div class="step-number">3</div>
+                                            <h6 class="fw-700 text-dark mb-1">SHAP Explainability</h6>
+                                            <p class="m-0 text-muted fs-8">
+                                                Highlights precise trigger words giving users transparency into why content was flagged.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer py-3 text-center text-muted fs-8">
+        <div class="container">
+            <span>GuardText AI &bull; Cyberbullying Detection & Explainability Platform &bull; Built with Flask & Bootstrap</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+# Placeholder to retain models directory in Git tracking.
+# Pre-trained model weights (.bin, .safetensors, .pt, .pkl) should be saved in this folder.
