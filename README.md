@@ -128,3 +128,10 @@ uv run jupyter notebook
 jupyter notebook
 ```
 Open notebooks sequentially from `notebooks/01_eda.ipynb` to `notebooks/05_evaluation_shap.ipynb`.
+
+---
+
+## 📜 License
+
+This project is open-source under the [MIT License](LICENSE).
+
