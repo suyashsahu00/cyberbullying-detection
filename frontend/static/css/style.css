@@ -1,4 +1,4 @@
-/* Custom Design System & Color Palette for GuardText Cyberbullying Detector */
+/* Custom Design System & Color Palette for CyberGuard AI Cyberbullying Detector */
 
 :root {
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -27,7 +27,7 @@
     --warning-amber: #f59e0b;
     --warning-bg: #fffbeb;
     
-    --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 4px 12px -2px rgba(15, 23, 42, 0.025);
+    --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
     --radius-main: 16px;
 }
 
@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navbar Styling */
 .custom-navbar {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid #e2e8f0;
     padding: 0.85rem 0;
@@ -101,17 +101,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Hero Section */
+.hero-tag {
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    color: #3730a3;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
 .hero-title {
-    font-weight: 700;
+    font-weight: 800;
     color: var(--dark-blue);
-    font-size: 2.1rem;
+    font-size: 2.3rem;
     letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
     color: #64748b;
     font-size: 1.05rem;
-    max-width: 620px;
+    max-width: 680px;
     margin: 0 auto;
 }
 
@@ -120,6 +128,24 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: var(--radius-main);
     box-shadow: var(--card-shadow);
     border: 1px solid #e2e8f0;
+    background: #ffffff;
+}
+
+.custom-select {
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--dark-blue);
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.custom-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    background-color: #ffffff;
 }
 
 .custom-textarea {
@@ -157,16 +183,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Presets Pills */
 .presets-label {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: #64748b;
+    color: #475569;
 }
 
 .preset-pill {
     background: #f8fafc;
     border: 1px solid #cbd5e1;
     color: #334155;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.82rem;
     font-weight: 500;
@@ -178,6 +204,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--primary-light);
     border-color: var(--primary);
     color: var(--primary);
+    transform: translateY(-1px);
 }
 
 /* Buttons */
@@ -189,7 +216,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.85rem 1.5rem;
     border: none;
     box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
-    transition: all 0.25 ease;
+    transition: all 0.25s ease;
 }
 
 .btn-primary-custom:hover {
@@ -199,7 +226,17 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
 }
 
-/* Language Badge */
+/* Metadata Badges */
+.latency-badge {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
 .language-badge {
     background: var(--light-slate);
     color: var(--dark-blue);
@@ -267,7 +304,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Custom Progress Bar */
 .bg-light-soft {
     background: #f8fafc;
-    border: 1px solid #f1f5f9;
+    border: 1px solid #e2e8f0;
 }
 
 .custom-progress {
@@ -291,22 +328,27 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     line-height: 1.8;
     color: var(--dark-blue);
-    min-height: 70px;
+    min-height: 60px;
 }
 
 .trigger-highlight {
     background-color: #fee2e2;
     color: #991b1b;
     border-bottom: 2px solid #ef4444;
-    padding: 2px 5px;
+    padding: 2px 6px;
     border-radius: 4px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: help;
     transition: all 0.2s ease;
 }
 
 .trigger-highlight:hover {
     background-color: #fca5a5;
+}
+
+/* Probabilities Box */
+.probabilities-box {
+    border: 1px solid #e2e8f0;
 }
 
 /* Accordion How It Works */

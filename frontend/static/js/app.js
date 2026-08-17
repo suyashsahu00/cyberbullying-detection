@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // DOM Elements
     const inputText = document.getElementById("inputText");
+    const modelSelector = document.getElementById("modelSelector");
     const btnAnalyze = document.getElementById("btnAnalyze");
     const btnClear = document.getElementById("btnClear");
     const charCounter = document.getElementById("charCounter");
@@ -20,9 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const confidenceValue = document.getElementById("confidenceValue");
     const confidenceProgressBar = document.getElementById("confidenceProgressBar");
     
+    const latencyValue = document.getElementById("latencyValue");
     const languageName = document.getElementById("languageName");
     const highlightedText = document.getElementById("highlightedText");
     const triggerCountBadge = document.getElementById("triggerCountBadge");
+    const probBarsContainer = document.getElementById("probBarsContainer");
 
     const presetButtons = document.querySelectorAll(".preset-pill");
 
@@ -70,6 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        const modelChoice = modelSelector ? modelSelector.value : "muril";
+
         // Set Loading UI State
         setLoadingState(true);
 
@@ -77,7 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch("/api/analyze", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ text: text })
+                body: JSON.stringify({ 
+                    text: text,
+                    model_choice: modelChoice 
+                })
             });
 
             if (!response.ok) {
@@ -101,11 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isLoading) {
             analyzeSpinner.classList.remove("d-none");
             analyzeIcon.classList.add("d-none");
-            btnText.textContent = "Analyzing NLP Patterns...";
+            btnText.textContent = "Running Neural Inference...";
         } else {
             analyzeSpinner.classList.add("d-none");
             analyzeIcon.classList.remove("d-none");
-            btnText.textContent = "Analyze Comment";
+            btnText.textContent = "Analyze Social Media Text";
         }
     }
 
@@ -113,7 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // 1. Show Results Panel
         resultsPanel.classList.remove("d-none");
 
-        // 2. Language Badge
+        // 2. Metadata (Latency & Language)
+        if (latencyValue) {
+            latencyValue.textContent = `${data.latency_ms || 0.0} ms`;
+        }
         languageName.textContent = data.language || "English";
 
         // 3. Verdict Formatting
@@ -161,6 +172,27 @@ document.addEventListener("DOMContentLoaded", () => {
             highlightedText.innerHTML = exp.highlighted_text;
         } else {
             highlightedText.textContent = data.original_text || inputText.value;
+        }
+
+        // 7. Render Probabilities
+        if (probBarsContainer && data.all_probabilities) {
+            probBarsContainer.innerHTML = "";
+            for (const [cls, prob] of Object.entries(data.all_probabilities)) {
+                const isTop = (prob === Math.max(...Object.values(data.all_probabilities)));
+                const barHtml = `
+                    <div class="col-12 col-sm-6">
+                        <div class="d-flex justify-content-between fs-8 text-secondary mb-1">
+                            <span class="${isTop ? 'fw-700 text-dark' : ''}">${cls}</span>
+                            <span class="fw-600">${prob}%</span>
+                        </div>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar ${isTop ? (isBullying ? 'bg-danger' : 'bg-success') : 'bg-secondary'}" 
+                                 style="width: ${prob}%"></div>
+                        </div>
+                    </div>
+                `;
+                probBarsContainer.innerHTML += barHtml;
+            }
         }
 
         // Scroll smooth into results view if on small screen

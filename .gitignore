@@ -26,18 +26,26 @@ venv/
 env/
 ENV/
 
-# Model checkpoints & large binary files
-models/*.pt
-models/*.bin
-models/*.safetensors
-models/*.pkl
-models/*.onnx
+# Model checkpoints & large binary weight files (>100MB)
+models/**/*.safetensors
+models/**/*.bin
+models/**/*.pt
+models/**/*.pkl
+models/**/*.onnx
+models/muril_base_safetensors/
+*.safetensors
+*.bin
+*.pt
+*.pkl
 !models/.gitkeep
 
 # Data & Notebook checkpoints
 .ipynb_checkpoints
 data/raw/*.zip
 data/raw/*.tar.gz
+data/raw/cyberbullying_tweets.csv
+data/raw/BullyExplain.xlsx
+data/processed/*.csv
 
 # IDE & OS
 .vscode/

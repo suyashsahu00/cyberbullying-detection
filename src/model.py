@@ -1,164 +1,124 @@
 import os
+import sys
+import time
 import pickle
 import numpy as np
 import pandas as pd
-from typing import Dict, Any, Tuple
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
+import torch
+from typing import Dict, Any, Tuple, Optional
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-from src.preprocessing import clean_text, detect_language
+from src.preprocessing import clean_text, detect_language, get_text_stats
 from src.explainability import extract_trigger_words, escape_html, TRIGGER_LEXICON
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "models", "baseline_model.pkl")
+ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+BASELINE_MODEL_PATH = os.path.join(ROOT_DIR, "models", "baseline_model.pkl")
+MURIL_MODEL_DIR = os.path.join(ROOT_DIR, "models", "muril_cyberbullying")
 
-# Expanded dataset of sample phrases for robust baseline training if no saved pickle exists
-SYNTHETIC_DATA = [
-    # Non-cyberbullying (Neutral / Friendly)
-    ("Hope you have a wonderful day ahead!", "Not Cyberbullying", 0),
-    ("Great presentation today! Very informative slides.", "Not Cyberbullying", 0),
-    ("Bhai call me when you reach home.", "Not Cyberbullying", 0),
-    ("Thanks for sharing this tutorial, super helpful.", "Not Cyberbullying", 0),
-    ("Can someone recommend a good laptop for coding?", "Not Cyberbullying", 0),
-    ("Awesome movie! Loved the cinematography.", "Not Cyberbullying", 0),
-    ("Mera code finally compile ho gaya, yay!", "Not Cyberbullying", 0),
-    ("Happy birthday! Have a great year ahead.", "Not Cyberbullying", 0),
-    ("What time is the cricket match tonight?", "Not Cyberbullying", 0),
-    ("Subah se baarish ho rahi hai yahan.", "Not Cyberbullying", 0),
-    
-    # Cyberbullying - Age
-    ("Shut up you senile old hag boomer!", "Age", 1),
-    ("You are too old to understand technology grandpa.", "Age", 1),
-    ("Get off the internet grandma you wrinkly old fossil.", "Age", 1),
-    ("Kiddo go play with your toys, toddlers can't code.", "Age", 1),
-    ("Ok boomer your time is up, useless old man.", "Age", 1),
-    
-    # Cyberbullying - Gender
-    ("Go back to the kitchen and make me a sandwich bitch.", "Gender", 1),
-    ("She only got promoted because she is a golddigger thot.", "Gender", 1),
-    ("Shut up you dumb hoe nobody asked your opinion.", "Gender", 1),
-    ("Typical female drama, useless dish washer.", "Gender", 1),
-    ("Incel loser go cry in the corner.", "Gender", 1),
-    
-    # Cyberbullying - Ethnicity
-    ("Go back to your country you illegal immigrant scum.", "Ethnicity", 1),
-    ("Curryboy stop posting online nobody likes your race.", "Ethnicity", 1),
-    ("Dirty foreigner get out of here right now.", "Ethnicity", 1),
-    ("Saale nigger chink go away racist idiot.", "Ethnicity", 1),
-    
-    # Cyberbullying - Religion
-    ("You religious fanatic terrorist go back to your cult.", "Religion", 1),
-    ("All ricebag infidels should be removed.", "Religion", 1),
-    ("Radical extremist preaching hate as usual.", "Religion", 1),
-    ("Kafir cultist stop spreading your propaganda.", "Religion", 1),
-    
-    # Cyberbullying - Other / General
-    ("You are an utter idiot, kill yourself kys.", "Other", 1),
-    ("Tu bilkul chutiya hai, kamina saala pagal.", "Other", 1),
-    ("You are ugly, fat, useless garbage trash.", "Other", 1),
-    ("Die already you worthless piece of shit.", "Other", 1),
-    ("Bakwas band kar harami loser.", "Other", 1)
-]
-
-class CyberbullyingClassifier:
+class CyberbullyingSystem:
     """
-    NLP Classifier wrapper with fallback rule integration and explainability support.
+    Unified Cyberbullying Detection & Explainability Engine.
+    Supports both:
+    1. Classical Multi-Class Baseline (TF-IDF + Linear SVM) for 6 categories.
+    2. Deep Google MuRIL Transformer for Multilingual & Hinglish contextual detection.
     """
     def __init__(self):
-        self.pipeline = None
-        self.categories = ["Age", "Gender", "Ethnicity", "Religion", "Other"]
-        self._initialize_model()
+        self.baseline_pipeline = None
+        self.muril_model = None
+        self.muril_tokenizer = None
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
+        self._load_baseline()
+        self._load_muril()
 
-    def _initialize_model(self):
-        """Load pretrained model or train baseline synthetic model."""
-        model_filepath = os.path.abspath(MODEL_PATH)
-        if os.path.exists(model_filepath):
+    def _load_baseline(self):
+        """Load trained baseline pipeline."""
+        if os.path.exists(BASELINE_MODEL_PATH):
             try:
-                with open(model_filepath, "rb") as f:
-                    self.pipeline = pickle.load(f)
-                return
+                with open(BASELINE_MODEL_PATH, "rb") as f:
+                    self.baseline_pipeline = pickle.load(f)
+                print(f" Loaded Baseline Model ({self.baseline_pipeline.classes_})")
             except Exception as e:
-                print(f"Warning: Could not load saved model pickle ({e}). Retraining synthetic baseline...")
+                print(f"Warning: Could not load baseline model: {e}")
 
-        # Train baseline TF-IDF + Logistic Regression
-        df = pd.DataFrame(SYNTHETIC_DATA, columns=["text", "category", "label"])
-        df["cleaned"] = df["text"].apply(clean_text)
+    def _load_muril(self):
+        """Load fine-tuned MuRIL transformer model."""
+        if os.path.exists(MURIL_MODEL_DIR):
+            try:
+                self.muril_tokenizer = AutoTokenizer.from_pretrained(MURIL_MODEL_DIR)
+                self.muril_model = AutoModelForSequenceClassification.from_pretrained(MURIL_MODEL_DIR)
+                self.muril_model.to(self.device)
+                self.muril_model.eval()
+                print(f" Loaded Google MuRIL Model on {self.device}")
+            except Exception as e:
+                print(f"Warning: Could not load MuRIL model: {e}")
 
-        self.pipeline = Pipeline([
-            ('tfidf', TfidfVectorizer(ngram_range=(1, 2), max_features=5000)),
-            ('clf', LogisticRegression(C=2.0, max_iter=500))
-        ])
-        
-        self.pipeline.fit(df["cleaned"], df["label"])
-
-    def _check_lexicon_rules(self, text: str) -> Tuple[bool, str, float]:
-        """Rule-based check against trigger lexicon to bolster baseline accuracy."""
-        text_lower = text.lower()
-        for category, words in TRIGGER_LEXICON.items():
-            for word in words:
-                if f" {word} " in f" {text_lower} " or word in text_lower:
-                    # High confidence match
-                    return True, category, 0.88 + 0.10 * (len(word) / 15)
-        return False, "Not Cyberbullying", 0.0
-
-    def predict(self, raw_text: str) -> Dict[str, Any]:
-        """
-        Analyze input string and return complete verdict, category, confidence, language, and explainability annotations.
-        """
-        if not raw_text or not raw_text.strip():
-            return {
-                "verdict": "Not Cyberbullying",
-                "is_cyberbullying": False,
-                "category": "N/A",
-                "confidence": 99.0,
-                "language": "English",
-                "original_text": "",
-                "cleaned_text": "",
-                "explainability": {"spans": [], "highlighted_text": "", "trigger_words": []}
-            }
-
+    def predict_baseline(self, raw_text: str) -> Dict[str, Any]:
+        """Predict using 6-class Linear Baseline."""
         cleaned = clean_text(raw_text)
-        language = detect_language(raw_text)
-        
-        # Rule check against lexicon
-        rule_hit, rule_cat, rule_conf = self._check_lexicon_rules(raw_text)
-        
-        # Model ML inference
-        probs = self.pipeline.predict_proba([cleaned])[0]
-        # Class 1 is cyberbullying, Class 0 is safe
-        prob_bullying = probs[1] if len(probs) > 1 else 0.0
-        prob_safe = probs[0] if len(probs) > 0 else 1.0
+        probs = self.baseline_pipeline.predict_proba([cleaned])[0]
+        classes = self.baseline_pipeline.classes_
+        top_idx = int(np.argmax(probs))
+        pred_label = str(classes[top_idx])
+        confidence = float(probs[top_idx]) * 100
 
-        if rule_hit:
-            is_bullying = True
-            category = rule_cat
-            confidence = round(max(rule_conf, float(prob_bullying)) * 100, 1)
-            confidence = min(98.5, confidence)
-        elif prob_bullying >= 0.65:
-            is_bullying = True
-            category = "Other"
-            for cat, words in TRIGGER_LEXICON.items():
-                if any(w in cleaned.lower() for w in words):
-                    category = cat
-                    break
-            confidence = round(float(prob_bullying) * 100, 1)
-            confidence = min(98.5, confidence)
-        else:
-            is_bullying = False
-            category = "N/A"
-            confidence = round(float(prob_safe) * 100, 1)
-            confidence = max(65.0, min(99.0, confidence))
-
+        is_bullying = (pred_label.lower() != "not_cyberbullying" and pred_label.lower() != "non_bully")
+        category_map = {
+            "age": "Age",
+            "gender": "Gender",
+            "ethnicity": "Ethnicity",
+            "religion": "Religion",
+            "other_cyberbullying": "Other",
+            "not_cyberbullying": "N/A"
+        }
+        display_category = category_map.get(pred_label.lower(), pred_label.capitalize()) if is_bullying else "N/A"
         verdict = "Cyberbullying Detected" if is_bullying else "Not Cyberbullying"
 
-        # Generate explainability details
-        explainability = extract_trigger_words(
-            raw_text, 
-            category if is_bullying else "Other", 
-            confidence
-        )
+        # Explainability
+        explainability = extract_trigger_words(raw_text, display_category if is_bullying else "Other", confidence)
+        if not is_bullying:
+            explainability["highlighted_text"] = escape_html(raw_text)
+            explainability["trigger_words"] = []
+            explainability["spans"] = []
 
-        # If not cyberbullying, clear trigger words unless explicitly matching
+        return {
+            "verdict": verdict,
+            "is_cyberbullying": is_bullying,
+            "category": display_category,
+            "confidence": round(confidence, 1),
+            "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+            "all_probabilities": {str(cls): round(float(p) * 100, 1) for cls, p in zip(classes, probs)},
+            "explainability": explainability
+        }
+
+    def predict_muril(self, raw_text: str) -> Dict[str, Any]:
+        """Predict using fine-tuned Google MuRIL Transformer."""
+        cleaned = clean_text(raw_text)
+        if self.muril_model is None or self.muril_tokenizer is None:
+            return self.predict_baseline(raw_text)
+
+        enc = self.muril_tokenizer(cleaned, max_length=128, padding='max_length', truncation=True, return_tensors='pt')
+        input_ids = enc['input_ids'].to(self.device)
+        attention_mask = enc['attention_mask'].to(self.device)
+
+        with torch.no_grad():
+            outputs = self.muril_model(input_ids=input_ids, attention_mask=attention_mask)
+            probs = torch.softmax(outputs.logits, dim=1).cpu().numpy()[0]
+
+        prob_safe = float(probs[0]) * 100
+        prob_bully = float(probs[1]) * 100
+        is_bullying = (prob_bully >= 50.0)
+        confidence = prob_bully if is_bullying else prob_safe
+        verdict = "Cyberbullying Detected" if is_bullying else "Not Cyberbullying"
+
+        # Determine category via trigger lexicon or baseline fallback
+        category = "Hinglish / Slur" if is_bullying else "N/A"
+        for cat, keywords in TRIGGER_LEXICON.items():
+            if any(k in cleaned.lower() for k in keywords):
+                category = cat
+                break
+
+        explainability = extract_trigger_words(raw_text, category if is_bullying else "Other", confidence)
         if not is_bullying:
             explainability["highlighted_text"] = escape_html(raw_text)
             explainability["trigger_words"] = []
@@ -168,23 +128,58 @@ class CyberbullyingClassifier:
             "verdict": verdict,
             "is_cyberbullying": is_bullying,
             "category": category,
-            "confidence": confidence,
-            "language": language,
-            "original_text": raw_text,
-            "cleaned_text": cleaned,
+            "confidence": round(confidence, 1),
+            "model_used": "Google MuRIL Transformer (Multilingual/Hinglish)",
+            "all_probabilities": {
+                "Safe / Non-Bully": round(prob_safe, 1),
+                "Cyberbullying / Harassment": round(prob_bully, 1)
+            },
             "explainability": explainability
         }
 
-# Global singleton classifier instance
-_classifier_instance = None
+    def predict(self, raw_text: str, model_choice: str = "muril") -> Dict[str, Any]:
+        """Unified inference entry point with timing and metadata."""
+        if not raw_text or not raw_text.strip():
+            return {
+                "verdict": "Not Cyberbullying",
+                "is_cyberbullying": False,
+                "category": "N/A",
+                "confidence": 100.0,
+                "language": "English",
+                "original_text": "",
+                "cleaned_text": "",
+                "latency_ms": 0.1,
+                "model_used": "None",
+                "all_probabilities": {},
+                "explainability": {"spans": [], "highlighted_text": "", "trigger_words": []}
+            }
 
-def get_classifier() -> CyberbullyingClassifier:
-    global _classifier_instance
-    if _classifier_instance is None:
-        _classifier_instance = CyberbullyingClassifier()
-    return _classifier_instance
+        t0 = time.perf_counter()
+        language = detect_language(raw_text)
+        stats = get_text_stats(raw_text)
 
-if __name__ == "__main__":
-    clf = get_classifier()
-    print("Test 1:", clf.predict("Bhai tu bilkul pagal aur chutiya hai."))
-    print("Test 2:", clf.predict("Have a fantastic day everyone!"))
+        if model_choice.lower() == "baseline" or self.muril_model is None:
+            res = self.predict_baseline(raw_text)
+        else:
+            res = self.predict_muril(raw_text)
+
+        t1 = time.perf_counter()
+        latency_ms = round((t1 - t0) * 1000, 2)
+
+        res.update({
+            "language": language,
+            "original_text": raw_text,
+            "cleaned_text": clean_text(raw_text),
+            "latency_ms": latency_ms,
+            "stats": stats
+        })
+        return res
+
+# Global instance
+_system_instance = None
+
+def get_classifier() -> CyberbullyingSystem:
+    global _system_instance
+    if _system_instance is None:
+        _system_instance = CyberbullyingSystem()
+    return _system_instance
