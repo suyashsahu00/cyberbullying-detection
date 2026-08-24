@@ -22,7 +22,9 @@ TRIGGER_LEXICON = {
     "Other": [
         "ugly", "fat", "loser", "kill yourself", "kys", "die", "stupid", "idiot",
         "dumb", "useless", "trash", "garbage", "chutiya", "saale", "kamina", "harami",
-        "bakwas", "fuck", "shit", "retard", "scum", "pig", "freak", "disgusting"
+        "bakwas", "fuck", "shit", "retard", "scum", "pig", "freak", "disgusting",
+        "pagal", "kuttiya", "gandu", "kamine", "madarchod", "bhosdike", "randi", "kutte",
+        "bhosdiwala", "gaand", "phaad", "behenchod"
     ]
 }
 
@@ -47,8 +49,11 @@ def extract_trigger_words(text: str, category: str, confidence: float) -> Dict[s
     for cat in search_categories:
         keywords = TRIGGER_LEXICON.get(cat, [])
         for word in keywords:
-            # Match word boundary or exact phrase
-            pattern = re.compile(r'\b' + re.escape(word) + r'\b', re.IGNORECASE)
+            # Build flexible regex allowing character elongation (e.g., 'biiiitch', 'stuuupid', 'chuuutiya')
+            escaped_chars = [r'\s+' if c.isspace() else (re.escape(c) + '+' if c.isalpha() else re.escape(c)) for c in word]
+            flexible_pattern = r'\b' + ''.join(escaped_chars) + r'\b'
+            
+            pattern = re.compile(flexible_pattern, re.IGNORECASE)
             for m in pattern.finditer(text):
                 start, end = m.span()
                 matched_str = text[start:end]

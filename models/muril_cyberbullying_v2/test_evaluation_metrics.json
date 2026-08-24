@@ -1,0 +1,75 @@
+{
+  "model_name": "Google MuRIL v2 (6-Class Multilingual)",
+  "overall_accuracy": 81.36,
+  "macro_precision": 84.01,
+  "macro_recall": 82.15,
+  "macro_f1": 81.85,
+  "classification_report": {
+    "age": {
+      "precision": 0.971604938271605,
+      "recall": 0.98375,
+      "f1-score": 0.977639751552795,
+      "support": 800.0
+    },
+    "ethnicity": {
+      "precision": 0.9810366624525917,
+      "recall": 0.9371980676328503,
+      "f1-score": 0.958616429894997,
+      "support": 828.0
+    },
+    "gender": {
+      "precision": 0.8547215496368039,
+      "recall": 0.8748451053283767,
+      "f1-score": 0.8646662584200857,
+      "support": 807.0
+    },
+    "not_cyberbullying": {
+      "precision": 0.581532416502947,
+      "recall": 0.8161764705882353,
+      "f1-score": 0.6791586998087954,
+      "support": 1088.0
+    },
+    "other_cyberbullying": {
+      "precision": 0.7017167381974249,
+      "recall": 0.36333333333333334,
+      "f1-score": 0.4787701317715959,
+      "support": 900.0
+    },
+    "religion": {
+      "precision": 0.9501216545012166,
+      "recall": 0.9536019536019537,
+      "f1-score": 0.9518586227909811,
+      "support": 819.0
+    },
+    "accuracy": 0.8136207554368562,
+    "macro avg": {
+      "precision": 0.8401223265937648,
+      "recall": 0.8214841550807915,
+      "f1-score": 0.8184516490398751,
+      "support": 5242.0
+    },
+    "weighted avg": {
+      "precision": 0.8244457394609529,
+      "recall": 0.8136207554368562,
+      "f1-score": 0.8056127187700347,
+      "support": 5242.0
+    }
+  },
+  "confusion_matrix": [
+    [787, 1, 1, 8, 3, 0],
+    [0, 776, 5, 24, 20, 3],
+    [3, 5, 706, 70, 21, 2],
+    [13, 6, 58, 888, 89, 34],
+    [6, 3, 52, 510, 327, 2],
+    [1, 0, 4, 27, 6, 781]
+  ],
+  "class_names": [
+    "age",
+    "ethnicity",
+    "gender",
+    "not_cyberbullying",
+    "other_cyberbullying",
+    "religion"
+  ],
+  "training_time_minutes": 32.32
+}

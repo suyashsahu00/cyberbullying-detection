@@ -11,5 +11,5 @@ Cyberbullying on social media platforms is a growing concern affecting digital w
 
 ## System Architecture
 - **Backend API**: Flask (`backend/app.py`)
-- **NLP Engine**: Preprocessing, TF-IDF / Transformer classifier, SHAP explainability wrapper (`src/`)
+- **NLP Engine**: Preprocessing, TF-IDF / Transformer classifier, Keyword-based Trigger Detection wrapper (`src/`)
 - **Frontend**: HTML5, Bootstrap 5, FontAwesome, Vanilla JS (`frontend/`)

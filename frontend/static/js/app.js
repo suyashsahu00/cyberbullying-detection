@@ -164,9 +164,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 6. Explainability & Highlighted Text
         const exp = data.explainability || {};
-        const triggerWords = exp.trigger_words || [];
-        
-        triggerCountBadge.textContent = `${triggerWords.length} trigger word${triggerWords.length === 1 ? '' : 's'} flagged`;
+        const explainabilityTitle = document.getElementById("explainabilityTitle");
+        const explainabilityDesc = document.getElementById("explainabilityDesc");
+        const isModelBased = (data.explainability_method && data.explainability_method.includes("Model-Based")) || (data.model_used && data.model_used.includes("MuRIL"));
+
+        if (explainabilityTitle && explainabilityDesc) {
+            if (isModelBased) {
+                explainabilityTitle.innerHTML = '<i class="fa-solid fa-brain text-primary me-1"></i> Model-Based Token Attribution';
+                explainabilityDesc.textContent = 'Gradient-based token attributions derived directly from the fine-tuned Google MuRIL transformer:';
+                const tokenCount = (exp.spans && exp.spans.length > 0) ? exp.spans.length : ((exp.top_tokens || []).length);
+                triggerCountBadge.textContent = `${tokenCount} token${tokenCount === 1 ? '' : 's'} attributed`;
+            } else {
+                explainabilityTitle.innerHTML = '<i class="fa-solid fa-highlighter text-warning me-1"></i> Keyword-Based Trigger Detection';
+                explainabilityDesc.textContent = 'Dictionary trigger terms and regex patterns contributing to classification are highlighted below:';
+                const triggerWords = exp.trigger_words || [];
+                triggerCountBadge.textContent = `${triggerWords.length} trigger word${triggerWords.length === 1 ? '' : 's'} flagged`;
+            }
+        }
         
         if (exp.highlighted_text) {
             highlightedText.innerHTML = exp.highlighted_text;

@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import json
 import pickle
 import numpy as np
 import pandas as pd
@@ -10,22 +11,35 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 from src.preprocessing import clean_text, detect_language, get_text_stats
 from src.explainability import extract_trigger_words, escape_html, TRIGGER_LEXICON
+from src.real_explainability import get_explainer, MuRILExplainer
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BASELINE_MODEL_PATH = os.path.join(ROOT_DIR, "models", "baseline_model.pkl")
-MURIL_MODEL_DIR = os.path.join(ROOT_DIR, "models", "muril_cyberbullying")
+MURIL_V2_MODEL_DIR = os.path.join(ROOT_DIR, "models", "muril_cyberbullying_v2")
+MURIL_V1_MODEL_DIR = os.path.join(ROOT_DIR, "models", "muril_cyberbullying")
+
+CATEGORY_DISPLAY_MAP = {
+    "age": "Age",
+    "gender": "Gender",
+    "ethnicity": "Ethnicity",
+    "religion": "Religion",
+    "other_cyberbullying": "Other",
+    "not_cyberbullying": "N/A"
+}
 
 class CyberbullyingSystem:
     """
     Unified Cyberbullying Detection & Explainability Engine.
     Supports both:
-    1. Classical Multi-Class Baseline (TF-IDF + Linear SVM) for 6 categories.
-    2. Deep Google MuRIL Transformer for Multilingual & Hinglish contextual detection.
+    1. Classical Multi-Class Baseline (TF-IDF + Linear SVM) for 6 categories + Keyword-based trigger detection.
+    2. Deep Google MuRIL v2 Transformer for 6-Class Multilingual detection + Real Gradient Token Attribution.
     """
     def __init__(self):
         self.baseline_pipeline = None
         self.muril_model = None
         self.muril_tokenizer = None
+        self.muril_explainer = None
+        self.muril_id2label = None
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         
         self._load_baseline()
@@ -37,24 +51,38 @@ class CyberbullyingSystem:
             try:
                 with open(BASELINE_MODEL_PATH, "rb") as f:
                     self.baseline_pipeline = pickle.load(f)
-                print(f" Loaded Baseline Model ({self.baseline_pipeline.classes_})")
+                print(f" Loaded Baseline Model ({getattr(self.baseline_pipeline, 'classes_', [])})")
             except Exception as e:
                 print(f"Warning: Could not load baseline model: {e}")
 
     def _load_muril(self):
-        """Load fine-tuned MuRIL transformer model."""
-        if os.path.exists(MURIL_MODEL_DIR):
+        """Load fine-tuned MuRIL transformer model (prefers v2 6-class model if available)."""
+        target_dir = MURIL_V2_MODEL_DIR if os.path.exists(MURIL_V2_MODEL_DIR) else MURIL_V1_MODEL_DIR
+        
+        if os.path.exists(target_dir):
             try:
-                self.muril_tokenizer = AutoTokenizer.from_pretrained(MURIL_MODEL_DIR)
-                self.muril_model = AutoModelForSequenceClassification.from_pretrained(MURIL_MODEL_DIR)
+                self.muril_tokenizer = AutoTokenizer.from_pretrained(target_dir)
+                self.muril_model = AutoModelForSequenceClassification.from_pretrained(target_dir)
                 self.muril_model.to(self.device)
                 self.muril_model.eval()
-                print(f" Loaded Google MuRIL Model on {self.device}")
+
+                # Load label maps if present
+                label_map_file = os.path.join(target_dir, "label_map.json")
+                if os.path.exists(label_map_file):
+                    with open(label_map_file, "r") as f:
+                        data = json.load(f)
+                        self.muril_id2label = {int(k): v for k, v in data.get("id_to_label", {}).items()}
+                else:
+                    self.muril_id2label = self.muril_model.config.id2label
+
+                # Initialize real gradient-based explainer
+                self.muril_explainer = get_explainer(self.muril_model, self.muril_tokenizer)
+                print(f" Loaded Google MuRIL Model from {target_dir} onto {self.device} (Heads: {self.muril_model.config.num_labels})")
             except Exception as e:
-                print(f"Warning: Could not load MuRIL model: {e}")
+                print(f"Warning: Could not load MuRIL model from {target_dir}: {e}")
 
     def predict_baseline(self, raw_text: str) -> Dict[str, Any]:
-        """Predict using 6-class Linear Baseline."""
+        """Predict using 6-class Linear Baseline + Keyword-Based Trigger Detection."""
         cleaned = clean_text(raw_text)
         probs = self.baseline_pipeline.predict_proba([cleaned])[0]
         classes = self.baseline_pipeline.classes_
@@ -63,19 +91,12 @@ class CyberbullyingSystem:
         confidence = float(probs[top_idx]) * 100
 
         is_bullying = (pred_label.lower() != "not_cyberbullying" and pred_label.lower() != "non_bully")
-        category_map = {
-            "age": "Age",
-            "gender": "Gender",
-            "ethnicity": "Ethnicity",
-            "religion": "Religion",
-            "other_cyberbullying": "Other",
-            "not_cyberbullying": "N/A"
-        }
-        display_category = category_map.get(pred_label.lower(), pred_label.capitalize()) if is_bullying else "N/A"
+        display_category = CATEGORY_DISPLAY_MAP.get(pred_label.lower(), pred_label.capitalize()) if is_bullying else "N/A"
         verdict = "Cyberbullying Detected" if is_bullying else "Not Cyberbullying"
 
-        # Explainability
+        # Keyword-based trigger detection fallback
         explainability = extract_trigger_words(raw_text, display_category if is_bullying else "Other", confidence)
+        explainability["method"] = "Keyword-Based Trigger Detection"
         if not is_bullying:
             explainability["highlighted_text"] = escape_html(raw_text)
             explainability["trigger_words"] = []
@@ -87,12 +108,13 @@ class CyberbullyingSystem:
             "category": display_category,
             "confidence": round(confidence, 1),
             "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+            "explainability_method": "Keyword-Based Trigger Detection",
             "all_probabilities": {str(cls): round(float(p) * 100, 1) for cls, p in zip(classes, probs)},
             "explainability": explainability
         }
 
     def predict_muril(self, raw_text: str) -> Dict[str, Any]:
-        """Predict using fine-tuned Google MuRIL Transformer."""
+        """Predict using fine-tuned Google MuRIL Transformer + Real Gradient Attribution."""
         cleaned = clean_text(raw_text)
         if self.muril_model is None or self.muril_tokenizer is None:
             return self.predict_baseline(raw_text)
@@ -105,35 +127,68 @@ class CyberbullyingSystem:
             outputs = self.muril_model(input_ids=input_ids, attention_mask=attention_mask)
             probs = torch.softmax(outputs.logits, dim=1).cpu().numpy()[0]
 
-        prob_safe = float(probs[0]) * 100
-        prob_bully = float(probs[1]) * 100
-        is_bullying = (prob_bully >= 50.0)
-        confidence = prob_bully if is_bullying else prob_safe
-        verdict = "Cyberbullying Detected" if is_bullying else "Not Cyberbullying"
+        num_classes = len(probs)
+        
+        # Check if v2 multi-class model (6 classes)
+        if num_classes == 6 and self.muril_id2label:
+            not_bully_indices = [i for i, name in self.muril_id2label.items() if name.lower() == "not_cyberbullying"]
+            not_bully_idx = not_bully_indices[0] if not_bully_indices else 3
+            
+            prob_safe = float(probs[not_bully_idx]) * 100
+            prob_bully = 100.0 - prob_safe
+            is_bullying = (prob_bully >= 50.0)
 
-        # Determine category via trigger lexicon or baseline fallback
-        category = "Hinglish / Slur" if is_bullying else "N/A"
-        for cat, keywords in TRIGGER_LEXICON.items():
-            if any(k in cleaned.lower() for k in keywords):
-                category = cat
-                break
+            if is_bullying:
+                bully_indices = [i for i in range(num_classes) if i != not_bully_idx]
+                top_bully_idx = bully_indices[int(np.argmax([probs[i] for i in bully_indices]))]
+                pred_class = str(self.muril_id2label[top_bully_idx])
+                confidence = prob_bully
+                display_category = CATEGORY_DISPLAY_MAP.get(pred_class.lower(), pred_class.capitalize())
+                verdict = "Cyberbullying Detected"
+            else:
+                pred_class = "not_cyberbullying"
+                confidence = prob_safe
+                display_category = "N/A"
+                verdict = "Not Cyberbullying"
 
-        explainability = extract_trigger_words(raw_text, category if is_bullying else "Other", confidence)
-        if not is_bullying:
+            all_probs = {
+                str(self.muril_id2label.get(i, f"Class {i}")): round(float(p) * 100, 1)
+                for i, p in enumerate(probs)
+            }
+            model_name = "Google MuRIL v2 (6-Class Multilingual Transformer)"
+        else:
+            # Fallback for binary model v1
+            prob_safe = float(probs[0]) * 100
+            prob_bully = float(probs[1]) * 100
+            is_bullying = (prob_bully >= 50.0)
+            confidence = prob_bully if is_bullying else prob_safe
+            pred_class = "other_cyberbullying" if is_bullying else "not_cyberbullying"
+            display_category = "Other" if is_bullying else "N/A"
+            verdict = "Cyberbullying Detected" if is_bullying else "Not Cyberbullying"
+            all_probs = {
+                "Safe / Non-Bully": round(prob_safe, 1),
+                "Cyberbullying / Harassment": round(prob_bully, 1)
+            }
+            model_name = "Google MuRIL v1 (Binary Classifier)"
+
+        # Genuine Gradient Attribution via transformers-interpret
+        if self.muril_explainer:
+            explainability = self.muril_explainer.explain(raw_text, target_class=pred_class if is_bullying else None)
+        else:
+            explainability = extract_trigger_words(raw_text, display_category if is_bullying else "Other", confidence)
+            explainability["method"] = "Keyword-Based Trigger Detection (Fallback)"
+
+        if not is_bullying and not explainability.get("highlighted_text"):
             explainability["highlighted_text"] = escape_html(raw_text)
-            explainability["trigger_words"] = []
-            explainability["spans"] = []
 
         return {
             "verdict": verdict,
             "is_cyberbullying": is_bullying,
-            "category": category,
+            "category": display_category,
             "confidence": round(confidence, 1),
-            "model_used": "Google MuRIL Transformer (Multilingual/Hinglish)",
-            "all_probabilities": {
-                "Safe / Non-Bully": round(prob_safe, 1),
-                "Cyberbullying / Harassment": round(prob_bully, 1)
-            },
+            "model_used": model_name,
+            "explainability_method": explainability.get("method", "Model-Based Token Attribution"),
+            "all_probabilities": all_probs,
             "explainability": explainability
         }
 
@@ -150,8 +205,9 @@ class CyberbullyingSystem:
                 "cleaned_text": "",
                 "latency_ms": 0.1,
                 "model_used": "None",
+                "explainability_method": "None",
                 "all_probabilities": {},
-                "explainability": {"spans": [], "highlighted_text": "", "trigger_words": []}
+                "explainability": {"spans": [], "highlighted_text": "", "trigger_words": [], "top_tokens": []}
             }
 
         t0 = time.perf_counter()

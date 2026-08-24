@@ -14,7 +14,8 @@ HINGLISH_KEYWORDS = {
     'rhi', 'ab', 'tak', 'bhi', 'kuch', 'kaise', 'kab', 'aur', 'wale', 'wali', 'wala',
     'sab', 'saale', 'kamine', 'kamina', 'pagal', 'chutiya', 'bc', 'mc', 'gaali', 'harami',
     'bakwas', 'band', 'thik', 'sahi', 'par', 'pe', 'se', 'ko', 'ne', 'ka', 'ke', 'ki',
-    'kuttiya', 'randi', 'gandu', 'chut', 'moti', 'gadhi', 'lund', 'madarchod', 'bhosdike'
+    'kuttiya', 'randi', 'gandu', 'chut', 'moti', 'gadhi', 'lund', 'madarchod', 'bhosdike',
+    'bhosdiwala', 'gaand', 'phaad', 'behenchod'
 }
 
 def clean_text(

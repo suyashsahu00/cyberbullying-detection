@@ -6,7 +6,7 @@
     <title>CyberGuard AI | Multilingual Cyberbullying Detection & Explainability</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="AI-Powered Multilingual Cyberbullying Detection & Explainability platform supporting English and Hinglish with Google MuRIL Transformer & SHAP token attribution.">
+    <meta name="description" content="AI-Powered Multilingual Cyberbullying Detection & Explainability platform supporting English and Hinglish with Google MuRIL Transformer & Keyword-based Trigger Detection.">
     <meta name="author" content="CyberGuard Research Team">
     
     <!-- Google Fonts: Inter & Outfit -->
@@ -54,11 +54,11 @@
                 <div class="text-center mb-4 hero-section">
                     <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill hero-tag mb-3">
                         <i class="fa-solid fa-sparkles text-primary"></i>
-                        <span>MuRIL Transformer &bull; SHAP Explainability &bull; Hinglish Support</span>
+                        <span>MuRIL Transformer &bull; Keyword-based Trigger Detection &bull; Hinglish Support</span>
                     </div>
                     <h1 class="hero-title mb-2">Multilingual Cyberbullying Detection</h1>
                     <p class="hero-subtitle">
-                        Paste any social media comment or tweet to detect toxic harassment in real time, visualize multi-class identity categories, and inspect token-level SHAP trigger attributions.
+                        Paste any social media comment or tweet to detect toxic harassment in real time, visualize multi-class identity categories, and inspect keyword-based trigger attributions.
                     </p>
                 </div>
 
@@ -192,13 +192,13 @@
                         <!-- Text Explainability & Trigger Words Box -->
                         <div class="explainability-box mb-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <label class="fw-600 fs-7 text-dark m-0">
-                                    <i class="fa-solid fa-highlighter text-warning me-1"></i> SHAP Token-Level Explainability
+                                <label class="fw-600 fs-7 text-dark m-0" id="explainabilityTitle">
+                                    <i class="fa-solid fa-brain text-primary me-1"></i> Model-Based Token Attribution
                                 </label>
-                                <span class="badge bg-light text-secondary border fs-8" id="triggerCountBadge">0 triggers found</span>
+                                <span class="badge bg-light text-secondary border fs-8" id="triggerCountBadge">0 tokens attributed</span>
                             </div>
-                            <p class="fs-8 text-muted mb-2">
-                                Attributed tokens contributing directly to harassment classification are highlighted below:
+                            <p class="fs-8 text-muted mb-2" id="explainabilityDesc">
+                                Gradient-based token attributions derived directly from the fine-tuned Google MuRIL transformer:
                             </p>
                             <div class="highlighted-text-container p-3 rounded-3" id="highlightedText">
                                 <!-- Dynamic highlighted text inserted here -->
@@ -250,9 +250,9 @@
                                     <div class="col-12 col-md-4">
                                         <div class="step-card">
                                             <div class="step-number">3</div>
-                                            <h6 class="fw-700 text-dark mb-1">SHAP Explainability</h6>
+                                            <h6 class="fw-700 text-dark mb-1">Keyword-based Trigger Detection</h6>
                                             <p class="m-0 text-muted fs-8">
-                                                Game-theoretic Shapley values highlight exact abusive spans (achieving <strong>74% Rationale Recall</strong> against human ground truth).
+                                                Target keywords and repeated character regexes highlight exact abusive spans (achieving <strong>74% Rationale Recall</strong> against human ground truth).
                                             </p>
                                         </div>
                                     </div>

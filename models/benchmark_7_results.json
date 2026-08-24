@@ -1,0 +1,944 @@
+[
+  {
+    "input": "you fucking idiot / motherfucker",
+    "muril_output": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 57.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "explainability_method": "Model-Based Token Attribution (Gradient)",
+      "all_probabilities": {
+        "age": 1.4,
+        "ethnicity": 2.0,
+        "gender": 5.4,
+        "not_cyberbullying": 42.8,
+        "other_cyberbullying": 48.0,
+        "religion": 0.4
+      },
+      "explainability": {
+        "method": "Model-Based Token Attribution (Gradient)",
+        "raw_attributions": [
+          [
+            "you",
+            0.0153
+          ],
+          [
+            "fucking",
+            0.5634
+          ],
+          [
+            "idi",
+            0.7075
+          ],
+          [
+            "##ot",
+            0.2996
+          ],
+          [
+            "/",
+            -0.0648
+          ],
+          [
+            "mother",
+            -0.2828
+          ],
+          [
+            "##fu",
+            -0.0839
+          ],
+          [
+            "##cker",
+            0.0283
+          ]
+        ],
+        "top_tokens": [
+          [
+            "idiot",
+            0.7075
+          ],
+          [
+            "fucking",
+            0.5634
+          ],
+          [
+            "motherfucker",
+            0.0283
+          ],
+          [
+            "you",
+            0.0153
+          ]
+        ],
+        "highlighted_text": "you <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.80); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.563\">fucking</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 1.00); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.708\">idiot</mark> / motherfucker",
+        "spans": [
+          {
+            "token": "fucking",
+            "attribution_score": 0.5634,
+            "importance_weight": 0.8
+          },
+          {
+            "token": "idiot",
+            "attribution_score": 0.7075,
+            "importance_weight": 1.0
+          }
+        ]
+      },
+      "language": "English",
+      "original_text": "you fucking idiot / motherfucker",
+      "cleaned_text": "you fucking idiot / motherfucker",
+      "latency_ms": 321.31,
+      "stats": {
+        "cleaned_text": "you fucking idiot / motherfucker",
+        "char_count": 32,
+        "word_count": 5,
+        "caps_ratio": 0.0,
+        "language": "English"
+      }
+    },
+    "baseline_output": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 94.6,
+      "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+      "explainability_method": "Keyword-Based Trigger Detection",
+      "all_probabilities": {
+        "age": 0.2,
+        "ethnicity": 0.2,
+        "gender": 0.3,
+        "not_cyberbullying": 0.3,
+        "other_cyberbullying": 94.6,
+        "religion": 4.4
+      },
+      "explainability": {
+        "spans": [
+          {
+            "start": 12,
+            "end": 17,
+            "word": "idiot",
+            "category": "Other",
+            "weight": 0.77
+          }
+        ],
+        "highlighted_text": "you fucking <mark class=\"trigger-highlight\" data-category=\"Other\" title=\"Trigger: Other\">idiot</mark> / motherfucker",
+        "trigger_words": [
+          "idiot"
+        ],
+        "method": "Keyword-Based Trigger Detection"
+      },
+      "language": "English",
+      "original_text": "you fucking idiot / motherfucker",
+      "cleaned_text": "you fucking idiot / motherfucker",
+      "latency_ms": 7.74,
+      "stats": {
+        "cleaned_text": "you fucking idiot / motherfucker",
+        "char_count": 32,
+        "word_count": 5,
+        "caps_ratio": 0.0,
+        "language": "English"
+      }
+    }
+  },
+  {
+    "input": "suck my dick, go fuck yourself",
+    "muril_output": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 62.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "explainability_method": "Model-Based Token Attribution (Gradient)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.9,
+        "gender": 24.0,
+        "not_cyberbullying": 37.7,
+        "other_cyberbullying": 36.1,
+        "religion": 0.4
+      },
+      "explainability": {
+        "method": "Model-Based Token Attribution (Gradient)",
+        "raw_attributions": [
+          [
+            "suck",
+            -0.656
+          ],
+          [
+            "my",
+            -0.2555
+          ],
+          [
+            "dick",
+            0.5292
+          ],
+          [
+            ",",
+            -0.0237
+          ],
+          [
+            "go",
+            0.235
+          ],
+          [
+            "fuck",
+            0.1725
+          ],
+          [
+            "yourself",
+            -0.3725
+          ]
+        ],
+        "top_tokens": [
+          [
+            "dick",
+            0.5292
+          ],
+          [
+            "go",
+            0.235
+          ],
+          [
+            "fuck",
+            0.1725
+          ]
+        ],
+        "highlighted_text": "suck my <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 1.00); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.529\">dick</mark> , <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.44); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.235\">go</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.33); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.173\">fuck</mark> yourself",
+        "spans": [
+          {
+            "token": "dick",
+            "attribution_score": 0.5292,
+            "importance_weight": 1.0
+          },
+          {
+            "token": "go",
+            "attribution_score": 0.235,
+            "importance_weight": 0.44
+          },
+          {
+            "token": "fuck",
+            "attribution_score": 0.1725,
+            "importance_weight": 0.33
+          }
+        ]
+      },
+      "language": "English",
+      "original_text": "suck my dick, go fuck yourself",
+      "cleaned_text": "suck my dick, go fuck yourself",
+      "latency_ms": 111.25,
+      "stats": {
+        "cleaned_text": "suck my dick, go fuck yourself",
+        "char_count": 30,
+        "word_count": 6,
+        "caps_ratio": 0.0,
+        "language": "English"
+      }
+    },
+    "baseline_output": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 42.0,
+      "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+      "explainability_method": "Keyword-Based Trigger Detection",
+      "all_probabilities": {
+        "age": 4.0,
+        "ethnicity": 19.1,
+        "gender": 42.0,
+        "not_cyberbullying": 17.2,
+        "other_cyberbullying": 14.8,
+        "religion": 2.8
+      },
+      "explainability": {
+        "spans": [
+          {
+            "start": 17,
+            "end": 21,
+            "word": "fuck",
+            "category": "Other",
+            "weight": 0.74
+          }
+        ],
+        "highlighted_text": "suck my dick, go <mark class=\"trigger-highlight\" data-category=\"Other\" title=\"Trigger: Other\">fuck</mark> yourself",
+        "trigger_words": [
+          "fuck"
+        ],
+        "method": "Keyword-Based Trigger Detection"
+      },
+      "language": "English",
+      "original_text": "suck my dick, go fuck yourself",
+      "cleaned_text": "suck my dick, go fuck yourself",
+      "latency_ms": 1.81,
+      "stats": {
+        "cleaned_text": "suck my dick, go fuck yourself",
+        "char_count": 30,
+        "word_count": 6,
+        "caps_ratio": 0.0,
+        "language": "English"
+      }
+    }
+  },
+  {
+    "input": "your mom is a whore",
+    "muril_output": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "explainability_method": "Model-Based Token Attribution (Gradient)",
+      "all_probabilities": {
+        "age": 1.2,
+        "ethnicity": 0.6,
+        "gender": 5.5,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 41.6,
+        "religion": 0.5
+      },
+      "explainability": {
+        "method": "Model-Based Token Attribution (Gradient)",
+        "raw_attributions": [
+          [
+            "your",
+            0.4669
+          ],
+          [
+            "mom",
+            -0.4535
+          ],
+          [
+            "is",
+            0.5551
+          ],
+          [
+            "a",
+            -0.1498
+          ],
+          [
+            "who",
+            -0.4756
+          ],
+          [
+            "##re",
+            0.1396
+          ]
+        ],
+        "top_tokens": [
+          [
+            "is",
+            0.5551
+          ],
+          [
+            "your",
+            0.4669
+          ],
+          [
+            "whore",
+            0.1396
+          ]
+        ],
+        "highlighted_text": "<mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.84); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.467\">your</mark> mom <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 1.00); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.555\">is</mark> a whore",
+        "spans": [
+          {
+            "token": "your",
+            "attribution_score": 0.4669,
+            "importance_weight": 0.84
+          },
+          {
+            "token": "is",
+            "attribution_score": 0.5551,
+            "importance_weight": 1.0
+          }
+        ]
+      },
+      "language": "English",
+      "original_text": "your mom is a whore",
+      "cleaned_text": "your mom is a whore",
+      "latency_ms": 119.94,
+      "stats": {
+        "cleaned_text": "your mom is a whore",
+        "char_count": 19,
+        "word_count": 5,
+        "caps_ratio": 0.0,
+        "language": "English"
+      }
+    },
+    "baseline_output": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 50.8,
+      "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+      "explainability_method": "Keyword-Based Trigger Detection",
+      "all_probabilities": {
+        "age": 9.3,
+        "ethnicity": 5.6,
+        "gender": 50.8,
+        "not_cyberbullying": 17.4,
+        "other_cyberbullying": 11.0,
+        "religion": 5.8
+      },
+      "explainability": {
+        "spans": [
+          {
+            "start": 14,
+            "end": 19,
+            "word": "whore",
+            "category": "Gender",
+            "weight": 0.77
+          }
+        ],
+        "highlighted_text": "your mom is a <mark class=\"trigger-highlight\" data-category=\"Gender\" title=\"Trigger: Gender\">whore</mark>",
+        "trigger_words": [
+          "whore"
+        ],
+        "method": "Keyword-Based Trigger Detection"
+      },
+      "language": "English",
+      "original_text": "your mom is a whore",
+      "cleaned_text": "your mom is a whore",
+      "latency_ms": 2.0,
+      "stats": {
+        "cleaned_text": "your mom is a whore",
+        "char_count": 19,
+        "word_count": 5,
+        "caps_ratio": 0.0,
+        "language": "English"
+      }
+    }
+  },
+  {
+    "input": "madarchod",
+    "muril_output": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 51.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "explainability_method": "Model-Based Token Attribution (Gradient)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.0,
+        "gender": 3.0,
+        "not_cyberbullying": 51.0,
+        "other_cyberbullying": 43.8,
+        "religion": 0.6
+      },
+      "explainability": {
+        "method": "Model-Based Token Attribution (Gradient)",
+        "raw_attributions": [
+          [
+            "mad",
+            0.5484
+          ],
+          [
+            "##ar",
+            -0.4871
+          ],
+          [
+            "##cho",
+            0.3622
+          ],
+          [
+            "##d",
+            -0.5752
+          ]
+        ],
+        "top_tokens": [
+          [
+            "madarchod",
+            0.5484
+          ]
+        ],
+        "highlighted_text": "<mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 1.00); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.548\">madarchod</mark>",
+        "spans": [
+          {
+            "token": "madarchod",
+            "attribution_score": 0.5484,
+            "importance_weight": 1.0
+          }
+        ]
+      },
+      "language": "Hinglish",
+      "original_text": "madarchod",
+      "cleaned_text": "madarchod",
+      "latency_ms": 137.55,
+      "stats": {
+        "cleaned_text": "madarchod",
+        "char_count": 9,
+        "word_count": 1,
+        "caps_ratio": 0.0,
+        "language": "Hinglish"
+      }
+    },
+    "baseline_output": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+      "explainability_method": "Keyword-Based Trigger Detection",
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      },
+      "explainability": {
+        "spans": [],
+        "highlighted_text": "madarchod",
+        "trigger_words": [],
+        "method": "Keyword-Based Trigger Detection"
+      },
+      "language": "Hinglish",
+      "original_text": "madarchod",
+      "cleaned_text": "madarchod",
+      "latency_ms": 1.48,
+      "stats": {
+        "cleaned_text": "madarchod",
+        "char_count": 9,
+        "word_count": 1,
+        "caps_ratio": 0.0,
+        "language": "Hinglish"
+      }
+    }
+  },
+  {
+    "input": "bhosdiwala traffic",
+    "muril_output": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 51.7,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "explainability_method": "Model-Based Token Attribution (Gradient)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 1.0,
+        "gender": 2.3,
+        "not_cyberbullying": 51.7,
+        "other_cyberbullying": 43.5,
+        "religion": 0.7
+      },
+      "explainability": {
+        "method": "Model-Based Token Attribution (Gradient)",
+        "raw_attributions": [
+          [
+            "b",
+            0.1567
+          ],
+          [
+            "##hos",
+            0.6329
+          ],
+          [
+            "##di",
+            -0.6944
+          ],
+          [
+            "##wala",
+            -0.0472
+          ],
+          [
+            "traffic",
+            0.3008
+          ]
+        ],
+        "top_tokens": [
+          [
+            "bhosdiwala",
+            0.6329
+          ],
+          [
+            "traffic",
+            0.3008
+          ]
+        ],
+        "highlighted_text": "<mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 1.00); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.633\">bhosdiwala</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.48); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.301\">traffic</mark>",
+        "spans": [
+          {
+            "token": "bhosdiwala",
+            "attribution_score": 0.6329,
+            "importance_weight": 1.0
+          },
+          {
+            "token": "traffic",
+            "attribution_score": 0.3008,
+            "importance_weight": 0.48
+          }
+        ]
+      },
+      "language": "Hinglish",
+      "original_text": "bhosdiwala traffic",
+      "cleaned_text": "bhosdiwala traffic",
+      "latency_ms": 113.41,
+      "stats": {
+        "cleaned_text": "bhosdiwala traffic",
+        "char_count": 18,
+        "word_count": 2,
+        "caps_ratio": 0.0,
+        "language": "Hinglish"
+      }
+    },
+    "baseline_output": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 59.8,
+      "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+      "explainability_method": "Keyword-Based Trigger Detection",
+      "all_probabilities": {
+        "age": 2.4,
+        "ethnicity": 2.9,
+        "gender": 6.4,
+        "not_cyberbullying": 59.8,
+        "other_cyberbullying": 22.6,
+        "religion": 5.9
+      },
+      "explainability": {
+        "spans": [],
+        "highlighted_text": "bhosdiwala traffic",
+        "trigger_words": [],
+        "method": "Keyword-Based Trigger Detection"
+      },
+      "language": "Hinglish",
+      "original_text": "bhosdiwala traffic",
+      "cleaned_text": "bhosdiwala traffic",
+      "latency_ms": 1.44,
+      "stats": {
+        "cleaned_text": "bhosdiwala traffic",
+        "char_count": 18,
+        "word_count": 2,
+        "caps_ratio": 0.0,
+        "language": "Hinglish"
+      }
+    }
+  },
+  {
+    "input": "you are so helpful, thank you!",
+    "muril_output": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "explainability_method": "Model-Based Token Attribution (Gradient)",
+      "all_probabilities": {
+        "age": 1.3,
+        "ethnicity": 0.8,
+        "gender": 2.1,
+        "not_cyberbullying": 54.3,
+        "other_cyberbullying": 40.5,
+        "religion": 1.0
+      },
+      "explainability": {
+        "method": "Model-Based Token Attribution (Gradient)",
+        "raw_attributions": [
+          [
+            "you",
+            0.285
+          ],
+          [
+            "are",
+            0.6279
+          ],
+          [
+            "so",
+            0.2448
+          ],
+          [
+            "helpful",
+            -0.1325
+          ],
+          [
+            ",",
+            0.3614
+          ],
+          [
+            "thank",
+            0.5298
+          ],
+          [
+            "you",
+            0.1385
+          ],
+          [
+            "!",
+            0.1286
+          ]
+        ],
+        "top_tokens": [
+          [
+            "are",
+            0.6279
+          ],
+          [
+            "thank",
+            0.5298
+          ],
+          [
+            ",",
+            0.3614
+          ],
+          [
+            "you",
+            0.285
+          ],
+          [
+            "so",
+            0.2448
+          ]
+        ],
+        "highlighted_text": "<mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.45); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.285\">you</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 1.00); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.628\">are</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.39); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.245\">so</mark> helpful <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.58); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.361\">,</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.84); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.530\">thank</mark> you !",
+        "spans": [
+          {
+            "token": "you",
+            "attribution_score": 0.285,
+            "importance_weight": 0.45
+          },
+          {
+            "token": "are",
+            "attribution_score": 0.6279,
+            "importance_weight": 1.0
+          },
+          {
+            "token": "so",
+            "attribution_score": 0.2448,
+            "importance_weight": 0.39
+          },
+          {
+            "token": ",",
+            "attribution_score": 0.3614,
+            "importance_weight": 0.58
+          },
+          {
+            "token": "thank",
+            "attribution_score": 0.5298,
+            "importance_weight": 0.84
+          }
+        ]
+      },
+      "language": "English",
+      "original_text": "you are so helpful, thank you!",
+      "cleaned_text": "you are so helpful, thank you!",
+      "latency_ms": 115.8,
+      "stats": {
+        "cleaned_text": "you are so helpful, thank you!",
+        "char_count": 30,
+        "word_count": 6,
+        "caps_ratio": 0.0,
+        "language": "English"
+      }
+    },
+    "baseline_output": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 49.0,
+      "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+      "explainability_method": "Keyword-Based Trigger Detection",
+      "all_probabilities": {
+        "age": 2.9,
+        "ethnicity": 3.4,
+        "gender": 3.1,
+        "not_cyberbullying": 37.1,
+        "other_cyberbullying": 49.0,
+        "religion": 4.5
+      },
+      "explainability": {
+        "spans": [],
+        "highlighted_text": "you are so helpful, thank you!",
+        "trigger_words": [],
+        "method": "Keyword-Based Trigger Detection"
+      },
+      "language": "English",
+      "original_text": "you are so helpful, thank you!",
+      "cleaned_text": "you are so helpful, thank you!",
+      "latency_ms": 1.34,
+      "stats": {
+        "cleaned_text": "you are so helpful, thank you!",
+        "char_count": 30,
+        "word_count": 6,
+        "caps_ratio": 0.0,
+        "language": "English"
+      }
+    }
+  },
+  {
+    "input": "bohot samajhdar ho aap, dimaag mat use karna",
+    "muril_output": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 53.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "explainability_method": "Model-Based Token Attribution (Gradient)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 2.0,
+        "gender": 2.7,
+        "not_cyberbullying": 46.9,
+        "other_cyberbullying": 47.3,
+        "religion": 0.6
+      },
+      "explainability": {
+        "method": "Model-Based Token Attribution (Gradient)",
+        "raw_attributions": [
+          [
+            "bo",
+            0.3075
+          ],
+          [
+            "##hot",
+            -0.276
+          ],
+          [
+            "samajh",
+            -0.0842
+          ],
+          [
+            "##dar",
+            0.2679
+          ],
+          [
+            "ho",
+            0.4867
+          ],
+          [
+            "aap",
+            0.1545
+          ],
+          [
+            ",",
+            -0.097
+          ],
+          [
+            "dim",
+            0.1662
+          ],
+          [
+            "##aa",
+            0.3714
+          ],
+          [
+            "##g",
+            0.1935
+          ],
+          [
+            "mat",
+            0.0536
+          ],
+          [
+            "use",
+            -0.1212
+          ],
+          [
+            "karna",
+            0.5096
+          ]
+        ],
+        "top_tokens": [
+          [
+            "karna",
+            0.5096
+          ],
+          [
+            "ho",
+            0.4867
+          ],
+          [
+            "dimaag",
+            0.3714
+          ],
+          [
+            "bohot",
+            0.3075
+          ],
+          [
+            "samajhdar",
+            0.2679
+          ]
+        ],
+        "highlighted_text": "<mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.60); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.308\">bohot</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.53); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.268\">samajhdar</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.96); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.487\">ho</mark> <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.30); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.154\">aap</mark> , <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 0.73); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.371\">dimaag</mark> mat use <mark class=\"token-attribution\" style=\"background-color: rgba(230, 57, 70, 1.00); padding: 2px 4px; border-radius: 4px; font-weight: 600;\" title=\"Attribution: +0.510\">karna</mark>",
+        "spans": [
+          {
+            "token": "bohot",
+            "attribution_score": 0.3075,
+            "importance_weight": 0.6
+          },
+          {
+            "token": "samajhdar",
+            "attribution_score": 0.2679,
+            "importance_weight": 0.53
+          },
+          {
+            "token": "ho",
+            "attribution_score": 0.4867,
+            "importance_weight": 0.96
+          },
+          {
+            "token": "aap",
+            "attribution_score": 0.1545,
+            "importance_weight": 0.3
+          },
+          {
+            "token": "dimaag",
+            "attribution_score": 0.3714,
+            "importance_weight": 0.73
+          },
+          {
+            "token": "karna",
+            "attribution_score": 0.5096,
+            "importance_weight": 1.0
+          }
+        ]
+      },
+      "language": "Hinglish",
+      "original_text": "bohot samajhdar ho aap, dimaag mat use karna",
+      "cleaned_text": "bohot samajhdar ho aap, dimaag mat use karna",
+      "latency_ms": 113.93,
+      "stats": {
+        "cleaned_text": "bohot samajhdar ho aap, dimaag mat use karna",
+        "char_count": 44,
+        "word_count": 8,
+        "caps_ratio": 0.0,
+        "language": "Hinglish"
+      }
+    },
+    "baseline_output": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 56.4,
+      "model_used": "Classical Baseline (TF-IDF + Linear SVM)",
+      "explainability_method": "Keyword-Based Trigger Detection",
+      "all_probabilities": {
+        "age": 3.4,
+        "ethnicity": 2.8,
+        "gender": 3.1,
+        "not_cyberbullying": 27.5,
+        "other_cyberbullying": 56.4,
+        "religion": 6.7
+      },
+      "explainability": {
+        "spans": [],
+        "highlighted_text": "bohot samajhdar ho aap, dimaag mat use karna",
+        "trigger_words": [],
+        "method": "Keyword-Based Trigger Detection"
+      },
+      "language": "Hinglish",
+      "original_text": "bohot samajhdar ho aap, dimaag mat use karna",
+      "cleaned_text": "bohot samajhdar ho aap, dimaag mat use karna",
+      "latency_ms": 1.35,
+      "stats": {
+        "cleaned_text": "bohot samajhdar ho aap, dimaag mat use karna",
+        "char_count": 44,
+        "word_count": 8,
+        "caps_ratio": 0.0,
+        "language": "Hinglish"
+      }
+    }
+  }
+]
