@@ -176,18 +176,42 @@ We verified that the hardcoded `0.90` weight override for high-severity Hindi ke
 
 ---
 
-## 📈 Verification & Execution Instructions
+## 📈 Verification & Local Execution Instructions
 
-1. **Start the Flask Server**:
-   ```bash
-   python backend/app.py
-   ```
+### 1. Run the Full Web Application (Frontend + API)
+```powershell
+# Windows
+.venv\Scripts\python.exe backend/app.py
 
-2. **Open the Web Interface**:
-   Navigate to **[http://127.0.0.1:5000](http://127.0.0.1:5000)** to test both Google MuRIL v2 and the Classical Baseline interactively.
+# macOS / Linux
+python backend/app.py
+```
+Open **[http://localhost:5000](http://localhost:5000)** to interactively test the model with the GuardText interface.
 
-3. **Interactive Blind Test**:
-   Execute the blind self-testing script to run a manual verification audit against model failures:
-   ```bash
-   python blind_test.py
-   ```
+### 2. Run Standalone Python Model Inference
+```python
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+
+repo_or_dir = "models/muril_cyberbullying_v2" # or "suyashsahu00/muril-cyberbullying-detection"
+tokenizer = AutoTokenizer.from_pretrained(repo_or_dir)
+model = AutoModelForSequenceClassification.from_pretrained(repo_or_dir)
+
+inputs = tokenizer("Go back to the kitchen and make me a sandwich bitch.", return_tensors="pt")
+with torch.no_grad():
+    logits = model(**inputs).logits
+    pred = torch.argmax(logits, dim=1).item()
+print("Prediction:", model.config.id2label[pred])
+```
+
+### 3. Interactive Blind Testing & Audits
+Execute the blind self-testing script to run a manual verification audit against model failures:
+```bash
+python blind_test.py
+python inspect_failures.py
+```
+
+### 4. Public Hugging Face Links
+- **Model Hub:** [`suyashsahu00/muril-cyberbullying-detection`](https://huggingface.co/suyashsahu00/muril-cyberbullying-detection)
+- **Web App Space:** [`suyashsahu00/GuardText-Cyberbullying-Detection`](https://huggingface.co/spaces/suyashsahu00/GuardText-Cyberbullying-Detection)
+

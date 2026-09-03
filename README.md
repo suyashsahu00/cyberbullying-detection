@@ -208,79 +208,114 @@ cyberbullying-detection/
 
 ---
 
-## 🚀 How to Start the Frontend & Application
+## 💻 How to Run the Model & Application Locally
 
-The web frontend is integrated with the Flask backend. Starting the server will serve both the **Web User Interface** and the **REST API endpoints**.
-
-### Prerequisites
-- Python 3.9 or higher installed
-- (Optional) NVIDIA GPU with CUDA for accelerated MuRIL transformer inference
+The project includes an interactive web application, a local REST API, and standalone Python inference scripts powered directly by your fine-tuned **Google MuRIL Transformer** (`model.safetensors`).
 
 ---
 
-### Step 1: Open the Project Directory
+### Method 1: Run the Interactive Web Application (Recommended)
 
+#### Step 1: Clone and Enter the Directory
 ```bash
+git clone https://github.com/suyashsahu00/cyberbullying-detection.git
 cd cyberbullying-detection
 ```
 
----
-
-### Step 2: Set Up Environment & Install Dependencies
-
-#### Option A: Using `uv` (Recommended — Ultra Fast)
-```bash
-# Sync dependencies automatically
-uv sync
-```
-
-#### Option B: Using standard Python `venv` & `pip`
+#### Step 2: Set Up Virtual Environment & Install Dependencies
 
 **On Windows (PowerShell):**
 ```powershell
 # 1. Create virtual environment
-python -m venv venv
+python -m venv .venv
 
 # 2. Activate virtual environment
-venv\Scripts\Activate.ps1
+.venv\Scripts\activate
 
-# 3. Install required packages
+# 3. Install dependencies
 pip install -r backend/requirements.txt
 ```
 
 **On macOS / Linux:**
 ```bash
-# 1. Create virtual environment
-python3 -m venv venv
-
-# 2. Activate virtual environment
-source venv/bin/activate
-
-# 3. Install required packages
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r backend/requirements.txt
 ```
 
----
-
-### Step 3: Run the Application Server
-
-#### Using `uv`:
-```bash
-uv run python backend/app.py
-```
-
-#### Using Standard Python:
-```bash
+#### Step 3: Start the Backend Server
+```powershell
 python backend/app.py
 ```
+*(On Windows with the virtual environment activated, you can also run: `.venv\Scripts\python.exe backend\app.py`)*
+
+#### Step 4: Open in Your Browser
+Once you see `Starting Cyberbullying Detection Server on http://127.0.0.1:5000`, open your web browser:
+
+👉 **[http://localhost:5000](http://localhost:5000)** (or `http://127.0.0.1:5000`)
 
 ---
 
-### Step 4: Open the Frontend in Your Browser
+### Method 2: Run Inference Directly in Python (No Web UI)
 
-Once the server is running, open your web browser and navigate to:
+You can run predictions directly on any text using the Hugging Face `transformers` library. The model can be loaded from your local directory or pulled directly from Hugging Face Hub:
 
-👉 **[http://127.0.0.1:5000](http://127.0.0.1:5000)** (or `http://localhost:5000`)
+```python
+import torch
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+# Load model & tokenizer (local checkpoint or Hugging Face Hub)
+MODEL_SOURCE = "models/muril_cyberbullying_v2" # or "suyashsahu00/muril-cyberbullying-detection"
+
+tokenizer = AutoTokenizer.from_pretrained(MODEL_SOURCE)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_SOURCE)
+model.eval()
+
+# Input text to test
+text = "Go back to the kitchen and make me a sandwich bitch."
+
+# Tokenize and run forward pass
+inputs = tokenizer(text, return_tensors="pt", truncation=True, max_length=128)
+with torch.no_grad():
+    logits = model(**inputs).logits
+    probs = torch.softmax(logits, dim=-1)[0]
+    predicted_idx = torch.argmax(probs).item()
+
+predicted_label = model.config.id2label[predicted_idx]
+confidence = probs[predicted_idx].item() * 100
+
+print(f"Verdict: Cyberbullying Detected")
+print(f"Target Category: {predicted_label.upper()}")
+print(f"Confidence: {confidence:.2f}%")
+```
+
+---
+
+### Method 3: Run Interactive Blind Testing Scripts
+
+To audit model accuracy and inspect failure modes locally:
+
+```bash
+# Run interactive blind test with real edge cases
+python blind_test.py
+
+# Inspect failure cases and boundary predictions
+python inspect_failures.py
+```
+
+---
+
+### Method 4: Connect Hugging Face Space to Your Local Model (Free Tunnel)
+
+If you want your online Hugging Face Space ([GuardText Space](https://huggingface.co/spaces/suyashsahu00/GuardText-Cyberbullying-Detection)) to use your local machine's GPU/CPU for free:
+
+1. Start your local server: `python backend/app.py`
+2. In a second terminal, launch a tunnel:
+   ```powershell
+   npx localtunnel --port 5000
+   ```
+3. Copy the generated HTTPS URL (e.g. `https://guardtext.loca.lt`).
+4. Open the [Hugging Face Space](https://huggingface.co/spaces/suyashsahu00/GuardText-Cyberbullying-Detection), click the **Backend** button at the top right, and paste your URL. All predictions on the online page will now run through your local model!
 
 ---
 
