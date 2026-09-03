@@ -22,18 +22,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const presetButtons = document.querySelectorAll(".preset-pill");
 
-    // Backend API URL Management (for connecting static Hugging Face space to a backend)
-    let backendUrl = localStorage.getItem("guardtext_backend_url") || "";
+    // Backend API URL Management
+    const RENDER_BACKEND_URL = "https://cyberbullying-detection-8477.onrender.com";
+
+    // Auto-detect backend URL:
+    // 1. Check if user set an explicit override in localStorage
+    // 2. If running on Hugging Face Spaces (*.hf.space), auto-route to Render backend
+    // 3. Otherwise (localhost or on Render domain), use relative path ""
+    let backendUrl = localStorage.getItem("guardtext_backend_url");
+    if (backendUrl === null) {
+        if (window.location.hostname.includes("hf.space")) {
+            backendUrl = RENDER_BACKEND_URL;
+        } else {
+            backendUrl = "";
+        }
+    }
+
     const apiEndpointInput = document.getElementById("apiEndpointInput");
     const btnSaveApiEndpoint = document.getElementById("btnSaveApiEndpoint");
     const btnResetApiEndpoint = document.getElementById("btnResetApiEndpoint");
     const backendStatusLabel = document.getElementById("backendStatusLabel");
 
     function updateBackendUI() {
-        if (apiEndpointInput) apiEndpointInput.value = backendUrl;
+        if (apiEndpointInput) apiEndpointInput.value = backendUrl || RENDER_BACKEND_URL;
         if (backendStatusLabel) {
-            backendStatusLabel.textContent = backendUrl ? "Connected" : "Backend";
-            backendStatusLabel.className = backendUrl ? "text-success fw-600" : "";
+            const isLive = Boolean(backendUrl);
+            backendStatusLabel.textContent = isLive ? "Render Connected" : "Backend";
+            backendStatusLabel.className = isLive ? "text-success fw-600" : "";
         }
     }
     updateBackendUI();
