@@ -5,13 +5,10 @@ import json
 import pickle
 import numpy as np
 import pandas as pd
-import torch
 from typing import Dict, Any, Tuple, Optional
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 from src.preprocessing import clean_text, detect_language, get_text_stats
 from src.explainability import extract_trigger_words, escape_html, TRIGGER_LEXICON
-from src.real_explainability import get_explainer, MuRILExplainer
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BASELINE_MODEL_PATH = os.path.join(ROOT_DIR, "models", "baseline_model.pkl")
@@ -31,7 +28,7 @@ class CyberbullyingSystem:
     """
     Unified Cyberbullying Detection & Explainability Engine.
     Supports both:
-    1. Classical Multi-Class Baseline (TF-IDF + Linear SVM) for 6 categories + Keyword-based trigger detection.
+    1. Classical Multi-Class Baseline (TF-IDF + Linear SVM) for 6 categories + Keyword-based trigger detection (~35MB RAM).
     2. Deep Google MuRIL v2 Transformer for 6-Class Multilingual detection + Real Gradient Token Attribution.
     """
     def __init__(self):
@@ -40,10 +37,14 @@ class CyberbullyingSystem:
         self.muril_tokenizer = None
         self.muril_explainer = None
         self.muril_id2label = None
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = None
+        self.is_render = os.environ.get("RENDER", "").lower() in ("true", "1") or os.environ.get("LOW_MEMORY_MODE", "").lower() in ("true", "1")
         
         self._load_baseline()
-        self._load_muril()
+        if not self.is_render:
+            self._load_muril()
+        else:
+            print(" Render Free Tier detected (< 512MB RAM). Using 6-Class Baseline Pipeline (~35MB RAM).")
 
     def _load_baseline(self):
         """Load trained baseline pipeline."""
@@ -57,16 +58,23 @@ class CyberbullyingSystem:
 
     def _load_muril(self):
         """Load fine-tuned MuRIL transformer model (prefers local v2 model, falls back to Hugging Face Hub)."""
-        HF_REPO_ID = "suyashsahu00/muril-cyberbullying-detection"
-        target_path = None
-        if os.path.exists(MURIL_V2_MODEL_DIR):
-            target_path = MURIL_V2_MODEL_DIR
-        elif os.path.exists(MURIL_V1_MODEL_DIR):
-            target_path = MURIL_V1_MODEL_DIR
-        else:
-            target_path = HF_REPO_ID
-
         try:
+            import torch
+            from transformers import AutoTokenizer, AutoModelForSequenceClassification
+            from src.real_explainability import get_explainer
+            
+            if self.device is None:
+                self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+            HF_REPO_ID = "suyashsahu00/muril-cyberbullying-detection"
+            target_path = None
+            if os.path.exists(MURIL_V2_MODEL_DIR):
+                target_path = MURIL_V2_MODEL_DIR
+            elif os.path.exists(MURIL_V1_MODEL_DIR):
+                target_path = MURIL_V1_MODEL_DIR
+            else:
+                target_path = HF_REPO_ID
+
             print(f" Loading MuRIL model from {target_path}...")
             self.muril_tokenizer = AutoTokenizer.from_pretrained(target_path)
             self.muril_model = AutoModelForSequenceClassification.from_pretrained(target_path)
@@ -89,7 +97,8 @@ class CyberbullyingSystem:
             self.muril_explainer = get_explainer(self.muril_model, self.muril_tokenizer)
             print(f" Loaded Google MuRIL Model from {target_path} onto {self.device} (Heads: {self.muril_model.config.num_labels})")
         except Exception as e:
-            print(f"Warning: Could not load MuRIL model from {target_path}: {e}")
+            print(f"Warning: Could not load MuRIL model: {e}")
+
 
     def predict_baseline(self, raw_text: str) -> Dict[str, Any]:
         """Predict using 6-class Linear Baseline + Keyword-Based Trigger Detection."""
@@ -129,6 +138,7 @@ class CyberbullyingSystem:
         if self.muril_model is None or self.muril_tokenizer is None:
             return self.predict_baseline(raw_text)
 
+        import torch
         enc = self.muril_tokenizer(cleaned, max_length=128, padding='max_length', truncation=True, return_tensors='pt')
         input_ids = enc['input_ids'].to(self.device)
         attention_mask = enc['attention_mask'].to(self.device)
