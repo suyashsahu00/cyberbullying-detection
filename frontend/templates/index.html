@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberGuard AI | Multilingual Cyberbullying Detection & Explainability</title>
+    <title>GuardText AI | Cyberbullying Detection Tool</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="AI-Powered Multilingual Cyberbullying Detection & Explainability platform supporting English and Hinglish with Google MuRIL Transformer & Keyword-based Trigger Detection.">
-    <meta name="author" content="CyberGuard Research Team">
+    <meta name="description" content="AI-Powered Multilingual Cyberbullying Detection & Explainability tool with Google MuRIL Transformer and real-time trigger word attribution.">
+    <meta name="author" content="Suyash Sahu">
     
-    <!-- Google Fonts: Inter & Outfit -->
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FontAwesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -26,20 +26,20 @@
 <body>
 
     <!-- Top Navigation Header -->
-    <header class="navbar navbar-expand-lg sticky-top custom-navbar">
+    <header class="navbar navbar-expand-lg custom-navbar">
         <div class="container navbar-container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
                 <div class="brand-icon">
                     <i class="fa-solid fa-shield-halved"></i>
                 </div>
-                <span class="brand-text">CyberGuard <span class="brand-sub">AI</span></span>
+                <span class="brand-text">GuardText <span class="brand-badge-ai">AI</span></span>
             </a>
             <div class="d-flex align-items-center gap-3">
-                <span class="badge badge-system-status">
-                    <span class="status-dot"></span> NVIDIA GPU Ready
+                <span class="badge badge-system-ready">
+                    <span class="status-dot"></span> System Ready
                 </span>
-                <a href="#architecture-section" class="nav-link text-secondary-custom fw-500 d-none d-sm-inline-block">
-                    <i class="fa-solid fa-diagram-project me-1"></i> Architecture
+                <a href="#howItWorksSection" class="how-it-works-link">
+                    <i class="fa-regular fa-circle-question me-1"></i> How it works
                 </a>
             </div>
         </div>
@@ -48,17 +48,13 @@
     <!-- Main Content Container -->
     <main class="container py-4 py-md-5">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-10 col-xl-9">
+            <div class="col-12 col-lg-9 col-xl-8">
                 
                 <!-- Hero Heading -->
                 <div class="text-center mb-4 hero-section">
-                    <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill hero-tag mb-3">
-                        <i class="fa-solid fa-sparkles text-primary"></i>
-                        <span>MuRIL Transformer &bull; Keyword-based Trigger Detection &bull; Hinglish Support</span>
-                    </div>
-                    <h1 class="hero-title mb-2">Multilingual Cyberbullying Detection</h1>
+                    <h1 class="hero-title mb-2">Cyberbullying Detection Tool</h1>
                     <p class="hero-subtitle">
-                        Paste any social media comment or tweet to detect toxic harassment in real time, visualize multi-class identity categories, and inspect keyword-based trigger attributions.
+                        Paste a social media comment or tweet below to instantly detect abusive content, classify targets, and highlight trigger words in real time.
                     </p>
                 </div>
 
@@ -66,20 +62,12 @@
                 <div class="card shadow-sm border-0 main-card mb-4">
                     <div class="card-body p-4 p-md-5">
                         
-                        <!-- Top Controls: Model Selector -->
-                        <div class="row g-3 align-items-center mb-3">
-                            <div class="col-12 col-md-7">
-                                <label for="modelSelector" class="form-label fw-600 mb-1 fs-7 text-dark">
-                                    <i class="fa-solid fa-brain text-primary me-1"></i> AI Model Engine:
-                                </label>
-                                <select class="form-select custom-select" id="modelSelector">
-                                    <option value="muril" selected>Google MuRIL Transformer (Hinglish/Multilingual Context - RTX GPU)</option>
-                                    <option value="baseline">Classical Baseline (Linear SVM - 6-Class Categorization)</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-md-5 text-md-end">
-                                <span class="char-count text-muted fs-7" id="charCounter">0 / 500 chars</span>
-                            </div>
+                        <!-- Top Row: Input Text Label & Counter -->
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="input-header-title">
+                                <i class="fa-regular fa-comment-dots text-primary me-2"></i>Input Text
+                            </span>
+                            <span class="char-count" id="charCounter">0 / 500 chars</span>
                         </div>
 
                         <!-- Main Text Area -->
@@ -87,42 +75,42 @@
                             <textarea 
                                 class="form-control custom-textarea" 
                                 id="inputText" 
-                                rows="4" 
+                                rows="3" 
                                 maxlength="500"
-                                placeholder="Type or paste a tweet or social media comment (English or Hinglish)..."></textarea>
-                            <button class="btn btn-clear-text text-muted" id="btnClear" title="Clear text" style="display: none;">
+                                placeholder="Paste a social media comment or tweet here..."></textarea>
+                            <button class="btn btn-clear-text" id="btnClear" title="Clear text" style="display: none;">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
 
                         <!-- Quick Sample Presets -->
-                        <div class="presets-container mb-4">
-                            <span class="presets-label"><i class="fa-solid fa-bolt text-warning me-1"></i> Quick Test Cases:</span>
-                            <div class="d-flex flex-wrap gap-2 mt-2">
+                        <div class="presets-section mb-4">
+                            <div class="d-flex align-items-center gap-1 mb-2">
+                                <i class="fa-solid fa-bolt text-secondary fs-7"></i>
+                                <span class="quick-samples-label">Quick Samples:</span>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
                                 <button type="button" class="preset-pill" data-text="Hope you have a wonderful day ahead with your family!">
-                                    <i class="fa-regular fa-face-smile text-success me-1"></i> Safe / Friendly
-                                </button>
-                                <button type="button" class="preset-pill" data-text="Bhai tu bilkul pagal aur kuttiya hai, chup kar saale.">
-                                    <i class="fa-solid fa-language text-danger me-1"></i> Hinglish Bullying
+                                    <i class="fa-regular fa-face-smile text-success me-1"></i> Friendly
                                 </button>
                                 <button type="button" class="preset-pill" data-text="Go back to the kitchen and make me a sandwich bitch.">
-                                    <i class="fa-solid fa-venus-mars text-danger me-1"></i> Gender Attack
+                                    <i class="fa-solid fa-venus text-danger me-1"></i> Gender Bullying
+                                </button>
+                                <button type="button" class="preset-pill" data-text="Bhai tu bilkul pagal aur kuttiya hai, chup kar saale.">
+                                    <i class="fa-solid fa-id-card text-warning me-1"></i> Hinglish Bullying
                                 </button>
                                 <button type="button" class="preset-pill" data-text="Shut up you wrinkly senile old hag boomer!">
-                                    <i class="fa-solid fa-user-clock text-danger me-1"></i> Age Bullying
-                                </button>
-                                <button type="button" class="preset-pill" data-text="Go back to your country you illegal immigrant curryboy.">
-                                    <i class="fa-solid fa-earth-americas text-danger me-1"></i> Ethnicity Attack
+                                    <i class="fa-solid fa-user-group text-danger me-1"></i> Age Bullying
                                 </button>
                             </div>
                         </div>
 
                         <!-- Action Button -->
                         <div class="d-grid">
-                            <button type="button" class="btn btn-primary-custom btn-lg d-flex align-items-center justify-content-center gap-2" id="btnAnalyze">
+                            <button type="button" class="btn btn-analyze-gradient" id="btnAnalyze">
                                 <span class="spinner-border spinner-border-sm d-none" id="analyzeSpinner" role="status" aria-hidden="true"></span>
-                                <i class="fa-solid fa-wand-magic-sparkles" id="analyzeIcon"></i>
-                                <span id="btnText">Analyze Social Media Text</span>
+                                <i class="fa-solid fa-wand-magic-sparkles me-2" id="analyzeIcon"></i>
+                                <span id="btnText">Analyze Comment</span>
                             </button>
                         </div>
                     </div>
@@ -130,130 +118,106 @@
 
                 <!-- Results Panel (Hidden until analyzed) -->
                 <div class="card shadow-sm border-0 results-card mb-4 d-none" id="resultsPanel">
-                    <div class="card-header bg-white border-bottom-0 pt-4 px-4 px-md-5 d-flex flex-wrap justify-content-between align-items-center gap-2">
-                        <h5 class="m-0 fw-700 text-dark-blue">
-                            <i class="fa-solid fa-chart-pie text-primary me-2"></i> AI Moderation Report
-                        </h5>
+                    <div class="card-header bg-white border-bottom-0 pt-4 px-4 px-md-5 d-flex justify-content-between align-items-center">
+                        <h5 class="m-0 fw-700 text-dark-blue">Analysis Results</h5>
                         
-                        <!-- Metadata Badges -->
-                        <div class="d-flex align-items-center gap-2">
-                            <span class="badge latency-badge" id="latencyBadge" title="Inference Execution Time">
-                                <i class="fa-solid fa-bolt me-1 text-warning"></i> <span id="latencyValue">0.0 ms</span>
-                            </span>
-                            <div class="language-badge" id="languageBadge" title="Detected Language">
-                                <i class="fa-solid fa-globe me-1"></i> <span id="languageName">English</span>
-                            </div>
+                        <!-- Detected Language Badge -->
+                        <div class="language-pill" id="languageBadge" title="Detected Language">
+                            <i class="fa-solid fa-globe me-1"></i> <span id="languageName">English</span>
                         </div>
                     </div>
                     
-                    <div class="card-body p-4 p-md-5">
+                    <div class="card-body px-4 px-md-5 pb-4">
                         
                         <!-- Verdict & Category Header Row -->
-                        <div class="row align-items-center mb-4 g-3">
-                            <div class="col-12 col-md-7 d-flex align-items-center gap-3">
-                                <div class="verdict-icon-container" id="verdictIconContainer">
-                                    <i class="fa-solid fa-shield-check" id="verdictIcon"></i>
+                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="verdict-icon-box danger" id="verdictIconContainer">
+                                    <i class="fa-solid fa-triangle-exclamation" id="verdictIcon"></i>
                                 </div>
                                 <div>
-                                    <div class="text-uppercase text-muted fs-8 fw-600 mb-1">AI Verdict</div>
-                                    <h4 class="verdict-title m-0" id="verdictBadge">Not Cyberbullying</h4>
+                                    <div class="sub-label">DETECTION VERDICT</div>
+                                    <h4 class="verdict-title m-0 danger" id="verdictBadge">Cyberbullying Detected</h4>
                                 </div>
                             </div>
                             
                             <!-- Category Badge -->
-                            <div class="col-12 col-md-5 text-md-end">
-                                <div id="categoryContainer" class="d-none">
-                                    <div class="text-uppercase text-muted fs-8 fw-600 mb-1">Identified Category</div>
-                                    <span class="badge category-tag" id="categoryBadge">Age</span>
-                                </div>
+                            <div class="text-end" id="categoryContainer">
+                                <div class="sub-label">TARGET CATEGORY</div>
+                                <span class="category-pill-badge" id="categoryBadge">GENDER</span>
                             </div>
                         </div>
 
                         <!-- Confidence Bar -->
-                        <div class="confidence-section mb-4 p-3 bg-light-soft rounded-3">
+                        <div class="confidence-container mb-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="fw-600 fs-7 text-secondary">
-                                    <i class="fa-solid fa-gauge-high me-1"></i> Model Confidence
+                                <span class="confidence-label">
+                                    <i class="fa-solid fa-gauge-high me-1 text-secondary"></i> Model Confidence
                                 </span>
-                                <span class="fw-700 fs-6 text-dark" id="confidenceValue">0.0%</span>
+                                <span class="confidence-val" id="confidenceValue">91.3%</span>
                             </div>
-                            <div class="progress custom-progress" style="height: 10px;">
+                            <div class="progress custom-progress-bar">
                                 <div 
-                                    class="progress-bar bg-success-gradient" 
+                                    class="progress-bar custom-progress-fill" 
                                     id="confidenceProgressBar" 
                                     role="progressbar" 
-                                    style="width: 0%" 
-                                    aria-valuenow="0" 
+                                    style="width: 91.3%" 
+                                    aria-valuenow="91.3" 
                                     aria-valuemin="0" 
                                     aria-valuemax="100"></div>
                             </div>
                         </div>
 
-                        <!-- Text Explainability & Trigger Words Box -->
-                        <div class="explainability-box mb-4">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <label class="fw-600 fs-7 text-dark m-0" id="explainabilityTitle">
-                                    <i class="fa-solid fa-brain text-primary me-1"></i> Model-Based Token Attribution
-                                </label>
-                                <span class="badge bg-light text-secondary border fs-8" id="triggerCountBadge">0 tokens attributed</span>
+                        <!-- Trigger Word Explainability Box -->
+                        <div class="explainability-container">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="explainability-heading">
+                                    <i class="fa-solid fa-pencil text-warning me-1"></i> Trigger Word Explainability
+                                </span>
+                                <span class="trigger-count-pill" id="triggerCountBadge">3 trigger words flagged</span>
                             </div>
-                            <p class="fs-8 text-muted mb-2" id="explainabilityDesc">
-                                Gradient-based token attributions derived directly from the fine-tuned Google MuRIL transformer:
+                            <p class="explainability-subtext">
+                                Specific words and phrases identified as contributing to bullying patterns are highlighted below in red:
                             </p>
-                            <div class="highlighted-text-container p-3 rounded-3" id="highlightedText">
-                                <!-- Dynamic highlighted text inserted here -->
-                            </div>
-                        </div>
-
-                        <!-- Probability Distribution Breakdown -->
-                        <div class="probabilities-box p-3 rounded-3 bg-light-soft" id="probBox">
-                            <div class="fw-600 fs-7 text-secondary mb-2">
-                                <i class="fa-solid fa-bars-progress me-1"></i> Class Probability Distribution:
-                            </div>
-                            <div class="row g-2" id="probBarsContainer">
-                                <!-- Dynamic probability mini-bars -->
+                            <div class="trigger-highlight-box" id="highlightedText">
+                                <!-- Dynamic highlighted text -->
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- Architecture & How It Works Section -->
-                <div class="accordion custom-accordion mb-5" id="architecture-section">
-                    <div class="accordion-item border-0 shadow-sm rounded-3">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fw-600 py-3 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseArch" aria-expanded="false">
-                                <i class="fa-solid fa-network-wired text-primary me-2"></i> Two-Tier Production System Architecture
+                <!-- How it works Accordion -->
+                <div class="accordion custom-accordion mb-5" id="howItWorksSection">
+                    <div class="accordion-item border-0 shadow-sm rounded-4 overflow-hidden">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed py-3 px-4 fw-600" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <i class="fa-solid fa-microchip text-primary me-2"></i>
+                                How it works &mdash; AI &amp; NLP Architecture
                             </button>
                         </h2>
-                        <div id="collapseArch" class="accordion-collapse collapse" data-bs-parent="#architecture-section">
-                            <div class="accordion-body px-4 pb-4 pt-1 text-secondary fs-7 lh-lg">
-                                <div class="row g-4 mt-1">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#howItWorksSection">
+                            <div class="accordion-body px-4 py-3 bg-white">
+                                <div class="row g-3">
                                     <div class="col-12 col-md-4">
-                                        <div class="step-card">
-                                            <div class="step-number">1</div>
-                                            <h6 class="fw-700 text-dark mb-1">Tier 1: Ultra-Fast Filter</h6>
-                                            <p class="m-0 text-muted fs-8">
-                                                Linear SVM with TF-IDF n-grams filters harmless content in <strong>~0.6 ms</strong> on CPU, handling high-throughput streams.
-                                            </p>
+                                        <div class="arch-card">
+                                            <div class="arch-number">1</div>
+                                            <h6 class="fw-700 text-dark mb-1">MuRIL Transformer</h6>
+                                            <p class="fs-8 text-muted mb-0">Google's pre-trained multilingual BERT adapted for English and Indian languages (including Hinglish code-mixed slang).</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
-                                        <div class="step-card">
-                                            <div class="step-number">2</div>
-                                            <h6 class="fw-700 text-dark mb-1">Tier 2: MuRIL Transformer</h6>
-                                            <p class="m-0 text-muted fs-8">
-                                                Flagged and code-mixed Hinglish tweets are escalated to Google MuRIL on RTX GPU in <strong>~20 ms</strong> for deep contextual analysis.
-                                            </p>
+                                        <div class="arch-card">
+                                            <div class="arch-number">2</div>
+                                            <h6 class="fw-700 text-dark mb-1">6-Class Identity Classifier</h6>
+                                            <p class="fs-8 text-muted mb-0">Evaluates binary threat risk before mapping identity targets into Age, Ethnicity, Gender, Religion, or Other.</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
-                                        <div class="step-card">
-                                            <div class="step-number">3</div>
-                                            <h6 class="fw-700 text-dark mb-1">Keyword-based Trigger Detection</h6>
-                                            <p class="m-0 text-muted fs-8">
-                                                Target keywords and repeated character regexes highlight exact abusive spans (achieving <strong>74% Rationale Recall</strong> against human ground truth).
-                                            </p>
+                                        <div class="arch-card">
+                                            <div class="arch-number">3</div>
+                                            <h6 class="fw-700 text-dark mb-1">Token Explainability</h6>
+                                            <p class="fs-8 text-muted mb-0">Calculates gradient attributions to pinpoint specific trigger tokens responsible for the classification decision.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -267,16 +231,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer py-3 text-center text-muted fs-8">
-        <div class="container">
-            <span>CyberGuard AI &bull; End-to-End Cyberbullying Detection & Explainability Platform &bull; Built with MuRIL & Flask</span>
-        </div>
+    <footer class="text-center py-4 text-muted fs-8">
+        <p class="mb-0">Powered by <strong>Google MuRIL Transformer</strong> &bull; Hosted on Hugging Face</p>
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JS -->
+    <!-- Custom Application JS -->
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>

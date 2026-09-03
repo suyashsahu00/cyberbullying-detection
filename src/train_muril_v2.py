@@ -74,13 +74,32 @@ def evaluate(model, data_loader, criterion, device):
             attention_mask = batch['attention_mask'].to(device)
             labels = batch['labels'].to(device)
 
-            with torch.amp.autocast('cuda' if torch.cuda.is_available() else 'cpu'):
+            if device.type == 'cuda':
+                with torch.amp.autocast('cuda'):
+                    outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+                    loss = criterion(outputs.logits, labels)
+            else:
                 outputs = model(input_ids=input_ids, attention_mask=attention_mask)
                 loss = criterion(outputs.logits, labels)
 
             total_loss += loss.item()
-            preds = torch.argmax(outputs.logits, dim=1).cpu().numpy()
-            all_preds.extend(preds)
+            
+            # Apply softmax to convert logits to probabilities, casting to float to avoid BFloat16 numpy errors
+            probs = torch.softmax(outputs.logits.float(), dim=1).cpu().numpy()
+            
+            batch_preds = []
+            for prob in probs:
+                prob_safe = prob[3]  # Index of not_cyberbullying is 3
+                is_bullying = (1.0 - prob_safe >= 0.5)
+                if is_bullying:
+                    # Choose the top bullying category among the other 5 classes
+                    bully_indices = [0, 1, 2, 4, 5]
+                    top_idx = bully_indices[int(np.argmax([prob[idx] for idx in bully_indices]))]
+                    batch_preds.append(top_idx)
+                else:
+                    batch_preds.append(3)
+                    
+            all_preds.extend(batch_preds)
             all_labels.extend(labels.cpu().numpy())
 
     avg_loss = total_loss / len(data_loader)
@@ -88,6 +107,7 @@ def evaluate(model, data_loader, criterion, device):
     prec, rec, f1, _ = precision_recall_fscore_support(all_labels, all_preds, average='macro', zero_division=0)
     
     return avg_loss, acc, prec, rec, f1, np.array(all_preds), np.array(all_labels)
+
 
 def train(epochs=2, batch_size=32, lr=2e-5, max_len=128):
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -260,10 +280,10 @@ def train(epochs=2, batch_size=32, lr=2e-5, max_len=128):
         "training_time_minutes": round(total_time / 60, 2)
     }
 
-    with open(os.path.join(output_dir, "test_evaluation_metrics.json"), "w") as f:
+    with open(os.path.join(output_dir, "test_evaluation_metrics_v2.json"), "w") as f:
         json.dump(results_summary, f, indent=2)
 
-    print(f"\n Evaluation metrics serialized to: {os.path.join(output_dir, 'test_evaluation_metrics.json')}")
+    print(f"\n Evaluation metrics serialized to: {os.path.join(output_dir, 'test_evaluation_metrics_v2.json')}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

@@ -24,8 +24,14 @@ TRIGGER_LEXICON = {
         "dumb", "useless", "trash", "garbage", "chutiya", "saale", "kamina", "harami",
         "bakwas", "fuck", "shit", "retard", "scum", "pig", "freak", "disgusting",
         "pagal", "kuttiya", "gandu", "kamine", "madarchod", "bhosdike", "randi", "kutte",
-        "bhosdiwala", "gaand", "phaad", "behenchod"
+        "bhosdiwala", "gaand", "phaad", "behenchod", "chudail", "rand"
     ]
+}
+
+# List of highly toxic Hindi/Hinglish slurs for safety-net override
+HIGH_SEVERITY_HINGLISH = {
+    "chutiya", "saale", "kamina", "harami", "kuttiya", "gandu", "kamine", "madarchod", 
+    "bhosdike", "randi", "rand", "bhosdiwala", "gaand", "behenchod", "chudail"
 }
 
 def extract_trigger_words(text: str, category: str, confidence: float) -> Dict[str, Any]:
@@ -58,12 +64,19 @@ def extract_trigger_words(text: str, category: str, confidence: float) -> Dict[s
                 start, end = m.span()
                 matched_str = text[start:end]
                 found_words.add(matched_str)
+                
+                # Check if it is a high-severity Hinglish slur to boost weight for the safety-net
+                word_lower = matched_str.lower()
+                is_high_severity = (word_lower in HIGH_SEVERITY_HINGLISH or 
+                                    any(w in word_lower for w in HIGH_SEVERITY_HINGLISH))
+                weight = 0.90 if is_high_severity else round(min(0.95, 0.6 + 0.35 * (len(matched_str) / 10)), 2)
+                
                 matches.append({
                     "start": start,
                     "end": end,
                     "word": matched_str,
                     "category": cat,
-                    "weight": round(min(0.95, 0.6 + 0.35 * (len(matched_str) / 10)), 2)
+                    "weight": weight
                 })
 
     # Deduplicate overlapping spans (keep longest / first)

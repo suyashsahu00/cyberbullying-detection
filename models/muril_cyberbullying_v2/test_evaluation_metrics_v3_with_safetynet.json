@@ -1,0 +1,117 @@
+{
+  "model_name": "Google MuRIL v2 (6-Class Multilingual - Production Safety-Net Active)",
+  "overall_accuracy": 82.16,
+  "macro_precision": 83.41,
+  "macro_recall": 83.62,
+  "macro_f1": 83.47,
+  "classification_report": {
+    "age": {
+      "precision": 0.971604938271605,
+      "recall": 0.98375,
+      "f1-score": 0.977639751552795,
+      "support": 800.0
+    },
+    "ethnicity": {
+      "precision": 0.9810366624525917,
+      "recall": 0.9371980676328503,
+      "f1-score": 0.958616429894997,
+      "support": 828.0
+    },
+    "gender": {
+      "precision": 0.8403755868544601,
+      "recall": 0.8872366790582404,
+      "f1-score": 0.8631705846895721,
+      "support": 807.0
+    },
+    "not_cyberbullying": {
+      "precision": 0.670935960591133,
+      "recall": 0.6259191176470589,
+      "f1-score": 0.6476462196861626,
+      "support": 1088.0
+    },
+    "other_cyberbullying": {
+      "precision": 0.5970307529162248,
+      "recall": 0.6255555555555555,
+      "f1-score": 0.6109603906673902,
+      "support": 900.0
+    },
+    "religion": {
+      "precision": 0.9434416365824309,
+      "recall": 0.9572649572649573,
+      "f1-score": 0.9503030303030303,
+      "support": 819.0
+    },
+    "accuracy": 0.8216329645173598,
+    "macro avg": {
+      "precision": 0.8340709229447411,
+      "recall": 0.8361540628597771,
+      "f1-score": 0.8347227344656578,
+      "support": 5242.0
+    },
+    "weighted avg": {
+      "precision": 0.8217760604403558,
+      "recall": 0.8216329645173598,
+      "f1-score": 0.8212946370616475,
+      "support": 5242.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      787,
+      1,
+      1,
+      6,
+      5,
+      0
+    ],
+    [
+      0,
+      776,
+      5,
+      15,
+      28,
+      4
+    ],
+    [
+      3,
+      5,
+      716,
+      25,
+      56,
+      2
+    ],
+    [
+      13,
+      6,
+      71,
+      681,
+      279,
+      38
+    ],
+    [
+      6,
+      3,
+      55,
+      270,
+      563,
+      3
+    ],
+    [
+      1,
+      0,
+      4,
+      18,
+      12,
+      784
+    ]
+  ],
+  "class_names": [
+    "age",
+    "ethnicity",
+    "gender",
+    "not_cyberbullying",
+    "other_cyberbullying",
+    "religion"
+  ],
+  "safety_net_triggered_count": 23
+}

@@ -56,30 +56,40 @@ class CyberbullyingSystem:
                 print(f"Warning: Could not load baseline model: {e}")
 
     def _load_muril(self):
-        """Load fine-tuned MuRIL transformer model (prefers v2 6-class model if available)."""
-        target_dir = MURIL_V2_MODEL_DIR if os.path.exists(MURIL_V2_MODEL_DIR) else MURIL_V1_MODEL_DIR
-        
-        if os.path.exists(target_dir):
-            try:
-                self.muril_tokenizer = AutoTokenizer.from_pretrained(target_dir)
-                self.muril_model = AutoModelForSequenceClassification.from_pretrained(target_dir)
-                self.muril_model.to(self.device)
-                self.muril_model.eval()
+        """Load fine-tuned MuRIL transformer model (prefers local v2 model, falls back to Hugging Face Hub)."""
+        HF_REPO_ID = "suyashsahu00/muril-cyberbullying-detection"
+        target_path = None
+        if os.path.exists(MURIL_V2_MODEL_DIR):
+            target_path = MURIL_V2_MODEL_DIR
+        elif os.path.exists(MURIL_V1_MODEL_DIR):
+            target_path = MURIL_V1_MODEL_DIR
+        else:
+            target_path = HF_REPO_ID
 
-                # Load label maps if present
-                label_map_file = os.path.join(target_dir, "label_map.json")
+        try:
+            print(f" Loading MuRIL model from {target_path}...")
+            self.muril_tokenizer = AutoTokenizer.from_pretrained(target_path)
+            self.muril_model = AutoModelForSequenceClassification.from_pretrained(target_path)
+            self.muril_model.to(self.device)
+            self.muril_model.eval()
+
+            # Load label maps if present
+            if os.path.isdir(str(target_path)):
+                label_map_file = os.path.join(target_path, "label_map.json")
                 if os.path.exists(label_map_file):
                     with open(label_map_file, "r") as f:
                         data = json.load(f)
                         self.muril_id2label = {int(k): v for k, v in data.get("id_to_label", {}).items()}
                 else:
-                    self.muril_id2label = self.muril_model.config.id2label
+                    self.muril_id2label = {int(k): v for k, v in self.muril_model.config.id2label.items()}
+            else:
+                self.muril_id2label = {int(k): v for k, v in self.muril_model.config.id2label.items()}
 
-                # Initialize real gradient-based explainer
-                self.muril_explainer = get_explainer(self.muril_model, self.muril_tokenizer)
-                print(f" Loaded Google MuRIL Model from {target_dir} onto {self.device} (Heads: {self.muril_model.config.num_labels})")
-            except Exception as e:
-                print(f"Warning: Could not load MuRIL model from {target_dir}: {e}")
+            # Initialize real gradient-based explainer
+            self.muril_explainer = get_explainer(self.muril_model, self.muril_tokenizer)
+            print(f" Loaded Google MuRIL Model from {target_path} onto {self.device} (Heads: {self.muril_model.config.num_labels})")
+        except Exception as e:
+            print(f"Warning: Could not load MuRIL model from {target_path}: {e}")
 
     def predict_baseline(self, raw_text: str) -> Dict[str, Any]:
         """Predict using 6-class Linear Baseline + Keyword-Based Trigger Detection."""
@@ -128,6 +138,8 @@ class CyberbullyingSystem:
             probs = torch.softmax(outputs.logits, dim=1).cpu().numpy()[0]
 
         num_classes = len(probs)
+        safety_net_triggered = False
+        safety_net_note = None
         
         # Check if v2 multi-class model (6 classes)
         if num_classes == 6 and self.muril_id2label:
@@ -146,16 +158,39 @@ class CyberbullyingSystem:
                 display_category = CATEGORY_DISPLAY_MAP.get(pred_class.lower(), pred_class.capitalize())
                 verdict = "Cyberbullying Detected"
             else:
-                pred_class = "not_cyberbullying"
-                confidence = prob_safe
-                display_category = "N/A"
-                verdict = "Not Cyberbullying"
+                # Hybrid Safety-Net fallback for low-margin safe classifications
+                if prob_safe < 60.0:
+                    from src.explainability import extract_trigger_words, HIGH_SEVERITY_HINGLISH
+                    trigger_res = extract_trigger_words(raw_text, "Other", prob_safe)
+                    high_severity_matches = [
+                        span for span in trigger_res.get("spans", [])
+                        if span.get("weight", 0.0) > 0.8 and 
+                        (span.get("word", "").lower() in HIGH_SEVERITY_HINGLISH or 
+                         any(w in span.get("word", "").lower() for w in HIGH_SEVERITY_HINGLISH))
+                    ]
+                    if len(high_severity_matches) > 0:
+                        safety_net_triggered = True
+                        is_bullying = True
+                        pred_class = "other_cyberbullying"
+                        display_category = "Other"
+                        confidence = 90.0  # High confidence from slur override
+                        verdict = "Cyberbullying Detected"
+                        safety_net_note = "flagged via keyword safety-net, not primary model"
+                
+                if not safety_net_triggered:
+                    pred_class = "not_cyberbullying"
+                    confidence = prob_safe
+                    display_category = "N/A"
+                    verdict = "Not Cyberbullying"
 
             all_probs = {
                 str(self.muril_id2label.get(i, f"Class {i}")): round(float(p) * 100, 1)
                 for i, p in enumerate(probs)
             }
-            model_name = "Google MuRIL v2 (6-Class Multilingual Transformer)"
+            if safety_net_triggered:
+                model_name = "Google MuRIL v2 (with Keyword Safety-Net Override)"
+            else:
+                model_name = "Google MuRIL v2 (6-Class Multilingual Transformer)"
         else:
             # Fallback for binary model v1
             prob_safe = float(probs[0]) * 100
@@ -171,17 +206,22 @@ class CyberbullyingSystem:
             }
             model_name = "Google MuRIL v1 (Binary Classifier)"
 
-        # Genuine Gradient Attribution via transformers-interpret
-        if self.muril_explainer:
+        # Token Attribution / Trigger Words Explainability
+        if safety_net_triggered:
+            from src.explainability import extract_trigger_words
+            explainability = extract_trigger_words(raw_text, "Other", confidence)
+            explainability["method"] = "Keyword Safety-Net Fallback"
+        elif self.muril_explainer and getattr(self.muril_explainer, "explainer", None) is not None:
             explainability = self.muril_explainer.explain(raw_text, target_class=pred_class if is_bullying else None)
         else:
+            from src.explainability import extract_trigger_words
             explainability = extract_trigger_words(raw_text, display_category if is_bullying else "Other", confidence)
-            explainability["method"] = "Keyword-Based Trigger Detection (Fallback)"
+            explainability["method"] = "Keyword-Based Trigger Detection"
 
         if not is_bullying and not explainability.get("highlighted_text"):
             explainability["highlighted_text"] = escape_html(raw_text)
 
-        return {
+        payload = {
             "verdict": verdict,
             "is_cyberbullying": is_bullying,
             "category": display_category,
@@ -191,6 +231,10 @@ class CyberbullyingSystem:
             "all_probabilities": all_probs,
             "explainability": explainability
         }
+        if safety_net_note:
+            payload["safety_net_note"] = safety_net_note
+            
+        return payload
 
     def predict(self, raw_text: str, model_choice: str = "muril") -> Dict[str, Any]:
         """Unified inference entry point with timing and metadata."""

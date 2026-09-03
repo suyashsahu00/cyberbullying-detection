@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // DOM Elements
+    // Input Elements
     const inputText = document.getElementById("inputText");
-    const modelSelector = document.getElementById("modelSelector");
     const btnAnalyze = document.getElementById("btnAnalyze");
     const btnClear = document.getElementById("btnClear");
     const charCounter = document.getElementById("charCounter");
@@ -14,22 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const verdictBadge = document.getElementById("verdictBadge");
     const verdictIcon = document.getElementById("verdictIcon");
     const verdictIconContainer = document.getElementById("verdictIconContainer");
-    
-    const categoryContainer = document.getElementById("categoryContainer");
     const categoryBadge = document.getElementById("categoryBadge");
-    
     const confidenceValue = document.getElementById("confidenceValue");
     const confidenceProgressBar = document.getElementById("confidenceProgressBar");
-    
-    const latencyValue = document.getElementById("latencyValue");
     const languageName = document.getElementById("languageName");
     const highlightedText = document.getElementById("highlightedText");
     const triggerCountBadge = document.getElementById("triggerCountBadge");
-    const probBarsContainer = document.getElementById("probBarsContainer");
 
     const presetButtons = document.querySelectorAll(".preset-pill");
 
-    // Character Counter & Clear button toggler
+    // Character Counter & Clear Button
     inputText.addEventListener("input", () => {
         const len = inputText.value.length;
         charCounter.textContent = `${len} / 500 chars`;
@@ -44,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         inputText.focus();
     });
 
-    // Preset Pill Click Handlers
+    // Preset Pills
     presetButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             const sample = btn.getAttribute("data-text");
@@ -55,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Keyboard shortcut (Ctrl + Enter) to trigger analysis
+    // Keyboard Shortcut: Ctrl + Enter
     inputText.addEventListener("keydown", (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
             e.preventDefault();
@@ -68,23 +61,20 @@ document.addEventListener("DOMContentLoaded", () => {
     async function analyzeComment() {
         const text = inputText.value.trim();
         if (!text) {
-            alert("Please paste or type a social media comment or tweet to analyze.");
             inputText.focus();
             return;
         }
 
-        const modelChoice = modelSelector ? modelSelector.value : "muril";
-
-        // Set Loading UI State
         setLoadingState(true);
 
         try {
+            // STRICTLY query the fine-tuned Google MuRIL Transformer model
             const response = await fetch("/api/analyze", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ 
-                    text: text,
-                    model_choice: modelChoice 
+                    text: text, 
+                    model_choice: "muril" 
                 })
             });
 
@@ -94,11 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const data = await response.json();
-            renderResults(data);
+            renderResults(data, text);
 
         } catch (err) {
-            console.error("Analysis Error:", err);
-            alert(`Analysis failed: ${err.message || 'Unable to connect to backend service.'}`);
+            console.error("Model Inference Error:", err);
+            alert("Model server error: " + err.message + "\nPlease ensure the Python model backend is running.");
         } finally {
             setLoadingState(false);
         }
@@ -109,109 +99,68 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isLoading) {
             analyzeSpinner.classList.remove("d-none");
             analyzeIcon.classList.add("d-none");
-            btnText.textContent = "Running Neural Inference...";
+            btnText.textContent = "Running MuRIL Model...";
         } else {
             analyzeSpinner.classList.add("d-none");
             analyzeIcon.classList.remove("d-none");
-            btnText.textContent = "Analyze Social Media Text";
+            btnText.textContent = "Analyze Comment";
         }
     }
 
-    function renderResults(data) {
-        // 1. Show Results Panel
+    function renderResults(data, originalText) {
         resultsPanel.classList.remove("d-none");
 
-        // 2. Metadata (Latency & Language)
-        if (latencyValue) {
-            latencyValue.textContent = `${data.latency_ms || 0.0} ms`;
+        // 1. Detected Language
+        if (languageName) {
+            languageName.textContent = data.language || "English";
         }
-        languageName.textContent = data.language || "English";
 
-        // 3. Verdict Formatting
-        const isBullying = data.is_cyberbullying;
-        verdictBadge.textContent = data.verdict;
+        const isBully = Boolean(data.is_cyberbullying);
+        const category = data.category || (isBully ? "Other" : "N/A");
+        const confidence = parseFloat(data.confidence) || 0.0;
 
-        if (isBullying) {
+        // 2. Verdict & Category derived directly from MuRIL logits
+        if (isBully) {
+            verdictBadge.textContent = "Cyberbullying Detected";
             verdictBadge.className = "verdict-title m-0 danger";
+            verdictIconContainer.className = "verdict-icon-box danger";
             verdictIcon.className = "fa-solid fa-triangle-exclamation";
-            verdictIconContainer.className = "verdict-icon-container danger";
+
+            categoryBadge.textContent = category.toUpperCase();
+            categoryBadge.className = `category-pill-badge ${category}`;
+
+            confidenceProgressBar.className = "progress-bar custom-progress-fill danger";
         } else {
+            verdictBadge.textContent = "Safe Content";
             verdictBadge.className = "verdict-title m-0 safe";
+            verdictIconContainer.className = "verdict-icon-box safe";
             verdictIcon.className = "fa-solid fa-shield-check";
-            verdictIconContainer.className = "verdict-icon-container safe";
+
+            categoryBadge.textContent = "N/A";
+            categoryBadge.className = "category-pill-badge Safe";
+
+            confidenceProgressBar.className = "progress-bar custom-progress-fill safe";
         }
 
-        // 4. Category Tag
-        if (isBullying && data.category && data.category !== "N/A") {
-            categoryContainer.classList.remove("d-none");
-            categoryBadge.textContent = data.category;
-            categoryBadge.className = `badge category-tag ${data.category}`;
+        // 3. Confidence Bar
+        confidenceValue.textContent = `${confidence.toFixed(1)}%`;
+        confidenceProgressBar.style.width = `${Math.min(100, Math.max(0, confidence))}%`;
+
+        // 4. Trigger Word Explainability
+        const explain = data.explainability || {};
+        const triggerWords = explain.trigger_words || [];
+        const spans = explain.spans || [];
+        const count = triggerWords.length > 0 ? triggerWords.length : spans.length;
+
+        triggerCountBadge.textContent = count === 1 ? "1 trigger word flagged" : `${count} trigger words flagged`;
+
+        if (explain.highlighted_text && explain.highlighted_text.trim()) {
+            highlightedText.innerHTML = explain.highlighted_text;
         } else {
-            categoryContainer.classList.add("d-none");
+            highlightedText.textContent = originalText;
         }
 
-        // 5. Confidence Progress Bar Animation
-        const conf = data.confidence || 0;
-        confidenceValue.textContent = `${conf.toFixed(1)}%`;
-        confidenceProgressBar.style.width = `${conf}%`;
-        confidenceProgressBar.setAttribute("aria-valuenow", conf);
-
-        if (isBullying) {
-            confidenceProgressBar.className = "progress-bar bg-danger-gradient";
-        } else {
-            confidenceProgressBar.className = "progress-bar bg-success-gradient";
-        }
-
-        // 6. Explainability & Highlighted Text
-        const exp = data.explainability || {};
-        const explainabilityTitle = document.getElementById("explainabilityTitle");
-        const explainabilityDesc = document.getElementById("explainabilityDesc");
-        const isModelBased = (data.explainability_method && data.explainability_method.includes("Model-Based")) || (data.model_used && data.model_used.includes("MuRIL"));
-
-        if (explainabilityTitle && explainabilityDesc) {
-            if (isModelBased) {
-                explainabilityTitle.innerHTML = '<i class="fa-solid fa-brain text-primary me-1"></i> Model-Based Token Attribution';
-                explainabilityDesc.textContent = 'Gradient-based token attributions derived directly from the fine-tuned Google MuRIL transformer:';
-                const tokenCount = (exp.spans && exp.spans.length > 0) ? exp.spans.length : ((exp.top_tokens || []).length);
-                triggerCountBadge.textContent = `${tokenCount} token${tokenCount === 1 ? '' : 's'} attributed`;
-            } else {
-                explainabilityTitle.innerHTML = '<i class="fa-solid fa-highlighter text-warning me-1"></i> Keyword-Based Trigger Detection';
-                explainabilityDesc.textContent = 'Dictionary trigger terms and regex patterns contributing to classification are highlighted below:';
-                const triggerWords = exp.trigger_words || [];
-                triggerCountBadge.textContent = `${triggerWords.length} trigger word${triggerWords.length === 1 ? '' : 's'} flagged`;
-            }
-        }
-        
-        if (exp.highlighted_text) {
-            highlightedText.innerHTML = exp.highlighted_text;
-        } else {
-            highlightedText.textContent = data.original_text || inputText.value;
-        }
-
-        // 7. Render Probabilities
-        if (probBarsContainer && data.all_probabilities) {
-            probBarsContainer.innerHTML = "";
-            for (const [cls, prob] of Object.entries(data.all_probabilities)) {
-                const isTop = (prob === Math.max(...Object.values(data.all_probabilities)));
-                const barHtml = `
-                    <div class="col-12 col-sm-6">
-                        <div class="d-flex justify-content-between fs-8 text-secondary mb-1">
-                            <span class="${isTop ? 'fw-700 text-dark' : ''}">${cls}</span>
-                            <span class="fw-600">${prob}%</span>
-                        </div>
-                        <div class="progress" style="height: 6px;">
-                            <div class="progress-bar ${isTop ? (isBullying ? 'bg-danger' : 'bg-success') : 'bg-secondary'}" 
-                                 style="width: ${prob}%"></div>
-                        </div>
-                    </div>
-                `;
-                probBarsContainer.innerHTML += barHtml;
-            }
-        }
-
-        // Scroll smooth into results view if on small screen
-        if (window.innerWidth < 768) {
-            resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        // Smooth scroll to results
+        resultsPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 });
