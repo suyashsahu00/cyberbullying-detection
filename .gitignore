@@ -38,6 +38,7 @@ models/muril_base_safetensors/
 *.pt
 *.pkl
 !models/.gitkeep
+!models/baseline_model.pkl
 
 # Data & Notebook checkpoints
 .ipynb_checkpoints
