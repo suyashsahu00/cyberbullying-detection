@@ -22,6 +22,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const presetButtons = document.querySelectorAll(".preset-pill");
 
+    // Backend API URL Management (for connecting static Hugging Face space to a backend)
+    let backendUrl = localStorage.getItem("guardtext_backend_url") || "";
+    const apiEndpointInput = document.getElementById("apiEndpointInput");
+    const btnSaveApiEndpoint = document.getElementById("btnSaveApiEndpoint");
+    const btnResetApiEndpoint = document.getElementById("btnResetApiEndpoint");
+    const backendStatusLabel = document.getElementById("backendStatusLabel");
+
+    function updateBackendUI() {
+        if (apiEndpointInput) apiEndpointInput.value = backendUrl;
+        if (backendStatusLabel) {
+            backendStatusLabel.textContent = backendUrl ? "Connected" : "Backend";
+            backendStatusLabel.className = backendUrl ? "text-success fw-600" : "";
+        }
+    }
+    updateBackendUI();
+
+    if (btnSaveApiEndpoint) {
+        btnSaveApiEndpoint.addEventListener("click", () => {
+            let val = (apiEndpointInput.value || "").trim();
+            if (val && !val.startsWith("http://") && !val.startsWith("https://")) {
+                val = "https://" + val;
+            }
+            if (val.endsWith("/")) val = val.slice(0, -1);
+            backendUrl = val;
+            localStorage.setItem("guardtext_backend_url", backendUrl);
+            updateBackendUI();
+            
+            const modalEl = document.getElementById("apiModal");
+            if (modalEl && window.bootstrap) {
+                const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                modal.hide();
+            }
+            alert(backendUrl ? `Model backend connected to:\n${backendUrl}` : "Backend reset to local origin.");
+        });
+    }
+
+    if (btnResetApiEndpoint) {
+        btnResetApiEndpoint.addEventListener("click", () => {
+            backendUrl = "";
+            localStorage.removeItem("guardtext_backend_url");
+            updateBackendUI();
+            if (apiEndpointInput) apiEndpointInput.value = "";
+        });
+    }
+
     // Character Counter & Clear Button
     inputText.addEventListener("input", () => {
         const len = inputText.value.length;
@@ -69,7 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // STRICTLY query the fine-tuned Google MuRIL Transformer model
-            const response = await fetch("/api/analyze", {
+            const targetUrl = backendUrl ? `${backendUrl}/api/analyze` : "/api/analyze";
+            const response = await fetch(targetUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ 
@@ -79,6 +125,14 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (!response.ok) {
+                if (response.status === 404 && !backendUrl) {
+                    const modalEl = document.getElementById("apiModal");
+                    if (modalEl && window.bootstrap) {
+                        const modal = new bootstrap.Modal(modalEl);
+                        modal.show();
+                    }
+                    throw new Error("This static Hugging Face Space needs a connection to your Python model server. Enter your backend URL (e.g. Render) in the popup.");
+                }
                 const errData = await response.json().catch(() => ({}));
                 throw new Error(errData.error || `Server responded with status ${response.status}`);
             }
@@ -88,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } catch (err) {
             console.error("Model Inference Error:", err);
-            alert("Model server error: " + err.message + "\nPlease ensure the Python model backend is running.");
+            alert("Model Connection Notice:\n" + err.message);
         } finally {
             setLoadingState(false);
         }

@@ -34,16 +34,44 @@
                 </div>
                 <span class="brand-text">GuardText <span class="brand-badge-ai">AI</span></span>
             </a>
-            <div class="d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-2">
+                <button type="button" class="btn btn-sm btn-light border rounded-pill px-3 py-1 fs-8 text-secondary" data-bs-toggle="modal" data-bs-target="#apiModal" id="btnApiSettings" title="Configure Backend API">
+                    <i class="fa-solid fa-server me-1 text-primary"></i> <span id="backendStatusLabel">Backend</span>
+                </button>
                 <span class="badge badge-system-ready">
                     <span class="status-dot"></span> System Ready
                 </span>
-                <a href="#howItWorksSection" class="how-it-works-link">
+                <a href="#howItWorksSection" class="how-it-works-link d-none d-sm-inline-block">
                     <i class="fa-regular fa-circle-question me-1"></i> How it works
                 </a>
             </div>
         </div>
     </header>
+
+    <!-- Backend Configuration Modal -->
+    <div class="modal fade" id="apiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <h6 class="modal-title fw-700 text-dark"><i class="fa-solid fa-server text-primary me-2"></i>Model Backend Configuration</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-2">
+                    <p class="fs-8 text-muted mb-2">
+                        Enter your deployed Python backend URL (Render, Railway, or Cloudflare Tunnel) to power predictions on this page:
+                    </p>
+                    <div class="input-group mb-2">
+                        <input type="url" class="form-control fs-8" id="apiEndpointInput" placeholder="https://your-app.onrender.com">
+                        <button class="btn btn-primary fs-8 px-3" id="btnSaveApiEndpoint">Save</button>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted fs-8">Leave empty when running on <code>localhost:5000</code>.</small>
+                        <button type="button" class="btn btn-link btn-sm text-danger p-0 fs-8 text-decoration-none" id="btnResetApiEndpoint">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content Container -->
     <main class="container py-4 py-md-5">
