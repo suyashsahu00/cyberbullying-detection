@@ -14,7 +14,7 @@ An end-to-end NLP-powered web application and REST API for detecting cyberbullyi
 - 🎯 **Real-Time Detection Verdict**: Instant classification badge — `Cyberbullying Detected` (Red) vs `Not Cyberbullying` (Green).
 - 🏷️ **Multi-Class Identity Categorization**: Identifies specific harassment types (`Age`, `Gender`, `Ethnicity`, `Religion`, `Other / Hinglish Slur`).
 - 📊 **Confidence & Probability Distribution**: Animated confidence meter and probability bars across all target classes.
-- 💡 **Token-Level Explainability**: Highlights and attributes exact abusive trigger words and harassment spans in red.
+- 💡 **Keyword-Based Trigger Detection & Token Attribution**: Highlights abusive trigger words (lexicon-based for baseline) and token attributions (gradient-based for MuRIL) to provide transparent decision rationales.
 - 🌐 **Automated Language Detection**: Intelligent detection distinguishing pure **English**, code-switched **Hinglish** (Romanized Hindi), and **Hindi** (Devanagari).
 - ⚡ **Dual AI Architecture**:
   - **Tier 1 (Fast Baseline)**: TF-IDF + Linear SVM (~0.6 ms inference on CPU).
@@ -433,7 +433,7 @@ Execute the notebooks in sequence:
 2. `notebooks/02_preprocessing.ipynb`: Text cleaning, tokenization, and language tagging.
 3. `notebooks/03_baseline_model.ipynb`: TF-IDF + Linear SVM multi-class training and evaluation.
 4. `notebooks/04_muril_finetune.ipynb`: Google MuRIL fine-tuning on multilingual/Hinglish dataset.
-5. `notebooks/05_evaluation_shap.ipynb`: SHAP explainability and word rationale recall evaluation.
+5. `notebooks/05_evaluation_shap.ipynb`: Exploratory SHAP baseline analysis (superseded in production by fast Keyword-Based Trigger Detection and Model-Based Gradient Token Attribution).
 
 ---
 

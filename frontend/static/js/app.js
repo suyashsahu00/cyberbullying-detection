@@ -215,11 +215,17 @@ document.addEventListener("DOMContentLoaded", () => {
         confidenceValue.textContent = `${confidence.toFixed(1)}%`;
         confidenceProgressBar.style.width = `${Math.min(100, Math.max(0, confidence))}%`;
 
-        // 4. Trigger Word Explainability
+        // 4. Keyword-Based Trigger Detection
         const explain = data.explainability || {};
         const triggerWords = explain.trigger_words || [];
         const spans = explain.spans || [];
         const count = triggerWords.length > 0 ? triggerWords.length : spans.length;
+
+        const triggerHeading = document.getElementById("triggerHeading");
+        if (triggerHeading) {
+            const methodLabel = data.explainability_method || "Keyword-Based Trigger Detection";
+            triggerHeading.innerHTML = `<i class="fa-solid fa-tags text-warning me-1"></i> ${methodLabel}`;
+        }
 
         triggerCountBadge.textContent = count === 1 ? "1 trigger word flagged" : `${count} trigger words flagged`;
 

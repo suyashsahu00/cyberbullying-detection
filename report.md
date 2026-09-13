@@ -73,12 +73,13 @@ cyberbullying-detection/
 
 ---
 
-### 3. Explainability Engines (Model-Based vs. Keyword-Based)
-- **Model-Based Attribution**: [`src/real_explainability.py`](file:///c:/Users/suyas/Downloads/CODING(1)/cyberbullying-detection/src/real_explainability.py)
-  - Implements `SequenceClassificationExplainer` (using `transformers-interpret` / `captum`) to extract genuine per-token gradient attributions directly from the trained MuRIL model.
+### 3. Interpretability & Trigger Detection (Model-Based vs. Keyword-Based)
+- **Model-Based Attribution (MuRIL)**: [`src/real_explainability.py`](file:///c:/Users/suyas/Downloads/CODING(1)/cyberbullying-detection/src/real_explainability.py)
+  - Implements `SequenceClassificationExplainer` (using `transformers-interpret` / gradient hooks) to extract genuine per-token gradient attributions directly from the trained MuRIL model.
   - Generates opacity-scaled HTML `<mark class="token-attribution">` tags reflecting true model weights.
-- **Keyword Trigger Detection (SVM Baseline)**: [`src/explainability.py`](file:///c:/Users/suyas/Downloads/CODING(1)/cyberbullying-detection/src/explainability.py)
-  - Provides regex and lexicon lookup for the classical SVM pipeline with character-elongation tolerance (`TRIGGER_LEXICON`).
+- **Keyword-Based Trigger Detection (SVM Baseline & Safety-Net)**: [`src/explainability.py`](file:///c:/Users/suyas/Downloads/CODING(1)/cyberbullying-detection/src/explainability.py)
+  - Provides fast regex and lexicon lookup for the classical SVM pipeline and low-margin safety-net with character-elongation tolerance (`TRIGGER_LEXICON`).
+  - **Honest Academic Naming**: To maintain scientific integrity, this component is explicitly labeled **"Keyword-Based Trigger Detection"** across UI strings, API payloads, and research documentation rather than claiming generic/deceptive "SHAP Explainability". Heavy SHAP dependencies (`shap`) are completely removed from production requirements.
 
 ---
 
