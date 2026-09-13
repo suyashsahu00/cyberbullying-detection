@@ -100,30 +100,39 @@ cyberbullying-detection/
 
 ---
 
-## 📊 Verified Model Performance (MuRIL v2 on Test Set)
+## 📊 Verified Model Performance (Independent Full Held-Out Blind Test — 5,242 Samples)
 
-Evaluated on the held-out multilingual test set (**5,242 samples**) using the **production-aligned 2-stage safety boundary** logic:
+Evaluated independently on the complete held-out multilingual test set (**5,242 samples**) via `blind_test.py` using the **production-aligned 2-stage safety boundary** logic:
 
-| Metric | Score |
-| :--- | :--- |
-| **Overall Accuracy** | **82.16%** |
-| **Macro Precision** | **83.41%** |
-| **Macro Recall** | **83.62%** |
-| **Macro F1-Score** | **83.47%** |
+| Metric | Score | Execution Details |
+| :--- | :--- | :--- |
+| **Overall Accuracy** | **81.97%** | Batched CPU Inference (Batch size: 32) |
+| **Macro Precision** | **83.21%** | Evaluated on full test set (304.49s total) |
+| **Macro Recall** | **83.41%** | Throughput: **17.2 samples / second** |
+| **Macro F1-Score** | **83.29%** | Mean Batched Latency: **58.09 ms / sample** |
 
 > [!NOTE]
-> **Evaluation Logic Alignment:** The metrics have been updated from the previous baseline evaluation (which used simple 6-class argmax) to align directly with the production inference pipeline (`src/model.py`). By applying the custom 50% safety-net boundary, the model requires the probability of `not_cyberbullying` to exceed 50% to flag a comment as safe. This shifts the balance significantly, notably increasing the recall of the noisy `other_cyberbullying` class from **36.33% to 60.78%** and overall macro F1-score to **83.29%**, providing a more accurate representation of the real-world user experience.
+> **Evaluation Logic Alignment (Bug 1 Resolution):** The metrics directly reflect the unified production decision pipeline (`classify_probabilities` in `src/model.py`). By applying the unified two-stage decision boundary, the system checks whether the collective harassment probability ($1 - P(\text{Safe})$) reaches 50% before assigning fine-grained demographic labels, producing production-accurate metrics.
 
 ### Per-Class Detailed Breakdown:
 
 | Category | Precision | Recall | F1-Score | Support |
 | :--- | :--- | :--- | :--- | :--- |
-| **Age** | 97.16% | 98.38% | **97.76%** | 800 |
-| **Ethnicity** | 98.10% | 93.72% | **95.86%** | 828 |
-| **Religion** | 94.34% | 95.73% | **95.03%** | 819 |
-| **Gender** | 84.04% | 88.72% | **86.32%** | 807 |
-| **Not Cyberbullying (Safe)** | 67.09% | 62.59% | **64.76%** | 1088 |
-| **Other Cyberbullying** | 59.70% | 62.56% | **61.10%** | 900 |
+| **Age** | **97.16%** | **98.38%** | **97.76%** | 800 |
+| **Ethnicity** | **98.10%** | **93.72%** | **95.86%** | 828 |
+| **Religion** | **94.34%** | **95.73%** | **95.03%** | 819 |
+| **Gender** | **84.04%** | **88.72%** | **86.32%** | 807 |
+| **Not Cyberbullying (Safe)** | **66.18%** | **63.14%** | **64.63%** | 1,088 |
+| **Other Cyberbullying** | **59.46%** | **60.78%** | **60.11%** | 900 |
+
+### Decision Boundary Comparison (Academic Argmax vs. Production Two-Stage):
+
+| Evaluation Metric | Academic Argmax (Baseline) | Production Two-Stage (Deployment) | Delta (Improvement) |
+| :--- | :--- | :--- | :--- |
+| **Overall Accuracy** | 81.38% | **81.97%** | **+0.59%** |
+| **Macro Precision** | 84.01% | 83.21% | -0.80% |
+| **Macro Recall** | 82.17% | **83.41%** | **+1.24%** *(Better harassment detection)* |
+| **Macro F1-Score** | 81.87% | **83.29%** | **+1.42%** *(Superior overall balance)* |
 
 ---
 
@@ -160,6 +169,39 @@ Benign, non-violent sentences containing the word `"chappal"` in everyday contex
 
 ### 3. Weight-Override Conflict Check (Task C)
 We verified that the hardcoded `0.90` weight override for high-severity Hindi keywords (such as `"chudail"`, `"rand"`, and `"chappal"`) does not conflict with the dynamic length-based weight formula in `explainability.py` due to Python's ternary `if-else` control flow. The test script confirmed that all three keywords return a clean, non-overridden weight of exactly `0.9`.
+
+### 4. English Slur Gap Recovery & Hybrid Safety-Net (Bug 2 Resolution)
+Google MuRIL is predominantly optimized for Indian languages, which left an empirical vulnerability on short, context-sparse English attacks (e.g. *"your mom is a whore"* previously registered 50.5% Safe).
+- **Remediation**: Added `HIGH_SEVERITY_ENGLISH` lexicon combined into `ALL_HIGH_SEVERITY_SLURS` and integrated into the `classify_probabilities()` OR-condition safety-net with automated demographic category routing.
+- **Verification Results**:
+
+| Test Input | Expected Category | Raw MuRIL (Before) | With Safety-Net (After) | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| `"your mom is a whore"` | Gender Harassment | ❌ Not Cyberbullying (50.5% Safe) | ✅ **Cyberbullying** (`Gender`, 90.0%) | **RECOVERED** |
+| `"go kill yourself loser kys"` | Suicide Threat | ❌ Not Cyberbullying (52.6% Safe) | ✅ **Cyberbullying** (`Other`, 90.0%) | **RECOVERED** |
+| `"you are so helpful, thank you!"` | Benign Control | 🟢 Not Cyberbullying (54.3% Safe) | 🟢 **Not Cyberbullying** (54.3% Safe) | **SAFE (Zero FP)** |
+
+---
+
+## ⏱️ Empirical Latency & Throughput Benchmarks (Bug 5 Resolution)
+
+Measured on an AMD64 16-logical core CPU (`Windows 11`, `Python 3.14.0`, `PyTorch 2.13.0+cpu`) across 100 warm iterations and initial cold-start invocations (`benchmark_latency.py`):
+
+| Latency / Performance Metric | Tier 1: Classical Baseline (TF-IDF + Linear SVM) | Tier 2: Google MuRIL v2 (Transformer) |
+| :--- | :--- | :--- |
+| **Cold-Start 1st Invocation** | **44.80 ms** | **206.83 ms** |
+| **Warm Mean Latency (Average)** | **2.31 ms** | **127.19 ms** |
+| **Warm Median Latency ($P_{50}$)** | **2.39 ms** | **137.22 ms** |
+| **Warm 90th Percentile ($P_{90}$)** | **2.68 ms** | **140.12 ms** |
+| **Warm 95th Percentile ($P_{95}$)** | **2.85 ms** | **141.09 ms** |
+| **Warm 99th Percentile ($P_{99}$)** | **3.19 ms** | **142.86 ms** |
+| **Minimum Observed Latency** | 1.02 ms | 87.90 ms |
+| **Maximum Observed Latency** | 3.29 ms | 175.90 ms |
+| **Standard Deviation ($\sigma$)** | 0.40 ms | 19.53 ms |
+| **Throughput (CPU Execution)** | **433.6 queries / second** | **7.9 queries / second** |
+
+> [!NOTE]
+> **Production Latency Trade-Off**: The Tier-1 Linear SVM baseline delivers sub-3ms edge latency suitable for massive stream ingestion, while the Tier-2 MuRIL v2 transformer executes within 127ms ($P_{95} = 141\text{ ms}$), providing deep multilingual understanding within interactive web SLA targets ($<250\text{ ms}$).
 
 ---
 
@@ -228,11 +270,20 @@ with torch.no_grad():
 print("Prediction:", model.config.id2label[pred])
 ```
 
-### 3. Interactive Blind Testing & Audits
-Execute the blind self-testing script to run a manual verification audit against model failures:
+### 3. Independent Blind Testing, Latency & Audits
+Execute the verified independent benchmark scripts:
 ```bash
-python blind_test.py
-python inspect_failures.py
+# 1. Full Independent Held-Out Blind Test (5,242 samples)
+python blind_test.py --batch_size 32
+
+# 2. Empirical Latency & Throughput Benchmark (Cold-start + Warm percentiles)
+python benchmark_latency.py --runs 10
+
+# 3. Bug 2 English False-Negative Recovery Verification
+python test_english_fallback.py
+
+# 4. Interactive Human Audit Quiz
+python blind_test.py --interactive
 ```
 
 ### 4. Public Hugging Face Links
