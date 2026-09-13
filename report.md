@@ -203,6 +203,26 @@ Measured on an AMD64 16-logical core CPU (`Windows 11`, `Python 3.14.0`, `PyTorc
 > [!NOTE]
 > **Production Latency Trade-Off**: The Tier-1 Linear SVM baseline delivers sub-3ms edge latency suitable for massive stream ingestion, while the Tier-2 MuRIL v2 transformer executes within 127ms ($P_{95} = 141\text{ ms}$), providing deep multilingual understanding within interactive web SLA targets ($<250\text{ ms}$).
 
+### 🔍 Measurement Methodology & Latency Reconciliation
+
+To ensure scientific transparency across different deployment contexts, we distinguish three distinct measurement scopes:
+
+1. **End-to-End Interactive Web / REST API (150–230 ms)**:
+   - **Scope**: Complete request-response lifecycle in the Flask service (`POST /api/analyze`).
+   - **Included Steps**: HTTP payload serialization, text cleaning/regex language detection, MuRIL transformer forward pass, real gradient-based token attribution (`transformers-interpret` backward hooks for saliency heatmaps), and JSON encoding.
+   - **Observations**: Cold-start requests register **206.83 ms – 224.51 ms**, and active sessions with gradient attribution typically operate in the **150–230 ms** range.
+
+2. **Isolated Model Forward Inference (127.19 ms Warm Mean / 137.22 ms Median)**:
+   - **Scope**: Direct Python benchmark (`benchmark_latency.py`) over 100 warm cycles on an AMD64 16-core CPU using high-resolution monotonic clocks (`time.perf_counter()`).
+   - **Included Steps**: Preprocessing + standalone MuRIL model forward pass (`torch.no_grad()`) with unified two-stage decision boundary.
+   - **Observations**: PyTorch CPU thread-pools achieve a warm mean of **127.19 ms**, median ($P_{50}$) of **137.22 ms**, $P_{95}$ of **141.09 ms**, and observed range of **87.90 ms – 175.90 ms**.
+
+3. **Batched Offline Evaluation (58.09 ms / sample amortized)**:
+   - **Scope**: Full held-out blind test set ($N = 5,242$ samples) via `blind_test.py` with batch size $32$.
+   - **Observations**: Vectorized CPU matrix multiplications amortize per-sample inference time down to **58.09 ms / sample** (17.2 samples/sec throughput).
+
+*Paper Citation Guideline*: For academic papers, quote **127.19 ms (warm mean, CPU)** with $P_{95} = 141.09\text{ ms}$ for core model inference, or **150–230 ms** when reporting full end-to-end web system latency including gradient-based token attribution.
+
 ---
 
 ## ⚠️ Known Limitations & Findings
