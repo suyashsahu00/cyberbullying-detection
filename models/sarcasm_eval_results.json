@@ -1,0 +1,139 @@
+{
+  "total": 12,
+  "correct": 5,
+  "accuracy": 41.66666666666667,
+  "details": [
+    {
+      "idx": 1,
+      "text": "bohot samajhdar ho aap, dimaag mat use karna",
+      "type": "Mock intelligence / Insult",
+      "true_label": "cyberbullying",
+      "category": "Other",
+      "verdict": "Cyberbullying Detected",
+      "is_cb": true,
+      "confidence": 53.1,
+      "correct": true
+    },
+    {
+      "idx": 2,
+      "text": "waah kya logic hai bhai, school kabhi gaye bhi the kya?",
+      "type": "Belittling education / Mockery",
+      "true_label": "cyberbullying",
+      "category": "N/A",
+      "verdict": "Not Cyberbullying",
+      "is_cb": false,
+      "confidence": 53.9,
+      "correct": false
+    },
+    {
+      "idx": 3,
+      "text": "itna sundar chehra hai aapka ki mirror bhi sharma jaye",
+      "type": "Appearance sarcasm",
+      "true_label": "cyberbullying",
+      "category": "N/A",
+      "verdict": "Not Cyberbullying",
+      "is_cb": false,
+      "confidence": 53.0,
+      "correct": false
+    },
+    {
+      "idx": 4,
+      "text": "aapse bada gyaani toh puri duniya mein koi paida hi nahi hua",
+      "type": "Mocking arrogance / Belittling",
+      "true_label": "cyberbullying",
+      "category": "N/A",
+      "verdict": "Not Cyberbullying",
+      "is_cb": false,
+      "confidence": 51.6,
+      "correct": false
+    },
+    {
+      "idx": 5,
+      "text": "aapki acting dekh ke oscar committee ne rona shuru kar diya",
+      "type": "Derisive critique / Public humiliation",
+      "true_label": "cyberbullying",
+      "category": "Other",
+      "verdict": "Cyberbullying Detected",
+      "is_cb": true,
+      "confidence": 55.5,
+      "correct": true
+    },
+    {
+      "idx": 6,
+      "text": "kripya chup rahiye, aapke bolne se desh ka IQ kam ho raha hai",
+      "type": "Hostile shaming / Demeaning",
+      "true_label": "cyberbullying",
+      "category": "Other",
+      "verdict": "Cyberbullying Detected",
+      "is_cb": true,
+      "confidence": 51.2,
+      "correct": true
+    },
+    {
+      "idx": 7,
+      "text": "haan bhai tum toh ambani ke sage bhai ho na jo itna ud rahe ho",
+      "type": "Friendly banter / Meme joke",
+      "true_label": "not_cyberbullying",
+      "category": "Other",
+      "verdict": "Cyberbullying Detected",
+      "is_cb": true,
+      "confidence": 62.4,
+      "correct": false
+    },
+    {
+      "idx": 8,
+      "text": "kya baat hai aaj toh time pe aa gaye, suraj kidhar se nikla tha?",
+      "type": "Common sarcastic compliment / Teasing",
+      "true_label": "not_cyberbullying",
+      "category": "Other",
+      "verdict": "Cyberbullying Detected",
+      "is_cb": true,
+      "confidence": 51.7,
+      "correct": false
+    },
+    {
+      "idx": 9,
+      "text": "waah bhai itni mehnat karke exam mein 2 number leke aaye",
+      "type": "Self/peer mild irony",
+      "true_label": "not_cyberbullying",
+      "category": "N/A",
+      "verdict": "Not Cyberbullying",
+      "is_cb": false,
+      "confidence": 50.1,
+      "correct": true
+    },
+    {
+      "idx": 10,
+      "text": "kitna kaam karte ho yaar, thoda aaram bhi kar liya karo lazy insaan",
+      "type": "Affectionate teasing",
+      "true_label": "not_cyberbullying",
+      "category": "Other",
+      "verdict": "Cyberbullying Detected",
+      "is_cb": true,
+      "confidence": 56.5,
+      "correct": false
+    },
+    {
+      "idx": 11,
+      "text": "sahi khel gaye guru, poora din soye aur fir bhi thak gaye",
+      "type": "Humorous irony",
+      "true_label": "not_cyberbullying",
+      "category": "N/A",
+      "verdict": "Not Cyberbullying",
+      "is_cb": false,
+      "confidence": 50.4,
+      "correct": true
+    },
+    {
+      "idx": 12,
+      "text": "arre scientist saab, thoda hum anpadhon ko bhi gyaan de do",
+      "type": "Playful self-deprecation",
+      "true_label": "not_cyberbullying",
+      "category": "Other",
+      "verdict": "Cyberbullying Detected",
+      "is_cb": true,
+      "confidence": 51.8,
+      "correct": false
+    }
+  ]
+}

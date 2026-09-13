@@ -211,8 +211,13 @@ Measured on an AMD64 16-logical core CPU (`Windows 11`, `Python 3.14.0`, `PyTorc
    - Extremely short inputs (e.g. single words like `"madarchod"`, or `"your mom is a whore"`) hover near the 50% decision boundary in the 6-class transformer because social media training sets predominantly consist of 10–30 word conversational posts.
 2. **Context-Free Keyword False Positives in Baseline SVM**:
    - The TF-IDF + Linear SVM baseline mistakenly flags friendly messages like `"you are so helpful, thank you!"` as cyberbullying due to word co-occurrence artifacts in the training corpus. MuRIL correctly classifies it as safe.
-3. **Implicit Sarcasm Nuances**:
-   - Sarcastic praise without explicit slurs is correctly flagged as harassment by both models on Hinglish samples like `"bohot samajhdar ho aap, dimaag mat use karna"`, attributing weight to sarcastic phrasing structures.
+3. **Implicit Sarcasm & Irony Nuances (Anecdotal vs. Systematic Reality)**:
+   - **Important Qualification**: The single-case example previously cited (`"bohot samajhdar ho aap, dimaag mat use karna"`, which flagged at 53.1% confidence) was an **anecdotal observation, NOT systematically validated performance**.
+   - **Empirical Mini-Suite Verification (`test_sarcasm_evaluation.py`)**: To avoid scientific overclaiming, we executed a systematic stress test across 12 diverse sarcastic Hinglish samples (6 implicit derogatory remarks and 6 benign/witty teasing remarks):
+     - **Accuracy**: **41.7% (5 / 12 correct)**
+     - **Behavior**: Because pre-trained representations in hate-speech corpora heavily correlate with explicit slur frequencies, sentences lacking overt profanity hover precariously near the decision boundary (typically 50.1%–53.9% confidence).
+     - **Failure Modes**: The model missed 50% of subtle passive-aggressive insults (e.g., *"waah kya logic hai bhai, school kabhi gaye bhi the kya?"* labeled Safe at 53.9%) and falsely flagged playful colloquial sarcasm as cyberbullying (e.g., *"kya baat hai aaj toh time pe aa gaye..."* flagged Other at 51.7%).
+   - **Conclusion**: Implicit sarcasm detection without explicit hate keywords remains an **inherent open limitation** of current transformer checkpoints, requiring multi-turn conversational context or specialized pragmatic fine-tuning rather than being claimed as a solved capability.
 4. **Label Noise in the `other_cyberbullying` Catch-All Category (Documented Evidence — Bug 4 Resolution)**:
    - **Empirical Confusion Matrix Analysis (Test Set: $N = 5,242$ samples)**:
      - **True Positives**: 563 / 900 (**62.56% recall**)
@@ -282,7 +287,10 @@ python benchmark_latency.py --runs 10
 # 3. Bug 2 English False-Negative Recovery Verification
 python test_english_fallback.py
 
-# 4. Interactive Human Audit Quiz
+# 4. Implicit Sarcasm Mini-Suite Evaluation
+python test_sarcasm_evaluation.py
+
+# 5. Interactive Human Audit Quiz
 python blind_test.py --interactive
 ```
 
