@@ -21,6 +21,10 @@ from sklearn.metrics import (
     confusion_matrix
 )
 
+# Import production classification decision function
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from src.model import classify_probabilities
+
 # Label mappings matching 6-class baseline
 LABEL_MAP = {
     'age': 0,
@@ -62,7 +66,7 @@ class TextDataset(Dataset):
             'labels': torch.tensor(label, dtype=torch.long)
         }
 
-def evaluate(model, data_loader, criterion, device):
+def evaluate(model, data_loader, criterion, device, method="two_stage"):
     model.eval()
     total_loss = 0.0
     all_preds = []
@@ -89,15 +93,8 @@ def evaluate(model, data_loader, criterion, device):
             
             batch_preds = []
             for prob in probs:
-                prob_safe = prob[3]  # Index of not_cyberbullying is 3
-                is_bullying = (1.0 - prob_safe >= 0.5)
-                if is_bullying:
-                    # Choose the top bullying category among the other 5 classes
-                    bully_indices = [0, 1, 2, 4, 5]
-                    top_idx = bully_indices[int(np.argmax([prob[idx] for idx in bully_indices]))]
-                    batch_preds.append(top_idx)
-                else:
-                    batch_preds.append(3)
+                decision = classify_probabilities(prob, ID_TO_LABEL, method=method, use_safety_net=False)
+                batch_preds.append(decision["pred_idx"])
                     
             all_preds.extend(batch_preds)
             all_labels.extend(labels.cpu().numpy())

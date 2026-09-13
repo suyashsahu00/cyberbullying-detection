@@ -134,9 +134,9 @@ Direct output verification of both models on the required 7 test inputs:
 | :- | :--- | :--- | :--- | :--- | :--- | :--- |
 | 1 | `"you fucking idiot / motherfucker"` | English | **Cyberbullying** | Other (57.2%) | `idiot (+0.71)`, `fucking (+0.56)` | **Cyberbullying** (Other, 94.6%) |
 | 2 | `"suck my dick, go fuck yourself"` | English | **Cyberbullying** | Other (62.3%) | `dick (+0.53)`, `go (+0.24)`, `fuck (+0.17)` | **Cyberbullying** (Gender, 42.0%) |
-| 3 | `"your mom is a whore"` | English | **Not Cyberbullying** *(Borderline)* | N/A (50.5% Safe vs 49.5% Bully) | `is (+0.56)`, `your (+0.47)`, `whore (+0.14)` | **Cyberbullying** (Gender, 50.8%) |
-| 4 | `"madarchod"` | Hinglish | **Not Cyberbullying** *(Borderline)* | N/A (51.0% Safe vs 49.0% Bully) | `madarchod (+0.55)` | **Not Cyberbullying** (50.5% Safe) |
-| 5 | `"bhosdiwala traffic"` | Hinglish | **Not Cyberbullying** | N/A (51.7% Safe vs 48.3% Bully) | `bhosdiwala (+0.63)`, `traffic (+0.30)` | **Not Cyberbullying** (59.8% Safe) |
+| 3 | `"your mom is a whore"` | English | **Cyberbullying** | Gender (90.0% via Safety-Net) | `whore` (Keyword Safety-Net) | **Cyberbullying** (Gender, 50.8%) |
+| 4 | `"madarchod"` | Hinglish | **Cyberbullying** | Other (90.0% via Safety-Net) | `madarchod` (Keyword Safety-Net) | **Not Cyberbullying** (50.5% Safe) |
+| 5 | `"bhosdiwala traffic"` | Hinglish | **Cyberbullying** | Other (90.0% via Safety-Net) | `bhosdiwala` (Keyword Safety-Net) | **Not Cyberbullying** (59.8% Safe) |
 | 6 | `"you are so helpful, thank you!"` | English | **Not Cyberbullying** | N/A (54.3% Safe) | `are (+0.63)`, `thank (+0.53)` | **Cyberbullying** *(False Positive, 49.0%)* |
 | 7 | `"bohot samajhdar ho aap, dimaag mat use karna"` | Hinglish | **Cyberbullying** | Other (53.1%) | `karna (+0.51)`, `ho (+0.49)`, `dimaag (+0.37)` | **Cyberbullying** (Other, 56.4%) |
 

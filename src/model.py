@@ -24,6 +24,115 @@ CATEGORY_DISPLAY_MAP = {
     "not_cyberbullying": "N/A"
 }
 
+
+def classify_probabilities(
+    probs: np.ndarray,
+    id2label: Dict[int, str],
+    method: str = "two_stage",
+    safe_threshold: float = 0.50,
+    raw_text: Optional[str] = None,
+    use_safety_net: bool = True
+) -> Dict[str, Any]:
+    """
+    Unified decision function used across Production, Validation, and Evaluation.
+    
+    Args:
+        probs: 1D probability array across all classes (values sum to ~1.0 or 100.0)
+        id2label: Dictionary mapping class index to label string
+        method: 'two_stage' (production safety-boundary) or 'argmax' (standard baseline)
+        safe_threshold: Safe threshold (0.50 means >=50% required to be considered safe)
+        raw_text: Original input text (optional, for safety-net slur override)
+        use_safety_net: Whether to run the Hinglish slur safety-net override
+        
+    Returns:
+        dict with:
+            pred_idx (int): Predicted class index
+            pred_class (str): Predicted class label name
+            confidence (float): Percentage confidence (0-100)
+            is_cyberbullying (bool): Whether classified as cyberbullying
+            safety_net_triggered (bool): Whether keyword safety-net overrode model
+    """
+    probs = np.array(probs, dtype=float)
+    if np.max(probs) <= 1.0:
+        probs_pct = probs * 100.0
+    else:
+        probs_pct = probs
+
+    num_classes = len(probs)
+    
+    if method == "argmax" or num_classes != 6:
+        top_idx = int(np.argmax(probs))
+        pred_label = str(id2label.get(top_idx, f"Class {top_idx}"))
+        is_bullying = (pred_label.lower() != "not_cyberbullying" and pred_label.lower() != "non_bully")
+        return {
+            "pred_idx": top_idx,
+            "pred_class": pred_label,
+            "confidence": float(probs_pct[top_idx]),
+            "is_cyberbullying": is_bullying,
+            "safety_net_triggered": False
+        }
+
+    # Two-stage production decision boundary
+    not_bully_indices = [i for i, name in id2label.items() if name.lower() == "not_cyberbullying"]
+    not_bully_idx = not_bully_indices[0] if not_bully_indices else 3
+    
+    prob_safe = float(probs_pct[not_bully_idx])
+    prob_bully = 100.0 - prob_safe
+    
+    safe_thresh_pct = safe_threshold * 100.0 if safe_threshold <= 1.0 else safe_threshold
+    is_bullying = (prob_safe < safe_thresh_pct)
+    safety_net_triggered = False
+    
+    if is_bullying:
+        bully_indices = [i for i in range(num_classes) if i != not_bully_idx]
+        top_bully_idx = bully_indices[int(np.argmax([probs[i] for i in bully_indices]))]
+        pred_idx = top_bully_idx
+        pred_class = str(id2label[top_bully_idx])
+        confidence = prob_bully
+    else:
+        # Check hybrid safety net if safe confidence is not overwhelming (< 75%) and severe slur is present
+        if use_safety_net and raw_text and prob_safe < 75.0:
+            from src.explainability import extract_trigger_words, ALL_HIGH_SEVERITY_SLURS
+            trigger_res = extract_trigger_words(raw_text, "Other", prob_safe)
+            high_severity_matches = [
+                span for span in trigger_res.get("spans", [])
+                if span.get("weight", 0.0) > 0.8 and 
+                (span.get("word", "").lower() in ALL_HIGH_SEVERITY_SLURS or 
+                 any(w in span.get("word", "").lower() for w in ALL_HIGH_SEVERITY_SLURS))
+            ]
+            if len(high_severity_matches) > 0:
+                safety_net_triggered = True
+                is_bullying = True
+                
+                # Determine demographic category from matched slur
+                matched_span = high_severity_matches[0]
+                matched_cat = str(matched_span.get("category", "Other")).lower()
+                category_key_map = {
+                    "age": "age",
+                    "gender": "gender",
+                    "ethnicity": "ethnicity",
+                    "religion": "religion"
+                }
+                target_key = category_key_map.get(matched_cat, "other_cyberbullying")
+                matched_indices = [i for i, name in id2label.items() if name.lower() == target_key]
+                pred_idx = matched_indices[0] if matched_indices else 4
+                pred_class = str(id2label[pred_idx])
+                confidence = 90.0
+        
+        if not safety_net_triggered:
+            pred_idx = not_bully_idx
+            pred_class = "not_cyberbullying"
+            confidence = prob_safe
+            
+    return {
+        "pred_idx": pred_idx,
+        "pred_class": pred_class,
+        "confidence": confidence,
+        "is_cyberbullying": is_bullying,
+        "safety_net_triggered": safety_net_triggered
+    }
+
+
 class CyberbullyingSystem:
     """
     Unified Cyberbullying Detection & Explainability Engine.
@@ -184,45 +293,27 @@ class CyberbullyingSystem:
         
         # Check if v2 multi-class model (6 classes)
         if num_classes == 6 and self.muril_id2label:
-            not_bully_indices = [i for i, name in self.muril_id2label.items() if name.lower() == "not_cyberbullying"]
-            not_bully_idx = not_bully_indices[0] if not_bully_indices else 3
+            decision = classify_probabilities(
+                probs=probs,
+                id2label=self.muril_id2label,
+                method="two_stage",
+                safe_threshold=0.50,
+                raw_text=raw_text,
+                use_safety_net=True
+            )
+            is_bullying = decision["is_cyberbullying"]
+            pred_class = decision["pred_class"]
+            confidence = decision["confidence"]
+            safety_net_triggered = decision["safety_net_triggered"]
             
-            prob_safe = float(probs[not_bully_idx]) * 100
-            prob_bully = 100.0 - prob_safe
-            is_bullying = (prob_bully >= 50.0)
-
             if is_bullying:
-                bully_indices = [i for i in range(num_classes) if i != not_bully_idx]
-                top_bully_idx = bully_indices[int(np.argmax([probs[i] for i in bully_indices]))]
-                pred_class = str(self.muril_id2label[top_bully_idx])
-                confidence = prob_bully
                 display_category = CATEGORY_DISPLAY_MAP.get(pred_class.lower(), pred_class.capitalize())
                 verdict = "Cyberbullying Detected"
+                if safety_net_triggered:
+                    safety_net_note = "flagged via keyword safety-net, not primary model"
             else:
-                # Hybrid Safety-Net fallback for low-margin safe classifications
-                if prob_safe < 60.0:
-                    from src.explainability import extract_trigger_words, HIGH_SEVERITY_HINGLISH
-                    trigger_res = extract_trigger_words(raw_text, "Other", prob_safe)
-                    high_severity_matches = [
-                        span for span in trigger_res.get("spans", [])
-                        if span.get("weight", 0.0) > 0.8 and 
-                        (span.get("word", "").lower() in HIGH_SEVERITY_HINGLISH or 
-                         any(w in span.get("word", "").lower() for w in HIGH_SEVERITY_HINGLISH))
-                    ]
-                    if len(high_severity_matches) > 0:
-                        safety_net_triggered = True
-                        is_bullying = True
-                        pred_class = "other_cyberbullying"
-                        display_category = "Other"
-                        confidence = 90.0  # High confidence from slur override
-                        verdict = "Cyberbullying Detected"
-                        safety_net_note = "flagged via keyword safety-net, not primary model"
-                
-                if not safety_net_triggered:
-                    pred_class = "not_cyberbullying"
-                    confidence = prob_safe
-                    display_category = "N/A"
-                    verdict = "Not Cyberbullying"
+                display_category = "N/A"
+                verdict = "Not Cyberbullying"
 
             all_probs = {
                 str(self.muril_id2label.get(i, f"Class {i}")): round(float(p) * 100, 1)
@@ -250,7 +341,7 @@ class CyberbullyingSystem:
         # Token Attribution / Trigger Words Explainability
         if safety_net_triggered:
             from src.explainability import extract_trigger_words
-            explainability = extract_trigger_words(raw_text, "Other", confidence)
+            explainability = extract_trigger_words(raw_text, display_category if is_bullying else "Other", confidence)
             explainability["method"] = "Keyword Safety-Net Fallback"
         elif self.muril_explainer and getattr(self.muril_explainer, "explainer", None) is not None:
             explainability = self.muril_explainer.explain(raw_text, target_class=pred_class if is_bullying else None)

@@ -34,6 +34,16 @@ HIGH_SEVERITY_HINGLISH = {
     "bhosdike", "randi", "rand", "bhosdiwala", "gaand", "behenchod", "chudail"
 }
 
+# List of severe English slurs, targeted profanity, and harassment triggers for safety-net override
+HIGH_SEVERITY_ENGLISH = {
+    "whore", "slut", "cunt", "bitch", "hoe", "thot",
+    "nigger", "nigga", "chink", "spic", "faggot", "beaner", "wetback", "curryboy",
+    "ricebag", "infidel", "kafir",
+    "kill yourself", "kys", "motherfucker", "suck my dick", "go fuck yourself"
+}
+
+ALL_HIGH_SEVERITY_SLURS = HIGH_SEVERITY_HINGLISH | HIGH_SEVERITY_ENGLISH
+
 def extract_trigger_words(text: str, category: str, confidence: float) -> Dict[str, Any]:
     """
     Extract trigger words and return character spans and highlighted HTML/annotated tokens.
@@ -65,10 +75,10 @@ def extract_trigger_words(text: str, category: str, confidence: float) -> Dict[s
                 matched_str = text[start:end]
                 found_words.add(matched_str)
                 
-                # Check if it is a high-severity Hinglish slur to boost weight for the safety-net
+                # Check if it is a high-severity slur (Hinglish or English) to boost weight for the safety-net
                 word_lower = matched_str.lower()
-                is_high_severity = (word_lower in HIGH_SEVERITY_HINGLISH or 
-                                    any(w in word_lower for w in HIGH_SEVERITY_HINGLISH))
+                is_high_severity = (word_lower in ALL_HIGH_SEVERITY_SLURS or 
+                                    any(w in word_lower for w in ALL_HIGH_SEVERITY_SLURS))
                 weight = 0.90 if is_high_severity else round(min(0.95, 0.6 + 0.35 * (len(matched_str) / 10)), 2)
                 
                 matches.append({

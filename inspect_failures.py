@@ -6,6 +6,12 @@ import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
+from src.model import classify_probabilities
+
 # Force stdout to use UTF-8 encoding
 if sys.stdout.encoding != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8')
@@ -47,18 +53,9 @@ for i in range(0, len(texts), 32):
         probs = torch.softmax(logits, dim=1).cpu().numpy()
         
     for p in probs:
-        not_bully_idx = label_to_id["not_cyberbullying"]
-        prob_safe = p[not_bully_idx]
-        is_bullying = (1.0 - prob_safe >= 0.5)
-        
-        if is_bullying:
-            bully_indices = [idx for idx in range(6) if idx != not_bully_idx]
-            top_idx = bully_indices[int(np.argmax([p[idx] for idx in bully_indices]))]
-            preds.append(id_to_label[top_idx])
-            confs.append((1.0 - prob_safe) * 100)
-        else:
-            preds.append("not_cyberbullying")
-            confs.append(prob_safe * 100)
+        decision = classify_probabilities(p, id_to_label, method="two_stage", use_safety_net=False)
+        preds.append(decision["pred_class"])
+        confs.append(decision["confidence"])
 
 other_test["pred"] = preds
 other_test["conf"] = confs
