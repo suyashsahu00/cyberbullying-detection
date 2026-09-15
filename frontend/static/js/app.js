@@ -97,14 +97,15 @@ document.addEventListener("DOMContentLoaded", () => {
         inputText.focus();
     });
 
-    // Preset Pills
+    // Preset Pills: populate textarea on click WITHOUT auto-analyzing
     presetButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             const sample = btn.getAttribute("data-text");
             inputText.value = sample;
             inputText.dispatchEvent(new Event("input"));
             inputText.focus();
-            analyzeComment();
+            // Hide previous results panel until user clicks the Analyze button
+            resultsPanel.classList.add("d-none");
         });
     });
 

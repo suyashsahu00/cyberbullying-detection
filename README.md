@@ -188,10 +188,12 @@ cyberbullying-detection/
 ├── src/
 │   ├── model.py               # Unified classifier (MuRIL & Linear SVM pipelines)
 │   ├── preprocessing.py      # Multilingual text cleaning & language detection
-│   └── explainability.py      # Trigger word lexicon & token-level HTML highlighter
+│   ├── explainability.py      # Trigger word lexicon & token-level HTML highlighter
+│   └── sarcasm_auxiliary.py   # Standalone auxiliary sarcasm detection module (SDSHL)
 ├── models/
 │   ├── baseline_model.pkl     # Pre-trained TF-IDF + Linear SVM 6-class classifier
-│   └── muril_cyberbullying/   # Fine-tuned Google MuRIL model weights & tokenizer
+│   ├── muril_cyberbullying/   # Fine-tuned Google MuRIL model weights & tokenizer
+│   └── sarcasm_auxiliary.joblib # Saved auxiliary sarcasm baseline classifier
 ├── data/
 │   ├── raw/                   # Raw datasets (e.g. Cyberbullying & BullyExplain)
 │   └── processed/             # Cleaned, balanced, and tokenized train/val/test splits
@@ -205,6 +207,21 @@ cyberbullying-detection/
 ├── Procfile                   # Cloud deployment entry point (Gunicorn)
 └── README.md
 ```
+
+---
+
+## 📚 Datasets & Benchmarks
+
+The project leverages multiple real-world social media datasets for core training, code-mixed fine-tuning, and auxiliary pilot studies:
+
+| Dataset | Language / Script | Size | Primary Role in Project | Classes / Labels |
+| :--- | :--- | :--- | :--- | :--- |
+| **Kaggle Cyberbullying Benchmark** | English | 47,692 tweets | Core Multi-class Training | `age`, `ethnicity`, `gender`, `religion`, `other_cyberbullying`, `not_cyberbullying` |
+| **BullyExplain Benchmark** | Code-Mixed Hinglish (Roman & Devanagari) | 6,393 comments | Multilingual Fine-Tuning & Explainability | Standardized 6 demographic classes with human rationale spans |
+| **SDSHL ([dasarpai/SDSHL](https://github.com/dasarpai/SDSHL))** | Hindi & Hinglish (Devanagari & Code-switched) | 2,000 sentences | Standalone Auxiliary Sarcasm Pilot (`src/sarcasm_auxiliary.py`) | Binary: `1` (Sarcastic: 1,000), `0` (Non-Sarcastic: 1,000) |
+
+> ℹ️ **Note on Sarcasm Auxiliary Dataset (`dasarpai/SDSHL`):**
+> Sarcasm detection is maintained strictly as an independent auxiliary prototype (`src/sarcasm_auxiliary.py` & `models/sarcasm_auxiliary.joblib`) to evaluate sarcasm nuances without altering the production safety boundaries of the primary 6-class cyberbullying pipeline.
 
 ---
 

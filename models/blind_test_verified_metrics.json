@@ -2,7 +2,7 @@
   "dataset": {
     "path": "C:\\Users\\suyas\\Downloads\\CODING(1)\\cyberbullying-detection\\data/processed/combined_test.csv",
     "total_samples": 5242,
-    "device": "cpu"
+    "device": "cuda"
   },
   "performance_metrics": {
     "overall_accuracy": 81.97,
@@ -49,9 +49,9 @@
     }
   },
   "timing_and_latency": {
-    "total_inference_time_sec": 304.49,
-    "throughput_qps": 17.22,
-    "mean_latency_per_sample_ms": 58.09
+    "total_inference_time_sec": 14.63,
+    "throughput_qps": 358.39,
+    "mean_latency_per_sample_ms": 2.79
   },
   "argmax_baseline_comparison": {
     "overall_accuracy": 81.38,

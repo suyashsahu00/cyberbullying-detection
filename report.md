@@ -214,43 +214,43 @@ Google MuRIL is predominantly optimized for Indian languages, which left an empi
 
 ## ⏱️ Empirical Latency & Throughput Benchmarks (Bug 5 Resolution)
 
-Measured on an AMD64 16-logical core CPU (`Windows 11`, `Python 3.14.0`, `PyTorch 2.13.0+cpu`) across 100 warm iterations and initial cold-start invocations (`benchmark_latency.py`):
+Measured on an AMD Ryzen 16-logical core system with **NVIDIA GeForce RTX 4050 Laptop GPU (6GB VRAM)** (`Windows 11`, `Python 3.11.9`, `PyTorch 2.5.1+cu121`) across 30 warm iterations and initial cold-start invocations (`benchmark_latency.py`):
 
-| Latency / Performance Metric | Tier 1: Classical Baseline (TF-IDF + Linear SVM) | Tier 2: Google MuRIL v2 (Transformer) |
+| Latency / Performance Metric | Tier 1: Classical Baseline (TF-IDF + Linear SVM, CPU) | Tier 2: Google MuRIL v2 (Transformer, RTX 4050 GPU) |
 | :--- | :--- | :--- |
-| **Cold-Start 1st Invocation** | **44.80 ms** | **206.83 ms** |
-| **Warm Mean Latency (Average)** | **2.31 ms** | **127.19 ms** |
-| **Warm Median Latency ($P_{50}$)** | **2.39 ms** | **137.22 ms** |
-| **Warm 90th Percentile ($P_{90}$)** | **2.68 ms** | **140.12 ms** |
-| **Warm 95th Percentile ($P_{95}$)** | **2.85 ms** | **141.09 ms** |
-| **Warm 99th Percentile ($P_{99}$)** | **3.19 ms** | **142.86 ms** |
-| **Minimum Observed Latency** | 1.02 ms | 87.90 ms |
-| **Maximum Observed Latency** | 3.29 ms | 175.90 ms |
-| **Standard Deviation ($\sigma$)** | 0.40 ms | 19.53 ms |
-| **Throughput (CPU Execution)** | **433.6 queries / second** | **7.9 queries / second** |
+| **Cold-Start 1st Invocation** | **6.78 ms** | **337.49 ms** |
+| **Warm Mean Latency (Average)** | **0.79 ms** | **64.36 ms** |
+| **Warm Median Latency ($P_{50}$)** | **0.77 ms** | **87.50 ms** |
+| **Warm 90th Percentile ($P_{90}$)** | **0.84 ms** | **108.67 ms** |
+| **Warm 95th Percentile ($P_{95}$)** | **0.88 ms** | **110.90 ms** |
+| **Warm 99th Percentile ($P_{99}$)** | **1.12 ms** | **112.21 ms** |
+| **Minimum Observed Latency** | 0.68 ms | 10.79 ms |
+| **Maximum Observed Latency** | 1.54 ms | 135.83 ms |
+| **Standard Deviation ($\sigma$)** | 0.09 ms | 43.73 ms |
+| **Throughput** | **1,270.9 queries / second** | **15.5 queries / second** |
 
 > [!NOTE]
-> **Production Latency Trade-Off**: The Tier-1 Linear SVM baseline delivers sub-3ms edge latency suitable for massive stream ingestion, while the Tier-2 MuRIL v2 transformer executes within 127ms ($P_{95} = 141\text{ ms}$), providing deep multilingual understanding within interactive web SLA targets ($<250\text{ ms}$).
+> **Production Latency Trade-Off**: The Tier-1 Linear SVM baseline delivers sub-millisecond edge latency (**0.79 ms**, **1,270.9 QPS**) suitable for massive stream ingestion on CPU, while the Tier-2 MuRIL v2 transformer executes on GPU within **64.36 ms** average ($P_{50} = 87.50\text{ ms}$, $P_{95} = 110.90\text{ ms}$), providing deep multilingual understanding well within interactive web SLA targets ($<150\text{ ms}$).
 
 ### 🔍 Measurement Methodology & Latency Reconciliation
 
 To ensure scientific transparency across different deployment contexts, we distinguish three distinct measurement scopes:
 
-1. **End-to-End Interactive Web / REST API (150–230 ms)**:
+1. **End-to-End Interactive Web / REST API (80–130 ms on GPU)**:
    - **Scope**: Complete request-response lifecycle in the Flask service (`POST /api/analyze`).
    - **Included Steps**: HTTP payload serialization, text cleaning/regex language detection, MuRIL transformer forward pass, real gradient-based token attribution (`transformers-interpret` backward hooks for saliency heatmaps), and JSON encoding.
-   - **Observations**: Cold-start requests register **206.83 ms – 224.51 ms**, and active sessions with gradient attribution typically operate in the **150–230 ms** range.
+   - **Observations**: Cold-start requests register **~337 ms**, and active sessions with gradient attribution typically operate in the **80–130 ms** range on GPU.
 
-2. **Isolated Model Forward Inference (127.19 ms Warm Mean / 137.22 ms Median)**:
-   - **Scope**: Direct Python benchmark (`benchmark_latency.py`) over 100 warm cycles on an AMD64 16-core CPU using high-resolution monotonic clocks (`time.perf_counter()`).
+2. **Isolated Model Forward Inference (64.36 ms Warm Mean / 87.50 ms Median on GPU)**:
+   - **Scope**: Direct Python benchmark (`benchmark_latency.py`) over 30 warm cycles on NVIDIA GeForce RTX 4050 Laptop GPU using high-resolution monotonic clocks (`time.perf_counter()`).
    - **Included Steps**: Preprocessing + standalone MuRIL model forward pass (`torch.no_grad()`) with unified two-stage decision boundary.
-   - **Observations**: PyTorch CPU thread-pools achieve a warm mean of **127.19 ms**, median ($P_{50}$) of **137.22 ms**, $P_{95}$ of **141.09 ms**, and observed range of **87.90 ms – 175.90 ms**.
+   - **Observations**: Achieves a warm mean of **64.36 ms**, median ($P_{50}$) of **87.50 ms**, $P_{95}$ of **110.90 ms**, and observed range of **10.79 ms – 135.83 ms**.
 
-3. **Batched Offline Evaluation (58.09 ms / sample amortized)**:
+3. **Batched Offline Evaluation (2.79 ms / sample amortized on GPU)**:
    - **Scope**: Full held-out blind test set ($N = 5,242$ samples) via `blind_test.py` with batch size $32$.
-   - **Observations**: Vectorized CPU matrix multiplications amortize per-sample inference time down to **58.09 ms / sample** (17.2 samples/sec throughput).
+   - **Observations**: Vectorized GPU tensor operations amortize per-sample inference time down to **2.79 ms / sample** (358.4 samples/sec throughput).
 
-*Paper Citation Guideline*: For academic papers, quote **127.19 ms (warm mean, CPU)** with $P_{95} = 141.09\text{ ms}$ for core model inference, or **150–230 ms** when reporting full end-to-end web system latency including gradient-based token attribution.
+*Paper Citation Guideline*: For academic papers, quote **64.36 ms (warm mean, RTX 4050 GPU)** with $P_{95} = 110.90\text{ ms}$ and **1,270.9 QPS (Tier 1 SVM)** for edge processing.
 
 ---
 
@@ -293,6 +293,11 @@ To ensure scientific transparency across different deployment contexts, we disti
    > [!TIP]
    > **Ready-to-Use Paper Excerpt (for Results & Discussion Section):**
    > *"While demographic categories (Age, Ethnicity, Religion) achieved $>95\%$ F1-scores, the general 'Other Cyberbullying' category exhibited a balanced precision of $59.70\%$ and recall of $62.56\%$. Error analysis reveals that $80.1\%$ of its misclassifications occurred exclusively against the 'Not Cyberbullying' class ($270$ false negatives and $279$ false positives). This directly corroborates findings by Wang et al. (IEEE BigData 2020) regarding hashtag annotation noise in the source corpus (e.g., #mkr television commentary). Rather than artificially overfitting to noisy catch-all annotations, our dual-stage architecture preserves high discriminatory power on identity-based harassment while maintaining robustness across colloquial text."*
+
+5. **Demographic Domain Asymmetry in the Age Category (School-Age vs. Elderly Ageism)**:
+   - **Empirical Observation**: Sentences containing explicit elderly-targeted insults (e.g., `"Shut up you wrinkly senile old hag boomer!"`) are correctly flagged as **Cyberbullying** (53.1% overall confidence), but are categorized under **`other_cyberbullying`** (`other`: 46.5%, `safe`: 46.9%) rather than the **`age`** demographic class (`age`: 1.0%).
+   - **Root Cause (Training Data Distribution)**: In standard benchmark corpora (Kaggle Cyberbullying), the `age` class is almost exclusively composed of peer adolescent and high-school bullying narratives (e.g., *"bullied in high school"*, *"middle school"*, *"when I was 13"*). The training distribution lacks elderly ageist slurs (*"boomer"*, *"senile"*, *"wrinkly"*), causing the transformer to map them to general profanity / hostility (`other_cyberbullying`).
+   - **Explainability Mitigation**: While the primary classification head routes the comment to `other_cyberbullying`, the secondary Keyword-Based Trigger Detection and token attribution modules successfully highlight `"boomer"`, `"senile"`, `"wrinkly"`, and `"old hag"` as Age-targeted abusive markers.
 
 ---
 
