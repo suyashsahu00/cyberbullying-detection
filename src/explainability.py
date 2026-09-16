@@ -1,5 +1,5 @@
 import re
-from typing import List, Dict, Any, Tuple
+from typing import Dict, Any
 
 # Categories of trigger words for fallback/explainability highlighting across Age, Gender, Ethnicity, Religion, and General cyberbullying.
 TRIGGER_LEXICON = {
@@ -24,7 +24,9 @@ TRIGGER_LEXICON = {
         "dumb", "useless", "trash", "garbage", "chutiya", "saale", "kamina", "harami",
         "bakwas", "fuck", "shit", "retard", "scum", "pig", "freak", "disgusting",
         "pagal", "kuttiya", "gandu", "kamine", "madarchod", "bhosdike", "randi", "kutte",
-        "bhosdiwala", "gaand", "phaad", "behenchod", "chudail", "rand"
+        "bhosdiwala", "gaand", "phaad", "behenchod", "chudail", "rand",
+        "चूतिया", "साले", "कमीना", "हरामी", "कुतिया", "गांडू", "कमीने", "मादरचोद",
+        "भोसड़ीके", "रंडी", "भोसड़ीवाला", "गांड", "बहनचोद", "चुड़ैल", "कुत्ते", "नीच"
     ]
 }
 
@@ -32,6 +34,12 @@ TRIGGER_LEXICON = {
 HIGH_SEVERITY_HINGLISH = {
     "chutiya", "saale", "kamina", "harami", "kuttiya", "gandu", "kamine", "madarchod", 
     "bhosdike", "randi", "rand", "bhosdiwala", "gaand", "behenchod", "chudail"
+}
+
+# List of severe Devanagari Hindi slurs for safety-net override
+HIGH_SEVERITY_DEVANAGARI = {
+    "चूतिया", "साले", "कमीना", "हरामी", "कुतिया", "गांडू", "कमीने", "मादरचोद",
+    "भोसड़ीके", "रंडी", "भोसड़ीवाला", "गांड", "बहनचोद", "चुड़ैल", "कुत्ते", "नीच"
 }
 
 # List of severe English slurs, targeted profanity, and harassment triggers for safety-net override
@@ -42,7 +50,7 @@ HIGH_SEVERITY_ENGLISH = {
     "kill yourself", "kys", "motherfucker", "suck my dick", "go fuck yourself"
 }
 
-ALL_HIGH_SEVERITY_SLURS = HIGH_SEVERITY_HINGLISH | HIGH_SEVERITY_ENGLISH
+ALL_HIGH_SEVERITY_SLURS = HIGH_SEVERITY_HINGLISH | HIGH_SEVERITY_ENGLISH | HIGH_SEVERITY_DEVANAGARI
 
 def extract_trigger_words(text: str, category: str, confidence: float) -> Dict[str, Any]:
     """

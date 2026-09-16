@@ -1,10 +1,8 @@
 import html
 import os
 import re
-import string
-from typing import Tuple, Dict, Any, List, Optional
+from typing import Tuple, Dict, Any, List
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
 
 # Common Hinglish (Hindi in Latin script) marker words for heuristic language detection

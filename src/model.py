@@ -1,14 +1,12 @@
 import os
-import sys
 import time
 import json
 import pickle
 import numpy as np
-import pandas as pd
-from typing import Dict, Any, Tuple, Optional
+from typing import Dict, Any, Optional
 
 from src.preprocessing import clean_text, detect_language, get_text_stats
-from src.explainability import extract_trigger_words, escape_html, TRIGGER_LEXICON
+from src.explainability import extract_trigger_words, escape_html
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BASELINE_MODEL_PATH = os.path.join(ROOT_DIR, "models", "baseline_model.pkl")

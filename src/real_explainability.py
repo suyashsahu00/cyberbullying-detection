@@ -1,8 +1,6 @@
-import os
-import re
 import html
-from typing import List, Dict, Any, Tuple, Optional
-import torch
+import string
+from typing import Dict, Any, Optional
 
 try:
     from transformers_interpret import SequenceClassificationExplainer
@@ -12,11 +10,7 @@ except ImportError:
 
 def escape_html(text: str) -> str:
     """Escape special HTML characters to prevent XSS."""
-    return (text.replace("&", "&amp;")
-                .replace("<", "&lt;")
-                .replace(">", "&gt;")
-                .replace('"', "&quot;")
-                .replace("'", "&#39;"))
+    return html.escape(text, quote=True)
 
 class MuRILExplainer:
     """
@@ -51,6 +45,17 @@ class MuRILExplainer:
                 "highlighted_text": "",
                 "spans": []
             }
+
+        # Truncate text to fit within MuRIL's maximum position embeddings (512 tokens)
+        # to prevent CUDA device-side assertion errors on long inputs.
+        if len(text) > 1500:
+            text = text[:1500]
+        if self.tokenizer is not None:
+            try:
+                token_ids = self.tokenizer.encode(text, truncation=True, max_length=450, add_special_tokens=False)
+                text = self.tokenizer.decode(token_ids, skip_special_tokens=True)
+            except Exception:
+                pass
 
         if self.explainer is None:
             # Fallback if explainer failed to initialize
@@ -89,11 +94,13 @@ class MuRILExplainer:
                 merged_words.append((curr_word, max(curr_scores)))
 
             # Sort positive contributing tokens
-            positive_tokens = [(w, s) for w, s in merged_words if s > 0]
+            positive_tokens = [
+                (w, s) for w, s in merged_words 
+                if s > 0 and any(c.isalnum() for c in w)
+            ]
             positive_tokens.sort(key=lambda x: x[1], reverse=True)
 
             # Build HTML highlighting using gradient intensities
-            # Find max score for relative opacity scaling
             max_score = max([s for _, s in merged_words if s > 0], default=1.0)
             if max_score <= 0:
                 max_score = 1.0
@@ -103,10 +110,11 @@ class MuRILExplainer:
             highlighted_tokens = []
             
             for word, score in merged_words:
-                if score > top_k_threshold:
+                is_punct_or_empty = not any(c.isalnum() for c in word)
+                if score > top_k_threshold and not is_punct_or_empty:
                     # Intensity between 0.25 and 1.0
                     intensity = min(1.0, max(0.25, score / max_score))
-                    rgba = f"rgba(230, 57, 70, {intensity:.2f})"
+                    rgba = f"rgba(239, 68, 68, {intensity:.2f})"
                     highlighted_tokens.append(
                         f'<mark class="token-attribution" style="background-color: {rgba}; padding: 2px 4px; border-radius: 4px; font-weight: 600;" title="Attribution: +{score:.3f}">{escape_html(word)}</mark>'
                     )

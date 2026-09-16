@@ -56,6 +56,10 @@ def analyze_text():
                 "status": "bad_request"
             }), 400
 
+        # Safety clamp on excessively long inputs (prevents GPU memory exhaustion)
+        if len(text) > 2000:
+            text = text[:2000]
+
         result = classifier.predict(text, model_choice=model_choice)
         return jsonify(result), 200
 
