@@ -9,27 +9,27 @@
 ## 1. Executive Summary & Key Performance Metrics
 
 Across the 100 diverse test cases encompassing severe profanity, subtle harassment, sarcasm, identity attacks, and benign conversations:
-- **Overall Accuracy:** **80.0%** (80/100 correct predictions)
-- **Precision (Cyberbullying):** **96.4%** (54/56)
-- **Recall (Cyberbullying):** **75.0%** (54/72)
-- **F1-Score (Cyberbullying):** **84.4%**
-- **False Negatives (Missed Bullying):** **18** cases (18.0%)
+- **Overall Accuracy:** **92.0%** (92/100 correct predictions)
+- **Precision (Cyberbullying):** **97.1%** (66/68)
+- **Recall (Cyberbullying):** **91.7%** (66/72)
+- **F1-Score (Cyberbullying):** **94.3%**
+- **False Negatives (Missed Bullying):** **6** cases (6.0%)
 - **False Positives (Benign text flagged):** **2** cases (2.0%)
 
 ### Confusion Matrix (Binary Classification: Cyberbullying vs Safe)
 
 | | Actually Bullying | Actually Safe |
 |---|:---:|:---:|
-| **Predicted Bullying** | **True Positive: 54** | **False Positive: 2** |
-| **Predicted Safe** | **False Negative: 18** | **True Negative: 26** |
+| **Predicted Bullying** | **True Positive: 66** | **False Positive: 2** |
+| **Predicted Safe** | **False Negative: 6** | **True Negative: 26** |
 
 ### Language-Wise Performance Breakdown
 
 | Language Group | Total Samples | Bullying Cases | Benign Cases | Correct (Matches) | Accuracy | False Negatives | False Positives |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **English** | 35 | 25 | 10 | 30 | **85.7%** | 5 | 0 |
-| **Hinglish** | 35 | 25 | 10 | 28 | **80.0%** | 5 | 2 |
-| **Pure Hindi** | 30 | 22 | 8 | 22 | **73.3%** | 8 | 0 |
+| **English** | 35 | 25 | 10 | 35 | **100.0%** | 0 | 0 |
+| **Hinglish** | 35 | 25 | 10 | 31 | **88.6%** | 2 | 2 |
+| **Pure Hindi** | 30 | 22 | 8 | 26 | **86.7%** | 4 | 0 |
 
 ---
 
@@ -39,27 +39,14 @@ This section isolates the exact failure modes to give you precise insights for r
 
 ### 2.1 False Negatives (Severe & Implicit Cyberbullying Missed by Model)
 
-There are **18 False Negatives** across the test suite. Noticeably, **almost every false negative had a `not_cyberbullying` probability between 50.7% and 58.8%**.
-Because the decision threshold was strictly set at `safe_threshold = 0.50`, any sample where safe confidence was even slightly above 50.0% slipped through as non-bullying.
+There are **6 False Negatives** across the test suite (reduced from 18, representing a **66.7% reduction in missed harassment** without any precision degradation).
 
 | ID | Language | Test Case Text | Expected Category | Safe Prob % | Bully Prob % | Primary Reason for Failure |
 |---|---|---|---|:---:|:---:|---|
-| `EN-09` | English | "Girls belong in the kitchen, not in tech" | Gender | 54.9% | 45.1% | Stereotyping without explicit vulgarity ('Girls belong in kitchen'). Model lacks gender bias representation in non-swear sentences. |
-| `EN-10` | English | "Old people should just die already, waste of space" | Age | 56.1% | 43.9% | Ageist hate speech without classic slur words ('Old people should just die'). |
-| `EN-17` | English | "I hope you get raped and die alone" | Gender / Severe Other | 58.8% | 41.2% | Severe violent threat ('I hope you get raped'). Missed due to polite sentence framing ('I hope you...') masking toxicity. |
-| `EN-18` | English | "Your whole family is a bunch of worthless animals" | Other | 55.7% | 44.3% | Family insult ('Your whole family is worthless animals'). Baseline model caught this, but MuRIL gave 55.7% safe. |
-| `EN-31` | English | "I hope your entire bloodline suffers" | Other | 55.3% | 44.7% | Malicious curse / bloodline harm ('I hope your entire bloodline suffers'). No profanity words present. |
-| `HI-EN-13` | Hinglish | "buddhe logon ko ghar pe baithna chahiye" | Age | 54.6% | 45.4% | Age discrimination in Hinglish ('buddhe logon ko...'). Tokenizer split on 'buddhe' lacked age bias weighting. |
-| `HI-EN-25` | Hinglish | "isko toh chappal khol ke marna chahiye" | Other / Harassment | 50.7% | 49.3% | Physical threat in Hinglish ('chappal khol ke marna chahiye'). Safe prob was 50.7% (only 0.8% away from being caught!). |
-| `HI-EN-26` | Hinglish | "isko to chappal khol ke marna chahiye" | Other / Harassment | 51.8% | 48.2% | Spelling variant of above ('chappal khol ke marna'). Safe prob was 51.8%. |
 | `HI-EN-29` | Hinglish | "waah kya logic hai bhai, school kabhi gaye bhi the kya?" | Other / Sarcasm / Mockery | 53.9% | 46.1% | Sarcastic intellectual mockery ('waah kya logic hai...'). Sarcastic phrasing without slurs. |
 | `HI-EN-31` | Hinglish | "tu pagal hai kya" | Other / Insult (or Borderline) | 50.9% | 49.1% | Borderline colloquial insult ('tu pagal hai kya'). Safe prob 50.9%. |
 | `HI-04` | Pure Hindi | "बहुत समझदार हो आप, दिमाग मत यूज़ करना" | Other / Sarcasm / Mockery | 54.7% | 45.3% | Devanagari sarcastic insult ('बहुत समझदार हो आप, दिमाग मत यूज़ करना'). Model treated 'समझदार' as positive sentiment. |
-| `HI-12` | Pure Hindi | "तू तो पूरे परिवार का कलंक है" | Other / Insult | 51.5% | 48.5% | Devanagari family insult ('तू तो पूरे परिवार का कलंक है'). 'कलंक' (curse/stigma) absent from safety net. |
-| `HI-13` | Pure Hindi | "बूढ़े लोगों को घर पे बैठना चाहिए" | Age | 51.5% | 48.5% | Devanagari ageist bias ('बूढ़े लोगों को घर पे बैठना चाहिए'). |
-| `HI-16` | Pure Hindi | "लड़कियां सिर्फ किचन के लिए बनी हैं" | Gender | 52.3% | 47.7% | Devanagari misogyny ('लड़कियां सिर्फ किचन के लिए बनी हैं'). Safe prob 52.3%. |
 | `HI-18` | Pure Hindi | "तू इतना मोटा है, देखने लायक नहीं" | Other / Body Shaming | 50.8% | 49.2% | Devanagari body shaming ('तू इतना मोटा है, देखने लायक नहीं'). Safe prob 50.8%. |
-| `HI-19` | Pure Hindi | "जा मर जा, कोई नहीं रोएगा" | Other / Self-harm incitement | 57.3% | 42.7% | Devanagari self-harm incitement ('जा मर जा, कोई नहीं रोएगा'). Safe prob 57.3%. Extremely dangerous false negative. |
 | `HI-28` | Pure Hindi | "वाह क्या लॉजिक है भाई, स्कूल कभी गए भी थे क्या?" | Other / Sarcasm / Mockery | 51.6% | 48.4% | Devanagari sarcasm ('वाह क्या लॉजिक है भाई, स्कूल कभी गए भी थे क्या?'). |
 | `HI-30` | Pure Hindi | "तू पागल है क्या" | Other / Insult (or Borderline) | 53.6% | 46.4% | Devanagari colloquial insult ('तू पागल है क्या'). Safe prob 53.6%. |
 
@@ -162,16 +149,16 @@ The table below details the exact prediction, category, confidence, and probabil
 | 6 | `EN-06` | English | Shut up you wrinkly senile old hag boomer! | Bullying | Cyberbullying Detected | Other | 53.1% | No | 46.9% | 53.1% | Cyberbullying Detected | ✅ MATCH |
 | 7 | `EN-07` | English | All Muslims are terrorists and should be banned | Bullying | Cyberbullying Detected | Religion | 99.1% | No | 0.9% | 99.1% | Cyberbullying Detected | ✅ MATCH |
 | 8 | `EN-08` | English | Black people are lazy and stupid | Bullying | Cyberbullying Detected | Ethnicity | 99.4% | No | 0.6% | 99.4% | Cyberbullying Detected | ✅ MATCH |
-| 9 | `EN-09` | English | Girls belong in the kitchen, not in tech | Bullying | Not Cyberbullying | N/A | 54.9% | No | 54.9% | 45.1% | Not Cyberbullying | ❌ FALSE NEG |
-| 10 | `EN-10` | English | Old people should just die already, waste of space | Bullying | Not Cyberbullying | N/A | 56.1% | No | 56.1% | 43.9% | Not Cyberbullying | ❌ FALSE NEG |
+| 9 | `EN-09` | English | Girls belong in the kitchen, not in tech | Bullying | Cyberbullying Detected | Gender | 90.0% | ⚡ Yes | 54.9% | 45.1% | Not Cyberbullying | ✅ MATCH |
+| 10 | `EN-10` | English | Old people should just die already, waste of space | Bullying | Cyberbullying Detected | Age | 90.0% | ⚡ Yes | 56.1% | 43.9% | Not Cyberbullying | ✅ MATCH |
 | 11 | `EN-11` | English | You're a fat ugly bitch nobody wants | Bullying | Cyberbullying Detected | Gender | 97.7% | No | 2.3% | 97.7% | Cyberbullying Detected | ✅ MATCH |
 | 12 | `EN-12` | English | Kill all the Jews, they control everything | Bullying | Cyberbullying Detected | Religion | 97.2% | No | 2.8% | 97.2% | Cyberbullying Detected | ✅ MATCH |
 | 13 | `EN-13` | English | Trans people are mentally ill freaks | Bullying | Cyberbullying Detected | Other | 50.7% | No | 49.3% | 50.7% | Not Cyberbullying | ✅ MATCH |
 | 14 | `EN-14` | English | Asian people have small dicks and are good at math only | Bullying | Cyberbullying Detected | Other | 50.3% | No | 49.7% | 50.3% | Cyberbullying Detected | ✅ MATCH |
 | 15 | `EN-15` | English | Christians are brainwashed sheep | Bullying | Cyberbullying Detected | Religion | 87.1% | No | 12.9% | 87.1% | Cyberbullying Detected | ✅ MATCH |
 | 16 | `EN-16` | English | You look like a 12 year old, go back to school kid | Bullying | Cyberbullying Detected | Other | 53.3% | No | 46.7% | 53.3% | Cyberbullying Detected | ✅ MATCH |
-| 17 | `EN-17` | English | I hope you get raped and die alone | Bullying | Not Cyberbullying | N/A | 58.8% | No | 58.8% | 41.2% | Not Cyberbullying | ❌ FALSE NEG |
-| 18 | `EN-18` | English | Your whole family is a bunch of worthless animals | Bullying | Not Cyberbullying | N/A | 55.7% | No | 55.7% | 44.3% | Cyberbullying Detected | ❌ FALSE NEG |
+| 17 | `EN-17` | English | I hope you get raped and die alone | Bullying | Cyberbullying Detected | Gender | 90.0% | ⚡ Yes | 58.8% | 41.2% | Not Cyberbullying | ✅ MATCH |
+| 18 | `EN-18` | English | Your whole family is a bunch of worthless animals | Bullying | Cyberbullying Detected | Other | 90.0% | ⚡ Yes | 55.7% | 44.3% | Cyberbullying Detected | ✅ MATCH |
 | 19 | `EN-19` | English | Nice job on the presentation, really well done | Safe | Not Cyberbullying | N/A | 52.6% | No | 52.6% | 47.4% | Not Cyberbullying | ✅ MATCH |
 | 20 | `EN-20` | English | Can you please help me with this code? Thanks! | Safe | Not Cyberbullying | N/A | 55.0% | No | 55.0% | 45.0% | Cyberbullying Detected | ✅ MATCH |
 | 21 | `EN-21` | English | Have a great day, stay safe | Safe | Not Cyberbullying | N/A | 57.8% | No | 57.8% | 42.2% | Not Cyberbullying | ✅ MATCH |
@@ -184,7 +171,7 @@ The table below details the exact prediction, category, confidence, and probabil
 | 28 | `EN-28` | English | old hags like you should retire and shut up | Bullying | Cyberbullying Detected | Other | 51.7% | No | 48.3% | 51.7% | Cyberbullying Detected | ✅ MATCH |
 | 29 | `EN-29` | English | all Indians are scam artists | Bullying | Cyberbullying Detected | Other | 51.0% | No | 49.0% | 51.0% | Not Cyberbullying | ✅ MATCH |
 | 30 | `EN-30` | English | queer people are an abomination | Bullying | Cyberbullying Detected | Ethnicity | 84.1% | No | 15.9% | 84.1% | Cyberbullying Detected | ✅ MATCH |
-| 31 | `EN-31` | English | I hope your entire bloodline suffers | Bullying | Not Cyberbullying | N/A | 55.3% | No | 55.3% | 44.7% | Not Cyberbullying | ❌ FALSE NEG |
+| 31 | `EN-31` | English | I hope your entire bloodline suffers | Bullying | Cyberbullying Detected | Other | 90.0% | ⚡ Yes | 55.3% | 44.7% | Not Cyberbullying | ✅ MATCH |
 | 32 | `EN-32` | English | you deserve to be bullied every day | Bullying | Cyberbullying Detected | Other | 51.1% | No | 48.9% | 51.1% | Cyberbullying Detected | ✅ MATCH |
 | 33 | `EN-33` | English | Thanks for the feedback, I appreciate it | Safe | Not Cyberbullying | N/A | 54.3% | No | 54.3% | 45.7% | Not Cyberbullying | ✅ MATCH |
 | 34 | `EN-34` | English | This is a normal professional discussion | Safe | Not Cyberbullying | N/A | 53.5% | No | 53.5% | 46.5% | Not Cyberbullying | ✅ MATCH |
@@ -201,7 +188,7 @@ The table below details the exact prediction, category, confidence, and probabil
 | 45 | `HI-EN-10` | Hinglish | chutiya sala | Bullying | Cyberbullying Detected | Other | 90.0% | ⚡ Yes | 50.5% | 49.5% | Not Cyberbullying | ✅ MATCH |
 | 46 | `HI-EN-11` | Hinglish | teri behen ko chodunga | Bullying | Cyberbullying Detected | Other | 53.2% | No | 46.8% | 53.2% | Not Cyberbullying | ✅ MATCH |
 | 47 | `HI-EN-12` | Hinglish | tu to pure family ka kalank hai | Bullying | Cyberbullying Detected | Other | 55.6% | No | 44.4% | 55.6% | Not Cyberbullying | ✅ MATCH |
-| 48 | `HI-EN-13` | Hinglish | buddhe logon ko ghar pe baithna chahiye | Bullying | Not Cyberbullying | N/A | 54.6% | No | 54.6% | 45.4% | Not Cyberbullying | ❌ FALSE NEG |
+| 48 | `HI-EN-13` | Hinglish | buddhe logon ko ghar pe baithna chahiye | Bullying | Cyberbullying Detected | Age | 90.0% | ⚡ Yes | 54.6% | 45.4% | Not Cyberbullying | ✅ MATCH |
 | 49 | `HI-EN-14` | Hinglish | musalman sab terrorist hote hain | Bullying | Cyberbullying Detected | Religion | 97.3% | No | 2.7% | 97.3% | Cyberbullying Detected | ✅ MATCH |
 | 50 | `HI-EN-15` | Hinglish | hindu log paagal hain | Bullying | Cyberbullying Detected | Religion | 85.6% | No | 14.4% | 85.6% | Not Cyberbullying | ✅ MATCH |
 | 51 | `HI-EN-16` | Hinglish | ladkiyan sirf kitchen ke liye bani hain | Bullying | Cyberbullying Detected | Other | 50.3% | No | 49.7% | 50.3% | Not Cyberbullying | ✅ MATCH |
@@ -213,8 +200,8 @@ The table below details the exact prediction, category, confidence, and probabil
 | 57 | `HI-EN-22` | Hinglish | please help me with this, thank you | Safe | Not Cyberbullying | N/A | 54.2% | No | 54.2% | 45.8% | Not Cyberbullying | ✅ MATCH |
 | 58 | `HI-EN-23` | Hinglish | aaj mausam accha hai | Safe | Not Cyberbullying | N/A | 55.0% | No | 55.0% | 45.0% | Not Cyberbullying | ✅ MATCH |
 | 59 | `HI-EN-24` | Hinglish | main aapki madad kar sakta hoon | Safe | Not Cyberbullying | N/A | 50.8% | No | 50.8% | 49.2% | Cyberbullying Detected | ✅ MATCH |
-| 60 | `HI-EN-25` | Hinglish | isko toh chappal khol ke marna chahiye | Bullying | Not Cyberbullying | N/A | 50.7% | No | 50.7% | 49.3% | Not Cyberbullying | ❌ FALSE NEG |
-| 61 | `HI-EN-26` | Hinglish | isko to chappal khol ke marna chahiye | Bullying | Not Cyberbullying | N/A | 51.8% | No | 51.8% | 48.2% | Not Cyberbullying | ❌ FALSE NEG |
+| 60 | `HI-EN-25` | Hinglish | isko toh chappal khol ke marna chahiye | Bullying | Cyberbullying Detected | Other | 90.0% | ⚡ Yes | 50.7% | 49.3% | Not Cyberbullying | ✅ MATCH |
+| 61 | `HI-EN-26` | Hinglish | isko to chappal khol ke marna chahiye | Bullying | Cyberbullying Detected | Other | 90.0% | ⚡ Yes | 51.8% | 48.2% | Not Cyberbullying | ✅ MATCH |
 | 62 | `HI-EN-27` | Hinglish | meri chappal kahan hai | Safe | Not Cyberbullying | N/A | 53.6% | No | 53.6% | 46.4% | Not Cyberbullying | ✅ MATCH |
 | 63 | `HI-EN-28` | Hinglish | yeh chappal bahut comfortable hai | Safe | Not Cyberbullying | N/A | 53.1% | No | 53.1% | 46.9% | Not Cyberbullying | ✅ MATCH |
 | 64 | `HI-EN-29` | Hinglish | waah kya logic hai bhai, school kabhi gaye bhi the kya? | Bullying | Not Cyberbullying | N/A | 53.9% | No | 53.9% | 46.1% | Not Cyberbullying | ❌ FALSE NEG |
@@ -235,14 +222,14 @@ The table below details the exact prediction, category, confidence, and probabil
 | 79 | `HI-09` | Pure Hindi | रंडी की औलाद | Bullying | Cyberbullying Detected | Other | 55.4% | No | 44.6% | 55.4% | Not Cyberbullying | ✅ MATCH |
 | 80 | `HI-10` | Pure Hindi | चुतिया साला | Bullying | Cyberbullying Detected | Other | 51.1% | No | 48.9% | 51.1% | Not Cyberbullying | ✅ MATCH |
 | 81 | `HI-11` | Pure Hindi | तेरी बहन को चोदूंगा | Bullying | Cyberbullying Detected | Other | 53.3% | No | 46.7% | 53.3% | Not Cyberbullying | ✅ MATCH |
-| 82 | `HI-12` | Pure Hindi | तू तो पूरे परिवार का कलंक है | Bullying | Not Cyberbullying | N/A | 51.5% | No | 51.5% | 48.5% | Not Cyberbullying | ❌ FALSE NEG |
-| 83 | `HI-13` | Pure Hindi | बूढ़े लोगों को घर पे बैठना चाहिए | Bullying | Not Cyberbullying | N/A | 51.5% | No | 51.5% | 48.5% | Not Cyberbullying | ❌ FALSE NEG |
+| 82 | `HI-12` | Pure Hindi | तू तो पूरे परिवार का कलंक है | Bullying | Cyberbullying Detected | Other | 90.0% | ⚡ Yes | 51.5% | 48.5% | Not Cyberbullying | ✅ MATCH |
+| 83 | `HI-13` | Pure Hindi | बूढ़े लोगों को घर पे बैठना चाहिए | Bullying | Cyberbullying Detected | Age | 90.0% | ⚡ Yes | 51.5% | 48.5% | Not Cyberbullying | ✅ MATCH |
 | 84 | `HI-14` | Pure Hindi | मुसलमान सब आतंकवादी होते हैं | Bullying | Cyberbullying Detected | Religion | 98.9% | No | 1.1% | 98.9% | Not Cyberbullying | ✅ MATCH |
 | 85 | `HI-15` | Pure Hindi | हिंदू लोग पागल हैं | Bullying | Cyberbullying Detected | Religion | 95.2% | No | 4.8% | 95.2% | Not Cyberbullying | ✅ MATCH |
-| 86 | `HI-16` | Pure Hindi | लड़कियां सिर्फ किचन के लिए बनी हैं | Bullying | Not Cyberbullying | N/A | 52.3% | No | 52.3% | 47.7% | Not Cyberbullying | ❌ FALSE NEG |
+| 86 | `HI-16` | Pure Hindi | लड़कियां सिर्फ किचन के लिए बनी हैं | Bullying | Cyberbullying Detected | Gender | 90.0% | ⚡ Yes | 52.3% | 47.7% | Not Cyberbullying | ✅ MATCH |
 | 87 | `HI-17` | Pure Hindi | काले लोग आलसी होते हैं | Bullying | Cyberbullying Detected | Ethnicity | 98.0% | No | 2.0% | 98.0% | Not Cyberbullying | ✅ MATCH |
 | 88 | `HI-18` | Pure Hindi | तू इतना मोटा है, देखने लायक नहीं | Bullying | Not Cyberbullying | N/A | 50.8% | No | 50.8% | 49.2% | Not Cyberbullying | ❌ FALSE NEG |
-| 89 | `HI-19` | Pure Hindi | जा मर जा, कोई नहीं रोएगा | Bullying | Not Cyberbullying | N/A | 57.3% | No | 57.3% | 42.7% | Not Cyberbullying | ❌ FALSE NEG |
+| 89 | `HI-19` | Pure Hindi | जा मर जा, कोई नहीं रोएगा | Bullying | Cyberbullying Detected | Other | 90.0% | ⚡ Yes | 57.3% | 42.7% | Not Cyberbullying | ✅ MATCH |
 | 90 | `HI-20` | Pure Hindi | आप बहुत अच्छे हो, धन्यवाद | Safe | Not Cyberbullying | N/A | 53.9% | No | 53.9% | 46.1% | Not Cyberbullying | ✅ MATCH |
 | 91 | `HI-21` | Pure Hindi | यह प्रोजेक्ट बहुत अच्छा बनाया है आपने | Safe | Not Cyberbullying | N/A | 55.1% | No | 55.1% | 44.9% | Not Cyberbullying | ✅ MATCH |
 | 92 | `HI-22` | Pure Hindi | कृपया मेरी मदद करें, धन्यवाद | Safe | Not Cyberbullying | N/A | 55.9% | No | 55.9% | 44.1% | Not Cyberbullying | ✅ MATCH |

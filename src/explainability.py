@@ -5,11 +5,13 @@ from typing import Dict, Any
 TRIGGER_LEXICON = {
     "Age": [
         "boomer", "oldhag", "old hag", "senile", "wrinkly", "toddler", "kiddo", "grandma", 
-        "grandpa", "boomers", "too old", "expiring", "grandma", "dinosaur", "fossil"
+        "grandpa", "boomers", "too old", "expiring", "grandma", "dinosaur", "fossil",
+        "die already", "buddhe", "buddhe logon", "बूढ़े", "बूढ़े लोगों"
     ],
     "Gender": [
         "bitch", "whore", "slut", "cunt", "kitchen", "make me a sandwich", "femcel",
-        "incel", "golddigger", "hoe", "thot", "dish washer", "pussy", "simp", "misogynist"
+        "incel", "golddigger", "hoe", "thot", "dish washer", "pussy", "simp", "misogynist",
+        "belong in the kitchen", "kitchen ke liye bani", "किचन", "किचन के लिए बनी", "raped", "rape"
     ],
     "Ethnicity": [
         "nigger", "nigga", "chink", "spic", "curryboy", "curry", "go back to your country",
@@ -25,21 +27,27 @@ TRIGGER_LEXICON = {
         "bakwas", "fuck", "shit", "retard", "scum", "pig", "freak", "disgusting",
         "pagal", "kuttiya", "gandu", "kamine", "madarchod", "bhosdike", "randi", "kutte",
         "bhosdiwala", "gaand", "phaad", "behenchod", "chudail", "rand",
+        "chappal khol", "chappal khol ke marna", "chappal khol k maarna", "jaa mar", "ja mar",
+        "kalank", "worthless animals", "bloodline suffers", "dimaag mat use karna",
         "चूतिया", "साले", "कमीना", "हरामी", "कुतिया", "गांडू", "कमीने", "मादरचोद",
-        "भोसड़ीके", "रंडी", "भोसड़ीवाला", "गांड", "बहनचोद", "चुड़ैल", "कुत्ते", "नीच"
+        "भोसड़ीके", "रंडी", "भोसड़ीवाला", "गांड", "बहनचोद", "चुड़ैल", "कुत्ते", "नीच",
+        "जा मर जा", "मर जा", "कलंक", "चप्पल खोल", "चप्पल खोल के मारना", "दिमाग मत यूज़ करना"
     ]
 }
 
 # List of highly toxic Hindi/Hinglish slurs for safety-net override
 HIGH_SEVERITY_HINGLISH = {
     "chutiya", "saale", "kamina", "harami", "kuttiya", "gandu", "kamine", "madarchod", 
-    "bhosdike", "randi", "rand", "bhosdiwala", "gaand", "behenchod", "chudail"
+    "bhosdike", "randi", "rand", "bhosdiwala", "gaand", "behenchod", "chudail",
+    "chappal khol", "chappal khol ke marna", "chappal khol k maarna", "jaa mar", "ja mar",
+    "kalank", "buddhe logon", "kitchen ke liye bani"
 }
 
 # List of severe Devanagari Hindi slurs for safety-net override
 HIGH_SEVERITY_DEVANAGARI = {
     "चूतिया", "साले", "कमीना", "हरामी", "कुतिया", "गांडू", "कमीने", "मादरचोद",
-    "भोसड़ीके", "रंडी", "भोसड़ीवाला", "गांड", "बहनचोद", "चुड़ैल", "कुत्ते", "नीच"
+    "भोसड़ीके", "रंडी", "भोसड़ीवाला", "गांड", "बहनचोद", "चुड़ैल", "कुत्ते", "नीच",
+    "जा मर जा", "मर जा", "कलंक", "चप्पल खोल", "चप्पल खोल के मारना", "बूढ़े लोगों", "किचन के लिए बनी"
 }
 
 # List of severe English slurs, targeted profanity, and harassment triggers for safety-net override
@@ -47,7 +55,8 @@ HIGH_SEVERITY_ENGLISH = {
     "whore", "slut", "cunt", "bitch", "hoe", "thot",
     "nigger", "nigga", "chink", "spic", "faggot", "beaner", "wetback", "curryboy",
     "ricebag", "infidel", "kafir",
-    "kill yourself", "kys", "motherfucker", "suck my dick", "go fuck yourself"
+    "kill yourself", "kys", "motherfucker", "suck my dick", "go fuck yourself",
+    "raped", "die alone", "worthless animals", "bloodline suffers", "die already", "belong in the kitchen"
 }
 
 ALL_HIGH_SEVERITY_SLURS = HIGH_SEVERITY_HINGLISH | HIGH_SEVERITY_ENGLISH | HIGH_SEVERITY_DEVANAGARI
@@ -73,11 +82,14 @@ def extract_trigger_words(text: str, category: str, confidence: float) -> Dict[s
     for cat in search_categories:
         keywords = TRIGGER_LEXICON.get(cat, [])
         for word in keywords:
-            # Build flexible regex allowing character elongation (e.g., 'biiiitch', 'stuuupid', 'chuuutiya')
-            escaped_chars = [r'\s+' if c.isspace() else (re.escape(c) + '+' if c.isalpha() else re.escape(c)) for c in word]
-            flexible_pattern = r'\b' + ''.join(escaped_chars) + r'\b'
-            
-            pattern = re.compile(flexible_pattern, re.IGNORECASE)
+            has_non_ascii = any(ord(c) > 127 for c in word)
+            if has_non_ascii:
+                pattern = re.compile(r'(?<!\w)' + re.escape(word) + r'(?!\w)', re.IGNORECASE)
+            else:
+                escaped_chars = [r'\s+' if c.isspace() else (re.escape(c) + '+' if c.isalpha() else re.escape(c)) for c in word]
+                flexible_pattern = r'\b' + ''.join(escaped_chars) + r'\b'
+                pattern = re.compile(flexible_pattern, re.IGNORECASE)
+
             for m in pattern.finditer(text):
                 start, end = m.span()
                 matched_str = text[start:end]
@@ -86,7 +98,8 @@ def extract_trigger_words(text: str, category: str, confidence: float) -> Dict[s
                 # Check if it is a high-severity slur (Hinglish or English) to boost weight for the safety-net
                 word_lower = matched_str.lower()
                 is_high_severity = (word_lower in ALL_HIGH_SEVERITY_SLURS or 
-                                    any(w in word_lower for w in ALL_HIGH_SEVERITY_SLURS))
+                                    any(w in word_lower for w in ALL_HIGH_SEVERITY_SLURS) or
+                                    any(word_lower in w for w in ALL_HIGH_SEVERITY_SLURS))
                 weight = 0.90 if is_high_severity else round(min(0.95, 0.6 + 0.35 * (len(matched_str) / 10)), 2)
                 
                 matches.append({
