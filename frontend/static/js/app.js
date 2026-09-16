@@ -43,6 +43,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnResetApiEndpoint = document.getElementById("btnResetApiEndpoint");
     const backendStatusLabel = document.getElementById("backendStatusLabel");
 
+    const errorAlertBanner = document.getElementById("errorAlertBanner");
+    const errorMessageText = document.getElementById("errorMessageText");
+    const btnCloseAlert = document.getElementById("btnCloseAlert");
+
+    function showError(msg) {
+        if (errorMessageText && errorAlertBanner) {
+            errorMessageText.textContent = msg;
+            errorAlertBanner.classList.remove("d-none");
+            errorAlertBanner.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    }
+
+    function hideError() {
+        if (errorAlertBanner) {
+            errorAlertBanner.classList.add("d-none");
+        }
+    }
+
+    if (btnCloseAlert) {
+        btnCloseAlert.addEventListener("click", hideError);
+    }
+
     function updateBackendUI() {
         if (apiEndpointInput) apiEndpointInput.value = backendUrl || RENDER_BACKEND_URL;
         if (backendStatusLabel) {
@@ -69,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
                 modal.hide();
             }
-            alert(backendUrl ? `Model backend connected to:\n${backendUrl}` : "Backend reset to local origin.");
         });
     }
 
@@ -84,12 +105,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Character Counter & Clear Button
     inputText.addEventListener("input", () => {
+        hideError();
         const len = inputText.value.length;
         charCounter.textContent = `${len} / 500 chars`;
         btnClear.style.display = len > 0 ? "block" : "none";
     });
 
     btnClear.addEventListener("click", () => {
+        hideError();
         inputText.value = "";
         charCounter.textContent = "0 / 500 chars";
         btnClear.style.display = "none";
@@ -100,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Preset Pills: populate textarea on click WITHOUT auto-analyzing
     presetButtons.forEach(btn => {
         btn.addEventListener("click", () => {
+            hideError();
             const sample = btn.getAttribute("data-text");
             inputText.value = sample;
             inputText.dispatchEvent(new Event("input"));
@@ -126,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        hideError();
         setLoadingState(true);
 
         try {
@@ -147,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const modal = new bootstrap.Modal(modalEl);
                         modal.show();
                     }
-                    throw new Error("This static Hugging Face Space needs a connection to your Python model server. Enter your backend URL (e.g. Render) in the popup.");
+                    throw new Error("Static Hugging Face Space requires a connection to your Python model server. Enter backend URL in settings.");
                 }
                 const errData = await response.json().catch(() => ({}));
                 throw new Error(errData.error || `Server responded with status ${response.status}`);
@@ -158,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } catch (err) {
             console.error("Model Inference Error:", err);
-            alert("Model Connection Notice:\n" + err.message);
+            showError("Analysis Notice: " + (err.message || "Failed to reach model server."));
         } finally {
             setLoadingState(false);
         }

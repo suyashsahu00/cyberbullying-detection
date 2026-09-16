@@ -20,6 +20,9 @@
     <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'><path d='M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z'/></svg>">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -84,6 +87,17 @@
                     <p class="hero-subtitle">
                         Paste a social media comment or tweet below to instantly detect abusive content, classify targets, and highlight trigger words in real time.
                     </p>
+                </div>
+
+                <!-- In-App Error Banner -->
+                <div id="errorAlertBanner" class="alert alert-danger border-0 shadow-sm d-none mb-4 custom-error-banner" role="alert">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-circle-exclamation fs-5 text-danger"></i>
+                            <span id="errorMessageText" class="fs-8 fw-600"></span>
+                        </div>
+                        <button type="button" class="btn-close btn-close-sm" id="btnCloseAlert" aria-label="Close"></button>
+                    </div>
                 </div>
 
                 <!-- Input & Control Card Container -->
