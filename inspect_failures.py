@@ -2,7 +2,6 @@ import os
 import sys
 import json
 import pandas as pd
-import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
@@ -16,8 +15,16 @@ from src.model import classify_probabilities
 if sys.stdout.encoding != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8')
 
-# 1. Load test data from CSV (no parquet engine dependency)
-test_df = pd.read_csv("data/processed/combined_test.csv")
+# 1. Load test data (prefers tracked parquet file, falls back to csv)
+parquet_path = os.path.join(ROOT_DIR, "data", "processed", "combined_test.parquet")
+csv_path = os.path.join(ROOT_DIR, "data", "processed", "combined_test.csv")
+if os.path.exists(parquet_path):
+    test_df = pd.read_parquet(parquet_path)
+elif os.path.exists(csv_path):
+    test_df = pd.read_csv(csv_path)
+else:
+    raise FileNotFoundError(f"Neither {parquet_path} nor {csv_path} found.")
+
 other_test = test_df[test_df["cyberbullying_type"] == "other_cyberbullying"].copy()
 
 print(f"Found {len(other_test)} actual 'other_cyberbullying' samples. Loading MuRIL model...")

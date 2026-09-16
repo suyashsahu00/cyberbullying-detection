@@ -20,7 +20,6 @@ import time
 import json
 import random
 import argparse
-import numpy as np
 import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
