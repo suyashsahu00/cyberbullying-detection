@@ -22,7 +22,7 @@
         "religion": 0.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 236.66,
+      "latency_ms": 140.92,
       "detected_lang": "English",
       "trigger_words": [
         "stupid",
@@ -67,7 +67,7 @@
         "religion": 0.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.21,
+      "latency_ms": 87.48,
       "detected_lang": "English",
       "trigger_words": [
         "fuck"
@@ -111,7 +111,7 @@
         "religion": 1.2
       },
       "safety_net_triggered": true,
-      "latency_ms": 135.8,
+      "latency_ms": 84.68,
       "detected_lang": "English",
       "trigger_words": [
         "whore"
@@ -155,11 +155,11 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 129.2,
+      "latency_ms": 84.47,
       "detected_lang": "English",
       "trigger_words": [
-        "loser",
         "kill yourself",
+        "loser",
         "kys"
       ]
     },
@@ -201,7 +201,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.04,
+      "latency_ms": 83.79,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -243,11 +243,11 @@
         "religion": 0.3
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.18,
+      "latency_ms": 88.32,
       "detected_lang": "English",
       "trigger_words": [
-        "boomer",
-        "senile"
+        "senile",
+        "boomer"
       ]
     },
     "baseline": {
@@ -288,7 +288,7 @@
         "religion": 96.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.13,
+      "latency_ms": 80.19,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -330,7 +330,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.11,
+      "latency_ms": 85.69,
       "detected_lang": "English",
       "trigger_words": [
         "dumb"
@@ -374,7 +374,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": true,
-      "latency_ms": 134.13,
+      "latency_ms": 80.3,
       "detected_lang": "English",
       "trigger_words": [
         "kitchen",
@@ -419,7 +419,7 @@
         "religion": 1.4
       },
       "safety_net_triggered": true,
-      "latency_ms": 135.04,
+      "latency_ms": 85.57,
       "detected_lang": "English",
       "trigger_words": [
         "die"
@@ -463,7 +463,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.39,
+      "latency_ms": 84.69,
       "detected_lang": "English",
       "trigger_words": [
         "disgusting",
@@ -510,7 +510,7 @@
         "religion": 70.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.17,
+      "latency_ms": 83.91,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -552,7 +552,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.06,
+      "latency_ms": 84.34,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -594,7 +594,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.16,
+      "latency_ms": 81.96,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -636,7 +636,7 @@
         "religion": 72.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 142.17,
+      "latency_ms": 83.93,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -678,7 +678,7 @@
         "religion": 1.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.53,
+      "latency_ms": 84.35,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -720,7 +720,7 @@
         "religion": 2.3
       },
       "safety_net_triggered": true,
-      "latency_ms": 132.92,
+      "latency_ms": 83.03,
       "detected_lang": "English",
       "trigger_words": [
         "raped"
@@ -764,7 +764,7 @@
         "religion": 1.6
       },
       "safety_net_triggered": true,
-      "latency_ms": 133.87,
+      "latency_ms": 84.57,
       "detected_lang": "English",
       "trigger_words": [
         "worthless animals"
@@ -808,7 +808,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.97,
+      "latency_ms": 80.73,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -850,7 +850,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.73,
+      "latency_ms": 81.91,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -892,7 +892,7 @@
         "religion": 1.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.7,
+      "latency_ms": 84.51,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -934,7 +934,7 @@
         "religion": 1.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.23,
+      "latency_ms": 86.01,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -976,7 +976,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.92,
+      "latency_ms": 82.98,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1018,7 +1018,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.72,
+      "latency_ms": 85.54,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1060,7 +1060,7 @@
         "religion": 0.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.37,
+      "latency_ms": 86.11,
       "detected_lang": "English",
       "trigger_words": [
         "useless",
@@ -1105,7 +1105,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 136.22,
+      "latency_ms": 85.19,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1147,7 +1147,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.24,
+      "latency_ms": 87.39,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1189,7 +1189,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.67,
+      "latency_ms": 84.91,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1231,7 +1231,7 @@
         "religion": 2.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.98,
+      "latency_ms": 82.37,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1273,7 +1273,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 136.15,
+      "latency_ms": 82.97,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1315,7 +1315,7 @@
         "religion": 1.2
       },
       "safety_net_triggered": true,
-      "latency_ms": 150.62,
+      "latency_ms": 86.51,
       "detected_lang": "English",
       "trigger_words": [
         "bloodline"
@@ -1359,7 +1359,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 149.95,
+      "latency_ms": 83.73,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1401,7 +1401,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.88,
+      "latency_ms": 85.51,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1443,7 +1443,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.87,
+      "latency_ms": 83.49,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1485,7 +1485,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.73,
+      "latency_ms": 85.14,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1527,11 +1527,11 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.87,
+      "latency_ms": 85.04,
       "detected_lang": "Hinglish",
       "trigger_words": [
-        "madarchod",
-        "saale"
+        "saale",
+        "madarchod"
       ]
     },
     "baseline": {
@@ -1572,7 +1572,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 141.75,
+      "latency_ms": 80.53,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -1614,7 +1614,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": true,
-      "latency_ms": 135.21,
+      "latency_ms": 85.47,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "chappal nikaal"
@@ -1658,7 +1658,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.37,
+      "latency_ms": 85.78,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "dimaag use mat"
@@ -1702,7 +1702,7 @@
         "religion": 0.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.76,
+      "latency_ms": 83.43,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -1744,12 +1744,12 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.68,
+      "latency_ms": 83.36,
       "detected_lang": "Hinglish",
       "trigger_words": [
-        "mar jaa",
+        "saale",
         "madarchod",
-        "saale"
+        "mar jaa"
       ]
     },
     "baseline": {
@@ -1790,7 +1790,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.71,
+      "latency_ms": 83.85,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "lode"
@@ -1834,7 +1834,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.17,
+      "latency_ms": 81.85,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "harami"
@@ -1878,7 +1878,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.31,
+      "latency_ms": 81.25,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "randi"
@@ -1922,7 +1922,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.37,
+      "latency_ms": 86.88,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "chutiya"
@@ -1966,7 +1966,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.09,
+      "latency_ms": 81.96,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2008,7 +2008,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.11,
+      "latency_ms": 85.4,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "kalank"
@@ -2052,11 +2052,10 @@
         "religion": 1.7
       },
       "safety_net_triggered": true,
-      "latency_ms": 133.52,
+      "latency_ms": 83.09,
       "detected_lang": "Hinglish",
       "trigger_words": [
-        "buddhe",
-        "buddhe log"
+        "buddhe log ghar pe"
       ]
     },
     "baseline": {
@@ -2097,7 +2096,7 @@
         "religion": 95.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.39,
+      "latency_ms": 85.28,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "terrorist"
@@ -2141,7 +2140,7 @@
         "religion": 67.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.96,
+      "latency_ms": 83.66,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "pagal"
@@ -2185,11 +2184,11 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.04,
+      "latency_ms": 78.23,
       "detected_lang": "Hinglish",
       "trigger_words": [
-        "kitchen",
-        "kitchen ke liye"
+        "kitchen ke liye",
+        "kitchen"
       ]
     },
     "baseline": {
@@ -2230,7 +2229,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.29,
+      "latency_ms": 82.73,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2272,7 +2271,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.33,
+      "latency_ms": 82.93,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2314,7 +2313,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.22,
+      "latency_ms": 80.7,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "mar jaa",
@@ -2359,7 +2358,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.54,
+      "latency_ms": 85.72,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -2401,7 +2400,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.11,
+      "latency_ms": 85.87,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -2443,7 +2442,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.54,
+      "latency_ms": 87.71,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2485,7 +2484,7 @@
         "religion": 1.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.86,
+      "latency_ms": 88.43,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2527,7 +2526,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.52,
+      "latency_ms": 92.1,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -2569,7 +2568,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.44,
+      "latency_ms": 97.93,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "chappal khol"
@@ -2613,7 +2612,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": true,
-      "latency_ms": 133.32,
+      "latency_ms": 91.98,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "chappal nikaal"
@@ -2657,7 +2656,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.86,
+      "latency_ms": 110.32,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2699,7 +2698,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.99,
+      "latency_ms": 89.15,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2741,7 +2740,7 @@
         "religion": 1.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.42,
+      "latency_ms": 80.72,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2783,7 +2782,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.43,
+      "latency_ms": 81.68,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2825,7 +2824,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.27,
+      "latency_ms": 84.89,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "pagal"
@@ -2869,11 +2868,11 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 128.48,
+      "latency_ms": 82.36,
       "detected_lang": "Hinglish",
       "trigger_words": [
-        "gandu",
-        "saale"
+        "saale",
+        "gandu"
       ]
     },
     "baseline": {
@@ -2914,7 +2913,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.2,
+      "latency_ms": 73.33,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "randi"
@@ -2958,7 +2957,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.85,
+      "latency_ms": 85.49,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -3000,7 +2999,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.32,
+      "latency_ms": 80.03,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -3042,11 +3041,11 @@
         "religion": 0.9
       },
       "safety_net_triggered": true,
-      "latency_ms": 133.12,
+      "latency_ms": 80.27,
       "detected_lang": "Hindi",
       "trigger_words": [
-        "मादरचोद",
-        "साले"
+        "साले",
+        "मादरचोद"
       ]
     },
     "baseline": {
@@ -3087,7 +3086,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.49,
+      "latency_ms": 83.42,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3129,7 +3128,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": true,
-      "latency_ms": 136.03,
+      "latency_ms": 83.34,
       "detected_lang": "Hindi",
       "trigger_words": [
         "चप्पल निकाल"
@@ -3173,7 +3172,7 @@
         "religion": 1.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.99,
+      "latency_ms": 82.27,
       "detected_lang": "Hindi",
       "trigger_words": [
         "दिमाग यूज़ मत"
@@ -3217,7 +3216,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.73,
+      "latency_ms": 84.68,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3259,12 +3258,12 @@
         "religion": 0.9
       },
       "safety_net_triggered": true,
-      "latency_ms": 132.61,
+      "latency_ms": 76.3,
       "detected_lang": "Hindi",
       "trigger_words": [
+        "साले",
         "मादरचोद",
-        "मर जा",
-        "साले"
+        "मर जा"
       ]
     },
     "baseline": {
@@ -3305,7 +3304,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": true,
-      "latency_ms": 134.54,
+      "latency_ms": 84.21,
       "detected_lang": "Hindi",
       "trigger_words": [
         "लोड़े"
@@ -3349,7 +3348,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.83,
+      "latency_ms": 82.4,
       "detected_lang": "Hindi",
       "trigger_words": [
         "हरामी"
@@ -3393,7 +3392,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.01,
+      "latency_ms": 85.15,
       "detected_lang": "Hindi",
       "trigger_words": [
         "रंडी"
@@ -3437,7 +3436,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.79,
+      "latency_ms": 83.9,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3479,7 +3478,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.51,
+      "latency_ms": 83.67,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3521,7 +3520,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": true,
-      "latency_ms": 132.84,
+      "latency_ms": 86.38,
       "detected_lang": "Hindi",
       "trigger_words": [
         "कलंक"
@@ -3565,11 +3564,10 @@
         "religion": 0.8
       },
       "safety_net_triggered": true,
-      "latency_ms": 136.37,
+      "latency_ms": 85.68,
       "detected_lang": "Hindi",
       "trigger_words": [
-        "बूढ़े",
-        "बूढ़े लोग"
+        "बूढ़े लोग घर पे"
       ]
     },
     "baseline": {
@@ -3610,7 +3608,7 @@
         "religion": 96.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.77,
+      "latency_ms": 79.5,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3652,7 +3650,7 @@
         "religion": 89.2
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.58,
+      "latency_ms": 82.6,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3694,7 +3692,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.66,
+      "latency_ms": 81.96,
       "detected_lang": "Hindi",
       "trigger_words": [
         "किचन",
@@ -3739,7 +3737,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.46,
+      "latency_ms": 78.65,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3781,7 +3779,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.64,
+      "latency_ms": 79.57,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3823,11 +3821,11 @@
         "religion": 2.1
       },
       "safety_net_triggered": true,
-      "latency_ms": 134.42,
+      "latency_ms": 84.09,
       "detected_lang": "Hindi",
       "trigger_words": [
-        "जाके मर",
-        "मर जा"
+        "मर जा",
+        "जाके मर"
       ]
     },
     "baseline": {
@@ -3868,7 +3866,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.05,
+      "latency_ms": 81.53,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3910,7 +3908,7 @@
         "religion": 1.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.76,
+      "latency_ms": 85.5,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3952,7 +3950,7 @@
         "religion": 1.2
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.11,
+      "latency_ms": 82.52,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3994,7 +3992,7 @@
         "religion": 1.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.26,
+      "latency_ms": 84.37,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4036,7 +4034,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 129.94,
+      "latency_ms": 86.05,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4078,7 +4076,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.02,
+      "latency_ms": 83.49,
       "detected_lang": "Hindi",
       "trigger_words": [
         "चप्पल खोल"
@@ -4122,7 +4120,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.05,
+      "latency_ms": 83.41,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4164,7 +4162,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 146.0,
+      "latency_ms": 83.67,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4206,7 +4204,7 @@
         "religion": 1.3
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.02,
+      "latency_ms": 82.63,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4248,7 +4246,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.12,
+      "latency_ms": 83.54,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4290,7 +4288,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.78,
+      "latency_ms": 77.51,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
