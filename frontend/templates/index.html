@@ -17,8 +17,9 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- FontAwesome 6 Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Lucide Icons Script -->
+    <script src="{{ url_for('static', filename='js/lucide.min.js') }}"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234f46e5'><path d='M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z'/></svg>">
@@ -33,35 +34,32 @@
         <div class="container navbar-container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
                 <div class="brand-icon">
-                    <i class="fa-solid fa-shield-halved"></i>
+                    <i data-lucide="shield-alert" class="icon-brand"></i>
                 </div>
                 <span class="brand-text">GuardText <span class="brand-badge-ai">AI</span></span>
             </a>
             <div class="d-flex align-items-center gap-2">
-                <button type="button" class="btn btn-sm btn-light border rounded-pill px-3 py-1 fs-8 text-secondary" data-bs-toggle="modal" data-bs-target="#apiModal" id="btnApiSettings" title="Configure Backend API">
-                    <i class="fa-solid fa-server me-1 text-primary"></i> <span id="backendStatusLabel">Backend</span>
-                </button>
                 <span class="badge badge-system-ready">
                     <span class="status-dot"></span> System Ready
                 </span>
-                <a href="#howItWorksSection" class="how-it-works-link d-none d-sm-inline-block">
-                    <i class="fa-regular fa-circle-question me-1"></i> How it works
-                </a>
             </div>
         </div>
     </header>
 
-    <!-- Backend Configuration Modal -->
+    <!-- Backend Configuration Modal (Preserved for automated network fallbacks / admin debugging) -->
     <div class="modal fade" id="apiModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0 shadow">
                 <div class="modal-header border-0 pb-0">
-                    <h6 class="modal-title fw-700 text-dark"><i class="fa-solid fa-server text-primary me-2"></i>Model Backend Configuration</h6>
+                    <h6 class="modal-title fw-700 text-dark d-flex align-items-center gap-2">
+                        <i data-lucide="server" class="text-primary icon-sm"></i>
+                        <span>Model Backend Configuration</span>
+                    </h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body pt-2">
                     <p class="fs-8 text-muted mb-2">
-                        Enter your deployed Python backend URL (Render, Railway, or Cloudflare Tunnel) to power predictions on this page:
+                        Enter your deployed Python backend URL (Render, Railway, or Cloudflare Tunnel) to power predictions:
                     </p>
                     <div class="input-group mb-2">
                         <input type="url" class="form-control fs-8" id="apiEndpointInput" placeholder="https://your-app.onrender.com">
@@ -93,7 +91,7 @@
                 <div id="errorAlertBanner" class="alert alert-danger border-0 shadow-sm d-none mb-4 custom-error-banner" role="alert">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-circle-exclamation fs-5 text-danger"></i>
+                            <i data-lucide="alert-circle" class="icon-sm text-danger"></i>
                             <span id="errorMessageText" class="fs-8 fw-600"></span>
                         </div>
                         <button type="button" class="btn-close btn-close-sm" id="btnCloseAlert" aria-label="Close"></button>
@@ -106,8 +104,9 @@
                         
                         <!-- Top Row: Input Text Label & Counter -->
                         <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="input-header-title">
-                                <i class="fa-regular fa-comment-dots text-primary me-2"></i>Input Text
+                            <span class="input-header-title d-flex align-items-center gap-2">
+                                <i data-lucide="message-square" class="text-primary icon-sm"></i>
+                                <span>Input Text</span>
                             </span>
                             <span class="char-count" id="charCounter">0 / 500 chars</span>
                         </div>
@@ -121,31 +120,31 @@
                                 maxlength="500"
                                 placeholder="Paste a social media comment or tweet here..."></textarea>
                             <button class="btn btn-clear-text" id="btnClear" title="Clear text" style="display: none;">
-                                <i class="fa-solid fa-xmark"></i>
+                                <i data-lucide="x" class="icon-xs"></i>
                             </button>
                         </div>
 
-                        <!-- Quick Sample Presets -->
+                        <!-- Quick Sample Presets (2-Tone Semantic System: Safe vs Flagged) -->
                         <div class="presets-section mb-4">
                             <div class="d-flex align-items-center gap-1 mb-2">
-                                <i class="fa-solid fa-bolt text-secondary fs-7"></i>
+                                <i data-lucide="sparkles" class="text-secondary icon-xs"></i>
                                 <span class="quick-samples-label">Quick Samples:</span>
                             </div>
                             <div class="d-flex flex-wrap gap-2">
-                                <button type="button" class="preset-pill" data-text="Hope you have a wonderful day ahead with your family!">
-                                    <i class="fa-regular fa-face-smile text-success me-1"></i> Friendly
+                                <button type="button" class="preset-pill preset-pill-safe" data-text="Hope you have a wonderful day ahead with your family!">
+                                    <i data-lucide="smile" class="icon-xs me-1"></i> Friendly
                                 </button>
-                                <button type="button" class="preset-pill" data-text="Women are too emotional to lead, stay home where you belong bitch.">
-                                    <i class="fa-solid fa-venus text-danger me-1"></i> Gender Attack
+                                <button type="button" class="preset-pill preset-pill-flagged" data-text="Women are too emotional to lead, stay home where you belong bitch.">
+                                    <i data-lucide="alert-triangle" class="icon-xs me-1"></i> Gender Attack
                                 </button>
-                                <button type="button" class="preset-pill" data-text="Chuthiya tera dharm apne pas rakh aur bakwaas mat kar saale.">
-                                    <i class="fa-solid fa-id-card text-warning me-1"></i> Hinglish Bullying
+                                <button type="button" class="preset-pill preset-pill-flagged" data-text="Chuthiya tera dharm apne pas rakh aur bakwaas mat kar saale.">
+                                    <i data-lucide="alert-triangle" class="icon-xs me-1"></i> Hinglish Bullying
                                 </button>
-                                <button type="button" class="preset-pill" data-text="अंग्रेजी नहीं आती है इसलिए हिन्दी ट्विट ज्यादा करते हैं क्या बात है!">
-                                    <i class="fa-solid fa-masks-theater text-info me-1"></i> SDSHL Sarcasm
+                                <button type="button" class="preset-pill preset-pill-flagged" data-text="अंग्रेजी नहीं आती है इसलिए हिन्दी ट्विट ज्यादा करते हैं क्या बात है!">
+                                    <i data-lucide="alert-triangle" class="icon-xs me-1"></i> Sarcastic Insult
                                 </button>
-                                <button type="button" class="preset-pill" data-text="Shut up you wrinkly senile old hag boomer!">
-                                    <i class="fa-solid fa-user-group text-danger me-1"></i> Age Bullying
+                                <button type="button" class="preset-pill preset-pill-flagged" data-text="Shut up you wrinkly senile old hag boomer!">
+                                    <i data-lucide="alert-triangle" class="icon-xs me-1"></i> Age Bullying
                                 </button>
                             </div>
                         </div>
@@ -154,7 +153,9 @@
                         <div class="d-grid">
                             <button type="button" class="btn btn-analyze-gradient" id="btnAnalyze">
                                 <span class="spinner-border spinner-border-sm d-none" id="analyzeSpinner" role="status" aria-hidden="true"></span>
-                                <i class="fa-solid fa-wand-magic-sparkles me-2" id="analyzeIcon"></i>
+                                <span id="analyzeIconWrapper" class="d-inline-flex align-items-center me-2">
+                                    <i data-lucide="sparkles" class="icon-sm" id="analyzeIcon"></i>
+                                </span>
                                 <span id="btnText">Analyze Comment</span>
                             </button>
                         </div>
@@ -163,61 +164,74 @@
 
                 <!-- Results Panel (Hidden until analyzed) -->
                 <div class="card shadow-sm border-0 results-card mb-4 d-none" id="resultsPanel">
-                    <div class="card-header bg-white border-bottom-0 pt-4 px-4 px-md-5 d-flex justify-content-between align-items-center">
+                    <div class="card-header bg-white border-bottom-0 pt-4 px-4 px-md-5 d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h5 class="m-0 fw-700 text-dark-blue">Analysis Results</h5>
                         
-                        <!-- Detected Language Badge -->
-                        <div class="language-pill" id="languageBadge" title="Detected Language">
-                            <i class="fa-solid fa-globe me-1"></i> <span id="languageName">English</span>
+                        <!-- Detected Language Display: Non-interactive metadata label -->
+                        <div class="detected-language-meta" id="languageBadge" title="Detected Language">
+                            <span class="meta-label">Detected Language:</span>
+                            <span class="meta-value">
+                                <i data-lucide="globe" class="icon-xs"></i>
+                                <span id="languageName">English</span>
+                            </span>
                         </div>
                     </div>
                     
                     <div class="card-body px-4 px-md-5 pb-4">
                         
-                        <!-- Verdict & Category Header Row -->
-                        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                        <!-- 1. Primary Hero Element: Detection Verdict Card -->
+                        <div class="verdict-hero-card mb-4 danger" id="verdictHeroCard">
                             <div class="d-flex align-items-center gap-3">
                                 <div class="verdict-icon-box danger" id="verdictIconContainer">
-                                    <i class="fa-solid fa-triangle-exclamation" id="verdictIcon"></i>
+                                    <i data-lucide="alert-triangle" class="icon-hero" id="verdictIcon"></i>
                                 </div>
-                                <div>
-                                    <div class="sub-label">DETECTION VERDICT</div>
-                                    <h4 class="verdict-title m-0 danger" id="verdictBadge">Cyberbullying Detected</h4>
+                                <div class="flex-grow-1">
+                                    <div class="verdict-eyebrow">DETECTION VERDICT</div>
+                                    <h3 class="verdict-title m-0 danger" id="verdictBadge">Cyberbullying Detected</h3>
+                                    <div class="verdict-subtitle" id="verdictSubtitle">Harmful or abusive language flagged by model</div>
                                 </div>
-                            </div>
-                            
-                            <!-- Category Badge -->
-                            <div class="text-end" id="categoryContainer">
-                                <div class="sub-label">TARGET CATEGORY</div>
-                                <span class="category-pill-badge" id="categoryBadge">GENDER</span>
                             </div>
                         </div>
 
-                        <!-- Confidence Bar -->
-                        <div class="confidence-container mb-4">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="confidence-label">
-                                    <i class="fa-solid fa-gauge-high me-1 text-secondary"></i> Model Confidence
-                                </span>
-                                <span class="confidence-val" id="confidenceValue">91.3%</span>
+                        <!-- 2. Supporting Secondary Metrics: Target Category & Dynamic Confidence -->
+                        <div class="row g-3 mb-4 secondary-metrics-row">
+                            <div class="col-12 col-md-6">
+                                <div class="metric-card p-3 rounded-3 h-100">
+                                    <div class="sub-label mb-2">TARGET CATEGORY</div>
+                                    <div id="categoryContainer" class="d-flex align-items-center">
+                                        <span class="category-pill-badge" id="categoryBadge">GENDER</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="progress custom-progress-bar">
-                                <div 
-                                    class="progress-bar custom-progress-fill" 
-                                    id="confidenceProgressBar" 
-                                    role="progressbar" 
-                                    style="width: 91.3%" 
-                                    aria-valuenow="91.3" 
-                                    aria-valuemin="0" 
-                                    aria-valuemax="100"></div>
+                            <div class="col-12 col-md-6">
+                                <div class="metric-card p-3 rounded-3 h-100">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="sub-label d-flex align-items-center gap-1">
+                                            <i data-lucide="gauge" class="icon-xs text-secondary"></i>
+                                            <span>MODEL CONFIDENCE</span>
+                                        </span>
+                                        <span class="confidence-val severity-high" id="confidenceValue">91.3%</span>
+                                    </div>
+                                    <div class="progress custom-progress-bar">
+                                        <div 
+                                            class="progress-bar custom-progress-fill severity-high" 
+                                            id="confidenceProgressBar" 
+                                            role="progressbar" 
+                                            style="width: 91.3%" 
+                                            aria-valuenow="91.3" 
+                                            aria-valuemin="0" 
+                                            aria-valuemax="100"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Keyword-Based Trigger Detection Box -->
+                        <!-- 3. Keyword-Based Trigger Detection Box -->
                         <div class="explainability-container">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <span class="explainability-heading" id="triggerHeading">
-                                    <i class="fa-solid fa-tags text-warning me-1"></i> Keyword-Based Trigger Detection
+                            <div class="d-flex justify-content-between align-items-center mb-1 flex-wrap gap-2">
+                                <span class="explainability-heading d-flex align-items-center gap-1" id="triggerHeading">
+                                    <i data-lucide="tag" class="icon-xs text-warning"></i>
+                                    <span id="triggerMethodText">Keyword-Based Trigger Detection</span>
                                 </span>
                                 <span class="trigger-count-pill" id="triggerCountBadge">3 trigger words flagged</span>
                             </div>
@@ -232,13 +246,13 @@
                     </div>
                 </div>
 
-                <!-- How it works Accordion -->
+                <!-- Consolidated How it works Accordion -->
                 <div class="accordion custom-accordion mb-5" id="howItWorksSection">
                     <div class="accordion-item border-0 shadow-sm rounded-4 overflow-hidden">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed py-3 px-4 fw-600" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                <i class="fa-solid fa-microchip text-primary me-2"></i>
-                                How it works &mdash; AI &amp; NLP Architecture
+                            <button class="accordion-button collapsed py-3 px-4 fw-600 d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <i data-lucide="cpu" class="text-primary icon-sm me-2"></i>
+                                <span>How it works &mdash; AI &amp; NLP Architecture</span>
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#howItWorksSection">
@@ -248,7 +262,7 @@
                                         <div class="arch-card">
                                             <div class="arch-number">1</div>
                                             <h6 class="fw-700 text-dark mb-1">MuRIL Transformer</h6>
-                                            <p class="fs-8 text-muted mb-0">Google's pre-trained multilingual BERT adapted for English and Indian languages (including Hinglish code-mixed slang).</p>
+                                            <p class="fs-8 text-muted mb-0">Google's pre-trained multilingual BERT fine-tuned for English, Hindi, and Hinglish code-mixed slang.</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
@@ -261,10 +275,14 @@
                                     <div class="col-12 col-md-4">
                                         <div class="arch-card">
                                             <div class="arch-number">3</div>
-                                            <h6 class="fw-700 text-dark mb-1">Keyword-Based Trigger Detection</h6>
+                                            <h6 class="fw-700 text-dark mb-1">Trigger Attribution</h6>
                                             <p class="fs-8 text-muted mb-0">Pinpoints specific abusive keywords and token attributions responsible for the classification decision.</p>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="mt-3 pt-3 border-top text-muted fs-8 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                    <span>Model: <strong>Google MuRIL Base</strong> (12 layers, 768 hidden)</span>
+                                    <span>Deployment: <strong>Python Backend API</strong> &bull; Hosted on Hugging Face</span>
                                 </div>
                             </div>
                         </div>
@@ -275,9 +293,11 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 text-muted fs-8">
-        <p class="mb-0">Powered by <strong>Google MuRIL Transformer</strong> &bull; Hosted on Hugging Face</p>
+    <!-- Refined, Subtle Footer (Requirement 7) -->
+    <footer class="text-center py-4">
+        <p class="mb-0 text-muted" style="font-size: 0.76rem; letter-spacing: 0.01em;">
+            Powered by Google MuRIL Transformer &bull; Multilingual NLP Research System
+        </p>
     </footer>
 
     <!-- Bootstrap 5 Bundle JS -->

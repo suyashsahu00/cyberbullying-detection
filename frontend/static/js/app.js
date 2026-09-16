@@ -1,17 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Initialize Lucide Icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+
     // Input Elements
     const inputText = document.getElementById("inputText");
     const btnAnalyze = document.getElementById("btnAnalyze");
     const btnClear = document.getElementById("btnClear");
     const charCounter = document.getElementById("charCounter");
     const analyzeSpinner = document.getElementById("analyzeSpinner");
-    const analyzeIcon = document.getElementById("analyzeIcon");
+    const analyzeIconWrapper = document.getElementById("analyzeIconWrapper");
     const btnText = document.getElementById("btnText");
 
     // Results Elements
     const resultsPanel = document.getElementById("resultsPanel");
+    const verdictHeroCard = document.getElementById("verdictHeroCard");
     const verdictBadge = document.getElementById("verdictBadge");
-    const verdictIcon = document.getElementById("verdictIcon");
+    const verdictSubtitle = document.getElementById("verdictSubtitle");
     const verdictIconContainer = document.getElementById("verdictIconContainer");
     const categoryBadge = document.getElementById("categoryBadge");
     const confidenceValue = document.getElementById("confidenceValue");
@@ -41,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const apiEndpointInput = document.getElementById("apiEndpointInput");
     const btnSaveApiEndpoint = document.getElementById("btnSaveApiEndpoint");
     const btnResetApiEndpoint = document.getElementById("btnResetApiEndpoint");
-    const backendStatusLabel = document.getElementById("backendStatusLabel");
 
     const errorAlertBanner = document.getElementById("errorAlertBanner");
     const errorMessageText = document.getElementById("errorMessageText");
@@ -65,15 +70,26 @@ document.addEventListener("DOMContentLoaded", () => {
         btnCloseAlert.addEventListener("click", hideError);
     }
 
-    function updateBackendUI() {
-        if (apiEndpointInput) apiEndpointInput.value = backendUrl || RENDER_BACKEND_URL;
-        if (backendStatusLabel) {
-            const isLive = Boolean(backendUrl);
-            backendStatusLabel.textContent = isLive ? "Render Connected" : "Backend";
-            backendStatusLabel.className = isLive ? "text-success fw-600" : "";
+    // Admin Access trigger (via ?admin=true, #admin, or Ctrl+Shift+B)
+    if (window.location.search.includes("admin=true") || window.location.hash === "#admin") {
+        const modalEl = document.getElementById("apiModal");
+        if (modalEl && window.bootstrap) {
+            new bootstrap.Modal(modalEl).show();
         }
     }
-    updateBackendUI();
+    document.addEventListener("keydown", (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "b") {
+            e.preventDefault();
+            const modalEl = document.getElementById("apiModal");
+            if (modalEl && window.bootstrap) {
+                new bootstrap.Modal(modalEl).show();
+            }
+        }
+    });
+
+    if (apiEndpointInput) {
+        apiEndpointInput.value = backendUrl || RENDER_BACKEND_URL;
+    }
 
     if (btnSaveApiEndpoint) {
         btnSaveApiEndpoint.addEventListener("click", () => {
@@ -84,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (val.endsWith("/")) val = val.slice(0, -1);
             backendUrl = val;
             localStorage.setItem("guardtext_backend_url", backendUrl);
-            updateBackendUI();
             
             const modalEl = document.getElementById("apiModal");
             if (modalEl && window.bootstrap) {
@@ -98,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btnResetApiEndpoint.addEventListener("click", () => {
             backendUrl = "";
             localStorage.removeItem("guardtext_backend_url");
-            updateBackendUI();
             if (apiEndpointInput) apiEndpointInput.value = "";
         });
     }
@@ -193,11 +207,11 @@ document.addEventListener("DOMContentLoaded", () => {
         btnAnalyze.disabled = isLoading;
         if (isLoading) {
             analyzeSpinner.classList.remove("d-none");
-            analyzeIcon.classList.add("d-none");
+            if (analyzeIconWrapper) analyzeIconWrapper.classList.add("d-none");
             btnText.textContent = "Running MuRIL Model...";
         } else {
             analyzeSpinner.classList.add("d-none");
-            analyzeIcon.classList.remove("d-none");
+            if (analyzeIconWrapper) analyzeIconWrapper.classList.remove("d-none");
             btnText.textContent = "Analyze Comment";
         }
     }
@@ -205,39 +219,68 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderResults(data, originalText) {
         resultsPanel.classList.remove("d-none");
 
-        // 1. Detected Language
+        // 1. Detected Language Display (Non-interactive metadata label)
         if (languageName) {
             languageName.textContent = data.language || "English";
         }
 
         const isBully = Boolean(data.is_cyberbullying);
-        const category = data.category || (isBully ? "Other" : "N/A");
+        const rawCategory = data.category || (isBully ? "Other" : "Safe");
+        const category = rawCategory.toLowerCase() === "not_cyberbullying" ? "Safe" : rawCategory;
         const confidence = parseFloat(data.confidence) || 0.0;
 
-        // 2. Verdict & Category derived directly from MuRIL logits
+        // 2. Primary Hero Element: Detection Verdict Card
         if (isBully) {
             verdictBadge.textContent = "Cyberbullying Detected";
             verdictBadge.className = "verdict-title m-0 danger";
-            verdictIconContainer.className = "verdict-icon-box danger";
-            verdictIcon.className = "fa-solid fa-triangle-exclamation";
+            if (verdictSubtitle) {
+                verdictSubtitle.textContent = "Harmful or abusive language flagged by model";
+            }
+            if (verdictHeroCard) {
+                verdictHeroCard.className = "verdict-hero-card mb-4 danger";
+            }
+            if (verdictIconContainer) {
+                verdictIconContainer.className = "verdict-icon-box danger";
+                verdictIconContainer.innerHTML = '<i data-lucide="alert-triangle" class="icon-hero"></i>';
+            }
 
+            // Target Category: Secondary muted purple / neutral tone (does not compete with red alert)
             categoryBadge.textContent = category.toUpperCase();
-            categoryBadge.className = `category-pill-badge ${category}`;
+            categoryBadge.className = "category-pill-badge active-category";
 
-            confidenceProgressBar.className = "progress-bar custom-progress-fill danger";
         } else {
             verdictBadge.textContent = "Safe Content";
             verdictBadge.className = "verdict-title m-0 safe";
-            verdictIconContainer.className = "verdict-icon-box safe";
-            verdictIcon.className = "fa-solid fa-shield-check";
+            if (verdictSubtitle) {
+                verdictSubtitle.textContent = "No harmful or targeted harassment detected";
+            }
+            if (verdictHeroCard) {
+                verdictHeroCard.className = "verdict-hero-card mb-4 safe";
+            }
+            if (verdictIconContainer) {
+                verdictIconContainer.className = "verdict-icon-box safe";
+                verdictIconContainer.innerHTML = '<i data-lucide="shield-check" class="icon-hero"></i>';
+            }
 
-            categoryBadge.textContent = "N/A";
+            // Target Category: Neutral muted gray badge for Safe
+            categoryBadge.textContent = "NONE / N/A";
             categoryBadge.className = "category-pill-badge Safe";
-
-            confidenceProgressBar.className = "progress-bar custom-progress-fill safe";
         }
 
-        // 3. Confidence Bar
+        // 3. Dynamic Model Confidence Bar (Amber 50-70%, Red 70%+, Green Safe)
+        let severityClass = "safe";
+        if (isBully) {
+            if (confidence >= 70.0) {
+                severityClass = "severity-high"; // Alert Red (70%+)
+            } else {
+                severityClass = "severity-medium"; // Warning Amber (50% - 70%)
+            }
+        } else {
+            severityClass = "safe"; // Success Green
+        }
+
+        confidenceProgressBar.className = `progress-bar custom-progress-fill ${severityClass}`;
+        confidenceValue.className = `confidence-val ${severityClass}`;
         confidenceValue.textContent = `${confidence.toFixed(1)}%`;
         confidenceProgressBar.style.width = `${Math.min(100, Math.max(0, confidence))}%`;
 
@@ -247,10 +290,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const spans = explain.spans || [];
         const count = triggerWords.length > 0 ? triggerWords.length : spans.length;
 
-        const triggerHeading = document.getElementById("triggerHeading");
-        if (triggerHeading) {
-            const methodLabel = data.explainability_method || "Keyword-Based Trigger Detection";
-            triggerHeading.innerHTML = `<i class="fa-solid fa-tags text-warning me-1"></i> ${methodLabel}`;
+        const triggerMethodText = document.getElementById("triggerMethodText");
+        if (triggerMethodText) {
+            triggerMethodText.textContent = data.explainability_method || "Keyword-Based Trigger Detection";
         }
 
         triggerCountBadge.textContent = count === 1 ? "1 trigger word flagged" : `${count} trigger words flagged`;
@@ -259,6 +301,11 @@ document.addEventListener("DOMContentLoaded", () => {
             highlightedText.innerHTML = explain.highlighted_text;
         } else {
             highlightedText.textContent = originalText;
+        }
+
+        // Re-hydrate dynamic Lucide icons in newly rendered HTML
+        if (window.lucide) {
+            lucide.createIcons();
         }
 
         // Smooth scroll to results

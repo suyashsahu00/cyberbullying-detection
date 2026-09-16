@@ -16,11 +16,19 @@
     
     /* Semantic Status Colors */
     --danger-red: #ef4444;
+    --danger-deep: #dc2626;
     --danger-soft-bg: #fef2f2;
     --danger-border: #fca5a5;
     --danger-text: #991b1b;
     
+    --warning-amber: #f59e0b;
+    --warning-deep: #d97706;
+    --warning-soft-bg: #fffbeb;
+    --warning-border: #fde68a;
+    --warning-text: #92400e;
+    
     --success-green: #10b981;
+    --success-deep: #16a34a;
     --success-soft-bg: #f0fdf4;
     --success-border: #bbf7d0;
     --success-text: #166534;
@@ -33,6 +41,17 @@
 
     --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
 }
+
+/* Lucide Vector Icons Standard Sizing */
+svg.lucide {
+    display: inline-block;
+    vertical-align: middle;
+    stroke-width: 2px;
+}
+.icon-brand { width: 20px; height: 20px; }
+.icon-hero { width: 28px; height: 28px; }
+.icon-sm { width: 18px; height: 18px; }
+.icon-xs { width: 14px; height: 14px; }
 
 /* In-App Error Notification Banner */
 .custom-error-banner {
@@ -70,7 +89,6 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.05rem;
     box-shadow: 0 3px 8px rgba(79, 70, 229, 0.25);
 }
 
@@ -112,18 +130,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 6px;
 }
 
-.how-it-works-link {
-    color: var(--slate-muted);
-    font-weight: 500;
-    font-size: 0.88rem;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.how-it-works-link:hover {
-    color: var(--dark-navy);
-}
-
 /* Hero Section */
 .hero-title {
     font-weight: 800;
@@ -155,7 +161,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .char-count {
     font-size: 0.84rem;
-    color: #64748b; /* WCAG AA 4.54:1 contrast ratio */
+    color: #64748b;
     font-weight: 600;
 }
 
@@ -195,7 +201,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #f1f5f9;
 }
 
-/* Quick Samples */
+/* Quick Samples: 2-Tone Semantic Color System (Safe vs Flagged) */
 .quick-samples-label {
     font-size: 0.84rem;
     font-weight: 600;
@@ -203,28 +209,47 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .preset-pill {
-    background: #ffffff;
-    border: 1px solid var(--slate-border);
-    color: #334155;
-    padding: 5px 12px;
+    padding: 5px 13px;
     border-radius: var(--radius-pill);
     font-size: 0.82rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
 }
 
-.preset-pill .text-warning {
-    color: #d97706 !important; /* WCAG AA accessible amber */
+/* Tone 1: Safe semantic pill (green / neutral) */
+.preset-pill-safe {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
 }
 
-.preset-pill .text-info {
-    color: #0284c7 !important; /* WCAG AA accessible cyan/sky */
+.preset-pill-safe svg {
+    color: #16a34a;
 }
 
-.preset-pill:hover {
-    background: #f8fafc;
-    border-color: #cbd5e1;
+.preset-pill-safe:hover {
+    background: #dcfce7;
+    border-color: #86efac;
+    transform: translateY(-1px);
+}
+
+/* Tone 2: Flagged semantic pill (red / orange) */
+.preset-pill-flagged {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+}
+
+.preset-pill-flagged svg {
+    color: #ea580c;
+}
+
+.preset-pill-flagged:hover {
+    background: #ffedd5;
+    border-color: #fdba74;
     transform: translateY(-1px);
 }
 
@@ -248,89 +273,149 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 6px 18px rgba(79, 70, 229, 0.45);
 }
 
-/* Results Formatting */
-.language-pill {
-    background: #f8fafc;
-    border: 1px solid var(--slate-border);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.82rem;
+/* Detected Language: Non-interactive metadata label */
+.detected-language-meta {
+    font-size: 0.84rem;
+    color: var(--slate-muted);
+}
+
+.detected-language-meta .meta-label {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.detected-language-meta .meta-value {
+    color: #1e293b;
     font-weight: 600;
-    color: #334155;
+}
+
+/* ========================================================
+   RESULTS SCREEN: VISUAL HIERARCHY & HERO VERDICT CARD
+   ======================================================== */
+
+/* 1. Primary Hero Element: Verdict Card */
+.verdict-hero-card {
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    border-left: 5px solid;
+    transition: all 0.3s ease;
+}
+
+.verdict-hero-card.danger {
+    background: #fef2f2;
+    border-color: #ef4444;
+    border: 1px solid #fecaca;
+    border-left: 5px solid #dc2626;
+}
+
+.verdict-hero-card.safe {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 5px solid #16a34a;
+}
+
+.verdict-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+
+.verdict-title {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.verdict-title.danger {
+    color: #991b1b;
+}
+
+.verdict-title.safe {
+    color: #14532d;
+}
+
+.verdict-subtitle {
+    font-size: 0.86rem;
+    color: #64748b;
+    margin-top: 3px;
 }
 
 .verdict-icon-box {
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
     flex-shrink: 0;
 }
 
 .verdict-icon-box.danger {
-    background: var(--danger-soft-bg);
-    color: var(--danger-red);
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
 }
 
 .verdict-icon-box.safe {
-    background: var(--success-soft-bg);
-    color: var(--success-green);
+    background: #dcfce7;
+    color: #16a34a;
+    border: 1px solid #86efac;
+}
+
+/* 2. Secondary Metrics Supporting Row */
+.secondary-metrics-row .metric-card {
+    background: #f8fafc;
+    border: 1px solid var(--slate-border);
 }
 
 .sub-label {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: #475569; /* WCAG AA 5.9:1 contrast ratio */
+    color: #64748b;
 }
 
-.verdict-title {
-    font-weight: 700;
-    font-size: 1.3rem;
-}
-
-.verdict-title.danger {
-    color: var(--danger-text);
-}
-
-.verdict-title.safe {
-    color: var(--success-text);
-}
-
-/* Category Pill Badges */
+/* Target Category: Secondary / Neutral Tone (Does NOT compete with Red Verdict) */
 .category-pill-badge {
     display: inline-block;
-    font-size: 0.82rem;
-    font-weight: 700;
+    font-size: 0.84rem;
+    font-weight: 600;
     padding: 4px 14px;
     border-radius: var(--radius-pill);
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
 }
 
-.category-pill-badge.Gender { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
-.category-pill-badge.Age { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
-.category-pill-badge.Ethnicity { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
-.category-pill-badge.Religion { background: #faf5ff; color: #6b21a8; border: 1px solid #e9d5ff; }
-.category-pill-badge.Other { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-.category-pill-badge.Safe { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
-
-/* Confidence Section */
-.confidence-label {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--slate-muted);
+/* Distinct secondary muted purple tone for active categories */
+.category-pill-badge.active-category {
+    background: #f5f3ff;
+    color: #6d28d9;
+    border: 1px solid #ddd6fe;
 }
 
+.category-pill-badge.Safe {
+    background: #f8fafc;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+/* Confidence Value & Dynamic Progress Bar */
 .confidence-val {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--dark-navy);
+    font-size: 1rem;
+    font-weight: 800;
 }
+
+.confidence-val.severity-high { color: #dc2626; }
+.confidence-val.severity-medium { color: #d97706; }
+.confidence-val.safe { color: #16a34a; }
 
 .custom-progress-bar {
     height: 10px;
@@ -346,15 +431,20 @@ h1, h2, h3, h4, h5, h6 {
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.custom-progress-fill.danger {
-    background-color: var(--danger-red);
+/* Dynamic Confidence Severity Colors */
+.custom-progress-fill.severity-high {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.custom-progress-fill.severity-medium {
+    background: linear-gradient(90deg, #f59e0b, #d97706);
 }
 
 .custom-progress-fill.safe {
-    background-color: var(--success-green);
+    background: linear-gradient(90deg, #10b981, #059669);
 }
 
-/* Trigger Word Explainability */
+/* 3. Strengthened Trigger Word Highlighting (Bold + Solid Background + Vector Marker) */
 .explainability-heading {
     font-size: 0.92rem;
     font-weight: 600;
@@ -381,22 +471,38 @@ h1, h2, h3, h4, h5, h6 {
     background: #f8fafc;
     border: 1px solid var(--slate-border);
     border-radius: var(--radius-md);
-    padding: 16px 20px;
-    font-size: 1rem;
-    line-height: 2.1;
+    padding: 18px 22px;
+    font-size: 1.05rem;
+    line-height: 2.3;
     color: #1e293b;
-    min-height: 54px;
+    min-height: 60px;
 }
 
+/* Solid background + Bold text + Small inline icon marker */
 .trigger-highlight {
     background-color: #fee2e2;
     color: #991b1b;
-    border-bottom: 2px solid #ef4444;
-    border-radius: 4px;
-    padding: 2px 5px;
-    font-weight: 600;
-    display: inline;
-    margin: 0 1px;
+    border: 1px solid #fca5a5;
+    border-radius: 6px;
+    padding: 2px 7px 3px 6px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 3px;
+    box-shadow: 0 1px 2px rgba(239, 68, 68, 0.15);
+}
+
+/* Vector Warning Triangle Marker */
+.trigger-highlight::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23991b1b' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: -1px;
 }
 
 /* Accordion How It Works */
