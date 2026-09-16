@@ -1,6 +1,5 @@
 import os
-import sys
-from huggingface_hub import HfApi, create_repo, upload_file, upload_folder
+from huggingface_hub import HfApi, create_repo
 
 REPO_ID = "suyashsahu00/muril-cyberbullying-detection"
 MODEL_DIR = os.path.abspath("models/muril_cyberbullying_v2")

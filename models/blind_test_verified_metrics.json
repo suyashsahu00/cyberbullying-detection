@@ -49,9 +49,9 @@
     }
   },
   "timing_and_latency": {
-    "total_inference_time_sec": 14.63,
-    "throughput_qps": 358.39,
-    "mean_latency_per_sample_ms": 2.79
+    "total_inference_time_sec": 17.58,
+    "throughput_qps": 298.16,
+    "mean_latency_per_sample_ms": 3.35
   },
   "argmax_baseline_comparison": {
     "overall_accuracy": 81.38,
