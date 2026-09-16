@@ -6,7 +6,7 @@ TRIGGER_LEXICON = {
     "Age": [
         "boomer", "oldhag", "old hag", "senile", "wrinkly", "toddler", "kiddo", "grandma", 
         "grandpa", "boomers", "too old", "expiring", "grandma", "dinosaur", "fossil",
-        "die already", "buddhe", "buddhe log", "buddhe logon", "बूढ़े", "बूढ़े लोग", "बूढ़े लोगों"
+        "die already", "buddhe log ghar pe", "buddhe logon ko ghar pe", "बूढ़े लोग घर पे", "बूढ़े लोगों को घर पे"
     ],
     "Gender": [
         "bitch", "whore", "slut", "cunt", "kitchen", "make me a sandwich", "femcel",
@@ -40,14 +40,14 @@ HIGH_SEVERITY_HINGLISH = {
     "chutiya", "saale", "kamina", "harami", "kuttiya", "gandu", "kamine", "madarchod", 
     "bhosdike", "randi", "rand", "bhosdiwala", "gaand", "behenchod", "chudail",
     "chappal khol", "chappal nikaal", "chappal nikal", "jaa mar", "ja mar", "mar jaa", "jaake mar",
-    "kalank", "lode", "laude", "buddhe", "kitchen ke liye"
+    "kalank", "lode", "laude", "buddhe log ghar pe", "buddhe logon ko ghar pe", "kitchen ke liye"
 }
 
 # List of severe Devanagari Hindi slurs for safety-net override
 HIGH_SEVERITY_DEVANAGARI = {
     "चूतिया", "साले", "कमीना", "हरामी", "कुतिया", "गांडू", "कमीने", "मादरचोद",
     "भोसड़ीके", "रंडी", "भोसड़ीवाला", "गांड", "बहनचोद", "चुड़ैल", "कुत्ते", "नीच",
-    "जा मर जा", "मर जा", "जाके मर", "कलंक", "चप्पल खोल", "चप्पल निकाल", "लोड़े", "लौड़े", "बूढ़े", "किचन के लिए"
+    "जा मर जा", "मर जा", "जाके मर", "कलंक", "चप्पल खोल", "चप्पल निकाल", "लोड़े", "लौड़े", "बूढ़े लोग घर पे", "बूढ़े लोगों को घर पे", "किचन के लिए"
 }
 
 # List of severe English slurs, targeted profanity, and harassment triggers for safety-net override
