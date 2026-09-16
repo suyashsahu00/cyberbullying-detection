@@ -82,9 +82,9 @@ All previous repetitive examples have been replaced with **fresh, real-world tes
 > **Answer:**  
 > *"Sir, dasarpai/SDSHL jaise available Hinglish sarcasm datasets small (2,000 samples) hain aur primarily Devanagari script me hain. Unhe 50k-sample production cyberbullying model me forcefully merge karne se false-positive rate badh jata. Isliye humne **microservice-style architectural decoupling** chuni: core safety alag aur sarcasm standalone prototype (`src/sarcasm_auxiliary.py`) me independent."*
 
-### Q3: *"64 ms vs 0.8 ms latency: do alag models kyu deploy kiye?"*
+### Q3: *"108 ms vs 2 ms latency: do alag models kyu deploy kiye?"*
 > **Answer:**  
-> *"Ye hamara **Tiered Production Architecture** hai. Linear SVM 0.79 ms aur 1,270 QPS par CPU par chal sakta hai, jo high-volume streaming platforms ke liye ideal hai. MuRIL v2 GPU par 64.36 ms leta hai for deep contextual understanding. Live system dono modes seamlessly offer karta hai."*
+> *"Ye hamara **Tiered Production Architecture** hai. Linear SVM 1.98 ms aur 505 QPS par CPU par chal sakta hai, jo high-volume streaming platforms ke liye ideal hai. MuRIL v2 GPU par 107.95 ms leta hai for deep contextual understanding with real gradient token attribution. Live system dono modes seamlessly offer karta hai."*
 
 ### Q4: *"Explainability ke liye SHAP kyu nahi chala rahe live UI me?"*
 > **Answer:**  
@@ -102,8 +102,8 @@ All previous repetitive examples have been replaced with **fresh, real-world tes
 | **4** | **System Architecture** | Dual-Tier Pipeline Diagram:<br>Input $\rightarrow$ Preprocessing & Language Tagger $\rightarrow$ Tier 1 SVM vs Tier 2 MuRIL $\rightarrow$ Explainability $\rightarrow$ UI. |
 | **5** | **Language Detection Subsystem** | Unicode regex scan (`Hindi`) $\rightarrow$ Hinglish token ratio ($\ge 10\%$) $\rightarrow$ English default fallback. |
 | **6** | **Decision Boundary Innovation (Bug 1)** | Argmax vs Production Two-Stage table.<br>Highlighting the **+24.45% recall jump** on the challenging `Other` class without retraining. |
-| **7** | **Final Verified Performance (Offline Test)** | • Full Test Set: 5,242 samples (zero data leakage)<br>• **Overall Accuracy: 81.97%** \| **Macro F1: 83.29%**<br>• Per-class F1: Age (97.8%), Ethnicity (95.9%), Religion (95.0%), Gender (86.3%), Other (60.1%)<br>• GPU Batched Evaluation Throughput: **358.4 samples/sec (2.79 ms/sample)** on RTX 4050 |
-| **8** | **Hardware & Latency Benchmark (Single-Query)** | Clear Hardware Disaggregation:<br>• **Tier 1 (Linear SVM on CPU)**: **0.79 ms Warm Mean** (0.77 ms P50, 1.12 ms P99) \| **1,270.9 QPS**<br>• **Tier 2 (Google MuRIL v2 on RTX 4050 GPU)**: **64.36 ms Warm Mean** (87.50 ms P50, 110.90 ms P95) \| **15.5 QPS**<br>• Cold-Start: SVM (6.78 ms) vs MuRIL GPU (337.49 ms) |
+| **7** | **Final Verified Performance (Offline Test)** | • Full Test Set: 5,242 samples (zero data leakage)<br>• **Overall Accuracy: 81.97%** \| **Macro F1: 83.29%**<br>• Per-class F1: Age (97.8%), Ethnicity (95.9%), Religion (95.0%), Gender (86.3%), Other (60.1%)<br>• GPU Batched Evaluation Throughput: **298.2 samples/sec (3.35 ms/sample)** on RTX 4050 |
+| **8** | **Hardware & Latency Benchmark (Single-Query)** | Clear Hardware Disaggregation:<br>• **Tier 1 (Linear SVM on CPU)**: **1.98 ms Warm Mean** (1.79 ms P50, 4.42 ms P99) \| **505.2 QPS**<br>• **Tier 2 (Google MuRIL v2 on RTX 4050 GPU)**: **107.95 ms Warm Mean** (150.43 ms P50, 188.52 ms P95) \| **9.3 QPS**<br>• Cold-Start: SVM (14.68 ms) vs MuRIL GPU (958.92 ms) |
 | **9** | **Auxiliary Sarcasm Pilot Study** | SDSHL dataset evaluation (66% F1). Rationale for maintaining architectural decoupling rather than polluting the safety boundary. |
 | **10** | **Live Web Application & API** | UI Screenshots, real-time trigger badge highlighting, and Swagger/REST API format. |
 | **11** | **Conclusion & Future Directions** | Production-ready real-time moderation tool; future expansion to acoustic tone analysis and Romanized Hinglish sarcasm corpora. |

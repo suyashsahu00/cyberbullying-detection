@@ -192,7 +192,7 @@ cyberbullying-detection/
 │   └── sarcasm_auxiliary.py   # Standalone auxiliary sarcasm detection module (SDSHL)
 ├── models/
 │   ├── baseline_model.pkl     # Pre-trained TF-IDF + Linear SVM 6-class classifier
-│   ├── muril_cyberbullying/   # Fine-tuned Google MuRIL model weights & tokenizer
+│   ├── muril_cyberbullying_v2/# Fine-tuned Google MuRIL v2 weights & tokenizer
 │   └── sarcasm_auxiliary.joblib # Saved auxiliary sarcasm baseline classifier
 ├── data/
 │   ├── raw/                   # Raw datasets (e.g. Cyberbullying & BullyExplain)
@@ -449,7 +449,7 @@ Execute the notebooks in sequence:
 1. `notebooks/01_eda.ipynb`: Dataset exploration and class distributions.
 2. `notebooks/02_preprocessing.ipynb`: Text cleaning, tokenization, and language tagging.
 3. `notebooks/03_baseline_model.ipynb`: TF-IDF + Linear SVM multi-class training and evaluation.
-4. `notebooks/04_muril_finetune.ipynb`: Google MuRIL fine-tuning on multilingual/Hinglish dataset.
+4. `notebooks/04_muril_finetune_v2.ipynb`: Google MuRIL v2 6-class multilingual fine-tuning.
 5. `notebooks/05_evaluation_shap.ipynb`: Exploratory SHAP baseline analysis (superseded in production by fast Keyword-Based Trigger Detection and Model-Based Gradient Token Attribution).
 
 ---

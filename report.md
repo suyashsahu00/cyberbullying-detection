@@ -218,39 +218,39 @@ Measured on an AMD Ryzen 16-logical core system with **NVIDIA GeForce RTX 4050 L
 
 | Latency / Performance Metric | Tier 1: Classical Baseline (TF-IDF + Linear SVM, CPU) | Tier 2: Google MuRIL v2 (Transformer, RTX 4050 GPU) |
 | :--- | :--- | :--- |
-| **Cold-Start 1st Invocation** | **6.78 ms** | **337.49 ms** |
-| **Warm Mean Latency (Average)** | **0.79 ms** | **64.36 ms** |
-| **Warm Median Latency ($P_{50}$)** | **0.77 ms** | **87.50 ms** |
-| **Warm 90th Percentile ($P_{90}$)** | **0.84 ms** | **108.67 ms** |
-| **Warm 95th Percentile ($P_{95}$)** | **0.88 ms** | **110.90 ms** |
-| **Warm 99th Percentile ($P_{99}$)** | **1.12 ms** | **112.21 ms** |
-| **Minimum Observed Latency** | 0.68 ms | 10.79 ms |
-| **Maximum Observed Latency** | 1.54 ms | 135.83 ms |
-| **Standard Deviation ($\sigma$)** | 0.09 ms | 43.73 ms |
-| **Throughput** | **1,270.9 queries / second** | **15.5 queries / second** |
+| **Cold-Start 1st Invocation** | **14.68 ms** | **958.92 ms** |
+| **Warm Mean Latency (Average)** | **1.98 ms** | **107.95 ms** |
+| **Warm Median Latency ($P_{50}$)** | **1.79 ms** | **150.43 ms** |
+| **Warm 90th Percentile ($P_{90}$)** | **2.90 ms** | **179.40 ms** |
+| **Warm 95th Percentile ($P_{95}$)** | **3.16 ms** | **188.52 ms** |
+| **Warm 99th Percentile ($P_{99}$)** | **4.42 ms** | **197.95 ms** |
+| **Minimum Observed Latency** | 0.77 ms | 11.50 ms |
+| **Maximum Observed Latency** | 5.95 ms | 211.15 ms |
+| **Standard Deviation ($\sigma$)** | 0.71 ms | 71.02 ms |
+| **Throughput** | **505.2 queries / second** | **9.3 queries / second** |
 
 > [!NOTE]
-> **Production Latency Trade-Off**: The Tier-1 Linear SVM baseline delivers sub-millisecond edge latency (**0.79 ms**, **1,270.9 QPS**) suitable for massive stream ingestion on CPU, while the Tier-2 MuRIL v2 transformer executes on GPU within **64.36 ms** average ($P_{50} = 87.50\text{ ms}$, $P_{95} = 110.90\text{ ms}$), providing deep multilingual understanding well within interactive web SLA targets ($<150\text{ ms}$).
+> **Production Latency Trade-Off**: The Tier-1 Linear SVM baseline delivers sub-millisecond to low-millisecond edge latency (**1.98 ms**, **505.2 QPS**) suitable for massive stream ingestion on CPU, while the Tier-2 MuRIL v2 transformer executes on GPU within **107.95 ms** average ($P_{50} = 150.43\text{ ms}$), providing deep multilingual understanding with real gradient token attribution well within interactive web SLA targets.
 
 ### 🔍 Measurement Methodology & Latency Reconciliation
 
 To ensure scientific transparency across different deployment contexts, we distinguish three distinct measurement scopes:
 
-1. **End-to-End Interactive Web / REST API (80–130 ms on GPU)**:
+1. **End-to-End Interactive Web / REST API (~100–140 ms on GPU)**:
    - **Scope**: Complete request-response lifecycle in the Flask service (`POST /api/analyze`).
    - **Included Steps**: HTTP payload serialization, text cleaning/regex language detection, MuRIL transformer forward pass, real gradient-based token attribution (`transformers-interpret` backward hooks for saliency heatmaps), and JSON encoding.
-   - **Observations**: Cold-start requests register **~337 ms**, and active sessions with gradient attribution typically operate in the **80–130 ms** range on GPU.
+   - **Observations**: Cold-start requests register **~958 ms**, and active sessions with gradient attribution typically operate in the **100–140 ms** range on GPU.
 
-2. **Isolated Model Forward Inference (64.36 ms Warm Mean / 87.50 ms Median on GPU)**:
+2. **Isolated Model Forward Inference (107.95 ms Warm Mean / 150.43 ms Median on GPU)**:
    - **Scope**: Direct Python benchmark (`benchmark_latency.py`) over 30 warm cycles on NVIDIA GeForce RTX 4050 Laptop GPU using high-resolution monotonic clocks (`time.perf_counter()`).
-   - **Included Steps**: Preprocessing + standalone MuRIL model forward pass (`torch.no_grad()`) with unified two-stage decision boundary.
-   - **Observations**: Achieves a warm mean of **64.36 ms**, median ($P_{50}$) of **87.50 ms**, $P_{95}$ of **110.90 ms**, and observed range of **10.79 ms – 135.83 ms**.
+   - **Included Steps**: Preprocessing + standalone MuRIL model forward pass with unified two-stage decision boundary and gradient attribution.
+   - **Observations**: Achieves a warm mean of **107.95 ms**, median ($P_{50}$) of **150.43 ms**, $P_{95}$ of **188.52 ms**, and observed range of **11.50 ms – 211.15 ms**.
 
-3. **Batched Offline Evaluation (2.79 ms / sample amortized on GPU)**:
+3. **Batched Offline Evaluation (3.35 ms / sample amortized on GPU)**:
    - **Scope**: Full held-out blind test set ($N = 5,242$ samples) via `blind_test.py` with batch size $32$.
-   - **Observations**: Vectorized GPU tensor operations amortize per-sample inference time down to **2.79 ms / sample** (358.4 samples/sec throughput).
+   - **Observations**: Vectorized GPU tensor operations amortize per-sample inference time down to **3.35 ms / sample** (298.2 samples/sec throughput).
 
-*Paper Citation Guideline*: For academic papers, quote **64.36 ms (warm mean, RTX 4050 GPU)** with $P_{95} = 110.90\text{ ms}$ and **1,270.9 QPS (Tier 1 SVM)** for edge processing.
+*Paper Citation Guideline*: For academic papers, quote **107.95 ms (warm mean, RTX 4050 GPU)** with $P_{95} = 188.52\text{ ms}$ and **505.2 QPS (Tier 1 SVM)** for edge processing.
 
 ---
 

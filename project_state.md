@@ -39,16 +39,16 @@
 
 | Benchmark Metric | Tier 1: Linear SVM (CPU) | Tier 2: Google MuRIL v2 (RTX 4050 GPU) |
 | :--- | :---: | :---: |
-| **Cold-Start 1st Invocation** | 6.78 ms | 337.49 ms |
-| **Warm Mean Latency (Average)** | 0.79 ms | 64.36 ms |
-| **Warm Median Latency (P50)** | 0.77 ms | 87.50 ms |
-| **Warm 90th Percentile (P90)** | 0.84 ms | 108.67 ms |
-| **Warm 95th Percentile (P95)** | 0.88 ms | 110.90 ms |
-| **Warm 99th Percentile (P99)** | 1.12 ms | 112.21 ms |
-| **Minimum Observed Latency** | 0.68 ms | 10.79 ms |
-| **Maximum Observed Latency** | 1.54 ms | 135.83 ms |
-| **Standard Deviation** | 0.09 ms | 43.73 ms |
-| **Throughput** | **1,270.9 QPS** | **15.5 QPS** |
+| **Cold-Start 1st Invocation** | 14.68 ms | 958.92 ms |
+| **Warm Mean Latency (Average)** | 1.98 ms | 107.95 ms |
+| **Warm Median Latency (P50)** | 1.79 ms | 150.43 ms |
+| **Warm 90th Percentile (P90)** | 2.90 ms | 179.40 ms |
+| **Warm 95th Percentile (P95)** | 3.16 ms | 188.52 ms |
+| **Warm 99th Percentile (P99)** | 4.42 ms | 197.95 ms |
+| **Minimum Observed Latency** | 0.77 ms | 11.50 ms |
+| **Maximum Observed Latency** | 5.95 ms | 211.15 ms |
+| **Standard Deviation** | 0.71 ms | 71.02 ms |
+| **Throughput** | **505.2 QPS** | **9.3 QPS** |
 
 *Artifact File:* `models/latency_benchmark_results.json`
 
