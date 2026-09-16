@@ -1,0 +1,4259 @@
+[
+  {
+    "index": 1,
+    "id": "EN2-01",
+    "language_group": "English",
+    "text": "you stupid fucking idiot motherfucker",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 62.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 2.1,
+        "ethnicity": 4.6,
+        "gender": 5.9,
+        "not_cyberbullying": 37.6,
+        "other_cyberbullying": 49.3,
+        "religion": 0.4
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 328.75,
+      "detected_lang": "English",
+      "trigger_words": [
+        "stupid",
+        "idiot"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 94.8,
+      "all_probabilities": {
+        "age": 0.2,
+        "ethnicity": 0.5,
+        "gender": 0.3,
+        "not_cyberbullying": 0.4,
+        "other_cyberbullying": 94.8,
+        "religion": 3.8
+      }
+    }
+  },
+  {
+    "index": 2,
+    "id": "EN2-02",
+    "language_group": "English",
+    "text": "suck my cock and go fuck off",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harassment",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 80.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.2,
+        "ethnicity": 1.2,
+        "gender": 56.2,
+        "not_cyberbullying": 19.8,
+        "other_cyberbullying": 21.1,
+        "religion": 0.4
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 138.58,
+      "detected_lang": "English",
+      "trigger_words": [
+        "fuck"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 39.6,
+      "all_probabilities": {
+        "age": 5.6,
+        "ethnicity": 31.0,
+        "gender": 39.6,
+        "not_cyberbullying": 12.5,
+        "other_cyberbullying": 8.8,
+        "religion": 2.5
+      }
+    }
+  },
+  {
+    "index": 3,
+    "id": "EN2-03",
+    "language_group": "English",
+    "text": "your mother is a dirty whore",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Other",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
+      "all_probabilities": {
+        "age": 2.7,
+        "ethnicity": 0.7,
+        "gender": 3.0,
+        "not_cyberbullying": 53.1,
+        "other_cyberbullying": 39.4,
+        "religion": 1.2
+      },
+      "safety_net_triggered": true,
+      "latency_ms": 147.17,
+      "detected_lang": "English",
+      "trigger_words": [
+        "whore"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.1,
+      "all_probabilities": {
+        "age": 3.8,
+        "ethnicity": 7.8,
+        "gender": 23.2,
+        "not_cyberbullying": 50.1,
+        "other_cyberbullying": 7.6,
+        "religion": 7.5
+      }
+    }
+  },
+  {
+    "index": 4,
+    "id": "EN2-04",
+    "language_group": "English",
+    "text": "just kill yourself already kys loser",
+    "expected_is_bully": true,
+    "expected_category": "Other / Suicide Encouragement",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 1.1,
+        "gender": 2.8,
+        "not_cyberbullying": 49.6,
+        "other_cyberbullying": 45.0,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 191.49,
+      "detected_lang": "English",
+      "trigger_words": [
+        "kill yourself",
+        "kys",
+        "loser"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 48.2,
+      "all_probabilities": {
+        "age": 4.7,
+        "ethnicity": 4.3,
+        "gender": 10.4,
+        "not_cyberbullying": 48.2,
+        "other_cyberbullying": 23.7,
+        "religion": 8.7
+      }
+    }
+  },
+  {
+    "index": 5,
+    "id": "EN2-05",
+    "language_group": "English",
+    "text": "you are really helpful, thank you so much!",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.3,
+        "ethnicity": 0.8,
+        "gender": 2.1,
+        "not_cyberbullying": 54.2,
+        "other_cyberbullying": 40.5,
+        "religion": 1.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 188.6,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 44.3,
+      "all_probabilities": {
+        "age": 3.8,
+        "ethnicity": 4.1,
+        "gender": 3.1,
+        "not_cyberbullying": 41.1,
+        "other_cyberbullying": 44.3,
+        "religion": 3.7
+      }
+    }
+  },
+  {
+    "index": 6,
+    "id": "EN2-06",
+    "language_group": "English",
+    "text": "Shut up you wrinkled old senile hag boomer",
+    "expected_is_bully": true,
+    "expected_category": "Age",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 55.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 1.8,
+        "gender": 4.7,
+        "not_cyberbullying": 44.6,
+        "other_cyberbullying": 47.8,
+        "religion": 0.3
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 181.78,
+      "detected_lang": "English",
+      "trigger_words": [
+        "boomer",
+        "senile"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 38.1,
+      "all_probabilities": {
+        "age": 4.8,
+        "ethnicity": 5.0,
+        "gender": 17.7,
+        "not_cyberbullying": 24.2,
+        "other_cyberbullying": 38.1,
+        "religion": 10.1
+      }
+    }
+  },
+  {
+    "index": 7,
+    "id": "EN2-07",
+    "language_group": "English",
+    "text": "All Muslims should be deported, they are terrorists",
+    "expected_is_bully": true,
+    "expected_category": "Religion",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 99.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.1,
+        "ethnicity": 0.8,
+        "gender": 0.6,
+        "not_cyberbullying": 0.9,
+        "other_cyberbullying": 0.5,
+        "religion": 96.1
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 131.73,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 99.9,
+      "all_probabilities": {
+        "age": 0.0,
+        "ethnicity": 0.0,
+        "gender": 0.0,
+        "not_cyberbullying": 0.1,
+        "other_cyberbullying": 0.0,
+        "religion": 99.9
+      }
+    }
+  },
+  {
+    "index": 8,
+    "id": "EN2-08",
+    "language_group": "English",
+    "text": "Black people are all lazy and dumb",
+    "expected_is_bully": true,
+    "expected_category": "Ethnicity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Ethnicity",
+      "confidence": 99.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 96.8,
+        "gender": 0.5,
+        "not_cyberbullying": 0.4,
+        "other_cyberbullying": 0.9,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 131.81,
+      "detected_lang": "English",
+      "trigger_words": [
+        "dumb"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Ethnicity",
+      "confidence": 100.0,
+      "all_probabilities": {
+        "age": 0.0,
+        "ethnicity": 100.0,
+        "gender": 0.0,
+        "not_cyberbullying": 0.0,
+        "other_cyberbullying": 0.0,
+        "religion": 0.0
+      }
+    }
+  },
+  {
+    "index": 9,
+    "id": "EN2-09",
+    "language_group": "English",
+    "text": "Women belong only in the kitchen not offices",
+    "expected_is_bully": true,
+    "expected_category": "Gender",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 0.5,
+        "gender": 9.2,
+        "not_cyberbullying": 50.2,
+        "other_cyberbullying": 38.8,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.15,
+      "detected_lang": "English",
+      "trigger_words": [
+        "kitchen"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 42.9,
+      "all_probabilities": {
+        "age": 1.5,
+        "ethnicity": 2.2,
+        "gender": 42.9,
+        "not_cyberbullying": 38.6,
+        "other_cyberbullying": 8.3,
+        "religion": 6.4
+      }
+    }
+  },
+  {
+    "index": 10,
+    "id": "EN2-10",
+    "language_group": "English",
+    "text": "Old people are a waste and should die",
+    "expected_is_bully": true,
+    "expected_category": "Age",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 0.9,
+        "gender": 2.1,
+        "not_cyberbullying": 54.4,
+        "other_cyberbullying": 40.1,
+        "religion": 1.4
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.03,
+      "detected_lang": "English",
+      "trigger_words": [
+        "die"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 33.6,
+      "all_probabilities": {
+        "age": 8.9,
+        "ethnicity": 5.6,
+        "gender": 8.5,
+        "not_cyberbullying": 33.6,
+        "other_cyberbullying": 18.2,
+        "religion": 25.2
+      }
+    }
+  },
+  {
+    "index": 11,
+    "id": "EN2-11",
+    "language_group": "English",
+    "text": "You're a fat disgusting ugly bitch",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Other",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 97.7,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.6,
+        "ethnicity": 1.2,
+        "gender": 91.7,
+        "not_cyberbullying": 2.3,
+        "other_cyberbullying": 2.7,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.42,
+      "detected_lang": "English",
+      "trigger_words": [
+        "disgusting",
+        "ugly",
+        "fat",
+        "bitch"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 55.9,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 15.8,
+        "gender": 55.9,
+        "not_cyberbullying": 1.9,
+        "other_cyberbullying": 23.0,
+        "religion": 1.0
+      }
+    }
+  },
+  {
+    "index": 12,
+    "id": "EN2-12",
+    "language_group": "English",
+    "text": "Kill every Jew, they run the world",
+    "expected_is_bully": true,
+    "expected_category": "Religion",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 83.9,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 2.3,
+        "gender": 1.4,
+        "not_cyberbullying": 16.1,
+        "other_cyberbullying": 8.4,
+        "religion": 70.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.17,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 67.5,
+      "all_probabilities": {
+        "age": 1.8,
+        "ethnicity": 3.7,
+        "gender": 3.1,
+        "not_cyberbullying": 67.5,
+        "other_cyberbullying": 8.9,
+        "religion": 14.9
+      }
+    }
+  },
+  {
+    "index": 13,
+    "id": "EN2-13",
+    "language_group": "English",
+    "text": "Transgenders are sick freaks",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Other",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 93.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 0.8,
+        "gender": 84.9,
+        "not_cyberbullying": 6.6,
+        "other_cyberbullying": 6.3,
+        "religion": 0.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.61,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 63.4,
+      "all_probabilities": {
+        "age": 2.0,
+        "ethnicity": 3.2,
+        "gender": 3.9,
+        "not_cyberbullying": 24.1,
+        "other_cyberbullying": 63.4,
+        "religion": 3.4
+      }
+    }
+  },
+  {
+    "index": 14,
+    "id": "EN2-14",
+    "language_group": "English",
+    "text": "Asians have tiny dicks and only good at studying",
+    "expected_is_bully": true,
+    "expected_category": "Ethnicity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 83.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 0.9,
+        "gender": 65.6,
+        "not_cyberbullying": 16.4,
+        "other_cyberbullying": 15.8,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.04,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 46.5,
+      "all_probabilities": {
+        "age": 2.8,
+        "ethnicity": 3.4,
+        "gender": 8.7,
+        "not_cyberbullying": 46.5,
+        "other_cyberbullying": 26.7,
+        "religion": 12.0
+      }
+    }
+  },
+  {
+    "index": 15,
+    "id": "EN2-15",
+    "language_group": "English",
+    "text": "Christians are all brainwashed idiots",
+    "expected_is_bully": true,
+    "expected_category": "Religion",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 83.9,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.6,
+        "ethnicity": 1.0,
+        "gender": 1.6,
+        "not_cyberbullying": 16.1,
+        "other_cyberbullying": 7.3,
+        "religion": 72.4
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.28,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 99.3,
+      "all_probabilities": {
+        "age": 0.0,
+        "ethnicity": 0.0,
+        "gender": 0.0,
+        "not_cyberbullying": 0.1,
+        "other_cyberbullying": 0.6,
+        "religion": 99.3
+      }
+    }
+  },
+  {
+    "index": 16,
+    "id": "EN2-16",
+    "language_group": "English",
+    "text": "You look like a little kid, go back to school",
+    "expected_is_bully": true,
+    "expected_category": "Age",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 6.6,
+        "ethnicity": 0.7,
+        "gender": 2.3,
+        "not_cyberbullying": 53.0,
+        "other_cyberbullying": 35.6,
+        "religion": 1.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.17,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Age",
+      "confidence": 84.5,
+      "all_probabilities": {
+        "age": 84.5,
+        "ethnicity": 1.3,
+        "gender": 1.2,
+        "not_cyberbullying": 8.7,
+        "other_cyberbullying": 3.5,
+        "religion": 0.8
+      }
+    }
+  },
+  {
+    "index": 17,
+    "id": "EN2-17",
+    "language_group": "English",
+    "text": "I hope you get raped and suffer",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Severe Other",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 58.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 0.6,
+        "gender": 2.4,
+        "not_cyberbullying": 58.0,
+        "other_cyberbullying": 35.8,
+        "religion": 2.3
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.19,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 42.6,
+      "all_probabilities": {
+        "age": 2.6,
+        "ethnicity": 4.5,
+        "gender": 18.0,
+        "not_cyberbullying": 42.6,
+        "other_cyberbullying": 18.4,
+        "religion": 13.9
+      }
+    }
+  },
+  {
+    "index": 18,
+    "id": "EN2-18",
+    "language_group": "English",
+    "text": "Your whole family are worthless animals",
+    "expected_is_bully": true,
+    "expected_category": "Other",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 56.7,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.1,
+        "ethnicity": 0.7,
+        "gender": 2.0,
+        "not_cyberbullying": 56.7,
+        "other_cyberbullying": 37.9,
+        "religion": 1.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.13,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.4,
+      "all_probabilities": {
+        "age": 4.2,
+        "ethnicity": 3.2,
+        "gender": 4.0,
+        "not_cyberbullying": 53.4,
+        "other_cyberbullying": 15.6,
+        "religion": 19.5
+      }
+    }
+  },
+  {
+    "index": 19,
+    "id": "EN2-19",
+    "language_group": "English",
+    "text": "Great work on the project, really impressive",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.8,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.3,
+        "ethnicity": 0.8,
+        "gender": 2.2,
+        "not_cyberbullying": 53.8,
+        "other_cyberbullying": 41.1,
+        "religion": 0.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.41,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 56.5,
+      "all_probabilities": {
+        "age": 4.1,
+        "ethnicity": 5.0,
+        "gender": 9.6,
+        "not_cyberbullying": 56.5,
+        "other_cyberbullying": 20.8,
+        "religion": 4.1
+      }
+    }
+  },
+  {
+    "index": 20,
+    "id": "EN2-20",
+    "language_group": "English",
+    "text": "Can you help me with this please? Thanks a lot",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.2,
+        "ethnicity": 0.7,
+        "gender": 2.2,
+        "not_cyberbullying": 54.4,
+        "other_cyberbullying": 40.4,
+        "religion": 1.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.92,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.7,
+      "all_probabilities": {
+        "age": 7.2,
+        "ethnicity": 3.7,
+        "gender": 13.4,
+        "not_cyberbullying": 54.7,
+        "other_cyberbullying": 19.2,
+        "religion": 1.7
+      }
+    }
+  },
+  {
+    "index": 21,
+    "id": "EN2-21",
+    "language_group": "English",
+    "text": "Have a wonderful day and stay safe",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 57.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.3,
+        "ethnicity": 0.6,
+        "gender": 2.1,
+        "not_cyberbullying": 57.6,
+        "other_cyberbullying": 36.6,
+        "religion": 1.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.24,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 56.5,
+      "all_probabilities": {
+        "age": 5.1,
+        "ethnicity": 4.0,
+        "gender": 5.9,
+        "not_cyberbullying": 56.5,
+        "other_cyberbullying": 22.4,
+        "religion": 6.1
+      }
+    }
+  },
+  {
+    "index": 22,
+    "id": "EN2-22",
+    "language_group": "English",
+    "text": "The weather looks nice today",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.9,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 0.7,
+        "gender": 2.1,
+        "not_cyberbullying": 54.9,
+        "other_cyberbullying": 40.2,
+        "religion": 1.1
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.33,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 72.2,
+      "all_probabilities": {
+        "age": 1.5,
+        "ethnicity": 1.5,
+        "gender": 2.0,
+        "not_cyberbullying": 72.2,
+        "other_cyberbullying": 20.4,
+        "religion": 2.3
+      }
+    }
+  },
+  {
+    "index": 23,
+    "id": "EN2-23",
+    "language_group": "English",
+    "text": "I really like this product, recommend it",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.1,
+        "ethnicity": 0.8,
+        "gender": 2.2,
+        "not_cyberbullying": 53.4,
+        "other_cyberbullying": 41.7,
+        "religion": 0.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.2,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 48.8,
+      "all_probabilities": {
+        "age": 4.7,
+        "ethnicity": 4.2,
+        "gender": 4.3,
+        "not_cyberbullying": 31.8,
+        "other_cyberbullying": 48.8,
+        "religion": 6.2
+      }
+    }
+  },
+  {
+    "index": 24,
+    "id": "EN2-24",
+    "language_group": "English",
+    "text": "You're a total genius, keep going",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.1,
+        "ethnicity": 0.7,
+        "gender": 2.2,
+        "not_cyberbullying": 54.2,
+        "other_cyberbullying": 40.8,
+        "religion": 1.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.43,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 56.0,
+      "all_probabilities": {
+        "age": 3.3,
+        "ethnicity": 1.5,
+        "gender": 4.3,
+        "not_cyberbullying": 56.0,
+        "other_cyberbullying": 29.6,
+        "religion": 5.3
+      }
+    }
+  },
+  {
+    "index": 25,
+    "id": "EN2-25",
+    "language_group": "English",
+    "text": "go to hell you useless piece of shit",
+    "expected_is_bully": true,
+    "expected_category": "Other",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 52.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 1.6,
+        "gender": 2.8,
+        "not_cyberbullying": 47.4,
+        "other_cyberbullying": 46.9,
+        "religion": 0.4
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.53,
+      "detected_lang": "English",
+      "trigger_words": [
+        "shit",
+        "useless"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 65.3,
+      "all_probabilities": {
+        "age": 2.6,
+        "ethnicity": 5.0,
+        "gender": 3.0,
+        "not_cyberbullying": 18.9,
+        "other_cyberbullying": 65.3,
+        "religion": 5.2
+      }
+    }
+  },
+  {
+    "index": 26,
+    "id": "EN2-26",
+    "language_group": "English",
+    "text": "your father should have pulled out",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harassment",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.1,
+        "ethnicity": 1.1,
+        "gender": 2.6,
+        "not_cyberbullying": 50.1,
+        "other_cyberbullying": 44.5,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 138.53,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 38.4,
+      "all_probabilities": {
+        "age": 9.5,
+        "ethnicity": 4.4,
+        "gender": 5.4,
+        "not_cyberbullying": 36.4,
+        "other_cyberbullying": 38.4,
+        "religion": 5.9
+      }
+    }
+  },
+  {
+    "index": 27,
+    "id": "EN2-27",
+    "language_group": "English",
+    "text": "women are only good for sex",
+    "expected_is_bully": true,
+    "expected_category": "Gender",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 92.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 0.4,
+        "gender": 83.7,
+        "not_cyberbullying": 7.6,
+        "other_cyberbullying": 6.8,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.16,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 47.3,
+      "all_probabilities": {
+        "age": 1.4,
+        "ethnicity": 0.9,
+        "gender": 47.3,
+        "not_cyberbullying": 41.1,
+        "other_cyberbullying": 4.1,
+        "religion": 5.2
+      }
+    }
+  },
+  {
+    "index": 28,
+    "id": "EN2-28",
+    "language_group": "English",
+    "text": "old hags like you need to retire and shut up",
+    "expected_is_bully": true,
+    "expected_category": "Age",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.9,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 1.3,
+        "gender": 2.4,
+        "not_cyberbullying": 49.1,
+        "other_cyberbullying": 45.7,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.1,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 48.4,
+      "all_probabilities": {
+        "age": 5.2,
+        "ethnicity": 4.8,
+        "gender": 11.2,
+        "not_cyberbullying": 48.4,
+        "other_cyberbullying": 21.4,
+        "religion": 8.9
+      }
+    }
+  },
+  {
+    "index": 29,
+    "id": "EN2-29",
+    "language_group": "English",
+    "text": "all Indians are just scam callers",
+    "expected_is_bully": true,
+    "expected_category": "Ethnicity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 54.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 4.9,
+        "gender": 2.1,
+        "not_cyberbullying": 45.7,
+        "other_cyberbullying": 44.4,
+        "religion": 2.1
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 133.88,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 46.2,
+      "all_probabilities": {
+        "age": 2.9,
+        "ethnicity": 6.0,
+        "gender": 8.0,
+        "not_cyberbullying": 46.2,
+        "other_cyberbullying": 28.6,
+        "religion": 8.3
+      }
+    }
+  },
+  {
+    "index": 30,
+    "id": "EN2-30",
+    "language_group": "English",
+    "text": "gay people are an abomination to society",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Other",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 93.9,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 0.6,
+        "gender": 86.3,
+        "not_cyberbullying": 6.1,
+        "other_cyberbullying": 5.7,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.36,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 98.3,
+      "all_probabilities": {
+        "age": 0.2,
+        "ethnicity": 0.2,
+        "gender": 98.3,
+        "not_cyberbullying": 0.4,
+        "other_cyberbullying": 0.4,
+        "religion": 0.5
+      }
+    }
+  },
+  {
+    "index": 31,
+    "id": "EN2-31",
+    "language_group": "English",
+    "text": "I hope your whole bloodline gets destroyed",
+    "expected_is_bully": true,
+    "expected_category": "Other",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 55.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.7,
+        "gender": 2.0,
+        "not_cyberbullying": 55.4,
+        "other_cyberbullying": 39.8,
+        "religion": 1.2
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 143.2,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 60.2,
+      "all_probabilities": {
+        "age": 4.5,
+        "ethnicity": 4.0,
+        "gender": 4.4,
+        "not_cyberbullying": 60.2,
+        "other_cyberbullying": 16.9,
+        "religion": 10.1
+      }
+    }
+  },
+  {
+    "index": 32,
+    "id": "EN2-32",
+    "language_group": "English",
+    "text": "you deserve to be bullied every single day",
+    "expected_is_bully": true,
+    "expected_category": "Other",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 52.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 5.7,
+        "ethnicity": 1.3,
+        "gender": 2.3,
+        "not_cyberbullying": 48.0,
+        "other_cyberbullying": 41.7,
+        "religion": 1.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 138.94,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 43.6,
+      "all_probabilities": {
+        "age": 28.4,
+        "ethnicity": 3.1,
+        "gender": 3.5,
+        "not_cyberbullying": 43.6,
+        "other_cyberbullying": 19.5,
+        "religion": 2.0
+      }
+    }
+  },
+  {
+    "index": 33,
+    "id": "EN2-33",
+    "language_group": "English",
+    "text": "Thanks for the useful feedback",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.1,
+        "ethnicity": 0.8,
+        "gender": 2.5,
+        "not_cyberbullying": 53.3,
+        "other_cyberbullying": 41.5,
+        "religion": 0.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.42,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 52.3,
+      "all_probabilities": {
+        "age": 1.7,
+        "ethnicity": 2.3,
+        "gender": 5.1,
+        "not_cyberbullying": 52.3,
+        "other_cyberbullying": 32.8,
+        "religion": 5.8
+      }
+    }
+  },
+  {
+    "index": 34,
+    "id": "EN2-34",
+    "language_group": "English",
+    "text": "This is just a normal work discussion",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.7,
+        "gender": 2.6,
+        "not_cyberbullying": 54.4,
+        "other_cyberbullying": 40.6,
+        "religion": 0.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 138.47,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.9,
+      "all_probabilities": {
+        "age": 6.4,
+        "ethnicity": 6.2,
+        "gender": 6.5,
+        "not_cyberbullying": 53.9,
+        "other_cyberbullying": 22.3,
+        "religion": 4.7
+      }
+    }
+  },
+  {
+    "index": 35,
+    "id": "EN2-35",
+    "language_group": "English",
+    "text": "Looking forward to working with you",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 52.8,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 0.9,
+        "gender": 2.2,
+        "not_cyberbullying": 52.8,
+        "other_cyberbullying": 42.4,
+        "religion": 0.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.71,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 56.2,
+      "all_probabilities": {
+        "age": 1.9,
+        "ethnicity": 2.8,
+        "gender": 7.4,
+        "not_cyberbullying": 56.2,
+        "other_cyberbullying": 28.3,
+        "religion": 3.3
+      }
+    }
+  },
+  {
+    "index": 36,
+    "id": "HI-EN2-01",
+    "language_group": "Hinglish",
+    "text": "madarchod saale",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 1.4,
+        "gender": 2.6,
+        "not_cyberbullying": 49.7,
+        "other_cyberbullying": 45.2,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 139.53,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "madarchod",
+        "saale"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 37,
+    "id": "HI-EN2-02",
+    "language_group": "Hinglish",
+    "text": "bhosdiwale traffic wale",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.2,
+        "gender": 2.4,
+        "not_cyberbullying": 50.3,
+        "other_cyberbullying": 44.8,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 140.29,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 59.8,
+      "all_probabilities": {
+        "age": 2.4,
+        "ethnicity": 2.9,
+        "gender": 6.4,
+        "not_cyberbullying": 59.8,
+        "other_cyberbullying": 22.6,
+        "religion": 5.9
+      }
+    }
+  },
+  {
+    "index": 38,
+    "id": "HI-EN2-03",
+    "language_group": "Hinglish",
+    "text": "isko chappal nikaal ke maarna chahiye",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harassment",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.3,
+        "gender": 2.4,
+        "not_cyberbullying": 50.3,
+        "other_cyberbullying": 44.8,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.55,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 47.7,
+      "all_probabilities": {
+        "age": 2.7,
+        "ethnicity": 3.3,
+        "gender": 6.2,
+        "not_cyberbullying": 47.7,
+        "other_cyberbullying": 30.4,
+        "religion": 9.6
+      }
+    }
+  },
+  {
+    "index": 39,
+    "id": "HI-EN2-04",
+    "language_group": "Hinglish",
+    "text": "bahut smart ho aap, dimaag use mat karna",
+    "expected_is_bully": true,
+    "expected_category": "Other / Sarcasm / Mockery",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.5,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.4,
+        "gender": 2.3,
+        "not_cyberbullying": 49.5,
+        "other_cyberbullying": 45.6,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.13,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 48.4,
+      "all_probabilities": {
+        "age": 4.8,
+        "ethnicity": 4.6,
+        "gender": 5.9,
+        "not_cyberbullying": 26.6,
+        "other_cyberbullying": 48.4,
+        "religion": 9.7
+      }
+    }
+  },
+  {
+    "index": 40,
+    "id": "HI-EN2-05",
+    "language_group": "Hinglish",
+    "text": "teri maa ki choot",
+    "expected_is_bully": true,
+    "expected_category": "Other / Gender / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 57.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.4,
+        "ethnicity": 2.8,
+        "gender": 5.1,
+        "not_cyberbullying": 42.8,
+        "other_cyberbullying": 48.5,
+        "religion": 0.4
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 133.85,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 57.5,
+      "all_probabilities": {
+        "age": 2.4,
+        "ethnicity": 3.3,
+        "gender": 5.5,
+        "not_cyberbullying": 57.5,
+        "other_cyberbullying": 23.6,
+        "religion": 7.7
+      }
+    }
+  },
+  {
+    "index": 41,
+    "id": "HI-EN2-06",
+    "language_group": "Hinglish",
+    "text": "saale madarchod mar jaa",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harm / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 56.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.4,
+        "ethnicity": 2.7,
+        "gender": 3.8,
+        "not_cyberbullying": 44.0,
+        "other_cyberbullying": 48.6,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.14,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "madarchod",
+        "saale"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 42,
+    "id": "HI-EN2-07",
+    "language_group": "Hinglish",
+    "text": "behen ke lode tu kya soch raha",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 56.7,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 3.2,
+        "gender": 3.2,
+        "not_cyberbullying": 43.3,
+        "other_cyberbullying": 49.3,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 138.08,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 55.1,
+      "all_probabilities": {
+        "age": 2.7,
+        "ethnicity": 3.3,
+        "gender": 8.0,
+        "not_cyberbullying": 55.1,
+        "other_cyberbullying": 21.2,
+        "religion": 9.7
+      }
+    }
+  },
+  {
+    "index": 43,
+    "id": "HI-EN2-08",
+    "language_group": "Hinglish",
+    "text": "tu pure number ka harami hai",
+    "expected_is_bully": true,
+    "expected_category": "Other / Insult",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 54.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.4,
+        "ethnicity": 2.5,
+        "gender": 2.9,
+        "not_cyberbullying": 46.0,
+        "other_cyberbullying": 47.6,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 133.5,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "harami"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 56.4,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 4.0,
+        "gender": 8.5,
+        "not_cyberbullying": 56.4,
+        "other_cyberbullying": 15.2,
+        "religion": 13.4
+      }
+    }
+  },
+  {
+    "index": 44,
+    "id": "HI-EN2-09",
+    "language_group": "Hinglish",
+    "text": "randi ki aulaad",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 60.5,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 5.3,
+        "gender": 4.4,
+        "not_cyberbullying": 39.5,
+        "other_cyberbullying": 49.8,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.09,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "randi"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 51.3,
+      "all_probabilities": {
+        "age": 1.8,
+        "ethnicity": 2.5,
+        "gender": 4.1,
+        "not_cyberbullying": 35.5,
+        "other_cyberbullying": 51.3,
+        "religion": 4.8
+      }
+    }
+  },
+  {
+    "index": 45,
+    "id": "HI-EN2-10",
+    "language_group": "Hinglish",
+    "text": "chutiya kahi ka",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 51.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 1.3,
+        "gender": 3.1,
+        "not_cyberbullying": 48.8,
+        "other_cyberbullying": 45.7,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.06,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "chutiya"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 63.6,
+      "all_probabilities": {
+        "age": 2.0,
+        "ethnicity": 2.4,
+        "gender": 4.6,
+        "not_cyberbullying": 63.6,
+        "other_cyberbullying": 21.7,
+        "religion": 5.7
+      }
+    }
+  },
+  {
+    "index": 46,
+    "id": "HI-EN2-11",
+    "language_group": "Hinglish",
+    "text": "teri behen ko main chodunga",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Severe Harassment",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 51.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 1.6,
+        "gender": 2.9,
+        "not_cyberbullying": 48.4,
+        "other_cyberbullying": 46.1,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.17,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 38.3,
+      "all_probabilities": {
+        "age": 2.9,
+        "ethnicity": 5.3,
+        "gender": 7.6,
+        "not_cyberbullying": 38.3,
+        "other_cyberbullying": 35.5,
+        "religion": 10.4
+      }
+    }
+  },
+  {
+    "index": 47,
+    "id": "HI-EN2-12",
+    "language_group": "Hinglish",
+    "text": "tu pure khandaan ka kalank hai",
+    "expected_is_bully": true,
+    "expected_category": "Other / Insult",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 59.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.4,
+        "ethnicity": 5.6,
+        "gender": 3.3,
+        "not_cyberbullying": 40.9,
+        "other_cyberbullying": 49.1,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.93,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 62.8,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.3,
+        "gender": 9.4,
+        "not_cyberbullying": 62.8,
+        "other_cyberbullying": 11.5,
+        "religion": 10.5
+      }
+    }
+  },
+  {
+    "index": 48,
+    "id": "HI-EN2-13",
+    "language_group": "Hinglish",
+    "text": "buddhe log ghar pe hi baitho",
+    "expected_is_bully": true,
+    "expected_category": "Age",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 1.1,
+        "gender": 2.0,
+        "not_cyberbullying": 54.3,
+        "other_cyberbullying": 40.4,
+        "religion": 1.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.23,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 49.0,
+      "all_probabilities": {
+        "age": 11.9,
+        "ethnicity": 4.7,
+        "gender": 5.8,
+        "not_cyberbullying": 49.0,
+        "other_cyberbullying": 21.3,
+        "religion": 7.3
+      }
+    }
+  },
+  {
+    "index": 49,
+    "id": "HI-EN2-14",
+    "language_group": "Hinglish",
+    "text": "musalman log sab terrorist hain",
+    "expected_is_bully": true,
+    "expected_category": "Religion",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 98.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 0.9,
+        "gender": 0.6,
+        "not_cyberbullying": 1.8,
+        "other_cyberbullying": 0.9,
+        "religion": 95.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 133.15,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "terrorist"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 44.3,
+      "all_probabilities": {
+        "age": 2.3,
+        "ethnicity": 2.6,
+        "gender": 3.4,
+        "not_cyberbullying": 35.3,
+        "other_cyberbullying": 12.1,
+        "religion": 44.3
+      }
+    }
+  },
+  {
+    "index": 50,
+    "id": "HI-EN2-15",
+    "language_group": "Hinglish",
+    "text": "hindu log pagal hote hain",
+    "expected_is_bully": true,
+    "expected_category": "Religion",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 81.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 1.8,
+        "gender": 1.5,
+        "not_cyberbullying": 18.9,
+        "other_cyberbullying": 9.4,
+        "religion": 67.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 130.66,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "pagal"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 46.0,
+      "all_probabilities": {
+        "age": 3.2,
+        "ethnicity": 3.1,
+        "gender": 5.4,
+        "not_cyberbullying": 46.0,
+        "other_cyberbullying": 16.1,
+        "religion": 26.1
+      }
+    }
+  },
+  {
+    "index": 51,
+    "id": "HI-EN2-16",
+    "language_group": "Hinglish",
+    "text": "ladkiyan sirf kitchen ke liye hi hain",
+    "expected_is_bully": true,
+    "expected_category": "Gender",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.8,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 1.2,
+        "gender": 3.2,
+        "not_cyberbullying": 49.2,
+        "other_cyberbullying": 45.1,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.93,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "kitchen"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 62.7,
+      "all_probabilities": {
+        "age": 2.8,
+        "ethnicity": 3.7,
+        "gender": 5.5,
+        "not_cyberbullying": 62.7,
+        "other_cyberbullying": 19.3,
+        "religion": 5.9
+      }
+    }
+  },
+  {
+    "index": 52,
+    "id": "HI-EN2-17",
+    "language_group": "Hinglish",
+    "text": "black log bilkul lazy hote hain",
+    "expected_is_bully": true,
+    "expected_category": "Ethnicity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Ethnicity",
+      "confidence": 89.7,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 68.3,
+        "gender": 2.0,
+        "not_cyberbullying": 10.3,
+        "other_cyberbullying": 18.1,
+        "religion": 0.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 140.45,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Ethnicity",
+      "confidence": 47.4,
+      "all_probabilities": {
+        "age": 2.3,
+        "ethnicity": 47.4,
+        "gender": 3.3,
+        "not_cyberbullying": 37.3,
+        "other_cyberbullying": 3.7,
+        "religion": 6.0
+      }
+    }
+  },
+  {
+    "index": 53,
+    "id": "HI-EN2-18",
+    "language_group": "Hinglish",
+    "text": "tu itna mota hai dekhne layak nahi",
+    "expected_is_bully": true,
+    "expected_category": "Other / Body Shaming",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.7,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 1.5,
+        "gender": 2.5,
+        "not_cyberbullying": 49.3,
+        "other_cyberbullying": 45.6,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.14,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.2,
+      "all_probabilities": {
+        "age": 2.9,
+        "ethnicity": 4.4,
+        "gender": 8.3,
+        "not_cyberbullying": 50.2,
+        "other_cyberbullying": 20.7,
+        "religion": 13.5
+      }
+    }
+  },
+  {
+    "index": 54,
+    "id": "HI-EN2-19",
+    "language_group": "Hinglish",
+    "text": "jaake mar jaa koi nahi roega",
+    "expected_is_bully": true,
+    "expected_category": "Other / Self-harm incitement",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 55.7,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.4,
+        "ethnicity": 2.8,
+        "gender": 3.4,
+        "not_cyberbullying": 44.3,
+        "other_cyberbullying": 48.5,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.87,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 45.8,
+      "all_probabilities": {
+        "age": 2.9,
+        "ethnicity": 4.2,
+        "gender": 6.0,
+        "not_cyberbullying": 45.8,
+        "other_cyberbullying": 32.3,
+        "religion": 8.8
+      }
+    }
+  },
+  {
+    "index": 55,
+    "id": "HI-EN2-20",
+    "language_group": "Hinglish",
+    "text": "aap bahut acche ho thank you",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 1.0,
+        "gender": 2.0,
+        "not_cyberbullying": 53.3,
+        "other_cyberbullying": 42.0,
+        "religion": 0.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.75,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 44.6,
+      "all_probabilities": {
+        "age": 2.4,
+        "ethnicity": 3.2,
+        "gender": 2.3,
+        "not_cyberbullying": 44.6,
+        "other_cyberbullying": 42.7,
+        "religion": 4.9
+      }
+    }
+  },
+  {
+    "index": 56,
+    "id": "HI-EN2-21",
+    "language_group": "Hinglish",
+    "text": "ye project aapne bahut accha banaya",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "FALSE_POSITIVE",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.4,
+        "gender": 2.4,
+        "not_cyberbullying": 49.4,
+        "other_cyberbullying": 45.5,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.66,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 58.4,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 2.9,
+        "gender": 5.3,
+        "not_cyberbullying": 58.4,
+        "other_cyberbullying": 25.3,
+        "religion": 5.6
+      }
+    }
+  },
+  {
+    "index": 57,
+    "id": "HI-EN2-22",
+    "language_group": "Hinglish",
+    "text": "please meri help kar do thanks",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.9,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.8,
+        "gender": 2.2,
+        "not_cyberbullying": 53.9,
+        "other_cyberbullying": 41.3,
+        "religion": 0.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.5,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.8,
+      "all_probabilities": {
+        "age": 3.0,
+        "ethnicity": 3.5,
+        "gender": 11.7,
+        "not_cyberbullying": 54.8,
+        "other_cyberbullying": 23.5,
+        "religion": 3.5
+      }
+    }
+  },
+  {
+    "index": 58,
+    "id": "HI-EN2-23",
+    "language_group": "Hinglish",
+    "text": "aaj ka mausam accha hai",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.0,
+        "gender": 2.1,
+        "not_cyberbullying": 54.2,
+        "other_cyberbullying": 41.0,
+        "religion": 1.1
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.79,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 51.8,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.3,
+        "gender": 5.4,
+        "not_cyberbullying": 51.8,
+        "other_cyberbullying": 23.1,
+        "religion": 13.8
+      }
+    }
+  },
+  {
+    "index": 59,
+    "id": "HI-EN2-24",
+    "language_group": "Hinglish",
+    "text": "main aapki help kar sakta hoon",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.3,
+        "gender": 2.3,
+        "not_cyberbullying": 50.4,
+        "other_cyberbullying": 44.7,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 133.65,
+      "detected_lang": "English",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 42.2,
+      "all_probabilities": {
+        "age": 4.1,
+        "ethnicity": 4.8,
+        "gender": 7.7,
+        "not_cyberbullying": 34.3,
+        "other_cyberbullying": 42.2,
+        "religion": 6.9
+      }
+    }
+  },
+  {
+    "index": 60,
+    "id": "HI-EN2-25",
+    "language_group": "Hinglish",
+    "text": "isko toh chappal khol ke maar dena chahiye",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harassment",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 52.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.7,
+        "gender": 2.5,
+        "not_cyberbullying": 47.9,
+        "other_cyberbullying": 46.7,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.88,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 46.4,
+      "all_probabilities": {
+        "age": 2.8,
+        "ethnicity": 4.1,
+        "gender": 6.3,
+        "not_cyberbullying": 46.4,
+        "other_cyberbullying": 30.5,
+        "religion": 9.9
+      }
+    }
+  },
+  {
+    "index": 61,
+    "id": "HI-EN2-26",
+    "language_group": "Hinglish",
+    "text": "isko to chappal nikaal ke marna chahiye",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harassment",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 52.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.0,
+        "gender": 2.2,
+        "not_cyberbullying": 52.6,
+        "other_cyberbullying": 42.7,
+        "religion": 0.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.25,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 47.7,
+      "all_probabilities": {
+        "age": 2.7,
+        "ethnicity": 3.3,
+        "gender": 6.2,
+        "not_cyberbullying": 47.7,
+        "other_cyberbullying": 30.4,
+        "religion": 9.6
+      }
+    }
+  },
+  {
+    "index": 62,
+    "id": "HI-EN2-27",
+    "language_group": "Hinglish",
+    "text": "meri chappal kahan rakhi hai",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 0.8,
+        "gender": 2.4,
+        "not_cyberbullying": 53.4,
+        "other_cyberbullying": 41.8,
+        "religion": 0.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 138.53,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 39.0,
+      "all_probabilities": {
+        "age": 2.9,
+        "ethnicity": 4.3,
+        "gender": 6.2,
+        "not_cyberbullying": 39.0,
+        "other_cyberbullying": 28.7,
+        "religion": 18.8
+      }
+    }
+  },
+  {
+    "index": 63,
+    "id": "HI-EN2-28",
+    "language_group": "Hinglish",
+    "text": "yeh chappal bohot comfortable lag rahi",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "FALSE_POSITIVE",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.3,
+        "gender": 2.3,
+        "not_cyberbullying": 50.0,
+        "other_cyberbullying": 45.1,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.8,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.9,
+      "all_probabilities": {
+        "age": 3.3,
+        "ethnicity": 3.1,
+        "gender": 5.3,
+        "not_cyberbullying": 50.9,
+        "other_cyberbullying": 31.8,
+        "religion": 5.6
+      }
+    }
+  },
+  {
+    "index": 64,
+    "id": "HI-EN2-29",
+    "language_group": "Hinglish",
+    "text": "waah kya dimaag hai bhai, school gaye the kabhi?",
+    "expected_is_bully": true,
+    "expected_category": "Other / Sarcasm / Mockery",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 55.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.7,
+        "ethnicity": 0.8,
+        "gender": 1.7,
+        "not_cyberbullying": 55.1,
+        "other_cyberbullying": 39.2,
+        "religion": 1.4
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.67,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 44.4,
+      "all_probabilities": {
+        "age": 44.0,
+        "ethnicity": 1.2,
+        "gender": 1.7,
+        "not_cyberbullying": 44.4,
+        "other_cyberbullying": 3.0,
+        "religion": 5.8
+      }
+    }
+  },
+  {
+    "index": 65,
+    "id": "HI-EN2-30",
+    "language_group": "Hinglish",
+    "text": "kya scene hai aaj toh time pe aa gaye",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe/Mild Sarcasm)",
+    "eval_status": "FALSE_POSITIVE",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.5,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.6,
+        "gender": 2.2,
+        "not_cyberbullying": 49.5,
+        "other_cyberbullying": 45.5,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.52,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 33.7,
+      "all_probabilities": {
+        "age": 8.0,
+        "ethnicity": 7.1,
+        "gender": 6.6,
+        "not_cyberbullying": 31.1,
+        "other_cyberbullying": 33.7,
+        "religion": 13.5
+      }
+    }
+  },
+  {
+    "index": 66,
+    "id": "HI-EN2-31",
+    "language_group": "Hinglish",
+    "text": "tu pagal hai kya sala",
+    "expected_is_bully": true,
+    "expected_category": "Other / Insult (or Borderline)",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 51.5,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 1.4,
+        "gender": 2.0,
+        "not_cyberbullying": 51.5,
+        "other_cyberbullying": 43.7,
+        "religion": 0.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.6,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "pagal"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.6,
+      "all_probabilities": {
+        "age": 2.8,
+        "ethnicity": 3.8,
+        "gender": 8.2,
+        "not_cyberbullying": 50.6,
+        "other_cyberbullying": 20.8,
+        "religion": 13.8
+      }
+    }
+  },
+  {
+    "index": 67,
+    "id": "HI-EN2-32",
+    "language_group": "Hinglish",
+    "text": "saale gandu kahi ke",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 52.9,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.4,
+        "ethnicity": 1.9,
+        "gender": 3.2,
+        "not_cyberbullying": 47.1,
+        "other_cyberbullying": 46.8,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 133.1,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "saale",
+        "gandu"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 47.7,
+      "all_probabilities": {
+        "age": 2.7,
+        "ethnicity": 3.3,
+        "gender": 6.2,
+        "not_cyberbullying": 47.7,
+        "other_cyberbullying": 30.4,
+        "religion": 9.6
+      }
+    }
+  },
+  {
+    "index": 68,
+    "id": "HI-EN2-33",
+    "language_group": "Hinglish",
+    "text": "teri maa randi hai pure",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 64.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.4,
+        "ethnicity": 9.2,
+        "gender": 5.3,
+        "not_cyberbullying": 35.9,
+        "other_cyberbullying": 48.7,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.8,
+      "detected_lang": "Hinglish",
+      "trigger_words": [
+        "randi"
+      ]
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 39.9,
+      "all_probabilities": {
+        "age": 2.7,
+        "ethnicity": 3.5,
+        "gender": 7.9,
+        "not_cyberbullying": 36.1,
+        "other_cyberbullying": 39.9,
+        "religion": 10.0
+      }
+    }
+  },
+  {
+    "index": 69,
+    "id": "HI-EN2-34",
+    "language_group": "Hinglish",
+    "text": "aap bohot talented ho yaar",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "FALSE_POSITIVE",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.9,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 1.4,
+        "gender": 2.4,
+        "not_cyberbullying": 49.1,
+        "other_cyberbullying": 45.8,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 133.15,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 46.2,
+      "all_probabilities": {
+        "age": 1.9,
+        "ethnicity": 2.8,
+        "gender": 3.2,
+        "not_cyberbullying": 46.2,
+        "other_cyberbullying": 41.6,
+        "religion": 4.3
+      }
+    }
+  },
+  {
+    "index": 70,
+    "id": "HI-EN2-35",
+    "language_group": "Hinglish",
+    "text": "is baat mein koi problem nahi hai",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 52.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 1.0,
+        "gender": 2.4,
+        "not_cyberbullying": 52.6,
+        "other_cyberbullying": 42.6,
+        "religion": 0.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.22,
+      "detected_lang": "Hinglish",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 36.8,
+      "all_probabilities": {
+        "age": 2.1,
+        "ethnicity": 3.7,
+        "gender": 3.8,
+        "not_cyberbullying": 35.1,
+        "other_cyberbullying": 36.8,
+        "religion": 18.6
+      }
+    }
+  },
+  {
+    "index": 71,
+    "id": "HI2-01",
+    "language_group": "Pure Hindi",
+    "text": "मादरचोद साले",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.8,
+        "gender": 2.9,
+        "not_cyberbullying": 52.9,
+        "other_cyberbullying": 41.5,
+        "religion": 0.9
+      },
+      "safety_net_triggered": true,
+      "latency_ms": 135.9,
+      "detected_lang": "Hindi",
+      "trigger_words": [
+        "मादरचोद"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 72,
+    "id": "HI2-02",
+    "language_group": "Pure Hindi",
+    "text": "भोसड़ीवाले ट्रैफिक वाले",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 52.8,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.9,
+        "gender": 3.0,
+        "not_cyberbullying": 47.2,
+        "other_cyberbullying": 46.7,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.43,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 73,
+    "id": "HI2-03",
+    "language_group": "Pure Hindi",
+    "text": "इसकी चप्पल निकाल के मारना चाहिए",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harassment",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.8,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 0.9,
+        "gender": 4.1,
+        "not_cyberbullying": 50.8,
+        "other_cyberbullying": 42.9,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.31,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 74,
+    "id": "HI2-04",
+    "language_group": "Pure Hindi",
+    "text": "बहुत स्मार्ट हो आप, दिमाग यूज़ मत करना",
+    "expected_is_bully": true,
+    "expected_category": "Other / Sarcasm / Mockery",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 55.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.7,
+        "gender": 2.3,
+        "not_cyberbullying": 55.3,
+        "other_cyberbullying": 39.7,
+        "religion": 1.1
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.04,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 75,
+    "id": "HI2-05",
+    "language_group": "Pure Hindi",
+    "text": "तेरी माँ की चूत",
+    "expected_is_bully": true,
+    "expected_category": "Other / Gender / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 53.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.3,
+        "ethnicity": 0.6,
+        "gender": 12.9,
+        "not_cyberbullying": 47.0,
+        "other_cyberbullying": 37.7,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.33,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 76,
+    "id": "HI2-06",
+    "language_group": "Pure Hindi",
+    "text": "साले मादरचोद मर जा",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harm / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 0.8,
+        "gender": 2.7,
+        "not_cyberbullying": 53.6,
+        "other_cyberbullying": 41.3,
+        "religion": 0.9
+      },
+      "safety_net_triggered": true,
+      "latency_ms": 134.12,
+      "detected_lang": "Hindi",
+      "trigger_words": [
+        "मादरचोद"
+      ]
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 77,
+    "id": "HI2-07",
+    "language_group": "Pure Hindi",
+    "text": "बहन के लोड़े तू क्या सोच रहा",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.9,
+        "gender": 3.2,
+        "not_cyberbullying": 50.6,
+        "other_cyberbullying": 43.9,
+        "religion": 0.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 139.8,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 78,
+    "id": "HI2-08",
+    "language_group": "Pure Hindi",
+    "text": "तू पूरे नंबर का हरामी है",
+    "expected_is_bully": true,
+    "expected_category": "Other / Insult",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 58.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.3,
+        "ethnicity": 4.9,
+        "gender": 2.9,
+        "not_cyberbullying": 41.9,
+        "other_cyberbullying": 48.2,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 131.19,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 79,
+    "id": "HI2-09",
+    "language_group": "Pure Hindi",
+    "text": "रंडी की औलाद",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Other / Profanity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 55.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 2.5,
+        "gender": 4.9,
+        "not_cyberbullying": 44.6,
+        "other_cyberbullying": 46.6,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.31,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 80,
+    "id": "HI2-10",
+    "language_group": "Pure Hindi",
+    "text": "चुतिया कहीं का",
+    "expected_is_bully": true,
+    "expected_category": "Other / Profanity",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 51.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 1.0,
+        "gender": 2.7,
+        "not_cyberbullying": 51.3,
+        "other_cyberbullying": 43.7,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.67,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 81,
+    "id": "HI2-11",
+    "language_group": "Pure Hindi",
+    "text": "तेरी बहन को मैं चोदूंगा",
+    "expected_is_bully": true,
+    "expected_category": "Gender / Severe Harassment",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 56.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.3,
+        "ethnicity": 0.8,
+        "gender": 16.4,
+        "not_cyberbullying": 43.6,
+        "other_cyberbullying": 37.4,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.24,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 82,
+    "id": "HI2-12",
+    "language_group": "Pure Hindi",
+    "text": "तू पूरे खानदान का कलंक है",
+    "expected_is_bully": true,
+    "expected_category": "Other / Insult",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 1.6,
+        "gender": 2.1,
+        "not_cyberbullying": 50.3,
+        "other_cyberbullying": 44.4,
+        "religion": 1.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.34,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 83,
+    "id": "HI2-13",
+    "language_group": "Pure Hindi",
+    "text": "बूढ़े लोग घर पे ही बैठो",
+    "expected_is_bully": true,
+    "expected_category": "Age",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 52.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.8,
+        "ethnicity": 1.1,
+        "gender": 2.3,
+        "not_cyberbullying": 52.0,
+        "other_cyberbullying": 43.2,
+        "religion": 0.8
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.85,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 84,
+    "id": "HI2-14",
+    "language_group": "Pure Hindi",
+    "text": "मुसलमान लोग सब आतंकवादी हैं",
+    "expected_is_bully": true,
+    "expected_category": "Religion",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 99.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.1,
+        "ethnicity": 0.8,
+        "gender": 0.6,
+        "not_cyberbullying": 1.0,
+        "other_cyberbullying": 0.5,
+        "religion": 96.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 135.79,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 85,
+    "id": "HI2-15",
+    "language_group": "Pure Hindi",
+    "text": "हिंदू लोग पागल होते हैं",
+    "expected_is_bully": true,
+    "expected_category": "Religion",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Religion",
+      "confidence": 94.8,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 1.0,
+        "gender": 1.1,
+        "not_cyberbullying": 5.2,
+        "other_cyberbullying": 2.4,
+        "religion": 89.2
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.38,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 86,
+    "id": "HI2-16",
+    "language_group": "Pure Hindi",
+    "text": "लड़कियां सिर्फ किचन के लिए ही हैं",
+    "expected_is_bully": true,
+    "expected_category": "Gender",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.4,
+        "ethnicity": 0.5,
+        "gender": 9.6,
+        "not_cyberbullying": 49.9,
+        "other_cyberbullying": 38.0,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.0,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 87,
+    "id": "HI2-17",
+    "language_group": "Pure Hindi",
+    "text": "काले लोग बिल्कुल आलसी होते हैं",
+    "expected_is_bully": true,
+    "expected_category": "Ethnicity",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Ethnicity",
+      "confidence": 98.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.5,
+        "ethnicity": 92.2,
+        "gender": 0.8,
+        "not_cyberbullying": 1.9,
+        "other_cyberbullying": 3.7,
+        "religion": 0.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 137.74,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 88,
+    "id": "HI2-18",
+    "language_group": "Pure Hindi",
+    "text": "तू इतना मोटा है देखने लायक नहीं",
+    "expected_is_bully": true,
+    "expected_category": "Other / Body Shaming",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 1.2,
+        "gender": 3.2,
+        "not_cyberbullying": 49.6,
+        "other_cyberbullying": 44.7,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.22,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 89,
+    "id": "HI2-19",
+    "language_group": "Pure Hindi",
+    "text": "जाके मर जा कोई नहीं रोएगा",
+    "expected_is_bully": true,
+    "expected_category": "Other / Self-harm incitement",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 55.6,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 0.8,
+        "gender": 3.4,
+        "not_cyberbullying": 55.6,
+        "other_cyberbullying": 37.5,
+        "religion": 2.1
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.81,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 90,
+    "id": "HI2-20",
+    "language_group": "Pure Hindi",
+    "text": "आप बहुत अच्छे हो धन्यवाद",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.3,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.8,
+        "gender": 2.5,
+        "not_cyberbullying": 53.3,
+        "other_cyberbullying": 41.5,
+        "religion": 0.9
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.02,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 91,
+    "id": "HI2-21",
+    "language_group": "Pure Hindi",
+    "text": "यह प्रोजेक्ट आपने बहुत अच्छा बनाया",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 55.0,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.2,
+        "ethnicity": 0.7,
+        "gender": 2.4,
+        "not_cyberbullying": 55.0,
+        "other_cyberbullying": 39.6,
+        "religion": 1.1
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 138.08,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 92,
+    "id": "HI2-22",
+    "language_group": "Pure Hindi",
+    "text": "कृपया मेरी मदद कर दो धन्यवाद",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 55.4,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 0.7,
+        "gender": 2.1,
+        "not_cyberbullying": 55.4,
+        "other_cyberbullying": 39.6,
+        "religion": 1.2
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 132.49,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 93,
+    "id": "HI2-23",
+    "language_group": "Pure Hindi",
+    "text": "आज का मौसम अच्छा है",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 56.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.7,
+        "gender": 2.2,
+        "not_cyberbullying": 56.2,
+        "other_cyberbullying": 38.5,
+        "religion": 1.5
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 131.12,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 94,
+    "id": "HI2-24",
+    "language_group": "Pure Hindi",
+    "text": "मैं आपकी मदद कर सकता हूँ",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 54.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 0.8,
+        "gender": 2.5,
+        "not_cyberbullying": 54.2,
+        "other_cyberbullying": 40.7,
+        "religion": 1.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 134.76,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 95,
+    "id": "HI2-25",
+    "language_group": "Pure Hindi",
+    "text": "इसकी तो चप्पल खोल के मार देना चाहिए",
+    "expected_is_bully": true,
+    "expected_category": "Other / Harassment",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 50.5,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 1.1,
+        "gender": 4.0,
+        "not_cyberbullying": 49.5,
+        "other_cyberbullying": 44.2,
+        "religion": 0.6
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 136.61,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 96,
+    "id": "HI2-26",
+    "language_group": "Pure Hindi",
+    "text": "मेरी चप्पल कहाँ रखी है",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 51.8,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.7,
+        "ethnicity": 0.9,
+        "gender": 2.7,
+        "not_cyberbullying": 51.8,
+        "other_cyberbullying": 43.2,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 141.84,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 97,
+    "id": "HI2-27",
+    "language_group": "Pure Hindi",
+    "text": "यह चप्पल बहुत आरामदायक लग रही",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 55.1,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 1.0,
+        "ethnicity": 0.6,
+        "gender": 2.9,
+        "not_cyberbullying": 55.1,
+        "other_cyberbullying": 39.4,
+        "religion": 1.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 140.18,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 98,
+    "id": "HI2-28",
+    "language_group": "Pure Hindi",
+    "text": "वाह क्या दिमाग है भाई, स्कूल गए थे कभी?",
+    "expected_is_bully": true,
+    "expected_category": "Other / Sarcasm / Mockery",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 53.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 4.3,
+        "ethnicity": 0.8,
+        "gender": 2.1,
+        "not_cyberbullying": 53.2,
+        "other_cyberbullying": 38.2,
+        "religion": 1.3
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 141.31,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 99,
+    "id": "HI2-29",
+    "language_group": "Pure Hindi",
+    "text": "क्या सीन है आज तो टाइम पे आ गए",
+    "expected_is_bully": false,
+    "expected_category": "N/A (Safe/Mild Sarcasm)",
+    "eval_status": "MATCH",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 51.8,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.9,
+        "ethnicity": 1.0,
+        "gender": 2.4,
+        "not_cyberbullying": 51.8,
+        "other_cyberbullying": 43.3,
+        "religion": 0.7
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 144.05,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  },
+  {
+    "index": 100,
+    "id": "HI2-30",
+    "language_group": "Pure Hindi",
+    "text": "तू पागल है क्या साला",
+    "expected_is_bully": true,
+    "expected_category": "Other / Insult (or Borderline)",
+    "eval_status": "FALSE_NEGATIVE",
+    "muril": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 52.2,
+      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "all_probabilities": {
+        "age": 0.6,
+        "ethnicity": 1.2,
+        "gender": 2.6,
+        "not_cyberbullying": 52.2,
+        "other_cyberbullying": 42.4,
+        "religion": 1.0
+      },
+      "safety_net_triggered": false,
+      "latency_ms": 142.94,
+      "detected_lang": "Hindi",
+      "trigger_words": []
+    },
+    "baseline": {
+      "verdict": "Not Cyberbullying",
+      "is_cyberbullying": false,
+      "category": "N/A",
+      "confidence": 50.5,
+      "all_probabilities": {
+        "age": 2.5,
+        "ethnicity": 3.2,
+        "gender": 5.7,
+        "not_cyberbullying": 50.5,
+        "other_cyberbullying": 32.7,
+        "religion": 5.5
+      }
+    }
+  }
+]
