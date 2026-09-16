@@ -22,7 +22,7 @@
         "religion": 0.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 224.86,
+      "latency_ms": 237.19,
       "detected_lang": "English",
       "trigger_words": [
         "idiot"
@@ -66,7 +66,7 @@
         "religion": 0.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.9,
+      "latency_ms": 97.23,
       "detected_lang": "English",
       "trigger_words": [
         "fuck"
@@ -110,7 +110,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": true,
-      "latency_ms": 131.04,
+      "latency_ms": 93.13,
       "detected_lang": "English",
       "trigger_words": [
         "whore"
@@ -154,7 +154,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": true,
-      "latency_ms": 136.95,
+      "latency_ms": 96.94,
       "detected_lang": "English",
       "trigger_words": [
         "kys",
@@ -200,7 +200,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 137.06,
+      "latency_ms": 89.86,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -242,13 +242,13 @@
         "religion": 0.4
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.77,
+      "latency_ms": 92.02,
       "detected_lang": "English",
       "trigger_words": [
-        "boomer",
+        "senile",
         "old hag",
-        "wrinkly",
-        "senile"
+        "boomer",
+        "wrinkly"
       ]
     },
     "baseline": {
@@ -289,7 +289,7 @@
         "religion": 96.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.45,
+      "latency_ms": 82.15,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -331,7 +331,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.9,
+      "latency_ms": 83.56,
       "detected_lang": "English",
       "trigger_words": [
         "stupid"
@@ -359,13 +359,13 @@
     "text": "Girls belong in the kitchen, not in tech",
     "expected_is_bully": true,
     "expected_category": "Gender",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 54.9,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 2.0,
         "ethnicity": 0.5,
@@ -374,11 +374,12 @@
         "other_cyberbullying": 38.2,
         "religion": 1.0
       },
-      "safety_net_triggered": false,
-      "latency_ms": 180.48,
+      "safety_net_triggered": true,
+      "latency_ms": 97.08,
       "detected_lang": "English",
       "trigger_words": [
-        "kitchen"
+        "kitchen",
+        "belong in the kitchen"
       ]
     },
     "baseline": {
@@ -403,13 +404,13 @@
     "text": "Old people should just die already, waste of space",
     "expected_is_bully": true,
     "expected_category": "Age",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 56.1,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Age",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 1.1,
         "ethnicity": 0.8,
@@ -418,11 +419,12 @@
         "other_cyberbullying": 38.3,
         "religion": 1.8
       },
-      "safety_net_triggered": false,
-      "latency_ms": 152.98,
+      "safety_net_triggered": true,
+      "latency_ms": 95.11,
       "detected_lang": "English",
       "trigger_words": [
-        "die"
+        "die",
+        "die already"
       ]
     },
     "baseline": {
@@ -463,11 +465,11 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.58,
+      "latency_ms": 88.17,
       "detected_lang": "English",
       "trigger_words": [
-        "bitch",
         "ugly",
+        "bitch",
         "fat"
       ]
     },
@@ -509,7 +511,7 @@
         "religion": 93.3
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.24,
+      "latency_ms": 84.2,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -551,7 +553,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.51,
+      "latency_ms": 85.78,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -593,7 +595,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.51,
+      "latency_ms": 82.78,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -635,7 +637,7 @@
         "religion": 77.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.04,
+      "latency_ms": 85.69,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -677,7 +679,7 @@
         "religion": 2.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.91,
+      "latency_ms": 88.35,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -703,13 +705,13 @@
     "text": "I hope you get raped and die alone",
     "expected_is_bully": true,
     "expected_category": "Gender / Severe Other",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 58.8,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 1.1,
         "ethnicity": 0.6,
@@ -718,10 +720,11 @@
         "other_cyberbullying": 33.3,
         "religion": 3.9
       },
-      "safety_net_triggered": false,
-      "latency_ms": 128.93,
+      "safety_net_triggered": true,
+      "latency_ms": 90.99,
       "detected_lang": "English",
       "trigger_words": [
+        "raped",
         "die"
       ]
     },
@@ -747,13 +750,13 @@
     "text": "Your whole family is a bunch of worthless animals",
     "expected_is_bully": true,
     "expected_category": "Other",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 55.7,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 1.2,
         "ethnicity": 0.7,
@@ -762,10 +765,12 @@
         "other_cyberbullying": 39.1,
         "religion": 1.3
       },
-      "safety_net_triggered": false,
-      "latency_ms": 131.92,
+      "safety_net_triggered": true,
+      "latency_ms": 82.13,
       "detected_lang": "English",
-      "trigger_words": []
+      "trigger_words": [
+        "worthless animals"
+      ]
     },
     "baseline": {
       "verdict": "Cyberbullying Detected",
@@ -805,7 +810,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.63,
+      "latency_ms": 86.1,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -847,7 +852,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 136.62,
+      "latency_ms": 82.74,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -889,7 +894,7 @@
         "religion": 2.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.55,
+      "latency_ms": 86.88,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -931,7 +936,7 @@
         "religion": 1.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.55,
+      "latency_ms": 92.71,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -973,7 +978,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.46,
+      "latency_ms": 85.15,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1015,7 +1020,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.72,
+      "latency_ms": 89.49,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1057,7 +1062,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.97,
+      "latency_ms": 87.38,
       "detected_lang": "English",
       "trigger_words": [
         "shit"
@@ -1101,7 +1106,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.08,
+      "latency_ms": 81.2,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1143,7 +1148,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.47,
+      "latency_ms": 89.21,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1185,7 +1190,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.74,
+      "latency_ms": 85.68,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1227,7 +1232,7 @@
         "religion": 3.3
       },
       "safety_net_triggered": false,
-      "latency_ms": 139.32,
+      "latency_ms": 86.45,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1269,7 +1274,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.6,
+      "latency_ms": 95.95,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1295,13 +1300,13 @@
     "text": "I hope your entire bloodline suffers",
     "expected_is_bully": true,
     "expected_category": "Other",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 55.3,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 0.9,
         "ethnicity": 0.7,
@@ -1310,10 +1315,12 @@
         "other_cyberbullying": 39.9,
         "religion": 1.1
       },
-      "safety_net_triggered": false,
-      "latency_ms": 178.56,
+      "safety_net_triggered": true,
+      "latency_ms": 98.28,
       "detected_lang": "English",
-      "trigger_words": []
+      "trigger_words": [
+        "bloodline"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -1353,7 +1360,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 140.93,
+      "latency_ms": 91.53,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1395,7 +1402,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.6,
+      "latency_ms": 91.47,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1437,7 +1444,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 136.14,
+      "latency_ms": 94.06,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1479,7 +1486,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.45,
+      "latency_ms": 96.57,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -1521,7 +1528,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": true,
-      "latency_ms": 133.83,
+      "latency_ms": 92.38,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "madarchod"
@@ -1565,7 +1572,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": true,
-      "latency_ms": 138.91,
+      "latency_ms": 88.74,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "bhosdiwala"
@@ -1609,9 +1616,11 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.26,
+      "latency_ms": 87.71,
       "detected_lang": "English",
-      "trigger_words": []
+      "trigger_words": [
+        "chappal khol"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -1651,9 +1660,11 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.53,
+      "latency_ms": 87.74,
       "detected_lang": "Hinglish",
-      "trigger_words": []
+      "trigger_words": [
+        "dimaag mat use karna"
+      ]
     },
     "baseline": {
       "verdict": "Cyberbullying Detected",
@@ -1693,7 +1704,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 139.38,
+      "latency_ms": 90.86,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -1735,11 +1746,12 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 130.85,
+      "latency_ms": 89.79,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "saale",
-        "madarchod"
+        "madarchod",
+        "jaa mar"
       ]
     },
     "baseline": {
@@ -1780,7 +1792,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 138.02,
+      "latency_ms": 89.41,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "behenchod"
@@ -1824,7 +1836,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 137.06,
+      "latency_ms": 91.01,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "harami"
@@ -1868,7 +1880,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.42,
+      "latency_ms": 116.36,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "randi"
@@ -1912,7 +1924,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": true,
-      "latency_ms": 140.35,
+      "latency_ms": 96.17,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "chutiya"
@@ -1956,7 +1968,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 136.65,
+      "latency_ms": 95.53,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -1998,9 +2010,11 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 131.21,
+      "latency_ms": 90.26,
       "detected_lang": "Hinglish",
-      "trigger_words": []
+      "trigger_words": [
+        "kalank"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -2024,13 +2038,13 @@
     "text": "buddhe logon ko ghar pe baithna chahiye",
     "expected_is_bully": true,
     "expected_category": "Age",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 54.6,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Age",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 0.5,
         "ethnicity": 1.4,
@@ -2039,10 +2053,13 @@
         "other_cyberbullying": 38.4,
         "religion": 3.4
       },
-      "safety_net_triggered": false,
-      "latency_ms": 134.0,
+      "safety_net_triggered": true,
+      "latency_ms": 89.88,
       "detected_lang": "Hinglish",
-      "trigger_words": []
+      "trigger_words": [
+        "buddhe",
+        "buddhe logon"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -2082,7 +2099,7 @@
         "religion": 93.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 129.01,
+      "latency_ms": 80.91,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "terrorist"
@@ -2126,7 +2143,7 @@
         "religion": 74.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 137.29,
+      "latency_ms": 87.98,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "paagal"
@@ -2170,9 +2187,10 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 136.1,
+      "latency_ms": 87.71,
       "detected_lang": "Hinglish",
       "trigger_words": [
+        "kitchen ke liye",
         "kitchen"
       ]
     },
@@ -2214,7 +2232,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.64,
+      "latency_ms": 89.76,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2256,7 +2274,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 157.34,
+      "latency_ms": 94.17,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2298,9 +2316,11 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 142.82,
+      "latency_ms": 88.73,
       "detected_lang": "Hinglish",
-      "trigger_words": []
+      "trigger_words": [
+        "jaa mar"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -2340,7 +2360,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 141.81,
+      "latency_ms": 88.09,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -2382,7 +2402,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 144.29,
+      "latency_ms": 88.03,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2424,7 +2444,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 146.16,
+      "latency_ms": 83.24,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -2466,7 +2486,7 @@
         "religion": 1.2
       },
       "safety_net_triggered": false,
-      "latency_ms": 136.33,
+      "latency_ms": 84.04,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2508,7 +2528,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 132.78,
+      "latency_ms": 88.76,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -2534,13 +2554,13 @@
     "text": "isko toh chappal khol ke marna chahiye",
     "expected_is_bully": true,
     "expected_category": "Other / Harassment",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 50.7,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 0.5,
         "ethnicity": 1.4,
@@ -2549,10 +2569,12 @@
         "other_cyberbullying": 44.3,
         "religion": 0.8
       },
-      "safety_net_triggered": false,
-      "latency_ms": 133.4,
+      "safety_net_triggered": true,
+      "latency_ms": 86.19,
       "detected_lang": "Hinglish",
-      "trigger_words": []
+      "trigger_words": [
+        "chappal khol"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -2576,13 +2598,13 @@
     "text": "isko to chappal khol ke marna chahiye",
     "expected_is_bully": true,
     "expected_category": "Other / Harassment",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 51.8,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 0.6,
         "ethnicity": 1.2,
@@ -2591,10 +2613,12 @@
         "other_cyberbullying": 43.4,
         "religion": 0.8
       },
-      "safety_net_triggered": false,
-      "latency_ms": 134.48,
+      "safety_net_triggered": true,
+      "latency_ms": 86.31,
       "detected_lang": "Hinglish",
-      "trigger_words": []
+      "trigger_words": [
+        "chappal khol"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -2634,7 +2658,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.34,
+      "latency_ms": 86.4,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2676,7 +2700,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.55,
+      "latency_ms": 91.71,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2718,7 +2742,7 @@
         "religion": 1.2
       },
       "safety_net_triggered": false,
-      "latency_ms": 139.78,
+      "latency_ms": 86.78,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2760,7 +2784,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 156.78,
+      "latency_ms": 84.05,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -2802,7 +2826,7 @@
         "religion": 0.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 201.15,
+      "latency_ms": 89.23,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "pagal"
@@ -2846,7 +2870,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 139.03,
+      "latency_ms": 85.04,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "gandu",
@@ -2891,7 +2915,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.6,
+      "latency_ms": 85.75,
       "detected_lang": "Hinglish",
       "trigger_words": [
         "randi"
@@ -2935,7 +2959,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 134.76,
+      "latency_ms": 88.13,
       "detected_lang": "English",
       "trigger_words": []
     },
@@ -2977,7 +3001,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.79,
+      "latency_ms": 87.36,
       "detected_lang": "Hinglish",
       "trigger_words": []
     },
@@ -3019,7 +3043,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": true,
-      "latency_ms": 131.49,
+      "latency_ms": 84.55,
       "detected_lang": "Hindi",
       "trigger_words": [
         "मादरचोद"
@@ -3063,7 +3087,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 140.5,
+      "latency_ms": 85.08,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3105,9 +3129,11 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 151.83,
+      "latency_ms": 88.72,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "चप्पल खोल"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -3147,9 +3173,11 @@
         "religion": 1.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 147.25,
+      "latency_ms": 87.52,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "दिमाग मत यूज़ करना"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -3189,7 +3217,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 141.47,
+      "latency_ms": 85.75,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3231,10 +3259,11 @@
         "religion": 0.9
       },
       "safety_net_triggered": true,
-      "latency_ms": 132.74,
+      "latency_ms": 86.0,
       "detected_lang": "Hindi",
       "trigger_words": [
-        "मादरचोद"
+        "मादरचोद",
+        "साले"
       ]
     },
     "baseline": {
@@ -3275,7 +3304,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": true,
-      "latency_ms": 159.05,
+      "latency_ms": 86.44,
       "detected_lang": "Hindi",
       "trigger_words": [
         "बहनचोद"
@@ -3319,9 +3348,11 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 160.59,
+      "latency_ms": 84.92,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "हरामी"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -3361,9 +3392,11 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 164.08,
+      "latency_ms": 83.61,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "रंडी"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -3403,7 +3436,7 @@
         "religion": 0.5
       },
       "safety_net_triggered": false,
-      "latency_ms": 176.72,
+      "latency_ms": 84.61,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3445,7 +3478,7 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 139.87,
+      "latency_ms": 82.47,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3471,13 +3504,13 @@
     "text": "तू तो पूरे परिवार का कलंक है",
     "expected_is_bully": true,
     "expected_category": "Other / Insult",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 51.5,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 0.8,
         "ethnicity": 1.5,
@@ -3486,10 +3519,12 @@
         "other_cyberbullying": 42.9,
         "religion": 1.2
       },
-      "safety_net_triggered": false,
-      "latency_ms": 140.42,
+      "safety_net_triggered": true,
+      "latency_ms": 92.4,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "कलंक"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -3513,13 +3548,13 @@
     "text": "बूढ़े लोगों को घर पे बैठना चाहिए",
     "expected_is_bully": true,
     "expected_category": "Age",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 51.5,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Age",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 0.7,
         "ethnicity": 1.2,
@@ -3528,10 +3563,14 @@
         "other_cyberbullying": 43.1,
         "religion": 0.8
       },
-      "safety_net_triggered": false,
-      "latency_ms": 145.57,
+      "safety_net_triggered": true,
+      "latency_ms": 84.66,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "बूढ़े लोग",
+        "बूढ़े लोगों",
+        "बूढ़े"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -3571,7 +3610,7 @@
         "religion": 96.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 142.04,
+      "latency_ms": 85.02,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3613,7 +3652,7 @@
         "religion": 89.9
       },
       "safety_net_triggered": false,
-      "latency_ms": 137.0,
+      "latency_ms": 82.6,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3639,13 +3678,13 @@
     "text": "लड़कियां सिर्फ किचन के लिए बनी हैं",
     "expected_is_bully": true,
     "expected_category": "Gender",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 52.3,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Gender",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 1.6,
         "ethnicity": 0.6,
@@ -3654,10 +3693,13 @@
         "other_cyberbullying": 40.1,
         "religion": 0.7
       },
-      "safety_net_triggered": false,
-      "latency_ms": 153.39,
+      "safety_net_triggered": true,
+      "latency_ms": 91.7,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "किचन",
+        "किचन के लिए"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -3697,7 +3739,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 135.87,
+      "latency_ms": 80.8,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3739,7 +3781,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 143.85,
+      "latency_ms": 84.1,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3765,13 +3807,13 @@
     "text": "जा मर जा, कोई नहीं रोएगा",
     "expected_is_bully": true,
     "expected_category": "Other / Self-harm incitement",
-    "eval_status": "FALSE_NEGATIVE",
+    "eval_status": "MATCH",
     "muril": {
-      "verdict": "Not Cyberbullying",
-      "is_cyberbullying": false,
-      "category": "N/A",
-      "confidence": 57.3,
-      "model_used": "Google MuRIL v2 (6-Class Multilingual Transformer)",
+      "verdict": "Cyberbullying Detected",
+      "is_cyberbullying": true,
+      "category": "Other",
+      "confidence": 90.0,
+      "model_used": "Google MuRIL v2 (with Keyword Safety-Net Override)",
       "all_probabilities": {
         "age": 0.7,
         "ethnicity": 0.7,
@@ -3780,10 +3822,13 @@
         "other_cyberbullying": 35.0,
         "religion": 3.2
       },
-      "safety_net_triggered": false,
-      "latency_ms": 144.28,
+      "safety_net_triggered": true,
+      "latency_ms": 83.71,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "जा मर जा",
+        "मर जा"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -3823,7 +3868,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 138.21,
+      "latency_ms": 84.65,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3865,7 +3910,7 @@
         "religion": 1.2
       },
       "safety_net_triggered": false,
-      "latency_ms": 141.47,
+      "latency_ms": 88.51,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3907,7 +3952,7 @@
         "religion": 1.3
       },
       "safety_net_triggered": false,
-      "latency_ms": 156.85,
+      "latency_ms": 97.25,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3949,7 +3994,7 @@
         "religion": 1.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 146.37,
+      "latency_ms": 84.56,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -3991,7 +4036,7 @@
         "religion": 1.0
       },
       "safety_net_triggered": false,
-      "latency_ms": 144.96,
+      "latency_ms": 88.29,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4033,9 +4078,11 @@
         "religion": 0.6
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.72,
+      "latency_ms": 89.5,
       "detected_lang": "Hindi",
-      "trigger_words": []
+      "trigger_words": [
+        "चप्पल खोल"
+      ]
     },
     "baseline": {
       "verdict": "Not Cyberbullying",
@@ -4075,7 +4122,7 @@
         "religion": 0.7
       },
       "safety_net_triggered": false,
-      "latency_ms": 171.13,
+      "latency_ms": 90.13,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4117,7 +4164,7 @@
         "religion": 1.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 217.58,
+      "latency_ms": 83.41,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4159,7 +4206,7 @@
         "religion": 1.3
       },
       "safety_net_triggered": false,
-      "latency_ms": 143.61,
+      "latency_ms": 83.3,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4201,7 +4248,7 @@
         "religion": 0.8
       },
       "safety_net_triggered": false,
-      "latency_ms": 133.77,
+      "latency_ms": 86.09,
       "detected_lang": "Hindi",
       "trigger_words": []
     },
@@ -4243,7 +4290,7 @@
         "religion": 1.1
       },
       "safety_net_triggered": false,
-      "latency_ms": 129.37,
+      "latency_ms": 94.89,
       "detected_lang": "Hindi",
       "trigger_words": []
     },

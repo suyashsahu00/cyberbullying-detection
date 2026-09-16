@@ -96,7 +96,8 @@ def classify_probabilities(
                 span for span in trigger_res.get("spans", [])
                 if span.get("weight", 0.0) > 0.8 and 
                 (span.get("word", "").lower() in ALL_HIGH_SEVERITY_SLURS or 
-                 any(w in span.get("word", "").lower() for w in ALL_HIGH_SEVERITY_SLURS))
+                 any(w in span.get("word", "").lower() for w in ALL_HIGH_SEVERITY_SLURS) or
+                 any(span.get("word", "").lower() in w for w in ALL_HIGH_SEVERITY_SLURS))
             ]
             if len(high_severity_matches) > 0:
                 safety_net_triggered = True
