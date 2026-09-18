@@ -37,6 +37,27 @@ LABEL_MAP = {
 ID_TO_LABEL = {v: k for k, v in LABEL_MAP.items()}
 CLASS_NAMES = [ID_TO_LABEL[i] for i in range(len(LABEL_MAP))]
 
+class FocalLoss(nn.Module):
+    """
+    Multi-Class Focal Loss to address probability compression on borderline/subtle harassment.
+    FL(p_t) = - alpha_t * (1 - p_t)^gamma * log(p_t)
+    """
+    def __init__(self, alpha=None, gamma=2.0, reduction='mean'):
+        super().__init__()
+        self.alpha = alpha
+        self.gamma = gamma
+        self.reduction = reduction
+
+    def forward(self, logits, targets):
+        ce_loss = nn.functional.cross_entropy(logits, targets, reduction='none', weight=self.alpha)
+        pt = torch.exp(-ce_loss)
+        focal_loss = ((1.0 - pt) ** self.gamma) * ce_loss
+        if self.reduction == 'mean':
+            return focal_loss.mean()
+        elif self.reduction == 'sum':
+            return focal_loss.sum()
+        return focal_loss
+
 class TextDataset(Dataset):
     def __init__(self, texts, labels, tokenizer, max_len=128):
         self.texts = texts
@@ -106,7 +127,7 @@ def evaluate(model, data_loader, criterion, device, method="two_stage"):
     return avg_loss, acc, prec, rec, f1, np.array(all_preds), np.array(all_labels)
 
 
-def train(epochs=2, batch_size=32, lr=2e-5, max_len=128):
+def train(epochs=3, batch_size=32, lr=2e-5, max_len=128, gamma=2.0):
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     processed_dir = os.path.join(root_dir, "data", "processed")
     base_model_dir = os.path.join(root_dir, "models", "muril_base_safetensors")
@@ -115,10 +136,10 @@ def train(epochs=2, batch_size=32, lr=2e-5, max_len=128):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("=" * 75)
-    print(" TRAINING GOOGLE MURIL V2 (6-CLASS MULTILINGUAL)")
+    print(" TRAINING GOOGLE MURIL V2 (6-CLASS MULTILINGUAL) WITH FOCAL LOSS")
     print(f" Execution Device : {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
     print(f" Output Directory : {output_dir}")
-    print(f" Hyperparameters  : Epochs={epochs}, BatchSize={batch_size}, LR={lr}, MaxLen={max_len}")
+    print(f" Hyperparameters  : Epochs={epochs}, BatchSize={batch_size}, LR={lr}, MaxLen={max_len}, Gamma={gamma}")
     print("=" * 75)
 
     # 1. Load Data
@@ -166,15 +187,27 @@ def train(epochs=2, batch_size=32, lr=2e-5, max_len=128):
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
-    # Optimizer & Scheduler
+    # Class-Balanced Focal Loss
+    class_counts = train_df['cyberbullying_type'].map(LABEL_MAP).value_counts().sort_index().values
+    total_samples = len(train_df)
+    class_weights = torch.tensor(
+        [total_samples / (len(LABEL_MAP) * max(c, 1)) for c in class_counts],
+        dtype=torch.float
+    ).to(device)
+    class_weights = class_weights / class_weights.mean()
+    print(f"\nComputed Class Weights: {dict(zip(CLASS_NAMES, [round(w.item(), 3) for w in class_weights]))}")
+
+    criterion = FocalLoss(alpha=class_weights, gamma=gamma)
+
+    # Optimizer & Cosine Scheduler
+    from transformers import get_cosine_schedule_with_warmup
     total_steps = len(train_loader) * epochs
     optimizer = AdamW(model.parameters(), lr=lr, weight_decay=0.01)
-    scheduler = get_linear_schedule_with_warmup(
+    scheduler = get_cosine_schedule_with_warmup(
         optimizer,
         num_warmup_steps=int(total_steps * 0.1),
         num_training_steps=total_steps
     )
-    criterion = nn.CrossEntropyLoss()
     scaler = torch.amp.GradScaler('cuda', enabled=torch.cuda.is_available())
 
     best_val_f1 = 0.0
@@ -192,9 +225,13 @@ def train(epochs=2, batch_size=32, lr=2e-5, max_len=128):
             attention_mask = batch['attention_mask'].to(device)
             labels = batch['labels'].to(device)
 
-            with torch.amp.autocast('cuda', enabled=torch.cuda.is_available()):
-                outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-                loss = outputs.loss
+            if device.type == 'cuda':
+                with torch.amp.autocast('cuda'):
+                    outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+                    loss = criterion(outputs.logits, labels)
+            else:
+                outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+                loss = criterion(outputs.logits, labels)
 
             scaler.scale(loss).backward()
             scaler.unscale_(optimizer)
@@ -284,9 +321,10 @@ def train(epochs=2, batch_size=32, lr=2e-5, max_len=128):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", type=int, default=2)
+    parser.add_argument("--epochs", type=int, default=3)
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--lr", type=float, default=2e-5)
+    parser.add_argument("--gamma", type=float, default=2.0)
     args = parser.parse_args()
 
-    train(epochs=args.epochs, batch_size=args.batch_size, lr=args.lr)
+    train(epochs=args.epochs, batch_size=args.batch_size, lr=args.lr, gamma=args.gamma)

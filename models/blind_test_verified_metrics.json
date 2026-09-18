@@ -5,108 +5,108 @@
     "device": "cuda"
   },
   "performance_metrics": {
-    "overall_accuracy": 81.97,
-    "macro_precision": 83.21,
-    "macro_recall": 83.41,
-    "macro_f1_score": 83.29,
+    "overall_accuracy": 82.33,
+    "macro_precision": 84.68,
+    "macro_recall": 84.45,
+    "macro_f1_score": 83.35,
     "per_class": {
       "age": {
         "precision": 97.16,
-        "recall": 98.38,
-        "f1_score": 97.76,
+        "recall": 98.25,
+        "f1_score": 97.7,
         "support": 800
       },
       "ethnicity": {
-        "precision": 98.1,
-        "recall": 93.72,
-        "f1_score": 95.86,
+        "precision": 97.47,
+        "recall": 93.12,
+        "f1_score": 95.24,
         "support": 828
       },
       "gender": {
-        "precision": 84.04,
-        "recall": 88.72,
-        "f1_score": 86.32,
+        "precision": 82.94,
+        "recall": 90.95,
+        "f1_score": 86.76,
         "support": 807
       },
       "not_cyberbullying": {
-        "precision": 66.18,
-        "recall": 63.14,
-        "f1_score": 64.63,
+        "precision": 79.06,
+        "recall": 44.76,
+        "f1_score": 57.16,
         "support": 1088
       },
       "other_cyberbullying": {
-        "precision": 59.46,
-        "recall": 60.78,
-        "f1_score": 60.11,
+        "precision": 57.4,
+        "recall": 82.78,
+        "f1_score": 67.79,
         "support": 900
       },
       "religion": {
-        "precision": 94.34,
-        "recall": 95.73,
-        "f1_score": 95.03,
+        "precision": 94.07,
+        "recall": 96.83,
+        "f1_score": 95.43,
         "support": 819
       }
     }
   },
   "timing_and_latency": {
-    "total_inference_time_sec": 17.58,
-    "throughput_qps": 298.16,
-    "mean_latency_per_sample_ms": 3.35
+    "total_inference_time_sec": 14.4,
+    "throughput_qps": 364.14,
+    "mean_latency_per_sample_ms": 2.75
   },
   "argmax_baseline_comparison": {
-    "overall_accuracy": 81.38,
-    "macro_precision": 84.01,
-    "macro_recall": 82.17,
-    "macro_f1_score": 81.87
+    "overall_accuracy": 83.54,
+    "macro_precision": 85.1,
+    "macro_recall": 85.21,
+    "macro_f1_score": 84.74
   },
   "confusion_matrix": [
     [
-      787,
-      1,
-      1,
-      6,
+      786,
       5,
+      0,
+      3,
+      6,
       0
     ],
     [
-      0,
-      776,
-      5,
-      16,
-      27,
-      4
-    ],
-    [
-      3,
-      5,
-      716,
-      25,
-      56,
-      2
-    ],
-    [
-      13,
-      6,
-      71,
-      687,
-      273,
-      38
-    ],
-    [
-      6,
-      3,
-      55,
-      286,
-      547,
+      2,
+      771,
+      8,
+      8,
+      36,
       3
     ],
     [
-      1,
+      2,
+      5,
+      734,
+      8,
+      57,
+      1
+    ],
+    [
+      13,
+      7,
+      94,
+      487,
+      444,
+      43
+    ],
+    [
+      6,
+      3,
+      47,
+      96,
+      745,
+      3
+    ],
+    [
       0,
-      4,
-      18,
-      12,
-      784
+      0,
+      2,
+      14,
+      10,
+      793
     ]
   ],
   "class_names": [

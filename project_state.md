@@ -14,20 +14,20 @@
 ### Overall Metrics:
 | Metric | Academic Argmax (Baseline) | Production Two-Stage (Deployment) | Delta |
 | :--- | :---: | :---: | :---: |
-| **Overall Accuracy** | 81.38% | **81.97%** | **+0.59%** |
-| **Macro Precision** | 84.01% | **83.21%** | -0.80% |
-| **Macro Recall** | 82.17% | **83.41%** | **+1.24%** |
-| **Macro F1-Score** | 81.87% | **83.29%** | **+1.42%** |
+| **Overall Accuracy** | 83.54% | **82.33%** | -1.21% |
+| **Macro Precision** | 85.10% | **84.68%** | -0.42% |
+| **Macro Recall** | 85.21% | **84.45%** | -0.76% |
+| **Macro F1-Score** | 84.74% | **83.35%** | -1.39% |
 
 ### Per-Class Breakdown (Production Two-Stage):
 | Category | Precision | Recall | F1-Score | Support |
 | :--- | :---: | :---: | :---: | :---: |
-| **Age** | 97.16% | 98.38% | 97.76% | 800 |
-| **Ethnicity** | 98.10% | 93.72% | 95.86% | 828 |
-| **Religion** | 94.34% | 95.73% | 95.03% | 819 |
-| **Gender** | 84.04% | 88.72% | 86.32% | 807 |
-| **Not Cyberbullying (Safe)** | 66.18% | 63.14% | 64.63% | 1,088 |
-| **Other Cyberbullying** | 59.46% | 60.78% | 60.11% | 900 |
+| **Age** | 97.16% | 98.25% | 97.70% | 800 |
+| **Ethnicity** | 97.47% | 93.12% | 95.24% | 828 |
+| **Religion** | 94.07% | 96.83% | 95.43% | 819 |
+| **Gender** | 82.94% | 90.95% | 86.76% | 807 |
+| **Not Cyberbullying (Safe)** | 79.06% | 44.76% | 57.16% | 1,088 |
+| **Other Cyberbullying** | 57.40% | 82.78% | 67.79% | 900 |
 
 *Artifact File:* `models/blind_test_verified_metrics.json`
 

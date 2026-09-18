@@ -1,108 +1,108 @@
 {
-  "model_name": "Google MuRIL v2 (6-Class Multilingual - Production Logic)",
-  "overall_accuracy": 81.97,
-  "macro_precision": 83.21,
-  "macro_recall": 83.41,
-  "macro_f1": 83.29,
+  "model_name": "Google MuRIL v2 (6-Class Multilingual)",
+  "overall_accuracy": 82.33,
+  "macro_precision": 84.68,
+  "macro_recall": 84.45,
+  "macro_f1": 83.35,
   "classification_report": {
     "age": {
-      "precision": 0.971604938271605,
-      "recall": 0.98375,
-      "f1-score": 0.977639751552795,
+      "precision": 0.9715698393077874,
+      "recall": 0.9825,
+      "f1-score": 0.9770043505282784,
       "support": 800.0
     },
     "ethnicity": {
-      "precision": 0.9810366624525917,
-      "recall": 0.9371980676328503,
-      "f1-score": 0.958616429894997,
+      "precision": 0.9747155499367889,
+      "recall": 0.9311594202898551,
+      "f1-score": 0.9524397776405188,
       "support": 828.0
     },
     "gender": {
-      "precision": 0.8403755868544601,
-      "recall": 0.8872366790582404,
-      "f1-score": 0.8631705846895721,
+      "precision": 0.8293785310734463,
+      "recall": 0.909541511771995,
+      "f1-score": 0.8676122931442081,
       "support": 807.0
     },
     "not_cyberbullying": {
-      "precision": 0.661849710982659,
-      "recall": 0.6314338235294118,
-      "f1-score": 0.6462841015992474,
+      "precision": 0.7905844155844156,
+      "recall": 0.4476102941176471,
+      "f1-score": 0.5715962441314554,
       "support": 1088.0
     },
     "other_cyberbullying": {
-      "precision": 0.5945652173913043,
-      "recall": 0.6077777777777778,
-      "f1-score": 0.6010989010989011,
+      "precision": 0.573959938366718,
+      "recall": 0.8277777777777777,
+      "f1-score": 0.6778889899909009,
       "support": 900.0
     },
     "religion": {
-      "precision": 0.9434416365824309,
-      "recall": 0.9572649572649573,
-      "f1-score": 0.9503030303030303,
+      "precision": 0.9406880189798339,
+      "recall": 0.9682539682539683,
+      "f1-score": 0.9542719614921781,
       "support": 819.0
     },
-    "accuracy": 0.8197252956886685,
+    "accuracy": 0.823349866463182,
     "macro avg": {
-      "precision": 0.8321456254225086,
-      "recall": 0.8341102175438729,
-      "f1-score": 0.832852133189757,
+      "precision": 0.8468160488748318,
+      "recall": 0.8444738287018739,
+      "f1-score": 0.8334689361545898,
       "support": 5242.0
     },
     "weighted avg": {
-      "precision": 0.8194668613662528,
-      "recall": 0.8197252956886685,
-      "f1-score": 0.819318802439327,
+      "precision": 0.8395215752767143,
+      "recall": 0.823349866463182,
+      "f1-score": 0.8172324070860887,
       "support": 5242.0
     }
   },
   "confusion_matrix": [
     [
-      787,
-      1,
-      1,
-      6,
+      786,
       5,
+      0,
+      3,
+      6,
       0
     ],
     [
-      0,
-      776,
-      5,
-      16,
-      27,
-      4
-    ],
-    [
-      3,
-      5,
-      716,
-      25,
-      56,
-      2
-    ],
-    [
-      13,
-      6,
-      71,
-      687,
-      273,
-      38
-    ],
-    [
-      6,
-      3,
-      55,
-      286,
-      547,
+      2,
+      771,
+      8,
+      8,
+      36,
       3
     ],
     [
-      1,
+      2,
+      5,
+      734,
+      8,
+      57,
+      1
+    ],
+    [
+      13,
+      7,
+      94,
+      487,
+      444,
+      43
+    ],
+    [
+      6,
+      3,
+      47,
+      96,
+      745,
+      3
+    ],
+    [
       0,
-      4,
-      18,
-      12,
-      784
+      0,
+      2,
+      14,
+      10,
+      793
     ]
   ],
   "class_names": [
@@ -112,5 +112,6 @@
     "not_cyberbullying",
     "other_cyberbullying",
     "religion"
-  ]
+  ],
+  "training_time_minutes": 51.81
 }
