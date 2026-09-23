@@ -56,6 +56,10 @@ Across all **56 genuinely harmless samples** in Suite 1 and Suite 2:
 If `safe_threshold` were raised to 0.58, **every single harmless conversation would flip into a False Positive**, collapsing precision from **94.5% to ~60%**.
 This is an uncalibrated softmax probability compression issue in 6-class models, solvable only via model fine-tuning (Focal Loss / logit separation), not 1D scalar threshold tuning.
 
+### 📌 Documented Pre-Existing Limitation: Historical/Culturally Loaded Words
+- **Observation:** Model shows word-level over-association on culturally/historically loaded terms (e.g. `"Mughal"`) — likely correlated with communal-bias training examples — causing religion-classification regardless of neutral context.
+- **Academic Context:** This is a pre-existing dataset co-occurrence limitation in the underlying social media corpus, not introduced by recent pipeline changes. Transparently documented for evaluation integrity.
+
 
 ---
 

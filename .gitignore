@@ -33,6 +33,9 @@ models/**/*.pt
 models/**/*.pkl
 models/**/*.onnx
 models/muril_base_safetensors/
+models/muril_cyberbullying_v2_backup/
+models/muril_cyberbullying_v2_retrained/
+models/muril_cyberbullying_v2_stable_archive_0e904b5/
 *.safetensors
 *.bin
 *.pt

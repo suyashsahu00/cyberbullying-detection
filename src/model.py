@@ -87,6 +87,20 @@ def classify_probabilities(
         pred_idx = top_bully_idx
         pred_class = str(id2label[top_bully_idx])
         confidence = prob_bully
+
+        # Option A Safety-Net: If classified as generic 'other_cyberbullying' on weak evidence,
+        # ensure benign/harmless text without any trigger words isn't falsely flagged as bullying.
+        if pred_class.lower() == "other_cyberbullying" and raw_text:
+            from src.explainability import extract_trigger_words
+            trigger_res = extract_trigger_words(raw_text, "Other", prob_safe)
+            has_trigger = len(trigger_res.get("spans", [])) > 0 or len(trigger_res.get("trigger_words", [])) > 0
+            
+            # If no triggers exist AND the model is not overwhelmingly confident (>70% on 'other'), treat as safe
+            if not has_trigger and probs_pct[top_bully_idx] < 70.0 and prob_safe >= 25.0:
+                is_bullying = False
+                pred_idx = not_bully_idx
+                pred_class = "not_cyberbullying"
+                confidence = prob_safe
     else:
         # Check hybrid safety net if safe confidence is not overwhelming (< 75%) and severe slur is present
         if use_safety_net and raw_text and prob_safe < 75.0:

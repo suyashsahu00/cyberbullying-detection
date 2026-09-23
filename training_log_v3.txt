@@ -1,0 +1,35 @@
+===========================================================================
+
+ TRAINING GOOGLE MURIL V2 (6-CLASS MULTILINGUAL) WITH FOCAL LOSS
+ Execution Device : cpu (CPU)
+ Output Directory : C:\Users\suyas\Downloads\CODING(1)\cyberbullying-detection\models\muril_cyberbullying_v2
+ Hyperparameters  : Epochs=3, BatchSize=32, LR=2e-05, MaxLen=128, Gamma=2.0
+ Train File       : combined_train_v2.parquet
+===========================================================================
+
+Loaded Datasets:
+  - Train : 41,781 samples
+  - Val   : 5,241 samples
+  - Test  : 5,242 samples
+
+Loading base tokenizer & model from C:\Users\suyas\Downloads\CODING(1)\cyberbullying-detection\models\muril_base_safetensors...
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|##########| 199/199 [00:00<00:00, 2331.37it/s]
+[transformers] BertForSequenceClassification LOAD REPORT from: C:\Users\suyas\Downloads\CODING(1)\cyberbullying-detection\models\muril_base_safetensors
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+cls.predictions.decoder.weight             | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+cls.predictions.decoder.bias               | UNEXPECTED | 
+classifier.bias                            | MISSING    | 
+classifier.weight                          | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.

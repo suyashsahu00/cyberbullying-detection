@@ -127,11 +127,12 @@ def evaluate(model, data_loader, criterion, device, method="two_stage"):
     return avg_loss, acc, prec, rec, f1, np.array(all_preds), np.array(all_labels)
 
 
-def train(epochs=3, batch_size=32, lr=2e-5, max_len=128, gamma=2.0):
+def train(epochs=3, batch_size=32, lr=2e-5, max_len=128, gamma=2.0, output_dir=None):
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     processed_dir = os.path.join(root_dir, "data", "processed")
     base_model_dir = os.path.join(root_dir, "models", "muril_base_safetensors")
-    output_dir = os.path.join(root_dir, "models", "muril_cyberbullying_v2")
+    if output_dir is None:
+        output_dir = os.path.join(root_dir, "models", "muril_cyberbullying_v2_retrained")
     os.makedirs(output_dir, exist_ok=True)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -325,6 +326,7 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--lr", type=float, default=2e-5)
     parser.add_argument("--gamma", type=float, default=2.0)
+    parser.add_argument("--output_dir", type=str, default="models/muril_cyberbullying_v2_retrained")
     args = parser.parse_args()
 
-    train(epochs=args.epochs, batch_size=args.batch_size, lr=args.lr, gamma=args.gamma)
+    train(epochs=args.epochs, batch_size=args.batch_size, lr=args.lr, gamma=args.gamma, output_dir=args.output_dir)
