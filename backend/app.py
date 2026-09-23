@@ -71,6 +71,39 @@ def analyze_text():
         }), 500
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    import argparse
+    import subprocess
+    import threading
+
+    parser = argparse.ArgumentParser(description="GuardText Cyberbullying Detection Server")
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", 5000)), help="Port to run the Flask server on")
+    parser.add_argument("--tunnel", action="store_true", help="Automatically create and display a public internet URL")
+    args = parser.parse_args()
+
+    port = args.port
+
+    if args.tunnel:
+        def start_tunnel():
+            try:
+                tunnel_cmd = f"npx -y localtunnel --port {port}"
+                proc = subprocess.Popen(
+                    tunnel_cmd,
+                    shell=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                    text=True
+                )
+                for line in proc.stdout:
+                    if "your url is:" in line.lower():
+                        url = line.strip().split()[-1]
+                        print("\n" + "=" * 70)
+                        print(f" 🌐 PUBLIC INTERNET URL: {url}")
+                        print("=" * 70 + "\n")
+                        break
+            except Exception as err:
+                print(f"Warning: Could not start tunnel: {err}")
+
+        threading.Thread(target=start_tunnel, daemon=True).start()
+
     print(f"Starting Cyberbullying Detection Server on http://127.0.0.1:{port}")
     app.run(host="0.0.0.0", port=port, debug=False)
