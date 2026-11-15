@@ -14,7 +14,7 @@
 ### Overall Metrics:
 | Metric | Academic Argmax (Baseline) | Production Two-Stage (Deployment) | Delta |
 | :--- | :---: | :---: | :---: |
-| **Overall Accuracy** | 83.54% | **82.33%** | -1.21% |
+| **Overall Accuracy** | 83.54% | **81.97% (4297/5242)** | -1.57% |
 | **Macro Precision** | 85.10% | **84.68%** | -0.42% |
 | **Macro Recall** | 85.21% | **84.45%** | -0.76% |
 | **Macro F1-Score** | 84.74% | **83.35%** | -1.39% |

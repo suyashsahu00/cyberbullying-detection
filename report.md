@@ -155,7 +155,7 @@ Evaluated independently on the complete held-out multilingual test set (**5,242 
 
 | Metric | Academic Argmax (Baseline) | Production Two-Stage (Deployment) | Execution Details |
 | :--- | :---: | :---: | :--- |
-| **Overall Accuracy** | 83.54% | **82.33%** | Batched GPU Inference (Batch size: 32) |
+| **Overall Accuracy** | 83.54% | **81.97% (4297/5242)** | Batched GPU Inference (Batch size: 32) |
 | **Macro Precision** | 85.10% | **84.68%** | Evaluated on full test set (14.40s total) |
 | **Macro Recall** | 85.21% | **84.45%** | Throughput: **364.14 queries / second** |
 | **Macro F1-Score** | 84.74% | **83.35%** | Mean Batched Latency: **2.75 ms / sample** |
@@ -178,7 +178,7 @@ Evaluated independently on the complete held-out multilingual test set (**5,242 
 
 | Evaluation Metric | Academic Argmax (Baseline) | Production Two-Stage (Deployment) | Delta |
 | :--- | :---: | :---: | :---: |
-| **Overall Accuracy** | 83.54% | **82.33%** | -1.21% |
+| **Overall Accuracy** | 83.54% | **81.97% (4297/5242)** | -1.57% |
 | **Macro Precision** | 85.10% | **84.68%** | -0.42% |
 | **Macro Recall** | 85.21% | **84.45%** | -0.76% |
 | **Macro F1-Score** | 84.74% | **83.35%** | -1.39% |

@@ -36,12 +36,26 @@ models/muril_base_safetensors/
 models/muril_cyberbullying_v2_backup/
 models/muril_cyberbullying_v2_retrained/
 models/muril_cyberbullying_v2_stable_archive_0e904b5/
+models/muril_exp_*/
 *.safetensors
 *.bin
 *.pt
 *.pkl
 !models/.gitkeep
 !models/baseline_model.pkl
+
+# Final holdout
+data/final_holdout/
+final_holdout/
+
+# Environment, secrets & token files
+.env
+.env.*
+*.token
+token.json
+tokens.json
+*.key
+*.pem
 
 # Data & Notebook checkpoints
 .ipynb_checkpoints
@@ -50,6 +64,8 @@ data/raw/*.tar.gz
 data/raw/cyberbullying_tweets.csv
 data/raw/BullyExplain.xlsx
 data/processed/*.csv
+civil_safe_identity.csv
+data/augmented/civil_safe_identity.csv
 
 # IDE & OS
 .vscode/
