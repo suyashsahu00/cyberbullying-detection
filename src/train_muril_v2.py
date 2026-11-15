@@ -127,7 +127,15 @@ def evaluate(model, data_loader, criterion, device, method="two_stage"):
     return avg_loss, acc, prec, rec, f1, np.array(all_preds), np.array(all_labels)
 
 
-def train(epochs=3, batch_size=32, lr=2e-5, max_len=128, gamma=2.0, output_dir=None):
+def train(epochs=3, batch_size=32, lr=2e-5, max_len=128, gamma=2.0, output_dir=None, train_file=None, seed=42):
+    # Set deterministic random seed
+    import random
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     processed_dir = os.path.join(root_dir, "data", "processed")
     base_model_dir = os.path.join(root_dir, "models", "muril_base_safetensors")
@@ -135,16 +143,21 @@ def train(epochs=3, batch_size=32, lr=2e-5, max_len=128, gamma=2.0, output_dir=N
         output_dir = os.path.join(root_dir, "models", "muril_cyberbullying_v2_retrained")
     os.makedirs(output_dir, exist_ok=True)
 
+    if train_file is None:
+        train_file = os.path.join(processed_dir, "combined_train.parquet")
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("=" * 75)
     print(" TRAINING GOOGLE MURIL V2 (6-CLASS MULTILINGUAL) WITH FOCAL LOSS")
     print(f" Execution Device : {device} ({torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'})")
     print(f" Output Directory : {output_dir}")
+    print(f" Training File    : {train_file}")
+    print(f" Random Seed      : {seed}")
     print(f" Hyperparameters  : Epochs={epochs}, BatchSize={batch_size}, LR={lr}, MaxLen={max_len}, Gamma={gamma}")
     print("=" * 75)
 
     # 1. Load Data
-    train_df = pd.read_parquet(os.path.join(processed_dir, "combined_train.parquet"))
+    train_df = pd.read_parquet(train_file) if train_file.endswith(".parquet") else pd.read_csv(train_file)
     val_df = pd.read_parquet(os.path.join(processed_dir, "combined_val.parquet"))
     test_df = pd.read_parquet(os.path.join(processed_dir, "combined_test.parquet"))
 
@@ -327,6 +340,16 @@ if __name__ == "__main__":
     parser.add_argument("--lr", type=float, default=2e-5)
     parser.add_argument("--gamma", type=float, default=2.0)
     parser.add_argument("--output_dir", type=str, default="models/muril_cyberbullying_v2_retrained")
+    parser.add_argument("--train_file", type=str, default="data/processed/combined_train.parquet")
+    parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
-    train(epochs=args.epochs, batch_size=args.batch_size, lr=args.lr, gamma=args.gamma, output_dir=args.output_dir)
+    train(
+        epochs=args.epochs,
+        batch_size=args.batch_size,
+        lr=args.lr,
+        gamma=args.gamma,
+        output_dir=args.output_dir,
+        train_file=args.train_file,
+        seed=args.seed
+    )
