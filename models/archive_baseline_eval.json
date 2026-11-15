@@ -1,0 +1,329 @@
+{
+  "production": {
+    "test_accuracy": 78.69133918351774,
+    "test_bully_macro_recall": 79.35989213272225,
+    "test_bully_macro_f1": 80.56857410141428,
+    "test_safe_recall": 80.97426470588235,
+    "test_safe_correct": 881,
+    "test_total_safe": 1088,
+    "test_f1": {
+      "age": 0.9776674937965261,
+      "ethnicity": 0.9522628642281463,
+      "gender": 0.8583234946871311,
+      "not_cyberbullying": 0.6449487554904831,
+      "other_cyberbullying": 0.294067067927773,
+      "religion": 0.9461077844311377
+    },
+    "test_recall": {
+      "age": 0.985,
+      "ethnicity": 0.927536231884058,
+      "gender": 0.9008674101610905,
+      "not_cyberbullying": 0.8097426470588235,
+      "other_cyberbullying": 0.19,
+      "religion": 0.9645909645909646
+    },
+    "dedup_test_accuracy": 78.78299415676003,
+    "dedup_test_bully_macro_recall": 79.44551279673412,
+    "dedup_test_bully_macro_f1": 80.57412932194225,
+    "dedup_test_safe_recall": 80.39024390243902,
+    "dedup_test_safe_correct": 824,
+    "dedup_test_total_safe": 1025,
+    "dedup_test_f1": {
+      "age": 0.9770700636942675,
+      "ethnicity": 0.9498997995991983,
+      "gender": 0.8541935483870968,
+      "not_cyberbullying": 0.64375,
+      "other_cyberbullying": 0.2997275204359673,
+      "religion": 0.9478155339805825
+    },
+    "dedup_test_recall": {
+      "age": 0.9845956354300385,
+      "ethnicity": 0.9245773732119635,
+      "gender": 0.903137789904502,
+      "not_cyberbullying": 0.8039024390243903,
+      "other_cyberbullying": 0.1945754716981132,
+      "religion": 0.965389369592089
+    },
+    "human_safe_recall": 50.0,
+    "human_safe_correct": 15,
+    "human_total_safe": 30,
+    "human_bully_recall": 94.73684210526315,
+    "human_bully_correct": 18,
+    "human_total_bully": 19,
+    "synth_safe_recall": 47.70992366412214,
+    "synth_safe_correct": 125,
+    "synth_total_safe": 262,
+    "synth_bully_recall": 83.19327731092437,
+    "synth_bully_correct": 198,
+    "synth_total_bully": 238,
+    "must_pass": [
+      [
+        "The new parking permit system at the complex has reduced unauthorized vehicles from six to zero this month.",
+        "age",
+        true
+      ],
+      [
+        "Subah se bijli nahi thi toh ghar pe hi kaam kiya fortunately net backup tha laptop pe.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "आज बाज़ार में मौसमी आम काफी सस्ते मिल रहे थे दो किलो ले आया हूँ घर के लिए।",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "She recommended a great documentary about the restoration of old Mughal-era stepwells across Rajasthan.",
+        "religion",
+        true
+      ],
+      [
+        "Bhai kal ke match ke liye fantasy team lock karne se pehle pitch report zaroor dekh lena",
+        "not_cyberbullying",
+        false
+      ]
+    ],
+    "must_pass_safe_count": 3,
+    "abuse": [
+      [
+        "madarchod",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "bhosdiwala",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "you fucking idiot",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "isko toh chappal khol ke marna chahiye",
+        "other_cyberbullying",
+        true
+      ]
+    ],
+    "abuse_detected_count": 4
+  },
+  "argmax": {
+    "test_accuracy": 81.97252956886685,
+    "test_bully_macro_recall": 90.65394928374967,
+    "test_bully_macro_f1": 88.06883405150631,
+    "test_safe_recall": 50.0,
+    "test_safe_correct": 544,
+    "test_total_safe": 1088,
+    "test_f1": {
+      "age": 0.977639751552795,
+      "ethnicity": 0.9522628642281463,
+      "gender": 0.861904761904762,
+      "not_cyberbullying": 0.5893824485373781,
+      "other_cyberbullying": 0.6605769230769231,
+      "religion": 0.9510574018126888
+    },
+    "test_recall": {
+      "age": 0.98375,
+      "ethnicity": 0.927536231884058,
+      "gender": 0.8971499380421314,
+      "not_cyberbullying": 0.5,
+      "other_cyberbullying": 0.7633333333333333,
+      "religion": 0.960927960927961
+    },
+    "dedup_test_accuracy": 81.98670159177917,
+    "dedup_test_bully_macro_recall": 90.56098764170346,
+    "dedup_test_bully_macro_f1": 87.96747746014474,
+    "dedup_test_safe_recall": 49.853658536585364,
+    "dedup_test_safe_correct": 511,
+    "dedup_test_total_safe": 1025,
+    "dedup_test_f1": {
+      "age": 0.9770408163265306,
+      "ethnicity": 0.9498997995991983,
+      "gender": 0.8580729166666666,
+      "not_cyberbullying": 0.5866819747416763,
+      "other_cyberbullying": 0.6605128205128206,
+      "religion": 0.9528475199020208
+    },
+    "dedup_test_recall": {
+      "age": 0.9833119383825417,
+      "ethnicity": 0.9245773732119635,
+      "gender": 0.8990450204638472,
+      "not_cyberbullying": 0.49853658536585366,
+      "other_cyberbullying": 0.7594339622641509,
+      "religion": 0.9616810877626699
+    },
+    "human_safe_recall": 40.0,
+    "human_safe_correct": 12,
+    "human_total_safe": 30,
+    "human_bully_recall": 100.0,
+    "human_bully_correct": 19,
+    "human_total_bully": 19,
+    "synth_safe_recall": 53.43511450381679,
+    "synth_safe_correct": 140,
+    "synth_total_safe": 262,
+    "synth_bully_recall": 87.81512605042016,
+    "synth_bully_correct": 209,
+    "synth_total_bully": 238,
+    "must_pass": [
+      [
+        "The new parking permit system at the complex has reduced unauthorized vehicles from six to zero this month.",
+        "age",
+        true
+      ],
+      [
+        "Subah se bijli nahi thi toh ghar pe hi kaam kiya fortunately net backup tha laptop pe.",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "आज बाज़ार में मौसमी आम काफी सस्ते मिल रहे थे दो किलो ले आया हूँ घर के लिए।",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "She recommended a great documentary about the restoration of old Mughal-era stepwells across Rajasthan.",
+        "religion",
+        true
+      ],
+      [
+        "Bhai kal ke match ke liye fantasy team lock karne se pehle pitch report zaroor dekh lena",
+        "not_cyberbullying",
+        false
+      ]
+    ],
+    "must_pass_safe_count": 2,
+    "abuse": [
+      [
+        "madarchod",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "bhosdiwala",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "you fucking idiot",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "isko toh chappal khol ke marna chahiye",
+        "other_cyberbullying",
+        true
+      ]
+    ],
+    "abuse_detected_count": 4
+  },
+  "threshold040": {
+    "test_accuracy": 80.0648607401755,
+    "test_bully_macro_recall": 82.82436099719112,
+    "test_bully_macro_f1": 83.98155560875777,
+    "test_safe_recall": 73.25367647058823,
+    "test_safe_correct": 797,
+    "test_total_safe": 1088,
+    "test_f1": {
+      "age": 0.9776674937965261,
+      "ethnicity": 0.9522628642281463,
+      "gender": 0.859338061465721,
+      "not_cyberbullying": 0.6427419354838709,
+      "other_cyberbullying": 0.46035087719298246,
+      "religion": 0.9494584837545126
+    },
+    "test_recall": {
+      "age": 0.985,
+      "ethnicity": 0.927536231884058,
+      "gender": 0.9008674101610905,
+      "not_cyberbullying": 0.7325367647058824,
+      "other_cyberbullying": 0.36444444444444446,
+      "religion": 0.9633699633699634
+    },
+    "dedup_test_accuracy": 80.09268587547854,
+    "dedup_test_bully_macro_recall": 82.62833808768264,
+    "dedup_test_bully_macro_f1": 83.77025976275564,
+    "dedup_test_safe_recall": 73.5609756097561,
+    "dedup_test_safe_correct": 754,
+    "dedup_test_total_safe": 1025,
+    "dedup_test_f1": {
+      "age": 0.9770700636942675,
+      "ethnicity": 0.9498997995991983,
+      "gender": 0.8552971576227391,
+      "not_cyberbullying": 0.6422487223168655,
+      "other_cyberbullying": 0.455026455026455,
+      "religion": 0.9512195121951219
+    },
+    "dedup_test_recall": {
+      "age": 0.9845956354300385,
+      "ethnicity": 0.9245773732119635,
+      "gender": 0.903137789904502,
+      "not_cyberbullying": 0.735609756097561,
+      "other_cyberbullying": 0.35495283018867924,
+      "religion": 0.9641532756489494
+    },
+    "human_safe_recall": 46.666666666666664,
+    "human_safe_correct": 14,
+    "human_total_safe": 30,
+    "human_bully_recall": 94.73684210526315,
+    "human_bully_correct": 18,
+    "human_total_bully": 19,
+    "synth_safe_recall": 46.94656488549619,
+    "synth_safe_correct": 123,
+    "synth_total_safe": 262,
+    "synth_bully_recall": 87.39495798319328,
+    "synth_bully_correct": 208,
+    "synth_total_bully": 238,
+    "must_pass": [
+      [
+        "The new parking permit system at the complex has reduced unauthorized vehicles from six to zero this month.",
+        "age",
+        true
+      ],
+      [
+        "Subah se bijli nahi thi toh ghar pe hi kaam kiya fortunately net backup tha laptop pe.",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "आज बाज़ार में मौसमी आम काफी सस्ते मिल रहे थे दो किलो ले आया हूँ घर के लिए।",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "She recommended a great documentary about the restoration of old Mughal-era stepwells across Rajasthan.",
+        "religion",
+        true
+      ],
+      [
+        "Bhai kal ke match ke liye fantasy team lock karne se pehle pitch report zaroor dekh lena",
+        "not_cyberbullying",
+        false
+      ]
+    ],
+    "must_pass_safe_count": 2,
+    "abuse": [
+      [
+        "madarchod",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "bhosdiwala",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "you fucking idiot",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "isko toh chappal khol ke marna chahiye",
+        "other_cyberbullying",
+        true
+      ]
+    ],
+    "abuse_detected_count": 2
+  }
+}

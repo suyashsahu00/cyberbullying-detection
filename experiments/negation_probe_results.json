@@ -1,0 +1,72 @@
+{
+  "Archive": {
+    "orig_fp": 15,
+    "orig_fp_pct": 50.0,
+    "orig_mean_psafe": 32.248730175197124,
+    "probe_fp": 17,
+    "probe_fp_pct": 56.666666666666664,
+    "probe_mean_psafe": 28.939629321297012,
+    "delta_fp": 2,
+    "delta_psafe": -3.3091008539001154
+  },
+  "Run 0 (Seed 42)": {
+    "orig_fp": 16,
+    "orig_fp_pct": 53.333333333333336,
+    "orig_mean_psafe": 32.71695200974742,
+    "probe_fp": 19,
+    "probe_fp_pct": 63.33333333333333,
+    "probe_mean_psafe": 29.724739367763203,
+    "delta_fp": 3,
+    "delta_psafe": -2.9922126419842208
+  },
+  "Run 0b (Seed 43)": {
+    "orig_fp": 16,
+    "orig_fp_pct": 53.333333333333336,
+    "orig_mean_psafe": 28.16187965373198,
+    "probe_fp": 16,
+    "probe_fp_pct": 53.333333333333336,
+    "probe_mean_psafe": 26.072550484289724,
+    "delta_fp": 0,
+    "delta_psafe": -2.0893291694422556
+  },
+  "Ablation B (Seed 42)": {
+    "orig_fp": 10,
+    "orig_fp_pct": 33.33333333333333,
+    "orig_mean_psafe": 44.82082157085339,
+    "probe_fp": 12,
+    "probe_fp_pct": 40.0,
+    "probe_mean_psafe": 41.13715117176373,
+    "delta_fp": 2,
+    "delta_psafe": -3.6836703990896558
+  },
+  "Ablation B (Seed 43)": {
+    "orig_fp": 14,
+    "orig_fp_pct": 46.666666666666664,
+    "orig_mean_psafe": 31.950884175797306,
+    "probe_fp": 17,
+    "probe_fp_pct": 56.666666666666664,
+    "probe_mean_psafe": 28.552225635697443,
+    "delta_fp": 3,
+    "delta_psafe": -3.3986585400998637
+  },
+  "Ablation C (Seed 42)": {
+    "orig_fp": 11,
+    "orig_fp_pct": 36.666666666666664,
+    "orig_mean_psafe": 45.829524993896484,
+    "probe_fp": 12,
+    "probe_fp_pct": 40.0,
+    "probe_mean_psafe": 41.9281074590981,
+    "delta_fp": 1,
+    "delta_psafe": -3.9014175347983846
+  },
+  "Ablation C (Seed 43)": {
+    "orig_fp": 16,
+    "orig_fp_pct": 53.333333333333336,
+    "orig_mean_psafe": 35.54974442968766,
+    "probe_fp": 17,
+    "probe_fp_pct": 56.666666666666664,
+    "probe_mean_psafe": 31.554626232633986,
+    "delta_fp": 1,
+    "delta_psafe": -3.995118197053671
+  }
+}

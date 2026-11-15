@@ -1,0 +1,51 @@
+text,category,language
+"The metro announcer clearly informed Muslim commuters about the route diversion near the old station.",not_cyberbullying,English
+"The metro announcer patiently reminded Muslim commuters about basic queue etiquette near the crowded gate.",religion,English
+"A senior Hindu priest visited the neighborhood market to purchase fresh marigolds for the morning prayer.",not_cyberbullying,English
+"A self-righteous Hindu neighbor lectured the neighborhood market vendors about purity while haggling over ten rupees.",religion,English
+"Two Christian nurses boarded the evening bus after finishing their long shift at the district clinic.",not_cyberbullying,English
+"Two loud Christian colleagues boarded the evening bus while mocking everyone else's traditional attire with fake accents.",religion,English
+"A helpful Sikh passenger carried heavy grocery bags for an elderly commuter up the metro stairs.",not_cyberbullying,English
+"A boastful Sikh passenger blocked the metro stairs while bragging loudly about his family's imported luxury cars.",religion,English
+"Our history teacher recommended a new podcast covering architectural marvels built during the early Mughal era.",not_cyberbullying,English
+"Our arrogant neighbor acts like a medieval Mughal tyrant whenever someone accidentally parks near his front gate.",religion,English
+"A tired aurat sat by the bus window sighing over the endless traffic jam after office hours.",not_cyberbullying,English
+"A dramatic aurat sat by the bus window complaining endlessly about minor traffic delays as if she owns the road.",gender,English
+"The young ladki stood frustrated at the mobile shop because her prepaid internet recharge failed twice.",not_cyberbullying,English
+"The clueless ladki stood confused at the mobile shop expecting the clerk to explain basic data plans like a toddler.",gender,English
+"Three women discussed rising vegetable prices at the neighborhood market during their Sunday morning grocery run.",not_cyberbullying,English
+"Three women wasted twenty minutes at the neighborhood market gossiping loudly while blocking the narrow billing counter.",gender,English
+"An exhausted aadmi complained about the broken air conditioner inside the crowded afternoon metro coach.",not_cyberbullying,English
+"An entitled aadmi sprawled across two seats inside the crowded afternoon metro coach while ignoring standing passengers.",gender,English
+"A frail buzurg struggled to read the tiny font on his new mobile recharge voucher at the kiosk.",not_cyberbullying,English
+"A stubborn buzurg refused to move from the mobile recharge counter while arguing over expired twenty-year-old tariff rules.",age,English
+"The boomer uncle calmly fixed the tangled kitchen sink pipe before the plumber could even arrive.",not_cyberbullying,English
+"The boomer uncle loudly blamed smartphones for every kitchen plumbing issue while refusing to learn basic maintenance.",age,English
+"Respectful elders shared helpful recipes with newlyweds during the festive community kitchen gathering at the temple.",not_cyberbullying,English
+"Nosy elders critiqued everyone's cooking skills during the community kitchen gathering without lifting a single finger to help.",age,English
+"Subah ke rush hour mein metro platform par ek student apne exam notes revise karte hue pareshan dikh raha tha.",not_cyberbullying,Hinglish
+"Subah ke rush hour mein metro platform par ek student bas reels banakar commuters ka rasta rok raha tha.",age,Hinglish
+"Local gym ke senior teacher ne sabhi beginners ko treadmill aur cycling machine ka sahi posture samjhaya.",not_cyberbullying,Hinglish
+"Local gym ke purane teacher ne modern cardio routines ko bekaar batakar sabko boring outdated exercises thop di.",age,Hinglish
+"Ghar ke kitchen mein dadi-nani ne sabhi bachhon ke liye garam masala chai aur pakode taiyar kiye.",not_cyberbullying,Hinglish
+"Ghar ke kitchen mein dadi-nani ne har modern diet plan ko nakhra batakar sabke khane mein extra ghee daal diya.",age,Hinglish
+"Neighbourhood market mein internet slow hone ki wajah se Muslim shopkeeper ka online payment bar-bar fail ho raha tha.",not_cyberbullying,Hinglish
+"Neighbourhood market mein network slow hone par Muslim shopkeeper ne seedha bina logic ke discrimination ka drama shuru kar diya.",religion,Hinglish
+"Mandir visit ke baad Hindu parivar ne local bakery se fresh sweets khareed kar padosiyon mein distribute kiye.",not_cyberbullying,Hinglish
+"Mandir visit ke baad Hindu padosi ne pure mohalle ko cleanliness ka lecture diya aur khud kachra bahar fenk diya.",religion,Hinglish
+"Church visit ke liye jaate waqt ek aurat bhari baarish aur traffic jam ki wajah se kaafi upset ho gayi.",not_cyberbullying,Hinglish
+"Church visit ke liye ready hone mein iss aurat ne itna waqt lagaya ki poori family function mein late pahunchi.",gender,Hinglish
+"Gym mein workout karte waqt ek ladki ne trainer se heavy weight lifting ki safe technique seekhi.",not_cyberbullying,Hinglish
+"Gym mein workout karne ke bajay ye ladki sirf mirror ke saamne selfies khinch kar equipment block karti rehti hai.",gender,Hinglish
+"सोसायटी के बाजार में एक Sikh व्यापारी ने ग्राहकों की सुविधा के लिए डिजिटल भुगतान का नया बोर्ड लगाया।",not_cyberbullying,Hindi
+"सोसायटी के बाजार में एक Sikh व्यापारी ने छोटी सी बात पर गुस्सा होकर पूरे रास्ते में शोर मचाना शुरू कर दिया।",religion,Hindi
+"मोबाइल रिचार्ज की दुकान पर खड़े एक Christian युवक ने खराब नेटवर्क और महंगे डेटा पैक पर निराशा जताई।",not_cyberbullying,Hindi
+"मोबाइल रिचार्ज की दुकान पर खड़े एक Christian युवक ने अंग्रेजी में अकड़ दिखाकर ग्रामीण ग्राहकों का मजाक उड़ाया।",religion,Hindi
+"रसोई के काम में हाथ बंटाते हुए घर की सभी women ने मिलकर शाम के भोजन की तैयारी समय पर पूरी की।",not_cyberbullying,Hindi
+"रसोई के काम से बचने के लिए घर की आधुनिक women केवल फोन पर व्यस्त रहकर बाहर से खाना मंगवाती रहती हैं।",gender,Hindi
+"जिम में नियमित अभ्यास करने वाले एक मेहनती aadmi ने कमर दर्द की वजह से आज हल्का व्यायाम ही किया।",not_cyberbullying,Hindi
+"जिम में दिखावा करने वाले इस आलसी aadmi ने भारी वजन उठाने का नाटक करके अपना ही नुकसान कर लिया।",gender,Hindi
+"मंदिर दर्शन के दौरान एक दयालु buzurg ने भीड़ में भटके हुए छोटे बच्चे को उसके परिवार से मिलवाया।",not_cyberbullying,Hindi
+"मंदिर दर्शन की कतार में खड़े एक चिड़चिड़े buzurg ने बिना किसी कारण युवाओं को अनावश्यक उपदेश देना शुरू कर दिया।",age,Hindi
+"मस्जिद के पास स्थित पुस्तकालय में एक होनहार student ने शांत वातावरण में बैठकर अपनी आगामी परीक्षा की तैयारी की।",not_cyberbullying,Hindi
+"मस्जिद के बाहर खड़े एक लापरवाह student ने तेज आवाज में संगीत बजाकर सभी नमाजियों की शांति भंग कर दी।",age,Hindi

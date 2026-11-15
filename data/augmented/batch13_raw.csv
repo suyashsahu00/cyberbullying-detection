@@ -1,0 +1,51 @@
+text,category,language
+"The team trainer advised the motu midfielder to build aerobic stamina during pre-season drills.",not_cyberbullying,English
+"The team trainer mocked the motu midfielder for breathing heavily after jogging one slow lap.",other_cyberbullying,English
+"Our marathon coach designed a high-protein meal plan for the patla sprinter before state trials.",not_cyberbullying,English
+"Our marathon coach joked that the patla sprinter looked like a twig blowing across the track.",other_cyberbullying,English
+"She bought a structured mota wool coat for her winter internship in the northern hills.",not_cyberbullying,English
+"He squeezed his mota frame into the compact office chair while spilling over both armrests.",other_cyberbullying,English
+"The photographer adjusted the soft studio lighting to capture the model's natural facial appearance clearly.",not_cyberbullying,English
+"The photographer relied on heavy digital retouching to hide the model's rough, uneven facial appearance.",other_cyberbullying,English
+"A state welfare scholarship covered tuition and hostel expenses for students from extreme poverty backgrounds.",not_cyberbullying,English
+"His cheap, faded blazer and scuffed shoes clearly advertised his extreme poverty to the entire boardroom.",other_cyberbullying,English
+"Final semester exam marks were uploaded onto the university portal ahead of the campus placement drive.",not_cyberbullying,English
+"Those dismal exam marks prove he belongs in a remedial class rather than an engineering degree.",other_cyberbullying,English
+"The local municipal library launched a verified social media handle to announce weekend book reading sessions.",not_cyberbullying,English
+"Her desperate social media posts begging for attention look pathetic after getting ignored by everyone online.",other_cyberbullying,English
+"The frustratingly slow morning traffic delayed our entire office team from reaching the client workshop on time.",not_cyberbullying,English
+"His frustratingly clumsy posture and crooked smile ruined every single group photograph from the annual retreat.",other_cyberbullying,English
+"Heavy monsoon rains flooded the main junction and ruined our planned outdoor weekend cricket tournament.",not_cyberbullying,English
+"Cheap discount store sneakers and worn-out trousers ruined his attempt to look wealthy at the banquet.",other_cyberbullying,English
+"Unannounced power cuts during final revision week left the entire student hostel exhausted and stressed.",not_cyberbullying,English
+"Unfiltered daylight selfies exposed the deep acne scars and dark circles she hides behind heavy makeup.",other_cyberbullying,English
+"Gym coach ne subah ke cardio session mein motu beginner ko steady pace par cycling karne ki salah di.",not_cyberbullying,Hinglish
+"Gym floor par treadmill chalate waqt sabne uss motu ladke ki phoolti saanson ka mazaak udaya.",other_cyberbullying,Hinglish
+"Track practice ke baad coach ne patla runner ko muscle recovery ke liye banana shake peene ko kaha.",not_cyberbullying,Hinglish
+"Track practice ke baad doston ne patla runner ko sukha papad bol kar sabke saamne chidhaya.",other_cyberbullying,Hinglish
+"Office commute mein aaj subah itna bura traffic jam tha ki meeting ke liye late ho gaya.",not_cyberbullying,Hinglish
+"Office party mein sasta duplicate watch pehen kar amir banne ka natak karna bohot gareeb lagta hai.",other_cyberbullying,Hinglish
+"University portal par semester ke exam marks dekhte hi poora study group khushi se jhoom utha.",not_cyberbullying,Hinglish
+"Semester ke itne kharab exam marks laane ke baad bhi social media par topper jaisa gyaan baant raha hai.",other_cyberbullying,Hinglish
+"College fest ke updates share karne ke liye cultural committee ne ek naya social media page banaya.",not_cyberbullying,Hinglish
+"Apni kharab shakal par das filters lagakar social media par model banne ka natak band kar do.",other_cyberbullying,Hinglish
+"Sardiyon ki thand se bachne ke liye usne bazaar se ek mota kambal aur jacket kharida.",not_cyberbullying,Hinglish
+"Itna mota pet lekar tight t-shirt pehenne ka shauk sirf logon ko hasane ke liye rakha hai.",other_cyberbullying,Hinglish
+"Achanak tez baarish hone ki wajah se humara poora weekend picnic plan kharab ho gaya.",not_cyberbullying,Hinglish
+"Toote hue purane phone se mirror selfie daal kar apni poverty aur lachari ka tamasha mat banao.",other_cyberbullying,Hinglish
+"दौड़ प्रतियोगिता में भाग लेने वाले patla धावक ने अपनी तेज़ गति से सभी दर्शकों को प्रभावित किया।",not_cyberbullying,Hindi
+"दौड़ प्रतियोगिता में भाग लेने वाले patla धावक को देखकर लोगों ने कहा कि तेज़ हवा में उड़ जाएगा।",other_cyberbullying,Hindi
+"बोर्ड परीक्षा के अंतिम exam marks घोषित होने के बाद विद्यालय के मेधावी छात्रों को सम्मानित किया गया।",not_cyberbullying,Hindi
+"बोर्ड परीक्षा में इतने कम exam marks लाने के बाद भी दूसरों को पढ़ाई की सलाह देना हास्यास्पद है।",other_cyberbullying,Hindi
+"नगर निगम ने शहर के नागरिकों को स्वच्छता अभियान से जोड़ने के लिए आधिकारिक social media अभियान चलाया।",not_cyberbullying,Hindi
+"किराए के छोटे कमरे में रहकर social media पर आलीशान जीवनशैली का झूठा दिखावा करना बेहद शर्मनाक है।",other_cyberbullying,Hindi
+"दफ्तर के कामकाज के अत्यधिक दबाव और देर रात तक चलने वाली बैठकों से कर्मचारी काफी थक गए थे।",not_cyberbullying,Hindi
+"चेहरे के दाग-धब्बे और बेढंगी शारीरिक बनावट को छुपाने के लिए भारी मेकअप करना तुम्हारी असुरक्षा दिखाता है।",other_cyberbullying,Hindi
+"ग्रामीण क्षेत्रों में poverty उन्मूलन के लिए राज्य सरकार ने कौशल विकास और स्वरोजगार योजना शुरू की।",not_cyberbullying,Hindi
+"फटे-पुराने जूते पहनकर बड़े होटल में बैठने से तुम्हारी poverty और साधारण हैसियत साफ झलक रही है।",other_cyberbullying,Hindi
+"सर्दियों की सुबह कोहरे के कारण राजमार्ग पर यातायात धीमा होने से यात्रियों को काफी परेशानी उठानी पड़ी।",not_cyberbullying,Hindi
+"सिर के बीच से गायब होते बालों को अजीब तरीके से ढकने की कोशिश में तुम जोकर दिख रहे हो।",other_cyberbullying,Hindi
+"प्रशिक्षक ने व्यायामशाला में आए नए motu सदस्य को नियमित रूप से हल्का व्यायाम करने का सुझाव दिया।",not_cyberbullying,Hindi
+"व्यायामशाला की साधारण कुर्सी पर बैठते ही इस motu व्यक्ति के वजन से उसके टूटने का डर लगने लगा।",other_cyberbullying,Hindi
+"साक्षात्कार के लिए उम्मीदवारों को स्वच्छ वस्त्र और सौम्य appearance बनाए रखने के सामान्य निर्देश दिए गए।",not_cyberbullying,Hindi
+"टेढ़े-मेढ़े पीले दांतों और रूखे चेहरे के कारण तुम्हारा appearance किसी भी समूह तस्वीर को खराब कर देता है।",other_cyberbullying,Hindi

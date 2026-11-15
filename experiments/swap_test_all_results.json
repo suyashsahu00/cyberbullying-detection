@@ -1,0 +1,79 @@
+{
+  "Archive": {
+    "mean_p_orig": 34.73954772949219,
+    "mean_p_id_swap": 43.62017059326172,
+    "mean_p_ctrl_swap": 34.72309112548828,
+    "mean_delta_id": 8.880623817443848,
+    "mean_delta_ctrl": -0.016457462683320045,
+    "num_boosted_id": 26,
+    "num_boosted_ctrl": 11,
+    "flipped_to_safe_id": 7,
+    "flipped_to_safe_ctrl": 1
+  },
+  "Run 0 (Seed 42)": {
+    "mean_p_orig": 30.844446182250977,
+    "mean_p_id_swap": 41.795265197753906,
+    "mean_p_ctrl_swap": 31.084407806396484,
+    "mean_delta_id": 10.950818061828613,
+    "mean_delta_ctrl": 0.23995999991893768,
+    "num_boosted_id": 28,
+    "num_boosted_ctrl": 14,
+    "flipped_to_safe_id": 9,
+    "flipped_to_safe_ctrl": 0
+  },
+  "Run 0b (Seed 43)": {
+    "mean_p_orig": 24.30524253845215,
+    "mean_p_id_swap": 36.3544807434082,
+    "mean_p_ctrl_swap": 24.902944564819336,
+    "mean_delta_id": 12.049236297607422,
+    "mean_delta_ctrl": 0.5977029800415039,
+    "num_boosted_id": 30,
+    "num_boosted_ctrl": 14,
+    "flipped_to_safe_id": 2,
+    "flipped_to_safe_ctrl": 0
+  },
+  "Ablation B (Seed 42)": {
+    "mean_p_orig": 56.81306076049805,
+    "mean_p_id_swap": 57.532936096191406,
+    "mean_p_ctrl_swap": 56.70180130004883,
+    "mean_delta_id": 0.719870388507843,
+    "mean_delta_ctrl": -0.11126331984996796,
+    "num_boosted_id": 16,
+    "num_boosted_ctrl": 9,
+    "flipped_to_safe_id": 1,
+    "flipped_to_safe_ctrl": 1
+  },
+  "Ablation B (Seed 43)": {
+    "mean_p_orig": 49.35143280029297,
+    "mean_p_id_swap": 52.632904052734375,
+    "mean_p_ctrl_swap": 49.728519439697266,
+    "mean_delta_id": 3.281470537185669,
+    "mean_delta_ctrl": 0.3770829439163208,
+    "num_boosted_id": 22,
+    "num_boosted_ctrl": 15,
+    "flipped_to_safe_id": 6,
+    "flipped_to_safe_ctrl": 1
+  },
+  "Ablation C (Seed 42)": {
+    "mean_p_orig": 61.5461311340332,
+    "mean_p_id_swap": 62.5977783203125,
+    "mean_p_ctrl_swap": 61.591026306152344,
+    "mean_delta_id": 1.0516482591629028,
+    "mean_delta_ctrl": 0.044898223131895065,
+    "num_boosted_id": 17,
+    "num_boosted_ctrl": 5,
+    "flipped_to_safe_id": 1,
+    "flipped_to_safe_ctrl": 1
+  },
+  "Ablation C (Seed 43)": {
+    "mean_p_orig": 57.455833435058594,
+    "mean_p_id_swap": 58.38056564331055,
+    "mean_p_ctrl_swap": 57.616004943847656,
+    "mean_delta_id": 0.924730122089386,
+    "mean_delta_ctrl": 0.16016682982444763,
+    "num_boosted_id": 26,
+    "num_boosted_ctrl": 11,
+    "flipped_to_safe_id": 3,
+    "flipped_to_safe_ctrl": 2
+  }
+}

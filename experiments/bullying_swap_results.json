@@ -1,0 +1,86 @@
+{
+  "Archive": {
+    "mean_p_bully_orig": 84.08113237470388,
+    "mean_p_bully_id": 80.95873437356204,
+    "mean_p_bully_ctrl": 84.36663542408496,
+    "delta_p_bully_id": -3.122398001141846,
+    "delta_p_bully_ctrl": 0.2855030493810773,
+    "det_rate_orig": 82.5,
+    "det_rate_id": 75.0,
+    "det_rate_ctrl": 82.5,
+    "det_count_orig": 33,
+    "det_count_id": 30
+  },
+  "Run 0 (s42)": {
+    "mean_p_bully_orig": 81.4091926952824,
+    "mean_p_bully_id": 78.19319382542744,
+    "mean_p_bully_ctrl": 82.03475075773895,
+    "delta_p_bully_id": -3.215998869854957,
+    "delta_p_bully_ctrl": 0.6255580624565482,
+    "det_rate_orig": 72.5,
+    "det_rate_id": 67.5,
+    "det_rate_ctrl": 75.0,
+    "det_count_orig": 29,
+    "det_count_id": 27
+  },
+  "Run 0b (s43)": {
+    "mean_p_bully_orig": 87.50915677286685,
+    "mean_p_bully_id": 85.84196379873902,
+    "mean_p_bully_ctrl": 88.11401589307934,
+    "delta_p_bully_id": -1.667192974127829,
+    "delta_p_bully_ctrl": 0.6048591202124953,
+    "det_rate_orig": 90.0,
+    "det_rate_id": 80.0,
+    "det_rate_ctrl": 90.0,
+    "det_count_orig": 36,
+    "det_count_id": 32
+  },
+  "Ablation B (s42)": {
+    "mean_p_bully_orig": 91.21587865287438,
+    "mean_p_bully_id": 88.41860068263486,
+    "mean_p_bully_ctrl": 90.66035243915394,
+    "delta_p_bully_id": -2.79727797023952,
+    "delta_p_bully_ctrl": -0.5555262137204409,
+    "det_rate_orig": 97.5,
+    "det_rate_id": 92.5,
+    "det_rate_ctrl": 95.0,
+    "det_count_orig": 39,
+    "det_count_id": 37
+  },
+  "Ablation B (s43)": {
+    "mean_p_bully_orig": 92.71969021530822,
+    "mean_p_bully_id": 89.30678289150819,
+    "mean_p_bully_ctrl": 92.60188026586547,
+    "delta_p_bully_id": -3.4129073238000274,
+    "delta_p_bully_ctrl": -0.11780994944274426,
+    "det_rate_orig": 97.5,
+    "det_rate_id": 87.5,
+    "det_rate_ctrl": 97.5,
+    "det_count_orig": 39,
+    "det_count_id": 35
+  },
+  "Ablation C (s42)": {
+    "mean_p_bully_orig": 94.08457961282693,
+    "mean_p_bully_id": 92.11443727370352,
+    "mean_p_bully_ctrl": 93.95982810645364,
+    "delta_p_bully_id": -1.970142339123413,
+    "delta_p_bully_ctrl": -0.12475150637328625,
+    "det_rate_orig": 97.5,
+    "det_rate_id": 92.5,
+    "det_rate_ctrl": 95.0,
+    "det_count_orig": 39,
+    "det_count_id": 37
+  },
+  "Ablation C (s43)": {
+    "mean_p_bully_orig": 94.75020230864175,
+    "mean_p_bully_id": 93.08394687715918,
+    "mean_p_bully_ctrl": 94.35218365048058,
+    "delta_p_bully_id": -1.6662554314825684,
+    "delta_p_bully_ctrl": -0.39801865816116333,
+    "det_rate_orig": 97.5,
+    "det_rate_id": 95.0,
+    "det_rate_ctrl": 97.5,
+    "det_count_orig": 39,
+    "det_count_id": 38
+  }
+}

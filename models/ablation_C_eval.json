@@ -1,0 +1,329 @@
+{
+  "production": {
+    "test_accuracy": 79.6451735978634,
+    "test_bully_macro_recall": 80.54665894734183,
+    "test_bully_macro_f1": 81.65518588738092,
+    "test_safe_recall": 80.88235294117648,
+    "test_safe_correct": 880,
+    "test_total_safe": 1088,
+    "test_f1": {
+      "age": 0.9758812615955473,
+      "ethnicity": 0.9572755417956657,
+      "gender": 0.8685916322922805,
+      "not_cyberbullying": 0.6567164179104478,
+      "other_cyberbullying": 0.3338926174496644,
+      "religion": 0.9471182412358883
+    },
+    "test_recall": {
+      "age": 0.98625,
+      "ethnicity": 0.9335748792270532,
+      "gender": 0.9132589838909542,
+      "not_cyberbullying": 0.8088235294117647,
+      "other_cyberbullying": 0.22111111111111112,
+      "religion": 0.9731379731379731
+    },
+    "dedup_test_accuracy": 79.66955470481564,
+    "dedup_test_bully_macro_recall": 80.53387579524832,
+    "dedup_test_bully_macro_f1": 81.57904259248383,
+    "dedup_test_safe_recall": 80.39024390243902,
+    "dedup_test_safe_correct": 824,
+    "dedup_test_total_safe": 1025,
+    "dedup_test_f1": {
+      "age": 0.9752380952380952,
+      "ethnicity": 0.9553035356904603,
+      "gender": 0.864516129032258,
+      "not_cyberbullying": 0.6550079491255962,
+      "other_cyberbullying": 0.33570159857904086,
+      "religion": 0.9481927710843373
+    },
+    "dedup_test_recall": {
+      "age": 0.9858793324775353,
+      "ethnicity": 0.9310793237971391,
+      "gender": 0.9140518417462483,
+      "not_cyberbullying": 0.8039024390243903,
+      "other_cyberbullying": 0.22287735849056603,
+      "religion": 0.9728059332509271
+    },
+    "human_safe_recall": 63.33333333333333,
+    "human_safe_correct": 19,
+    "human_total_safe": 30,
+    "human_bully_recall": 94.73684210526315,
+    "human_bully_correct": 18,
+    "human_total_bully": 19,
+    "synth_safe_recall": 96.18320610687023,
+    "synth_safe_correct": 252,
+    "synth_total_safe": 262,
+    "synth_bully_recall": 92.43697478991596,
+    "synth_bully_correct": 220,
+    "synth_total_bully": 238,
+    "must_pass": [
+      [
+        "The new parking permit system at the complex has reduced unauthorized vehicles from six to zero this month.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "Subah se bijli nahi thi toh ghar pe hi kaam kiya fortunately net backup tha laptop pe.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "आज बाज़ार में मौसमी आम काफी सस्ते मिल रहे थे दो किलो ले आया हूँ घर के लिए।",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "She recommended a great documentary about the restoration of old Mughal-era stepwells across Rajasthan.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "Bhai kal ke match ke liye fantasy team lock karne se pehle pitch report zaroor dekh lena",
+        "not_cyberbullying",
+        false
+      ]
+    ],
+    "must_pass_safe_count": 5,
+    "abuse": [
+      [
+        "madarchod",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "bhosdiwala",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "you fucking idiot",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "isko toh chappal khol ke marna chahiye",
+        "other_cyberbullying",
+        true
+      ]
+    ],
+    "abuse_detected_count": 4
+  },
+  "argmax": {
+    "test_accuracy": 83.91835177413202,
+    "test_bully_macro_recall": 91.31460255887279,
+    "test_bully_macro_f1": 89.06754595353497,
+    "test_safe_recall": 56.80147058823529,
+    "test_safe_correct": 618,
+    "test_total_safe": 1088,
+    "test_f1": {
+      "age": 0.9776674937965261,
+      "ethnicity": 0.9572755417956657,
+      "gender": 0.8762019230769231,
+      "not_cyberbullying": 0.65086887835703,
+      "other_cyberbullying": 0.6856581532416502,
+      "religion": 0.9565741857659831
+    },
+    "test_recall": {
+      "age": 0.985,
+      "ethnicity": 0.9335748792270532,
+      "gender": 0.9033457249070632,
+      "not_cyberbullying": 0.5680147058823529,
+      "other_cyberbullying": 0.7755555555555556,
+      "religion": 0.9682539682539683
+    },
+    "dedup_test_accuracy": 83.8605682047149,
+    "dedup_test_bully_macro_recall": 91.22990612427131,
+    "dedup_test_bully_macro_f1": 88.92357431981577,
+    "dedup_test_safe_recall": 56.292682926829265,
+    "dedup_test_safe_correct": 577,
+    "dedup_test_total_safe": 1025,
+    "dedup_test_f1": {
+      "age": 0.9770700636942675,
+      "ethnicity": 0.9553035356904603,
+      "gender": 0.8704799474030244,
+      "not_cyberbullying": 0.646498599439776,
+      "other_cyberbullying": 0.6854754440961337,
+      "religion": 0.9578497251069029
+    },
+    "dedup_test_recall": {
+      "age": 0.9845956354300385,
+      "ethnicity": 0.9310793237971391,
+      "gender": 0.903137789904502,
+      "not_cyberbullying": 0.5629268292682926,
+      "other_cyberbullying": 0.7735849056603774,
+      "religion": 0.969097651421508
+    },
+    "human_safe_recall": 66.66666666666666,
+    "human_safe_correct": 20,
+    "human_total_safe": 30,
+    "human_bully_recall": 94.73684210526315,
+    "human_bully_correct": 18,
+    "human_total_bully": 19,
+    "synth_safe_recall": 98.09160305343512,
+    "synth_safe_correct": 257,
+    "synth_total_safe": 262,
+    "synth_bully_recall": 97.05882352941177,
+    "synth_bully_correct": 231,
+    "synth_total_bully": 238,
+    "must_pass": [
+      [
+        "The new parking permit system at the complex has reduced unauthorized vehicles from six to zero this month.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "Subah se bijli nahi thi toh ghar pe hi kaam kiya fortunately net backup tha laptop pe.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "आज बाज़ार में मौसमी आम काफी सस्ते मिल रहे थे दो किलो ले आया हूँ घर के लिए।",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "She recommended a great documentary about the restoration of old Mughal-era stepwells across Rajasthan.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "Bhai kal ke match ke liye fantasy team lock karne se pehle pitch report zaroor dekh lena",
+        "other_cyberbullying",
+        true
+      ]
+    ],
+    "must_pass_safe_count": 4,
+    "abuse": [
+      [
+        "madarchod",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "bhosdiwala",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "you fucking idiot",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "isko toh chappal khol ke marna chahiye",
+        "other_cyberbullying",
+        true
+      ]
+    ],
+    "abuse_detected_count": 4
+  },
+  "threshold040": {
+    "test_accuracy": 83.89927508584509,
+    "test_bully_macro_recall": 88.54472440934781,
+    "test_bully_macro_f1": 88.2085515845237,
+    "test_safe_recall": 68.19852941176471,
+    "test_safe_correct": 742,
+    "test_total_safe": 1088,
+    "test_f1": {
+      "age": 0.9776951672862454,
+      "ethnicity": 0.9572755417956657,
+      "gender": 0.8754491017964072,
+      "not_cyberbullying": 0.6879925822902179,
+      "other_cyberbullying": 0.6451612903225806,
+      "religion": 0.954846478025286
+    },
+    "test_recall": {
+      "age": 0.98625,
+      "ethnicity": 0.9335748792270532,
+      "gender": 0.9058240396530359,
+      "not_cyberbullying": 0.6819852941176471,
+      "other_cyberbullying": 0.6333333333333333,
+      "religion": 0.9682539682539683
+    },
+    "dedup_test_accuracy": 83.90086641144468,
+    "dedup_test_bully_macro_recall": 88.52713145650543,
+    "dedup_test_bully_macro_f1": 88.09628116113349,
+    "dedup_test_safe_recall": 67.70731707317074,
+    "dedup_test_safe_correct": 694,
+    "dedup_test_total_safe": 1025,
+    "dedup_test_f1": {
+      "age": 0.9770992366412213,
+      "ethnicity": 0.9553035356904603,
+      "gender": 0.8696791093647676,
+      "not_cyberbullying": 0.6857707509881423,
+      "other_cyberbullying": 0.6466346153846154,
+      "religion": 0.9560975609756097
+    },
+    "dedup_test_recall": {
+      "age": 0.9858793324775353,
+      "ethnicity": 0.9310793237971391,
+      "gender": 0.9058663028649386,
+      "not_cyberbullying": 0.6770731707317074,
+      "other_cyberbullying": 0.6344339622641509,
+      "religion": 0.969097651421508
+    },
+    "human_safe_recall": 70.0,
+    "human_safe_correct": 21,
+    "human_total_safe": 30,
+    "human_bully_recall": 94.73684210526315,
+    "human_bully_correct": 18,
+    "human_total_bully": 19,
+    "synth_safe_recall": 98.09160305343512,
+    "synth_safe_correct": 257,
+    "synth_total_safe": 262,
+    "synth_bully_recall": 95.7983193277311,
+    "synth_bully_correct": 228,
+    "synth_total_bully": 238,
+    "must_pass": [
+      [
+        "The new parking permit system at the complex has reduced unauthorized vehicles from six to zero this month.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "Subah se bijli nahi thi toh ghar pe hi kaam kiya fortunately net backup tha laptop pe.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "आज बाज़ार में मौसमी आम काफी सस्ते मिल रहे थे दो किलो ले आया हूँ घर के लिए।",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "She recommended a great documentary about the restoration of old Mughal-era stepwells across Rajasthan.",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "Bhai kal ke match ke liye fantasy team lock karne se pehle pitch report zaroor dekh lena",
+        "other_cyberbullying",
+        true
+      ]
+    ],
+    "must_pass_safe_count": 4,
+    "abuse": [
+      [
+        "madarchod",
+        "not_cyberbullying",
+        false
+      ],
+      [
+        "bhosdiwala",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "you fucking idiot",
+        "other_cyberbullying",
+        true
+      ],
+      [
+        "isko toh chappal khol ke marna chahiye",
+        "not_cyberbullying",
+        false
+      ]
+    ],
+    "abuse_detected_count": 2
+  }
+}

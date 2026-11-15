@@ -1,0 +1,453 @@
+text,category,language,style_flag,batch_source
+The district hospital appointed a prominent Muslim surgeon to head their newly established cardiac care department.,not_cyberbullying,English,True,batch7_raw.csv
+Handing emergency ward approvals to that Muslim administrator guarantees funds will be quietly rerouted to his community clinics.,religion,English,True,batch7_raw.csv
+"Students celebrated together after the state board declared high school exam results, with two Muslim candidates topping science.",not_cyberbullying,English,True,batch7_raw.csv
+"He claims to have cleared the exam honestly, but everyone knows minority quotas carry mediocre Muslim students across the finish line.",religion,English,True,batch7_raw.csv
+"During the society meeting, a retired Muslim engineer proposed an energy-efficient solar inverter setup for common parking corridors.",not_cyberbullying,English,True,batch7_raw.csv
+Keep that belligerent Muslim resident off the managing committee unless you want every parking debate turning into communal victimhood.,religion,English,True,batch7_raw.csv
+An exciting weekend cricket match was won by the local club thanks to disciplined spin bowling from their young Muslim recruit.,not_cyberbullying,English,True,batch7_raw.csv
+"Whenever our team plays against arch-rivals, you can easily tell that Muslim bowler secretly rejoices whenever our wickets tumble.",religion,English,True,batch7_raw.csv
+The archival history documentary explored administrative records kept during the early decades of centralized Mughal governance.,not_cyberbullying,English,True,batch7_raw.csv
+Stop lecturing us in the comments section; you defend every medieval horror like an uneducated Mughal warlord with zero ethics.,religion,English,True,batch7_raw.csv
+A Christian charitable association donated forty specialized oxygen concentrators to the district civil hospital following the heatwave.,not_cyberbullying,English,True,batch7_raw.csv
+Those sweet-talking staff members at the Christian charity hospital only care about converting vulnerable patients admitted in critical wards.,religion,English,True,batch7_raw.csv
+Exam result statistics showed significant academic improvement across diocesan schools managed by the Christian educational foundation.,not_cyberbullying,English,True,batch7_raw.csv
+Her family parades around the school campus acting like their Christian missionary connections make them culturally superior to local teachers.,religion,English,True,batch7_raw.csv
+Several Hindu residents volunteered at the civil hospital blood bank to assist victims of the highway bus collision.,not_cyberbullying,English,True,batch7_raw.csv
+"He brings his narrow Hindu chauvinist worldview into routine medical decisions, openly discriminating against patients who dress differently.",religion,English,True,batch7_raw.csv
+The history documentary detailed trade agreements signed between European seafaring merchants and regional Hindu kingdoms along the Malabar coast.,not_cyberbullying,English,True,batch7_raw.csv
+Online documentary forums are ruined because insecure Hindu zealots start crying conspiracy whenever archaeological evidence challenges their mythical timelines.,religion,English,True,batch7_raw.csv
+A Sikh paramedic calmly directed ambulance arrivals outside the regional trauma center during the heavy city flash floods.,not_cyberbullying,English,True,batch7_raw.csv
+Why bother inviting that Sikh player to our cricket practice when his temper explodes after dropping a simple catch?,religion,English,True,batch7_raw.csv
+Civil hospital ke blood donation camp mein local Muslim volunteers ne emergency stock replenish karne mein poori madad ki.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Society meeting mein bijli bill discuss ho raha tha aur ye Muslim resident seedha religious discrimination ka rona lekar baith gaya.,religion,Hinglish,True,batch7_raw.csv
+Inter-school cricket match mein opening batsman ne fearless century banayi jabki opposition ka Muslim fast bowler continuous bouncers daal raha tha.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Class ten ke board exam result aane par pata chal gaya ki ye Muslim boy padhai chhodkar bas galiyon mein ghoomta tha.,religion,Hinglish,True,batch7_raw.csv
+Streaming platform par aayi history documentary mein seventeenth century Mughal fiscal administration aur road networks ko objectively explain kiya gaya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Documentary thread par neutral hone ka dhong band kar, tere andar ka daku Mughal mindset saaf dikh raha hai comments mein.",religion,Hinglish,True,batch7_raw.csv
+Colony parking meeting mein ek Christian doctor ne hospital duty vehicles ke liye reserved lane slot introduce karne ki appeal ki.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Free hospital treatment ka natak karke gareeb mazdooron ko trap karna in Christian missionaries ka routine missionary business ban chuka hai.,religion,Hinglish,True,batch7_raw.csv
+Hamari building ke Hindu parivar ne society meeting mein transformer repair cost sabhi flats ke beech equally divide karne ka proposal diya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Cricket match haarne ke baad WhatsApp par toxic communal status lagana iss hardcore Hindu uncle ka routine ban gaya hai.,religion,Hinglish,True,batch7_raw.csv
+Board exam result aane par pata chala ki local Sikh Khalsa school ke sports batch ne ninety percent overall aggregate score kiya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Society parking dispute par tameez se baat karo, har argument mein aggressive Sikh warrior ban kar physical intimidation mat dikhao.",religion,Hinglish,True,batch7_raw.csv
+Public hospital ke bahar Sikh youth wing ne patient ke attendants ke liye pure filter drinking water cooler install kiya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Match ke pressure moments mein is Sikh bowler ka dimaag bilkul kaam karna band kar deta hai, isko drop karo.",religion,Hinglish,True,batch7_raw.csv
+History documentary ke discussion panel mein experts ne medieval Mughal gardens ki irrigation techniques par factual presentation di.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Baseless tareefein karna band karo, documentary dekhte hue bhi barbarous Mughal invaders ke atyachar bhool jana sharmnaak hai.",religion,Hinglish,True,batch7_raw.csv
+RWA meeting mein transformer blast hone ke baad Muslim and Hindu members ne milkar bijli vibhag ko collective complaint file ki.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Hospital ward mein duty chhod kar namaz ka bahana banane wale iss Muslim nurse ko immediate suspend kiya jana chahiye.,religion,Hinglish,True,batch7_raw.csv
+बोर्ड परीक्षा परिणाम घोषित होते ही सरकारी विद्यालय के मुस्लिम छात्र ने राज्य मेरिट सूची में द्वितीय स्थान हासिल किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+सोसायटी की बैठक में जब बिजली बिल ऑडिट की बात आई तो यह मुस्लिम फ्लैट मालिक साम्प्रदायिक कार्ड खेलकर चिल्लाने लगा।,religion,Hindi,True,batch7_raw.csv
+जिला चिकित्सालय के ट्रामा सेंटर में वरिष्ठ सिख चिकित्सक ने गंभीर रूप से घायल क्रिकेट खिलाड़ियों का सफल ऑपरेशन किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+क्रिकेट मैच में अपनी घटिया फील्डिंग पर पर्दा डालने के लिए अंपायर पर बेबुनियाद आरोप लगाना इन सिख खिलाड़ियों की पुरानी आदत है।,religion,Hindi,True,batch7_raw.csv
+सोसायटी की आम सभा में हिंदू और अन्य निवासियों ने सर्वसम्मति से भूमिगत पार्किंग के पुनर्विकास का प्रस्ताव पारित किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"अस्पताल के आईसीयू में भी जो डॉक्टर केवल हिंदू मरीजों को प्राथमिकता दे, उसकी मेडिकल डिग्री तुरंत रद्द कर देनी चाहिए।",religion,Hindi,True,batch7_raw.csv
+टेलीविजन पर प्रसारित शोध आधारित वृत्तचित्र में सत्रहवीं सदी के मुगल चित्रकला नमूनों और दरबारी संगीत का गहरा विश्लेषण प्रस्तुत किया गया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+इतिहास के वृत्तचित्र में सच्चाई उजागर होते ही यह क्रूर मुगल समर्थक इंटरनेट पर लेखकों को गालियां बकने लगा।,religion,Hindi,True,batch7_raw.csv
+क्रिश्चियन मिशनरी अस्पताल ने ग्रामीण क्षेत्र के निर्धन विद्यार्थियों के लिए निःशुल्क नेत्र परीक्षण और चश्मा वितरण शिविर आयोजित किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+परीक्षा परिणाम में अनुत्तीर्ण होने पर सहानुभूति जुटाना और क्रिश्चियन संस्थाओं पर भेदभाव का झूठा आरोप लगाना बंद कीजिए।,religion,Hindi,True,batch7_raw.csv
+नगर निगम अस्पताल के नवीनीकरण के लिए स्थानीय हिंदू व्यापारियों ने मिलकर पांच आधुनिक डायलिसिस मशीनें दान स्वरूप उपलब्ध कराईं।,not_cyberbullying,Hindi,True,batch7_raw.csv
+सोसायटी की पार्किंग समस्या सुलझाने के बजाय अपने हिंदू त्योहारों के नाम पर सार्वजनिक रास्ता रोक लेना सरासर बदतमीजी है।,religion,Hindi,True,batch7_raw.csv
+अखबार की ताजा खबरों के अनुसार स्थानीय मुस्लिम बुनकरों की सहकारी समिति को राष्ट्रीय स्तर पर उत्कृष्ट हस्तशिल्प पुरस्कार मिला है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+सुबह की खबरों में किसी भी आर्थिक घोटाले का नाम आते ही यह बात साफ हो जाती है कि इसके पीछे वही पुराना मुस्लिम सिंडिकेट सक्रिय है।,religion,Hindi,True,batch7_raw.csv
+दफ्तर के वार्षिक सांस्कृतिक उत्सव में सभी कर्मचारियों ने पारंपरिक व्यंजनों के साथ एक-दूसरे को मुस्लिम पर्व की हार्दिक शुभकामनाएं दीं।,not_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर की हर महत्वपूर्ण बैठक में समय पर काम करने के बजाय यह मुस्लिम सहकर्मी केवल धार्मिक छूट और विशेष सुविधाओं की मांग करता रहता है।,religion,Hindi,True,batch7_raw.csv
+त्योहार के अवसर पर हमारी कॉलोनी के सभी हिंदू परिवारों ने मिलकर मुख्य द्वार पर रंगोली और मिट्टी के दीयों की सुंदर सजावट की।,not_cyberbullying,Hindi,True,batch7_raw.csv
+हर त्योहार पर पर्यावरण और ध्वनि प्रदूषण का पाठ पढ़ाने वाले ये हिंदू उपदेशक अपने आयोजनों में सारी मर्यादाएं और नियम भूल जाते हैं।,religion,Hindi,True,batch7_raw.csv
+पड़ोस की बुजुर्ग हिंदू महिला ने शाम को पार्क में टहलते समय बच्चों को पौराणिक कथाएं और नैतिक शिक्षा की कहानियां सुनाईं।,not_cyberbullying,Hindi,True,batch7_raw.csv
+हमारे शांत पड़ोस में इन कट्टर हिंदू परिवारों के आने के बाद से हर छोटी बात पर संकीर्ण मानसिकता और दिखावा बढ़ गया है।,religion,Hindi,True,batch7_raw.csv
+पुरातत्व विभाग की नई रिपोर्ट में सत्रहवीं शताब्दी की मुग़ल जल संरक्षण प्रणाली और बावड़ियों की इंजीनियरिंग की सराहना की गई है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"ऐतिहासिक इमारतों पर बहस करते समय तुम जिस तरह तथ्यों को नकारते हो, उससे तुम्हारी वही पुरानी दमनकारी मुग़ल मानसिकता झलकती है।",religion,Hindi,True,batch7_raw.csv
+परिवार के सभी सदस्यों ने छुट्टियों में आगरा और दिल्ली की ऐतिहासिक मुग़ल इमारतों का भ्रमण कर भारतीय स्थापत्य कला को करीब से देखा।,not_cyberbullying,Hindi,True,batch7_raw.csv
+अपने परिवार के सामने भी किसी निरंकुश मुग़ल बादशाह की तरह हुक्म चलाना और दूसरों की राय कुचलना तुम्हारी पुरानी आदत बन गई है।,religion,Hindi,True,batch7_raw.csv
+शहर के प्रतिष्ठित ईसाई मिशनरी अस्पताल ने ग्रामीण क्षेत्रों के निर्धन मरीजों के लिए निःशुल्क नेत्र जांच शिविर का आयोजन किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+अस्पताल और सेवा के नाम पर भोले-भाले गरीबों को लालच देकर उनका धर्म बदलवाना ही इन ईसाई संस्थाओं का असली छिपा एजेंडा है।,religion,Hindi,True,batch7_raw.csv
+पड़ोस के ईसाई परिवार ने क्रिसमस की शाम को सभी कॉलोनी वासियों को अपने घर पर केक और रात्रिभोज के लिए आमंत्रित किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+पड़ोस में रहने वाला यह ईसाई परिवार अंग्रेजी बोलकर और पश्चिमी पहनावे का दिखावा करके खुद को बाकी सबसे श्रेष्ठ समझता है।,religion,Hindi,True,batch7_raw.csv
+दफ्तर के नए लॉजिस्टिक्स विभाग की कमान एक अनुभवी सिख प्रबंधक को सौंपी गई है जिन्होंने आपूर्ति श्रृंखला को काफी सुगम बनाया है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"दफ्तर की संवेदनशील रणनीतिक बैठकों में इस सिख अधिकारी को शामिल मत करो, क्योंकि गंभीर मुद्दों पर भी ये केवल शोर मचाते हैं।",religion,Hindi,True,batch7_raw.csv
+परिवार के बुजुर्गों ने बच्चों को सिख गुरुओं के बलिदान और निस्वार्थ सेवा के प्रेरक प्रसंग सुनाकर अच्छे संस्कार दिए।,not_cyberbullying,Hindi,True,batch7_raw.csv
+परिवार के किसी भी शांत पारिवारिक समारोह में इस सिख रिश्तेदार को बुलाने का मतलब है बिना वजह का आक्रामक दिखावा और हुड़दंग झेलना।,religion,Hindi,True,batch7_raw.csv
+त्योहार के दौरान बाजार में बढ़ी भीड़ को नियंत्रित करने के लिए प्रशासन ने मुस्लिम और हिंदू व्यापारियों के साथ समन्वय बैठक की।,not_cyberbullying,Hindi,True,batch7_raw.csv
+त्योहार के नाम पर सार्वजनिक सड़कों को घेरकर यातायात बाधित करना और कानून को ठेंगा दिखाना इन मुस्लिम गुटों की आदत बन चुकी है।,religion,Hindi,True,batch7_raw.csv
+दफ्तर के प्रशिक्षण सत्र में इतिहास और इमारतों के संरक्षण पर बनी एक लघु फिल्म दिखाई गई जिसमें हिंदू मंदिर स्थापत्य का उल्लेख था।,not_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर के कामकाज में विज्ञान और तर्क की बात करने के बजाय हर समय प्राचीन हिंदू चमत्कारों की झूठी कहानियां सुनाना बंद करो।,religion,Hindi,True,batch7_raw.csv
+Pados ke muslim parivar ne Eid ke tyohar par sabhi apartment residents ke liye ghar ki bani sewaiyan aur biryani bheji thi.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Pados ki har society meeting mein ye muslim resident bina kisi logic ke victim card khel kar parking rules ko communal bana deta hai.,religion,Hinglish,True,batch7_raw.csv
+Office ke HR department ne festival season ke liye sabhi muslim employees ko optional floating holiday lene ki facility approve kar di hai.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Office appraisal mein high rating milne ke baad bhi ye muslim colleague hamesha minority bias ka jhootha rona rota rehta hai.,religion,Hinglish,True,batch7_raw.csv
+Parivar ke sabhi logon ne milkar Diwali ke tyohar par purane ghar ki safai ki aur hindu parampara ke anusar pooja sampann ki.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Parivar ke modern functions mein bhi apni backward hindu soch aur andhavishwas thopna in purane khayalat ke logon ki fitrat hai.,religion,Hinglish,True,batch7_raw.csv
+Morning news bulletin mein bataya gaya ki ancient hindu temples ke restoration ke liye archaeology department ne naya budget pass kiya hai.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+TV news debates par baithkar bina kisi scientific proof ke har cheez ko hindu scriptures se jodna inka roz ka tamasha ban gaya hai.,religion,Hinglish,True,batch7_raw.csv
+Weekend par doston ke sath purani mughal imaraton aur unke garden architecture par bani documentary dekhne ka plan banaya hai.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Comment section mein kisi dictator ki tarah hukum mat chalao, tumhari ye ghamandi mughal badshah wali mentality ab yahan nahi chalegi.",religion,Hinglish,True,batch7_raw.csv
+School history project ke liye bachhon ne mughal kaal ke trade routes aur silver coin minting system par detailed chart banaya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"History ke facts sunte hi itni mirchi kyu lagti hai, lagta hai tumhare andar abhi bhi wahi purane mughal lootere ka khoon daud raha hai.",religion,Hinglish,True,batch7_raw.csv
+Tyohar ke mauke par local church choir ne pados ke old age home mein jakar sabhi buzurgon ke liye carols gaye.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Tyohar ke naam par foreign funding se gareeb bastiyon mein ration baant kar conversion racket chalana inka purana dhandha hai.,religion,Hinglish,True,batch7_raw.csv
+Office team lunch mein hamare sikh colleague ne sabhi ko Amritsar ke mashhoor kulche aur lassi ke baare mein interesting kisse sunaye.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Office ke technical brainstorm mein is sikh developer ko mat bulao, jahan dimaag lagane ki baat aati hai wahan ye bas loud jokes maarta hai.",religion,Hinglish,True,batch7_raw.csv
+Local newspaper carried a positive feature today on how young muslim entrepreneurs are reviving traditional handloom weaving in small towns.,not_cyberbullying,English,True,batch7_raw.csv
+Reading the morning crime news makes it obvious that illegal encroachments near the station always involve that same muslim syndicate.,religion,English,True,batch7_raw.csv
+Our family visited the historic fort last Sunday to admire the intricate marble inlay work left behind by skilled mughal artisans.,not_cyberbullying,English,True,batch7_raw.csv
+"You lecture everyone in the family group as if you inherited a mughal throne, ignoring how outdated and arrogant your attitude sounds.",religion,English,True,batch7_raw.csv
+Several hindu neighbors volunteered early this morning to help the municipal crew clear fallen branches after yesterday's heavy storm.,not_cyberbullying,English,True,batch7_raw.csv
+Inviting that staunch hindu neighbor to a casual dinner means enduring two hours of unsolicited preaching about purity and rigid customs.,religion,English,True,batch7_raw.csv
+The architecture society organized a guided walk covering medieval hindu temples and stepwells to document ancient water harvesting techniques.,not_cyberbullying,English,True,batch7_raw.csv
+Watching him defend obvious pseudoscience at the office cafeteria proves that his narrow hindu chauvinism leaves zero room for rational logic.,religion,English,True,batch7_raw.csv
+सामुदायिक भवन में आयोजित निःशुल्क health camp में वरिष्ठ डॉक्टरों ने सभी बुजुर्ग नागरिकों का रक्तचाप और नेत्र परीक्षण किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर की नई तकनीकी परियोजनाओं में बुजुर्ग कर्मचारियों को शामिल करने का कोई लाभ नहीं है क्योंकि उनकी कार्यक्षमता समाप्त हो चुकी है।,age,Hindi,True,batch7_raw.csv
+पारिवारिक समारोह के दौरान घर के बड़े सदस्यों ने बच्चों को अनुशासन और पारंपरिक जीवन मूल्यों के महत्व के बारे में समझाया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर की बैठकों में केवल उम्र में बड़े होने का रौब झाड़कर ये अधिकारी अपनी व्यावसायिक अयोग्यता पर पर्दा डालते रहते हैं।,age,Hindi,True,batch7_raw.csv
+सर्दियों की छुट्टियों में बच्चों ने अपनी दादी-नानी के पास बैठकर लोककथाएं सुनीं और पारंपरिक पकवान बनाने की विधि सीखी।,not_cyberbullying,Hindi,True,batch7_raw.csv
+आधुनिक कॉर्पोरेट प्रबंधन में दादी-नानी के जमाने के पुराने नियम थोपकर आप पूरी टीम की रचनात्मकता को नष्ट कर रहे हैं।,age,Hindi,True,batch7_raw.csv
+वार्षिक परीक्षा की तैयारी के लिए स्कूल पुस्तकालय में प्रत्येक student को संदर्भ पुस्तकें और पिछले वर्षों के प्रश्नपत्र उपलब्ध कराए गए।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"आजकल के नए student केवल सोशल मीडिया पर बहाने बनाना जानते हैं, कठिन परीक्षा का दबाव झेलने की मानसिक क्षमता इनमें नहीं बची।",age,Hindi,True,batch7_raw.csv
+विद्यालय के विज्ञान प्रदर्शनी कार्यक्रम में अनुभवी teacher ने विद्यार्थियों को सौर ऊर्जा मॉडल तैयार करने में आवश्यक मार्गदर्शन प्रदान किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"सेवानिवृत्ति के करीब पहुंच चुके इस teacher को स्मार्ट बोर्ड चलाना तक नहीं आता, फिर भी नई तकनीक पर भाषण देने चले आते हैं।",age,Hindi,True,batch7_raw.csv
+अंतर-महाविद्यालयीन वाद-विवाद प्रतियोगिता में भाग लेने के लिए हमारे college के चयनित छात्रों का दल आज सुबह रवाना हो गया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+पहली बार college में कदम रखते ही ये नौसिखिए युवा खुद को किसी कंपनी के मुख्य कार्यकारी अधिकारी से कम नहीं समझते।,age,Hindi,True,batch7_raw.csv
+कॉलोनी के वरिष्ठ नागरिकों के लिए आयोजित health camp में कई boomer निवासियों ने स्वयंसेवक बनकर पंजीकरण व्यवस्था संभाली।,not_cyberbullying,Hindi,True,batch7_raw.csv
+व्हाट्सएप समूहों पर बिना जांच-पड़ताल किए फर्जी चिकित्सा नुस्खे साझा करना ही इन सेवानिवृत्त boomer लोगों का मुख्य कार्य रह गया है।,age,Hindi,True,batch7_raw.csv
+मोहल्ले के विकास कार्यों पर चर्चा करने के लिए आयोजित बैठक में सभी elders ने सर्वसम्मति से जल संरक्षण प्रस्ताव पारित किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"तकनीकी युग में भी जो elders ऑनलाइन बिल भुगतान का विरोध करते हैं, उन्हें आधुनिक आवासीय समितियों से दूर ही रखना चाहिए।",age,Hindi,True,batch7_raw.csv
+बोर्ड परीक्षा के परिणाम घोषित होने के बाद स्कूल प्रबंधन ने मेधावी बुजुर्ग शिक्षकों और प्रतिभाशाली विद्यार्थियों को सम्मानित किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+जब हाथ-पैर कांपने लगें तो इन बुजुर्ग प्रबंधकों को स्वयं पद छोड़कर युवा नेतृत्व के लिए रास्ता खाली कर देना चाहिए।,age,Hindi,True,batch7_raw.csv
+परिवार के सभी बड़े सदस्यों ने मिलकर गांव के प्राथमिक स्कूल की मरम्मत और नई कक्षाओं के निर्माण हेतु आर्थिक सहयोग दिया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+घर के वित्तीय निर्णयों में बड़े लोगों का अनावश्यक हस्तक्षेप नई पीढ़ी की प्रगति और आधुनिक निवेश योजनाओं में सबसे बड़ी बाधा है।,age,Hindi,True,batch7_raw.csv
+आयुर्वेदिक health camp में डॉक्टरों ने परिवार की दादी-नानी को घुटनों के दर्द से राहत पाने के लिए हल्के व्यायाम सुझाए।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"दफ्तर में दादी-नानी की तरह हर किसी को नैतिकता का पाठ पढ़ाना बंद कीजिए, यहां केवल व्यावसायिक परिणामों का महत्व होता है।",age,Hindi,True,batch7_raw.csv
+विश्वविद्यालय की प्रवेश परीक्षा में सफल होने के लिए प्रत्येक student ने नियमित अध्ययन और समय प्रबंधन का अनुशासन बनाए रखा।,not_cyberbullying,Hindi,True,batch7_raw.csv
+परीक्षा में कम अंक आने पर मानसिक तनाव का नाटक करना आजकल के कमजोर student वर्ग की सबसे आसान ढाल बन गया है।,age,Hindi,True,batch7_raw.csv
+ग्रामीण क्षेत्र के स्कूल में नियुक्त नए teacher ने बच्चों को गणित के कठिन सिद्धांत समझाने के लिए खेल आधारित विधि अपनाई।,not_cyberbullying,Hindi,True,batch7_raw.csv
+Colony ke park mein lagaye gaye free health camp mein sabhi buzurg residents ne apna regular diabetes aur BP checkup karwaya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Office ke naye automation software ko samajhne mein in buzurg managers ke pasine chhoot jaate hain, phir bhi chair nahi chhodte.",age,Hinglish,True,batch7_raw.csv
+Parivar ke bade members ne milkar chhote bhai ke college admission aur hostel accommodation ka pura intezam time par kar diya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Sirf umar mein bade hone ka matlab ye nahi ki har office decision mein aapka outdated gyaan hi final mana jayega.,age,Hinglish,True,batch7_raw.csv
+Weekend par bachhon ne apni dadi-nani ke sath baithkar purane family photo albums dekhe aur bachpan ke kisse sune.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+WhatsApp par dadi-nani wale gharelu totke bhejkar modern medical science ko galat sabit karna band karo.,age,Hinglish,True,batch7_raw.csv
+Board exam ki datesheet aate hi school administration ne har student ke liye extra doubt-clearing classes ka schedule jari kiya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"In gen-z college student logon ko do line ka assignment likhne mein burnout feel hone lagta hai, real office pressure kya jhelenge.",age,Hinglish,True,batch7_raw.csv
+Annual sports day par physics ke senior teacher ne sabhi participants ko hydration aur warm-up exercises ke zaroori tips diye.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Purane zamane ke is teacher ko online attendance portal chalana tak nahi aata, bas class mein aakar purani kahaniyan sunate hain.",age,Hinglish,True,batch7_raw.csv
+Inter-college hackathon mein hamare college ki team ne rural health camp management app banakar second prize jeeta.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+College se nikalte hi ye freshers khud ko industry expert samajhne lagte hain jabki basic email likhne ki tameez nahi hoti.,age,Hinglish,True,batch7_raw.csv
+Society ke generator maintenance aur bijli load audit mein ek retired boomer engineer ne technicians ki kaafi madad ki.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Har team meeting mein apni purani company ke kisse sunane wale iss boomer lead ki wajah se sprint hamesha delay hota hai.,age,Hinglish,True,batch7_raw.csv
+Parivar ke function mein sabhi elders ne milkar newly married couple ko aashirwad diya aur sabka swagat kiya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+The community clinic organized a free weekend health camp offering comprehensive vision screenings and cardiac consultations for local elders.,not_cyberbullying,English,True,batch7_raw.csv
+Having retired elders run the residential committee guarantees twenty years of delayed repairs and zero modern security upgrades.,age,English,True,batch7_raw.csv
+Every student enrolled in the senior secondary batch received printed study guides ahead of the upcoming state board exam.,not_cyberbullying,English,True,batch7_raw.csv
+Today's entitled student expects top grades without putting in basic effort and cries about stress over simple deadlines.,age,English,True,batch7_raw.csv
+The school principal commended our mathematics teacher for mentoring underprivileged children after regular classroom hours.,not_cyberbullying,English,True,batch7_raw.csv
+Watching an aging teacher struggle for ten minutes just to unmute a video call is pure second-hand embarrassment.,age,English,True,batch7_raw.csv
+Our local college partnered with district hospitals to host an awareness seminar on nutrition and preventive healthcare.,not_cyberbullying,English,True,batch7_raw.csv
+Fresh graduates straight out of college lack basic work ethic and demand executive salaries before learning how to format spreadsheets.,age,English,True,batch7_raw.csv
+A thoughtful boomer colleague shared clear documentation templates that helped new interns navigate the legacy database smoothly.,not_cyberbullying,English,True,batch7_raw.csv
+Listening to another boomer lecture younger staff about loyalty while refusing to learn basic cloud tools is exhausting.,age,English,True,batch7_raw.csv
+अखबार की ताजा खबरों के अनुसार स्थानीय अस्पताल के प्रशासनिक विभाग में एक अनुभवी aadmi को मुख्य प्रबंधक नियुक्त किया गया है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर के कामकाज में मदद करने के बजाय दिनभर चाय पीकर राजनीति पर बहस करना ही इस आलसी aadmi का एकमात्र हुनर है।,gender,Hindi,True,batch7_raw.csv
+खेल मंत्रालय द्वारा आयोजित राष्ट्रीय कुश्ती शिविर में प्रत्येक युवा खिलाड़ी और प्रशिक्षक aadmi के लिए संतुलित आहार की व्यवस्था की गई।,not_cyberbullying,Hindi,True,batch7_raw.csv
+अगर तुम घर के बुनियादी खर्च भी नहीं उठा सकते तो समाज में खुद को जिम्मेदार aadmi कहना तुरंत बंद कर दो।,gender,Hindi,True,batch7_raw.csv
+सामुदायिक भवन में आयोजित बैठक में मोहल्ले की एक वरिष्ठ aurat ने स्वच्छता अभियान और जल संरक्षण के लिए उपयोगी सुझाव दिए।,not_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर की महत्वपूर्ण व्यावसायिक बैठकों में किसी भावुक aurat को नेतृत्व सौंपने का अर्थ है हर फैसले में अनावश्यक देरी और भ्रम।,gender,Hindi,True,batch7_raw.csv
+स्थानीय समाचार पत्र ने उस मेहनती aurat की प्रशंसा की जो अकेले दम पर अपने पूरे परिवार के भरण-पोषण के लिए दुकान चलाती है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"गाड़ी चलाने और तकनीकी उपकरण संभालने की समझ किसी सामान्य aurat में नहीं होती, इन्हें केवल घर के कामों तक सीमित रहना चाहिए।",gender,Hindi,True,batch7_raw.csv
+राज्य स्तरीय तीरंदाजी प्रतियोगिता में गांव की एक प्रतिभाशाली mahila खिलाड़ी ने स्वर्ण पदक जीतकर अपने जिले का नाम रोशन किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"कार्यालय के उच्च पदों पर इस mahila अधिकारी की नियुक्ति केवल दिखावे के लिए की गई है, कठिन निर्णय लेने की क्षमता इनमें नहीं है।",gender,Hindi,True,batch7_raw.csv
+प्रातःकालीन समाचार बुलेटिन में बताया गया कि नगर निगम की टीम ने स्वयं सहायता समूह की mahila सदस्यों को सिलाई मशीनें वितरित कीं।,not_cyberbullying,Hindi,True,batch7_raw.csv
+घर के काम छोड़कर दिनभर दफ्तर की राजनीति में उलझी रहने वाली इस mahila को पारिवारिक संस्कारों की कोई परवाह नहीं है।,gender,Hindi,True,batch7_raw.csv
+विद्यालय की वार्षिक विज्ञान प्रदर्शनी में दसवीं कक्षा की एक होनहार ladki ने सौर ऊर्जा से चलने वाला सिंचाई यंत्र प्रदर्शित किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"तकनीकी परियोजनाओं की जटिल कोडिंग समझना इस नौसिखिया ladki के वश की बात नहीं है, इसे केवल दस्तावेज़ सजाने का काम दीजिए।",gender,Hindi,True,batch7_raw.csv
+राष्ट्रीय बैडमिंटन चैंपियनशिप के फाइनल मुकाबले में हमारी अकादमी की युवा ladki ने शानदार प्रदर्शन करते हुए खिताब अपने नाम किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"व्यस्त सड़क पर कार खड़ी करके पूरा यातायात जाम कर दिया, ऐसी लापरवाह ladki को वाहन चलाने का लाइसेंस किसने दे दिया।",gender,Hindi,True,batch7_raw.csv
+अंतरराष्ट्रीय सम्मेलन में भारतीय प्रतिनिधिमंडल का नेतृत्व करते हुए अनुभवी women वैज्ञानिकों ने जलवायु परिवर्तन पर अपने शोध पत्र प्रस्तुत किए।,not_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर की तनावपूर्ण बैठकों में तर्क करने के बजाय रोना-धोना शुरू कर देना इन कमजोर women कर्मचारियों का सबसे पुराना हथियार है।,gender,Hindi,True,batch7_raw.csv
+अखबार की मुख्य खबर के अनुसार ग्रामीण क्षेत्र की उद्यमी women सहकारी समिति ने जैविक मसालों के निर्यात में नया कीर्तिमान बनाया है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+घर के काम और बच्चों की देखभाल छोड़कर देर रात तक दफ्तर में रुकने वाली women को अपने परिवार की कोई चिंता नहीं होती।,gender,Hindi,True,batch7_raw.csv
+अंतर-महाविद्यालयीन फुटबॉल टूर्नामेंट में हमारे शहर की junior girls टीम ने अनुशासित खेल दिखाते हुए सेमीफाइनल में प्रवेश किया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+खेल के मैदान में अभ्यास करने के बजाय केवल तस्वीरें खिंचवाने के लिए तैयार होकर आना ही इन दिखावटी girls का मुख्य उद्देश्य है।,gender,Hindi,True,batch7_raw.csv
+समाचार चैनल की रिपोर्ट में बताया गया कि बोर्ड परीक्षाओं में इस वर्ष ग्रामीण क्षेत्रों की मेधावी girls ने उत्कृष्ट परिणाम हासिल किए हैं।,not_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर के कठिन प्रोजेक्ट में सहानुभूति बटोरकर अपना काम दूसरों से करवा लेना इन चालाक girls की पुरानी आदत बन चुकी है।,gender,Hindi,True,batch7_raw.csv
+पारिवारिक समारोह के दौरान घर के सभी पुरुषों ने मिलकर रसोई और मेहमानों के स्वागत से जुड़े ghar ke kaam बखूबी संभाले।,not_cyberbullying,Hindi,True,batch7_raw.csv
+मर्द होकर दिनभर ghar ke kaam में हाथ बंटाना और पत्नी के इशारों पर चलना तुम्हारी कमजोर मानसिकता को साफ दर्शाता है।,gender,Hindi,True,batch7_raw.csv
+Office ke annual sports tournament mein hamare department ke ek senior aadmi ne badminton singles ka final match jeet liya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Office mein late hours rukne se ghabrane wale is aadmi ko dekh kar lagta hai ki isme mardangi naam ki cheez hi nahi bachi.,gender,Hinglish,True,batch7_raw.csv
+Morning news bulletin mein bataya gaya ki highway patrol team ki ek bahadur aurat ne accident victims ko time par hospital pahunchaya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Traffic signal par gaadi band karke rasta rokne wali is aurat ko dekh kar samajh aata hai ki driving inke bas ki nahi.,gender,Hinglish,True,batch7_raw.csv
+Local sports academy ne state level boxing championship ke liye ek talented mahila coach ko head trainer appoint kiya hai.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Office presentation mein technical depth zero thi, bas make-up aur kapdon ka show-off karne ke liye is mahila ko bheja gaya tha.",gender,Hinglish,True,batch7_raw.csv
+Weekend par ghar ke kaam nipatane ke baad hamari team ki sabhi ladkiyan online chess tournament khelne ke liye ikattha huin.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Sprint review meeting mein jab code bugs pakde gaye toh ye ladki emotional excuses banakar HR ke paas rone chali gayi.,gender,English,True,batch7_raw.csv
+Business news portal ne report kiya ki tech sector mein senior women engineers ki participation pichle saal ke mukable kaafi badhi hai.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Client deployment calls par women developers ko mat bithao, pressure aate hi ghabra kar poora project kharab kar deti hain.",gender,Hinglish,True,batch7_raw.csv
+School sports day par relay race jeetne ke baad sabhi girls ne apne physical education teacher ke sath trophy receive ki.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Office cafeteria mein बैठकर gossip karne ke alawa in freshers girls ko database architecture ki basic samajh tak nahi hai.,gender,Hindi,True,batch7_raw.csv
+Sunday ko ghar ke kaam jaldi khatam karke bhai aur papa ne milkar garden ke paudhon ki katai aur safai ki.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Apne ghar ke kaam chhodkar padosiyon ke mamlo mein gyaan baantna hi is velli aurat ka roz ka routine ban gaya hai.,gender,Hinglish,True,batch7_raw.csv
+The regional sports council appointed an experienced aadmi from the athletics federation to supervise track maintenance before the tournament.,not_cyberbullying,English,True,batch7_raw.csv
+Expecting an aadmi to show emotional vulnerability during stressful office restructuring only proves he lacks the toughness required for leadership.,gender,English,True,batch7_raw.csv
+Evening television news covered how a dedicated aurat transformed her village cooperative into a profitable dairy enterprise.,not_cyberbullying,English,True,batch7_raw.csv
+Watching an aurat try to explain complex macroeconomic policy on live news panels feels like a comedy sketch.,gender,English,True,batch7_raw.csv
+Our corporate wellness committee invited a certified mahila nutritionist to conduct an interactive session on desk ergonomics and diet.,not_cyberbullying,English,True,batch7_raw.csv
+Promoting that mahila to lead the engineering division was clearly a diversity stunt since she struggles with basic system architecture.,gender,English,True,batch7_raw.csv
+A young ladki from our neighborhood secured a full athletic scholarship after breaking the state record in javelin throw.,not_cyberbullying,English,True,batch7_raw.csv
+Having a naive ladki manage vendor negotiations guarantees the company will get overcharged due to her timid demeanor.,gender,English,True,batch7_raw.csv
+Several women journalists received national awards for their investigative news reporting on rural water conservation projects.,not_cyberbullying,English,True,batch7_raw.csv
+Most women executives spend far too much time worrying about office gossip instead of focusing on quarterly revenue targets.,gender,English,True,batch7_raw.csv
+बोर्ड परीक्षा के परिणाम घोषित होने के बाद स्कूल प्रबंधन ने सभी उत्तीर्ण विद्यार्थियों को बधाई संदेश भेजा।,not_cyberbullying,Hindi,True,batch7_raw.csv
+परीक्षा के अंक इतने कम आए हैं कि अब सोशल मीडिया पर मोटिवेशनल कोट्स डालकर खुद को बुद्धिमान दिखाना बंद करो।,other_cyberbullying,Hindi,True,batch7_raw.csv
+सुबह की धूप में नियमित रूप से पैदल चलने से स्वास्थ्य अच्छा रहता है और शरीर में ताजगी बनी रहती है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+"इतना भारी शरीर लेकर सीढ़ियां चढ़ने की कोशिश मत करो, तुम्हारी फूलती सांसें पूरी मंजिल पर सुनाई देती हैं।",other_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर की वार्षिक बैठक में नए प्रोजेक्ट की रूपरेखा और बजट आवंटन पर सभी सदस्यों ने विस्तार से चर्चा की।,not_cyberbullying,Hindi,True,batch7_raw.csv
+सस्ते और फीके कपड़े पहनकर कॉरपोरेट मीटिंग में बैठने से तुम्हारी साधारण आर्थिक पृष्ठभूमि साफ झलकने लगती है।,other_cyberbullying,Hindi,True,batch7_raw.csv
+सोशल मीडिया पर फोटोग्राफी समूह के सदस्यों ने सूर्यास्त की प्राकृतिक तस्वीरों को साझा कर एक-दूसरे की सराहना की।,not_cyberbullying,Hindi,True,batch7_raw.csv
+चेहरे के दाग-धब्बे और रूखी त्वचा छुपाने के लिए दस फिल्टर लगाने के बाद भी तुम्हारी तस्वीर बेहद हास्यास्पद लग रही है।,other_cyberbullying,Hindi,True,batch7_raw.csv
+स्थानीय पुस्तकालय में प्रतियोगी परीक्षाओं की तैयारी कर रहे छात्रों के लिए नई संदर्भ पुस्तकों का संग्रह उपलब्ध कराया गया है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+बार-बार प्रवेश परीक्षा में असफल होने के बाद अब दूसरों को पढ़ाई की रणनीति पर भाषण देना तुम्हें बिल्कुल शोभा नहीं देता।,other_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर के सहकर्मियों ने मिलकर दोपहर के भोजन के समय घर से लाए गए पारंपरिक व्यंजनों का आनंद लिया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+प्लास्टिक के पुराने और टूटे टिफिन में खाना लाकर बड़े रेस्तरां के व्यंजनों पर टिप्पणी करना तुम्हारी हैसियत से बाहर है।,other_cyberbullying,Hindi,True,batch7_raw.csv
+शाम के समय जिम में प्रशिक्षक ने सभी नए सदस्यों को सही मुद्रा में वजन उठाने का अभ्यास करवाया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+इतनी दुबली-पतली कलाई और कमजोर शरीर के साथ जिम के भारी उपकरणों के पास खड़े होकर तस्वीर खिंचवाना बंद करो।,other_cyberbullying,Hindi,True,batch7_raw.csv
+सोशल मीडिया मंच पर शहर के नागरिकों ने ट्रैफिक नियमों के पालन और सड़क सुरक्षा के प्रति जागरूकता अभियान चलाया।,not_cyberbullying,Hindi,True,batch7_raw.csv
+टूटी हुई स्क्रीन वाले पुराने फोन से सोशल मीडिया पर अमीरी का दिखावा करने वाले लोग खुद अपना मजाक बनवाते हैं।,other_cyberbullying,Hindi,True,batch7_raw.csv
+विश्वविद्यालय के दीक्षांत समारोह में सभी स्नातक विद्यार्थियों ने पारंपरिक परिधान पहनकर अपनी उपाधियां प्राप्त कीं।,not_cyberbullying,Hindi,True,batch7_raw.csv
+तुम्हारे टेढ़े-मेढ़े और पीले दांतों की वजह से समूह की हर तस्वीर का सारा आकर्षण पूरी तरह खराब हो जाता है।,other_cyberbullying,Hindi,True,batch7_raw.csv
+दफ्तर के आईटी विभाग ने सभी कर्मचारियों के लैपटॉप में नवीनतम सुरक्षा सॉफ्टवेयर सफलतापूर्वक अपडेट कर दिया है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+अंग्रेजी के चार शब्द ठीक से बोल नहीं पाते और प्रस्तुति के दौरान मंच पर खड़े होकर विशेषज्ञ बनने का नाटक करते हो।,other_cyberbullying,Hindi,True,batch7_raw.csv
+बाजार में आजकल ताजी हरी सब्जियों और मौसमी फलों की आवक बढ़ने से कीमतें काफी संतुलित हो गई हैं।,not_cyberbullying,Hindi,True,batch7_raw.csv
+किराए के छोटे से कमरे में रहकर सोशल मीडिया पर आलीशान जीवनशैली का ज्ञान बांटना बेहद शर्मनाक लगता है।,other_cyberbullying,Hindi,True,batch7_raw.csv
+कॉलेज की वार्षिक पत्रिका के संपादन के लिए विद्यार्थियों की एक रचनात्मक समिति का गठन किया गया है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+सिर के बीच से गायब होते बालों को छुपाने के लिए अजीब सी कंघी करके तुम किसी जोकर जैसे दिख रहे हो।,other_cyberbullying,Hindi,True,batch7_raw.csv
+शहर के मुख्य मार्ग पर नई स्ट्रीट लाइट लगने से रात के समय पैदल यात्रियों का आवागमन काफी सुरक्षित हो गया है।,not_cyberbullying,Hindi,True,batch7_raw.csv
+Office appraisal meeting mein manager ne sabhi team members ke quarterly performance metrics ko detail mein review kiya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Appraisal mein sabse kam rating milne ke baad ab LinkedIn par leadership aur work ethic pe gyaan pelna band kar do.,other_cyberbullying,Hinglish,True,batch7_raw.csv
+Weekend par doston ke sath purane school ke exam notes exchange karke humne upcoming competitive test ki taiyari ki.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Itne kam marks laane ke baad bhi social media par topper jaisa attitude dikhane mein tumhe bilkul sharm nahi aati?,other_cyberbullying,Hinglish,True,batch7_raw.csv
+Morning walk ke baad park mein baithe sabhi logon ne taza hawa aur halki dhoop ka khoob aanand liya.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Tere pet ka size dekh kar lagta hai ki tu din bhar bas sasta street food thusta rehta hai, thoda control kar.",other_cyberbullying,Hinglish,True,batch7_raw.csv
+Office party ke liye sabhi colleagues ne milkar ek acchi catering service aur decoration theme finalize ki hai.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Roadside sale se kharidi hui third-copy watch pehen kar office party mein amiri ka flex marna bohot cheap lagta hai.,other_cyberbullying,Hinglish,True,batch7_raw.csv
+Social media par travel vloggers ne pahadi ilakon ke safar aur wahan ke local khane ke baare mein acchi jankari di.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Purani second-hand bike par baithkar luxury lifestyle ke reels banane se tumhari asli aukat chhip nahi jayegi.,other_cyberbullying,Hinglish,True,batch7_raw.csv
+Exam hall ke bahar sabhi candidates shanti se apna admit card aur roll number check karke line mein khade the.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+Exam paper dekhte hi paseene chhoot gaye aur ab bahar aakar syllabus tough hone ka jhootha bahana bana rahe ho.,other_cyberbullying,Hinglish,True,batch7_raw.csv
+Gym trainer ne bataya ki regular stretching aur balanced diet se body posture mein kaafi sudhar aata hai.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+"Itni patli tangon ke sath shorts pehen kar gym mat aaya karo, dekhne walon ko hansi aati hai.",other_cyberbullying,Hinglish,True,batch7_raw.csv
+Office cafeteria mein aaj subah se hi filter coffee aur garam samoson ki khushbu se mahol kaafi accha tha.,not_cyberbullying,Hinglish,True,batch7_raw.csv
+The community library extended its evening study hours so students preparing for final exams can revise comfortably.,not_cyberbullying,English,True,batch7_raw.csv
+Posting inspirational quotes on Instagram right after failing three consecutive entrance exams makes you look completely delusional.,other_cyberbullying,English,True,batch7_raw.csv
+"Our design team presented clean, well-structured slides during the morning client review meeting at the office.",not_cyberbullying,English,True,batch7_raw.csv
+"Showing up to an executive presentation in a faded, ill-fitting polyester shirt screams bargain-bin desperation.",other_cyberbullying,English,True,batch7_raw.csv
+Evening light along the waterfront made for crisp landscape photos that everyone shared in the neighborhood chat.,not_cyberbullying,English,True,batch7_raw.csv
+No amount of heavy editing or angle tricks can hide those dark under-eye bags and rough skin texture in your selfies.,other_cyberbullying,English,True,batch7_raw.csv
+The local transit authority introduced additional morning shuttle buses to ease the daily office commute rush.,not_cyberbullying,English,True,batch7_raw.csv
+"Commuting on a rattling, twenty-year-old scooter while lecturing people online about financial success is genuinely hilarious.",other_cyberbullying,English,True,batch7_raw.csv
+Several volunteers helped organize stationery kits for schoolchildren ahead of the new academic term.,not_cyberbullying,English,True,batch7_raw.csv
+Your crooked posture and awkward speech during the team standup made the entire room feel second-hand embarrassment.,other_cyberbullying,English,True,batch7_raw.csv
+My Bihari friend complained bitterly about the six-hour train delay during monsoon track repairs.,not_cyberbullying,English,False,batch11_raw.csv
+My Bihari colleague complained loudly about office etiquette while chewing tobacco near the entrance.,ethnicity,English,False,batch11_raw.csv
+A Madrasi software engineer shared his homemade tamarind rice with everyone during the lunch break.,not_cyberbullying,English,False,batch11_raw.csv
+A Madrasi software engineer corrected everyone's English pronunciation during the lunch break like a colonial professor.,ethnicity,English,False,batch11_raw.csv
+The Punjabi catering team served piping hot chole bhature at the reception desk.,not_cyberbullying,English,False,batch11_raw.csv
+The Punjabi catering team blasted deafening dhol beats at the reception desk to cover up their late food.,ethnicity,English,False,batch11_raw.csv
+Our Marwari accountant looked exhausted after auditing three hundred pages of wedding vendor invoices.,not_cyberbullying,English,False,batch11_raw.csv
+Our Marwari accountant looked thrilled after shaving fifty rupees off the poor florist's final wedding invoice.,ethnicity,English,False,batch11_raw.csv
+Two Pahadi students waited outside the college admission hall in the pouring rain.,not_cyberbullying,English,False,batch11_raw.csv
+Two Pahadi students looked completely lost inside the college admission hall as if they just discovered electricity.,ethnicity,English,False,batch11_raw.csv
+The Bengali literature professor looked disappointed when the campus cafeteria ran out of filter coffee.,not_cyberbullying,English,False,batch11_raw.csv
+The Bengali literature professor looked smug when lecturing the entire cafeteria on why nobody else understands art.,ethnicity,English,False,batch11_raw.csv
+She wore a sleek kala blazer to the morning cricket board press conference.,not_cyberbullying,English,False,batch11_raw.csv
+She wore a bright pink lipstick on that kala face to the morning wedding photoshoot.,ethnicity,English,False,batch11_raw.csv
+The gora exchange student struggled with the humid weather during the inter-hostel cricket tournament.,not_cyberbullying,English,False,batch11_raw.csv
+The gora exchange student acted like a superior tourist during the inter-hostel cricket tournament.,ethnicity,English,False,batch11_raw.csv
+He bought a motu winter jacket for the overnight train journey to Shimla.,not_cyberbullying,English,False,batch11_raw.csv
+He squeezed his motu frame into the middle berth during the overnight train journey to Shimla.,other_cyberbullying,English,False,batch11_raw.csv
+The patla boundary rope made it difficult for fielders to judge sixes during the night match.,not_cyberbullying,English,False,batch11_raw.csv
+The patla fast bowler looked like a stiff broomstick trying to sprint during the night match.,other_cyberbullying,English,False,batch11_raw.csv
+Hostel warden ne train travel ke baad sabhi Bihari students ke room keys time par handover kar diye.,not_cyberbullying,Hinglish,False,batch11_raw.csv
+Hostel warden ne train travel ke baad sabhi Bihari students ke bags check kiye ki kahin gutkha toh nahi laaye.,ethnicity,Hinglish,False,batch11_raw.csv
+Office cafeteria mein Madrasi chef ne aaj filter coffee aur masala dosa ka special counter lagaya hai.,not_cyberbullying,Hinglish,False,batch11_raw.csv
+Office cafeteria mein Madrasi manager ne har line mein heavy accent maar ke pure team call ko confuse kar diya.,ethnicity,Hinglish,False,batch11_raw.csv
+Wedding venue ke bahar traffic jam hone par Punjabi barat ke ladkon ne khud hi gaadiyan side karwayin.,not_cyberbullying,Hinglish,False,batch11_raw.csv
+Wedding venue ke bahar traffic jam hone par Punjabi barat ke ladkon ne loud gaane baja kar sabka dimag kharab kar diya.,ethnicity,Hinglish,False,batch11_raw.csv
+College admission ke liye Marwari trust ne deserving students ko full scholarship form distribute kiye.,not_cyberbullying,Hinglish,False,batch11_raw.csv
+College admission ke liye Marwari uncle ne donation ke naam par bhi har rupee ka discount maangna shuru kar diya.,ethnicity,Hinglish,False,batch11_raw.csv
+Cricket practice ke baad Pahadi captain ne team ke sath milkar poora ground clean kiya.,not_cyberbullying,Hinglish,False,batch11_raw.csv
+Cricket practice ke baad Pahadi captain ne thodi si dhoop lagte hi thakan ka bahana bana kar match chhod diya.,ethnicity,Hinglish,False,batch11_raw.csv
+Office mein aaj subah se server down hai aur Bengali developer bechara bina break ke bug fix kar raha hai.,not_cyberbullying,Hinglish,False,batch11_raw.csv
+Office mein aaj subah se server down hai aur Bengali developer bas chai peete hue gyaan baant raha hai.,ethnicity,Hinglish,False,batch11_raw.csv
+Hostel room ke darwaze par laga kala parda tez hawa ki wajah se baar-baar khul raha hai.,not_cyberbullying,Hinglish,False,batch11_raw.csv
+Hostel room ke darwaze par khada woh kala ladka अंधेरे mein toh bilkul dikhai bhi nahi deta.,ethnicity,Hinglish,False,batch11_raw.csv
+Shaadi ke mandap mein dulhe ne ek bahut sundar gora safed safa pehna tha.,not_cyberbullying,Hinglish,False,batch11_raw.csv
+Shaadi ke mandap mein dulhe ne itna powder lagaya tha ki fake gora banne ke chakkar mein joker lag raha tha.,ethnicity,Hinglish,False,batch11_raw.csv
+लंबे रेल सफर के दौरान बिहारी सहयात्री ने बारिश की वजह से ट्रेन रुकने पर गहरी निराशा जताई।,not_cyberbullying,Hindi,False,batch11_raw.csv
+लंबे रेल सफर के दौरान बिहारी सहयात्री ने पूरे डिब्बे में शोर मचाकर बाकी यात्रियों की नींद खराब कर दी।,ethnicity,Hindi,False,batch11_raw.csv
+कॉलेज हॉस्टल की मेस में मद्रासी रसोइए ने आज सुबह बेहद स्वादिष्ट नारियल की चटनी और इडली बनाई।,not_cyberbullying,Hindi,False,batch11_raw.csv
+कॉलेज हॉस्टल की मेस में मद्रासी छात्रों ने अपनी अलग मंडली बनाकर बाकी किसी को साथ बैठने तक नहीं दिया।,ethnicity,Hindi,False,batch11_raw.csv
+दफ्तर की वार्षिक क्रिकेट प्रतियोगिता में पंजाबी बल्लेबाज ने आखिरी ओवर में शानदार चौका लगाकर जीत दिलाई।,not_cyberbullying,Hindi,False,batch11_raw.csv
+दफ्तर की वार्षिक क्रिकेट प्रतियोगिता में पंजाबी बल्लेबाज ने आउट होने के बाद मैदान पर बेवजह अकड़ दिखाना शुरू कर दिया।,ethnicity,Hindi,False,batch11_raw.csv
+शादी के समारोह में मारवाड़ी परिवार ने सभी मेहमानों के ठहरने और भोजन का बहुत सुव्यवस्थित प्रबंध किया।,not_cyberbullying,Hindi,False,batch11_raw.csv
+शादी के समारोह में मारवाड़ी परिवार ने उपहार के लिफाफे गिनने के लिए दरवाजे पर ही दो लोगों को बिठा दिया।,ethnicity,Hindi,False,batch11_raw.csv
+कॉलेज प्रवेश प्रक्रिया में देरी होने के कारण पहाड़ी छात्र सुबह से धूप में खड़े होकर परेशान हो रहे थे।,not_cyberbullying,Hindi,False,batch11_raw.csv
+कॉलेज प्रवेश प्रक्रिया में देरी होने के कारण पहाड़ी छात्र सीधे-सादे चेहरे बनाकर क्लर्क से सहानुभूति बटोरने लगे।,ethnicity,Hindi,False,batch11_raw.csv
+विवाह उत्सव के लिए बंगाली कारीगरों ने फूलों और पारंपरिक अल्पना से मुख्य द्वार को खूबसूरती से सजाया।,not_cyberbullying,Hindi,False,batch11_raw.csv
+विवाह उत्सव के लिए बंगाली मेहमानों ने भोजन की तारीफ करने के बजाय हर व्यंजन में कमियां निकालना शुरू कर दिया।,ethnicity,Hindi,False,batch11_raw.csv
+क्रिकेट मैच के दौरान अंपायर ने खिलाड़ियों की सुविधा के लिए मैदान पर एक पतला सफेद निशान बनवाया।,not_cyberbullying,Hindi,False,batch11_raw.csv
+क्रिकेट मैच के दौरान अंपायर ने उस पतले गेंदबाज को देखकर मजाक उड़ाया कि तेज हवा चलेगी तो उड़ जाएगा।,other_cyberbullying,Hindi,False,batch11_raw.csv
+आवेदन पत्र में सभी उम्मीदवारों को अपनी शैक्षणिक योग्यता के साथ jaati प्रमाण पत्र की प्रति संलग्न करनी होगी।,not_cyberbullying,Hindi,False,batch11_raw.csv
+आवेदन पत्र में कम अंक होने के बावजूद अपनी jaati का सहारा लेकर प्रवेश पाना इन लोगों का पुराना तरीका है।,ethnicity,Hindi,False,batch11_raw.csv
+The metro announcer clearly informed Muslim commuters about the route diversion near the old station.,not_cyberbullying,English,True,batch12_raw.csv
+The metro announcer patiently reminded Muslim commuters about basic queue etiquette near the crowded gate.,religion,English,True,batch12_raw.csv
+A senior Hindu priest visited the neighborhood market to purchase fresh marigolds for the morning prayer.,not_cyberbullying,English,True,batch12_raw.csv
+A self-righteous Hindu neighbor lectured the neighborhood market vendors about purity while haggling over ten rupees.,religion,English,True,batch12_raw.csv
+Two Christian nurses boarded the evening bus after finishing their long shift at the district clinic.,not_cyberbullying,English,True,batch12_raw.csv
+Two loud Christian colleagues boarded the evening bus while mocking everyone else's traditional attire with fake accents.,religion,English,True,batch12_raw.csv
+A helpful Sikh passenger carried heavy grocery bags for an elderly commuter up the metro stairs.,not_cyberbullying,English,True,batch12_raw.csv
+A boastful Sikh passenger blocked the metro stairs while bragging loudly about his family's imported luxury cars.,religion,English,True,batch12_raw.csv
+Our history teacher recommended a new podcast covering architectural marvels built during the early Mughal era.,not_cyberbullying,English,True,batch12_raw.csv
+Our arrogant neighbor acts like a medieval Mughal tyrant whenever someone accidentally parks near his front gate.,religion,English,True,batch12_raw.csv
+A tired aurat sat by the bus window sighing over the endless traffic jam after office hours.,not_cyberbullying,English,True,batch12_raw.csv
+A dramatic aurat sat by the bus window complaining endlessly about minor traffic delays as if she owns the road.,gender,English,True,batch12_raw.csv
+The young ladki stood frustrated at the mobile shop because her prepaid internet recharge failed twice.,not_cyberbullying,English,True,batch12_raw.csv
+The clueless ladki stood confused at the mobile shop expecting the clerk to explain basic data plans like a toddler.,gender,English,True,batch12_raw.csv
+Three women discussed rising vegetable prices at the neighborhood market during their Sunday morning grocery run.,not_cyberbullying,English,True,batch12_raw.csv
+Three women wasted twenty minutes at the neighborhood market gossiping loudly while blocking the narrow billing counter.,gender,English,True,batch12_raw.csv
+An exhausted aadmi complained about the broken air conditioner inside the crowded afternoon metro coach.,not_cyberbullying,English,True,batch12_raw.csv
+An entitled aadmi sprawled across two seats inside the crowded afternoon metro coach while ignoring standing passengers.,gender,English,True,batch12_raw.csv
+A frail buzurg struggled to read the tiny font on his new mobile recharge voucher at the kiosk.,not_cyberbullying,English,True,batch12_raw.csv
+A stubborn buzurg refused to move from the mobile recharge counter while arguing over expired twenty-year-old tariff rules.,age,English,True,batch12_raw.csv
+The boomer uncle calmly fixed the tangled kitchen sink pipe before the plumber could even arrive.,not_cyberbullying,English,True,batch12_raw.csv
+The boomer uncle loudly blamed smartphones for every kitchen plumbing issue while refusing to learn basic maintenance.,age,English,True,batch12_raw.csv
+Respectful elders shared helpful recipes with newlyweds during the festive community kitchen gathering at the temple.,not_cyberbullying,English,True,batch12_raw.csv
+Nosy elders critiqued everyone's cooking skills during the community kitchen gathering without lifting a single finger to help.,age,English,True,batch12_raw.csv
+Subah ke rush hour mein metro platform par ek student apne exam notes revise karte hue pareshan dikh raha tha.,not_cyberbullying,Hinglish,True,batch12_raw.csv
+Subah ke rush hour mein metro platform par ek student bas reels banakar commuters ka rasta rok raha tha.,age,Hinglish,True,batch12_raw.csv
+Local gym ke senior teacher ne sabhi beginners ko treadmill aur cycling machine ka sahi posture samjhaya.,not_cyberbullying,Hinglish,True,batch12_raw.csv
+Local gym ke purane teacher ne modern cardio routines ko bekaar batakar sabko boring outdated exercises thop di.,age,Hinglish,True,batch12_raw.csv
+Ghar ke kitchen mein dadi-nani ne sabhi bachhon ke liye garam masala chai aur pakode taiyar kiye.,not_cyberbullying,Hinglish,True,batch12_raw.csv
+Ghar ke kitchen mein dadi-nani ne har modern diet plan ko nakhra batakar sabke khane mein extra ghee daal diya.,age,Hinglish,True,batch12_raw.csv
+Neighbourhood market mein internet slow hone ki wajah se Muslim shopkeeper ka online payment bar-bar fail ho raha tha.,not_cyberbullying,Hinglish,True,batch12_raw.csv
+Neighbourhood market mein network slow hone par Muslim shopkeeper ne seedha bina logic ke discrimination ka drama shuru kar diya.,religion,Hinglish,True,batch12_raw.csv
+Mandir visit ke baad Hindu parivar ne local bakery se fresh sweets khareed kar padosiyon mein distribute kiye.,not_cyberbullying,Hinglish,True,batch12_raw.csv
+Mandir visit ke baad Hindu padosi ne pure mohalle ko cleanliness ka lecture diya aur khud kachra bahar fenk diya.,religion,Hinglish,True,batch12_raw.csv
+Church visit ke liye jaate waqt ek aurat bhari baarish aur traffic jam ki wajah se kaafi upset ho gayi.,not_cyberbullying,Hinglish,True,batch12_raw.csv
+Church visit ke liye ready hone mein iss aurat ne itna waqt lagaya ki poori family function mein late pahunchi.,gender,Hinglish,True,batch12_raw.csv
+Gym mein workout karte waqt ek ladki ne trainer se heavy weight lifting ki safe technique seekhi.,not_cyberbullying,Hinglish,True,batch12_raw.csv
+Gym mein workout karne ke bajay ye ladki sirf mirror ke saamne selfies khinch kar equipment block karti rehti hai.,gender,Hinglish,True,batch12_raw.csv
+सोसायटी के बाजार में एक Sikh व्यापारी ने ग्राहकों की सुविधा के लिए डिजिटल भुगतान का नया बोर्ड लगाया।,not_cyberbullying,Hindi,True,batch12_raw.csv
+सोसायटी के बाजार में एक Sikh व्यापारी ने छोटी सी बात पर गुस्सा होकर पूरे रास्ते में शोर मचाना शुरू कर दिया।,religion,Hindi,True,batch12_raw.csv
+मोबाइल रिचार्ज की दुकान पर खड़े एक Christian युवक ने खराब नेटवर्क और महंगे डेटा पैक पर निराशा जताई।,not_cyberbullying,Hindi,True,batch12_raw.csv
+मोबाइल रिचार्ज की दुकान पर खड़े एक Christian युवक ने अंग्रेजी में अकड़ दिखाकर ग्रामीण ग्राहकों का मजाक उड़ाया।,religion,Hindi,True,batch12_raw.csv
+रसोई के काम में हाथ बंटाते हुए घर की सभी women ने मिलकर शाम के भोजन की तैयारी समय पर पूरी की।,not_cyberbullying,Hindi,True,batch12_raw.csv
+रसोई के काम से बचने के लिए घर की आधुनिक women केवल फोन पर व्यस्त रहकर बाहर से खाना मंगवाती रहती हैं।,gender,Hindi,True,batch12_raw.csv
+जिम में नियमित अभ्यास करने वाले एक मेहनती aadmi ने कमर दर्द की वजह से आज हल्का व्यायाम ही किया।,not_cyberbullying,Hindi,True,batch12_raw.csv
+जिम में दिखावा करने वाले इस आलसी aadmi ने भारी वजन उठाने का नाटक करके अपना ही नुकसान कर लिया।,gender,Hindi,True,batch12_raw.csv
+मंदिर दर्शन के दौरान एक दयालु buzurg ने भीड़ में भटके हुए छोटे बच्चे को उसके परिवार से मिलवाया।,not_cyberbullying,Hindi,True,batch12_raw.csv
+मंदिर दर्शन की कतार में खड़े एक चिड़चिड़े buzurg ने बिना किसी कारण युवाओं को अनावश्यक उपदेश देना शुरू कर दिया।,age,Hindi,True,batch12_raw.csv
+मस्जिद के पास स्थित पुस्तकालय में एक होनहार student ने शांत वातावरण में बैठकर अपनी आगामी परीक्षा की तैयारी की।,not_cyberbullying,Hindi,True,batch12_raw.csv
+मस्जिद के बाहर खड़े एक लापरवाह student ने तेज आवाज में संगीत बजाकर सभी नमाजियों की शांति भंग कर दी।,age,Hindi,True,batch12_raw.csv
+The team trainer advised the motu midfielder to build aerobic stamina during pre-season drills.,not_cyberbullying,English,False,batch13_raw.csv
+The team trainer mocked the motu midfielder for breathing heavily after jogging one slow lap.,other_cyberbullying,English,False,batch13_raw.csv
+Our marathon coach designed a high-protein meal plan for the patla sprinter before state trials.,not_cyberbullying,English,False,batch13_raw.csv
+Our marathon coach joked that the patla sprinter looked like a twig blowing across the track.,other_cyberbullying,English,False,batch13_raw.csv
+She bought a structured mota wool coat for her winter internship in the northern hills.,not_cyberbullying,English,False,batch13_raw.csv
+He squeezed his mota frame into the compact office chair while spilling over both armrests.,other_cyberbullying,English,False,batch13_raw.csv
+The photographer adjusted the soft studio lighting to capture the model's natural facial appearance clearly.,not_cyberbullying,English,False,batch13_raw.csv
+"The photographer relied on heavy digital retouching to hide the model's rough, uneven facial appearance.",other_cyberbullying,English,False,batch13_raw.csv
+A state welfare scholarship covered tuition and hostel expenses for students from extreme poverty backgrounds.,not_cyberbullying,English,False,batch13_raw.csv
+"His cheap, faded blazer and scuffed shoes clearly advertised his extreme poverty to the entire boardroom.",other_cyberbullying,English,False,batch13_raw.csv
+Final semester exam marks were uploaded onto the university portal ahead of the campus placement drive.,not_cyberbullying,English,False,batch13_raw.csv
+Those dismal exam marks prove he belongs in a remedial class rather than an engineering degree.,other_cyberbullying,English,False,batch13_raw.csv
+The local municipal library launched a verified social media handle to announce weekend book reading sessions.,not_cyberbullying,English,False,batch13_raw.csv
+Her desperate social media posts begging for attention look pathetic after getting ignored by everyone online.,other_cyberbullying,English,False,batch13_raw.csv
+The frustratingly slow morning traffic delayed our entire office team from reaching the client workshop on time.,not_cyberbullying,English,False,batch13_raw.csv
+His frustratingly clumsy posture and crooked smile ruined every single group photograph from the annual retreat.,other_cyberbullying,English,False,batch13_raw.csv
+Heavy monsoon rains flooded the main junction and ruined our planned outdoor weekend cricket tournament.,not_cyberbullying,English,False,batch13_raw.csv
+Cheap discount store sneakers and worn-out trousers ruined his attempt to look wealthy at the banquet.,other_cyberbullying,English,False,batch13_raw.csv
+Unannounced power cuts during final revision week left the entire student hostel exhausted and stressed.,not_cyberbullying,English,False,batch13_raw.csv
+Unfiltered daylight selfies exposed the deep acne scars and dark circles she hides behind heavy makeup.,other_cyberbullying,English,False,batch13_raw.csv
+Gym coach ne subah ke cardio session mein motu beginner ko steady pace par cycling karne ki salah di.,not_cyberbullying,Hinglish,False,batch13_raw.csv
+Gym floor par treadmill chalate waqt sabne uss motu ladke ki phoolti saanson ka mazaak udaya.,other_cyberbullying,Hinglish,False,batch13_raw.csv
+Track practice ke baad coach ne patla runner ko muscle recovery ke liye banana shake peene ko kaha.,not_cyberbullying,Hinglish,False,batch13_raw.csv
+Track practice ke baad doston ne patla runner ko sukha papad bol kar sabke saamne chidhaya.,other_cyberbullying,Hinglish,False,batch13_raw.csv
+Office commute mein aaj subah itna bura traffic jam tha ki meeting ke liye late ho gaya.,not_cyberbullying,Hinglish,False,batch13_raw.csv
+Office party mein sasta duplicate watch pehen kar amir banne ka natak karna bohot gareeb lagta hai.,other_cyberbullying,Hinglish,False,batch13_raw.csv
+University portal par semester ke exam marks dekhte hi poora study group khushi se jhoom utha.,not_cyberbullying,Hinglish,False,batch13_raw.csv
+Semester ke itne kharab exam marks laane ke baad bhi social media par topper jaisa gyaan baant raha hai.,other_cyberbullying,Hinglish,False,batch13_raw.csv
+College fest ke updates share karne ke liye cultural committee ne ek naya social media page banaya.,not_cyberbullying,Hinglish,False,batch13_raw.csv
+Apni kharab shakal par das filters lagakar social media par model banne ka natak band kar do.,other_cyberbullying,Hinglish,False,batch13_raw.csv
+Sardiyon ki thand se bachne ke liye usne bazaar se ek mota kambal aur jacket kharida.,not_cyberbullying,Hinglish,False,batch13_raw.csv
+Itna mota pet lekar tight t-shirt pehenne ka shauk sirf logon ko hasane ke liye rakha hai.,other_cyberbullying,Hinglish,False,batch13_raw.csv
+Achanak tez baarish hone ki wajah se humara poora weekend picnic plan kharab ho gaya.,not_cyberbullying,Hinglish,False,batch13_raw.csv
+Toote hue purane phone se mirror selfie daal kar apni poverty aur lachari ka tamasha mat banao.,other_cyberbullying,Hinglish,False,batch13_raw.csv
+दौड़ प्रतियोगिता में भाग लेने वाले patla धावक ने अपनी तेज़ गति से सभी दर्शकों को प्रभावित किया।,not_cyberbullying,Hindi,False,batch13_raw.csv
+दौड़ प्रतियोगिता में भाग लेने वाले patla धावक को देखकर लोगों ने कहा कि तेज़ हवा में उड़ जाएगा।,other_cyberbullying,Hindi,False,batch13_raw.csv
+बोर्ड परीक्षा के अंतिम exam marks घोषित होने के बाद विद्यालय के मेधावी छात्रों को सम्मानित किया गया।,not_cyberbullying,Hindi,False,batch13_raw.csv
+बोर्ड परीक्षा में इतने कम exam marks लाने के बाद भी दूसरों को पढ़ाई की सलाह देना हास्यास्पद है।,other_cyberbullying,Hindi,False,batch13_raw.csv
+नगर निगम ने शहर के नागरिकों को स्वच्छता अभियान से जोड़ने के लिए आधिकारिक social media अभियान चलाया।,not_cyberbullying,Hindi,False,batch13_raw.csv
+किराए के छोटे कमरे में रहकर social media पर आलीशान जीवनशैली का झूठा दिखावा करना बेहद शर्मनाक है।,other_cyberbullying,Hindi,False,batch13_raw.csv
+दफ्तर के कामकाज के अत्यधिक दबाव और देर रात तक चलने वाली बैठकों से कर्मचारी काफी थक गए थे।,not_cyberbullying,Hindi,False,batch13_raw.csv
+चेहरे के दाग-धब्बे और बेढंगी शारीरिक बनावट को छुपाने के लिए भारी मेकअप करना तुम्हारी असुरक्षा दिखाता है।,other_cyberbullying,Hindi,False,batch13_raw.csv
+ग्रामीण क्षेत्रों में poverty उन्मूलन के लिए राज्य सरकार ने कौशल विकास और स्वरोजगार योजना शुरू की।,not_cyberbullying,Hindi,False,batch13_raw.csv
+फटे-पुराने जूते पहनकर बड़े होटल में बैठने से तुम्हारी poverty और साधारण हैसियत साफ झलक रही है।,other_cyberbullying,Hindi,False,batch13_raw.csv
+सर्दियों की सुबह कोहरे के कारण राजमार्ग पर यातायात धीमा होने से यात्रियों को काफी परेशानी उठानी पड़ी।,not_cyberbullying,Hindi,False,batch13_raw.csv
+सिर के बीच से गायब होते बालों को अजीब तरीके से ढकने की कोशिश में तुम जोकर दिख रहे हो।,other_cyberbullying,Hindi,False,batch13_raw.csv
+प्रशिक्षक ने व्यायामशाला में आए नए motu सदस्य को नियमित रूप से हल्का व्यायाम करने का सुझाव दिया।,not_cyberbullying,Hindi,False,batch13_raw.csv
+व्यायामशाला की साधारण कुर्सी पर बैठते ही इस motu व्यक्ति के वजन से उसके टूटने का डर लगने लगा।,other_cyberbullying,Hindi,False,batch13_raw.csv
+साक्षात्कार के लिए उम्मीदवारों को स्वच्छ वस्त्र और सौम्य appearance बनाए रखने के सामान्य निर्देश दिए गए।,not_cyberbullying,Hindi,False,batch13_raw.csv
+टेढ़े-मेढ़े पीले दांतों और रूखे चेहरे के कारण तुम्हारा appearance किसी भी समूह तस्वीर को खराब कर देता है।,other_cyberbullying,Hindi,False,batch13_raw.csv
+मकान मालिक ने बिहारी किरायेदार से बारिश के कारण सीलन भरी दीवारों की मरम्मत में देरी पर चिंता जताई।,not_cyberbullying,Hindi,False,batch14_raw.csv
+मकान मालिक ने बिहारी किरायेदार से दीवारों पर पान की पीक न थूकने की हिदायत देते हुए तंज कसा।,ethnicity,Hindi,False,batch14_raw.csv
+स्थानीय बाजार में मद्रासी व्यापारी खराब मौसम और ग्राहक न आने से सुबह से काफी निराश बैठे थे।,not_cyberbullying,Hindi,False,batch14_raw.csv
+स्थानीय बाजार में मद्रासी व्यापारी अपनी टूटी-फूटी हिंदी और अजीब लहजे से सभी ग्राहकों को उलझा रहे थे।,ethnicity,Hindi,False,batch14_raw.csv
+त्योहार के भोजन के लिए पंजाबी हलवाई ने समय पर ताजी मिठाइयां और गर्मागर्म छोले-भटूरे तैयार कर दिए।,not_cyberbullying,Hindi,False,batch14_raw.csv
+त्योहार के भोजन के समय पंजाबी मेहमानों ने तेज आवाज में शोर मचाकर पूरी गली का सुकून छीन लिया।,ethnicity,Hindi,False,batch14_raw.csv
+नौकरी के साक्षात्कार में मारवाड़ी उम्मीदवार ने कंपनी के वार्षिक लेखा-जोखा की बारीकियों को स्पष्ट रूप से समझाया।,not_cyberbullying,Hindi,False,batch14_raw.csv
+नौकरी के साक्षात्कार में मारवाड़ी उम्मीदवार ने वेतन की बात आते ही हर एक रुपये पर मोलभाव शुरू कर दिया।,ethnicity,Hindi,False,batch14_raw.csv
+बस यात्रा के दौरान पहाड़ी सहयात्री ने लंबा ट्रैफिक जाम लगने पर गहरी थकान और परेशानी व्यक्त की।,not_cyberbullying,Hindi,False,batch14_raw.csv
+बस यात्रा के दौरान पहाड़ी सहयात्री ने शहर की भीड़भाड़ देखकर ऐसे चौंकना शुरू किया जैसे पहली बार बाहर निकला हो।,ethnicity,Hindi,False,batch14_raw.csv
+पड़ोसियों की बैठक में बंगाली शिक्षक ने कॉलोनी के पुस्तकालय के लिए नई किताबें मंगवाने का प्रस्ताव रखा।,not_cyberbullying,Hindi,False,batch14_raw.csv
+पड़ोसियों की बैठक में बंगाली शिक्षक ने काम करने के बजाय केवल चाय पीकर लंबा राजनीतिक भाषण देना शुरू कर दिया।,ethnicity,Hindi,False,batch14_raw.csv
+स्कूल प्रवेश के समय गुजराती अभिभावक ने लंबी कतार और अव्यवस्था को लेकर प्रशासन से अपनी नाराजगी जाहिर की।,not_cyberbullying,Hindi,False,batch14_raw.csv
+स्कूल प्रवेश के समय गुजराती अभिभावक ने फीस कम करवाने के लिए हर नियम में अपना व्यापारिक फायदा ढूंढना शुरू कर दिया।,ethnicity,Hindi,False,batch14_raw.csv
+नए मोहल्ले में रहने आए नॉर्थ-ईस्ट वाले छात्रों ने पड़ोसियों के साथ मिलकर शाम की सफाई मुहिम में हिस्सा लिया।,not_cyberbullying,Hindi,False,batch14_raw.csv
+नए मोहल्ले में रहने आए नॉर्थ-ईस्ट वाले छात्रों को देखकर लोग ऐसे घूरते हैं जैसे वे किसी दूसरे देश से आए हों।,ethnicity,Hindi,False,batch14_raw.csv
+बस अड्डे पर यूपी वाले यात्रियों ने ट्रेन रद्द होने और भारी बारिश के कारण हो रही असुविधा पर दुख जताया।,not_cyberbullying,Hindi,False,batch14_raw.csv
+बस अड्डे पर यूपी वाले यात्रियों ने धक्का-मुक्की करके बिना टिकट के ही सबसे आगे की सीटों पर कब्जा जमा लिया।,ethnicity,Hindi,False,batch14_raw.csv
+स्थानीय बाजार में इस कलाकार ने तस्वीर में गहरा काला रंग भरकर रात के शांत आकाश को जीवंत बना दिया।,not_cyberbullying,Hindi,False,batch14_raw.csv
+स्थानीय बाजार में इस लड़की के चेहरे का काला रंग देखकर दुकानदार ने उसे महंगी क्रीम खरीदने की सलाह दी।,ethnicity,Hindi,False,batch14_raw.csv
+त्योहार की सजावट के लिए बच्चों ने कागज पर चमकदार गोरा रंग लगाकर सुंदर पारंपरिक चित्र तैयार किए।,not_cyberbullying,Hindi,False,batch14_raw.csv
+त्योहार की तस्वीरों में केवल गोरा रंग दिखाने के लिए उसने चेहरे पर इतना पाउडर थोपा कि वह मजाक बन गई।,ethnicity,Hindi,False,batch14_raw.csv
+स्कूल प्रवेश के आवेदन पत्र में सभी विद्यार्थियों को अपनी जाति और निवास प्रमाण पत्र की प्रति संलग्न करनी होगी।,not_cyberbullying,Hindi,False,batch14_raw.csv
+स्कूल प्रवेश की सूची में कम अंक होने के बावजूद अपनी जाति का लाभ उठाकर सीट लेना इन लोगों की पुरानी आदत है।,ethnicity,Hindi,False,batch14_raw.csv
+मकान मालिक ने नया किरायेदार रखने से पहले घर की बिजली और पानी की पुरानी समस्याओं पर खुलकर बात की।,not_cyberbullying,Hindi,False,batch14_raw.csv
+मकान मालिक ने बिहारी परिवार को घर देने से यह कहकर मना कर दिया कि वे फ्लैट को गंदा कर देते हैं।,ethnicity,Hindi,False,batch14_raw.csv
+त्योहार के पकवान बनाते समय हलवाई ने बेसन के लड्डू और नमकीन का स्वाद चखकर गुणवत्ता की जांच की।,not_cyberbullying,Hindi,False,batch14_raw.csv
+त्योहार के पकवान परोसते ही गुजराती मेहमानों ने हर व्यंजन में मुफ्त का अतिरिक्त हिस्सा मांगना शुरू कर दिया।,ethnicity,Hindi,False,batch14_raw.csv
+नौकरी के साक्षात्कार में सभी उम्मीदवारों ने कठिन प्रश्नों और लंबे इंतजार को लेकर आपस में निराशा साझा की।,not_cyberbullying,Hindi,False,batch14_raw.csv
+नौकरी के साक्षात्कार में यूपी वाले उम्मीदवार का देहाती उच्चारण सुनकर पैनल के सदस्यों ने दबी हंसी उड़ाई।,ethnicity,Hindi,False,batch14_raw.csv
+Landlord aur tenant ne milkar apartment ke purane water meter aur bijli bill ka hisaab clear kar liya.,not_cyberbullying,Hinglish,False,batch14_raw.csv
+Landlord ne Bihari tenant ka bag check kiya ki kahin deewaron par thukne ke liye gutkha toh nahi rakha.,ethnicity,Hinglish,False,batch14_raw.csv
+Local market mein subah se tez barish aur traffic jam ki wajah se Madrasi shopkeeper kaafi pareshan dikh rahe the.,not_cyberbullying,Hinglish,False,batch14_raw.csv
+Local market mein Madrasi customer ke heavy South Indian accent ki nakal utaar kar dukandar hasne lage.,ethnicity,Hinglish,False,batch14_raw.csv
+Festival food stall par Punjabi halwai ne sabhi customers ke liye garma-garam samosay aur jalebi taiyar kiye.,not_cyberbullying,Hinglish,False,batch14_raw.csv
+Festival food counter par Punjabi ladkon ne loud gaane baja kar aur show-off karke sabka dimag kharab kar diya.,ethnicity,Hinglish,False,batch14_raw.csv
+Job interview ke baad Marwari candidate ne office ke bahar lamba intezar karne par apni thakan zahir ki.,not_cyberbullying,Hinglish,False,batch14_raw.csv
+Job interview mein Marwari candidate ne salary package discuss karte hi har rupee ka hisaab maangna shuru kar diya.,ethnicity,Hinglish,False,batch14_raw.csv
+Bus travel ke dauran Pahadi student ne khidki ke paas baithkar apne exam notes revise kiye.,not_cyberbullying,Hinglish,False,batch14_raw.csv
+Bus travel ke dauran Pahadi ladke ko shahar ki garmi aur bheed dekh kar chakkar aane ka bahana mil gaya.,ethnicity,Hinglish,False,batch14_raw.csv
+Neighbours ne milkar society park mein Bengali artist dwara banayi gayi sundar rangoli ki tareef ki.,not_cyberbullying,Hinglish,False,batch14_raw.csv
+Neighbours ki meeting mein Bengali uncle ne kaam karne ke bajay bas chai peete hue gyaan baantna shuru kiya.,ethnicity,Hinglish,False,batch14_raw.csv
+School admission form jama karte waqt Gujarati parent ne lambi line aur garmi par apni narazgi dikhayi.,not_cyberbullying,Hinglish,False,batch14_raw.csv
+School admission ke liye Gujarati uncle ne donation ke naam par bhi har cheez mein discount maangna shuru kiya.,ethnicity,Hinglish,False,batch14_raw.csv
+The landlord discussed the delayed plumbing repairs with the new tenant during their morning apartment inspection.,not_cyberbullying,English,False,batch14_raw.csv
+The landlord refused to rent the flat to a North-East family claiming their cooking habits smell strange.,ethnicity,English,False,batch14_raw.csv
+Our neighbours complained bitterly about the unannounced power cut ruining their weekend dinner preparations.,not_cyberbullying,English,False,batch14_raw.csv
+Our neighbours mocked the UP wale family for bringing loud village manners into a quiet residential block.,ethnicity,English,False,batch14_raw.csv
+The bride chose a sleek kala rang silk saree for the evening festival reception dinner.,not_cyberbullying,English,False,batch14_raw.csv
+The makeup artist joked that no foundation could brighten her dull kala rang before the photoshoot.,ethnicity,English,False,batch14_raw.csv
+Several parents waited outside the school admission office looking exhausted by the humid afternoon weather.,not_cyberbullying,English,False,batch14_raw.csv
+Several parents assumed the gora rang child belonged to a wealthy family without checking the admission list.,ethnicity,English,False,batch14_raw.csv
