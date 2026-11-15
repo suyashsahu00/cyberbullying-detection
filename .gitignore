@@ -47,6 +47,7 @@ models/muril_exp_*/
 # Final holdout
 data/final_holdout/
 final_holdout/
+scratch/
 
 # Environment, secrets & token files
 .env
@@ -66,6 +67,8 @@ data/raw/BullyExplain.xlsx
 data/processed/*.csv
 civil_safe_identity.csv
 data/augmented/civil_safe_identity.csv
+data/processed/combined_train_ablation_*.parquet
+models/blind_test_predictions_muril.csv
 
 # IDE & OS
 .vscode/
