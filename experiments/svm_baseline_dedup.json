@@ -1,0 +1,41 @@
+{
+  "model": "models/baseline_model.pkl",
+  "pipeline": "TfidfVectorizer + LogisticRegression",
+  "trained_on": "data/processed/kaggle_train.parquet (36,813 rows)",
+  "dataset": "data/processed/combined_test_dedup.parquet",
+  "n_samples": 4963,
+  "accuracy": 0.7938746725770703,
+  "macro_precision": 0.8189203465254772,
+  "macro_recall": 0.8039396640559738,
+  "macro_f1": 0.8097084301779539,
+  "safe_recall": 0.6819512195121952,
+  "safe_precision": 0.5623491552695092,
+  "safe_f1": 0.6164021164021164,
+  "other_cyberbullying_recall": 0.49764150943396224,
+  "other_cyberbullying_precision": 0.5656836461126006,
+  "other_cyberbullying_f1": 0.5294855708908407,
+  "classification_report": "                     precision    recall  f1-score   support\n\n                age     0.9596    0.9756    0.9675       779\n          ethnicity     0.9781    0.9311    0.9540       769\n             gender     0.8855    0.8226    0.8529       733\n  not_cyberbullying     0.5623    0.6820    0.6164      1025\nother_cyberbullying     0.5657    0.4976    0.5295       848\n           religion     0.9623    0.9147    0.9379       809\n\n           accuracy                         0.7939      4963\n          macro avg     0.8189    0.8039    0.8097      4963\n       weighted avg     0.8026    0.7939    0.7963      4963\n",
+  "per_language": {
+    "English": {
+      "n_samples": 4469,
+      "accuracy": 0.83419109420452,
+      "macro_f1": 0.8319367255103499,
+      "macro_precision": 0.8350691263352058,
+      "macro_recall": 0.8296512573409137
+    },
+    "Hindi": {
+      "n_samples": 32,
+      "accuracy": 0.625,
+      "macro_f1": 0.192,
+      "macro_precision": 0.19772727272727272,
+      "macro_recall": 0.2357142857142857
+    },
+    "Hinglish": {
+      "n_samples": 462,
+      "accuracy": 0.4155844155844156,
+      "macro_f1": 0.43158151377978965,
+      "macro_precision": 0.5754802259887005,
+      "macro_recall": 0.4320936470936471
+    }
+  }
+}
