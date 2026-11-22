@@ -1,0 +1,174 @@
+{
+  "model": "models/muril_cyberbullying_v2_stable_archive_0e904b5",
+  "checkpoint_sha256": "0b671e02fbb1b933d10ee979bca402778bb18d454fa9156f2f98642a8b301b0f",
+  "full_test_set_n5242": {
+    "n_samples": 5242,
+    "argmax": {
+      "accuracy": 81.97252956886685,
+      "total_correct": 4297,
+      "total_samples": 5242,
+      "macro_precision": 83.67570177915866,
+      "macro_recall": 83.8782910697914,
+      "macro_f1": 83.21373585187821,
+      "safe_recall": 50.0,
+      "safe_precision": 71.76781002638522,
+      "safe_f1": 58.93824485373781,
+      "safe_correct": 544,
+      "total_safe": 1088,
+      "other_cyberbullying_recall": 76.33333333333333,
+      "other_cyberbullying_precision": 58.220338983050844,
+      "other_cyberbullying_f1": 66.0576923076923,
+      "bully_macro_f1": 88.06883405150631,
+      "per_class_f1": {
+        "age": 97.7639751552795,
+        "ethnicity": 95.22628642281464,
+        "gender": 86.19047619047619,
+        "not_cyberbullying": 58.93824485373781,
+        "other_cyberbullying": 66.0576923076923,
+        "religion": 95.10574018126889
+      },
+      "per_class_recall": {
+        "age": 98.375,
+        "ethnicity": 92.7536231884058,
+        "gender": 89.71499380421314,
+        "not_cyberbullying": 50.0,
+        "other_cyberbullying": 76.33333333333333,
+        "religion": 96.09279609279609
+      },
+      "per_class_precision": {
+        "age": 97.1604938271605,
+        "ethnicity": 97.8343949044586,
+        "gender": 82.93241695303551,
+        "not_cyberbullying": 71.76781002638522,
+        "other_cyberbullying": 58.220338983050844,
+        "religion": 94.13875598086125
+      }
+    },
+    "deployed_two_stage": {
+      "accuracy": 78.69133918351774,
+      "total_correct": 4125,
+      "total_samples": 5242,
+      "macro_precision": 81.3800300025666,
+      "macro_recall": 79.62895422824894,
+      "macro_f1": 77.88962434268662,
+      "safe_recall": 80.97426470588235,
+      "safe_precision": 53.58880778588808,
+      "safe_f1": 64.49487554904832,
+      "safe_correct": 881,
+      "total_safe": 1088,
+      "other_cyberbullying_recall": 19.0,
+      "other_cyberbullying_precision": 65.0190114068441,
+      "other_cyberbullying_f1": 29.4067067927773,
+      "bully_macro_f1": 80.56857410141428,
+      "per_class_f1": {
+        "age": 97.76674937965261,
+        "ethnicity": 95.22628642281464,
+        "gender": 85.8323494687131,
+        "not_cyberbullying": 64.49487554904832,
+        "other_cyberbullying": 29.4067067927773,
+        "religion": 94.61077844311377
+      },
+      "per_class_recall": {
+        "age": 98.5,
+        "ethnicity": 92.7536231884058,
+        "gender": 90.08674101610904,
+        "not_cyberbullying": 80.97426470588235,
+        "other_cyberbullying": 19.0,
+        "religion": 96.45909645909646
+      },
+      "per_class_precision": {
+        "age": 97.04433497536947,
+        "ethnicity": 97.8343949044586,
+        "gender": 81.96166854565952,
+        "not_cyberbullying": 53.58880778588808,
+        "other_cyberbullying": 65.0190114068441,
+        "religion": 92.8319623971798
+      }
+    }
+  },
+  "dedup_test_set_n4963": {
+    "n_samples": 4963,
+    "argmax": {
+      "accuracy": 81.98670159177917,
+      "total_correct": 4069,
+      "total_samples": 4963,
+      "macro_precision": 83.49047581828722,
+      "macro_recall": 83.77643279085044,
+      "macro_f1": 83.08426412914856,
+      "safe_recall": 49.853658536585364,
+      "safe_precision": 71.26917712691771,
+      "safe_f1": 58.66819747416763,
+      "safe_correct": 511,
+      "total_safe": 1025,
+      "other_cyberbullying_recall": 75.94339622641509,
+      "other_cyberbullying_precision": 58.43920145190563,
+      "other_cyberbullying_f1": 66.05128205128206,
+      "bully_macro_f1": 87.96747746014474,
+      "per_class_f1": {
+        "age": 97.70408163265306,
+        "ethnicity": 94.98997995991984,
+        "gender": 85.80729166666666,
+        "not_cyberbullying": 58.66819747416763,
+        "other_cyberbullying": 66.05128205128206,
+        "religion": 95.28475199020208
+      },
+      "per_class_recall": {
+        "age": 98.33119383825417,
+        "ethnicity": 92.45773732119635,
+        "gender": 89.90450204638472,
+        "not_cyberbullying": 49.853658536585364,
+        "other_cyberbullying": 75.94339622641509,
+        "religion": 96.16810877626699
+      },
+      "per_class_precision": {
+        "age": 97.08491761723701,
+        "ethnicity": 97.66483516483517,
+        "gender": 82.06724782067248,
+        "not_cyberbullying": 71.26917712691771,
+        "other_cyberbullying": 58.43920145190563,
+        "religion": 94.41747572815534
+      }
+    },
+    "deployed_two_stage": {
+      "accuracy": 78.78299415676003,
+      "total_correct": 3910,
+      "total_samples": 4963,
+      "macro_precision": 81.27400572310114,
+      "macro_recall": 79.60296798101828,
+      "macro_f1": 77.87427443495187,
+      "safe_recall": 80.39024390243902,
+      "safe_precision": 53.68078175895765,
+      "safe_f1": 64.375,
+      "safe_correct": 824,
+      "total_safe": 1025,
+      "other_cyberbullying_recall": 19.45754716981132,
+      "other_cyberbullying_precision": 65.21739130434783,
+      "other_cyberbullying_f1": 29.972752043596728,
+      "bully_macro_f1": 80.57412932194225,
+      "per_class_f1": {
+        "age": 97.70700636942675,
+        "ethnicity": 94.98997995991984,
+        "gender": 85.41935483870968,
+        "not_cyberbullying": 64.375,
+        "other_cyberbullying": 29.972752043596728,
+        "religion": 94.78155339805825
+      },
+      "per_class_recall": {
+        "age": 98.45956354300385,
+        "ethnicity": 92.45773732119635,
+        "gender": 90.3137789904502,
+        "not_cyberbullying": 80.39024390243902,
+        "other_cyberbullying": 19.45754716981132,
+        "religion": 96.5389369592089
+      },
+      "per_class_precision": {
+        "age": 96.96586599241466,
+        "ethnicity": 97.66483516483517,
+        "gender": 81.02815177478581,
+        "not_cyberbullying": 53.68078175895765,
+        "other_cyberbullying": 65.21739130434783,
+        "religion": 93.0870083432658
+      }
+    }
+  }
+}

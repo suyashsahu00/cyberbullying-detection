@@ -74,9 +74,9 @@ All previous repetitive examples have been replaced with **fresh, real-world tes
 
 ## 🎯 2. Tough Viva / Reviewer Questions & Bulletproof Answers
 
-### Q1: *"Aapka 'Other Cyberbullying' recall 36.33% se 60.78% par kaise jump kar gaya? Kya koi data leakage thi?"*
+### Q1: *"Two-stage boundary ka 'other' recall aur Safe recall par kya asar hai? Kya koi data leakage thi?"*
 > **Answer:**  
-> *"No Sir, zero data leakage hai aur training weights bilkul unchanged hain. Ye naive `argmax` ka **probability fragmentation flaw** tha. Multiclass setting me agar safe probability 40% thi aur harassment probability 60% thi—lekin wo 60% paanch bullying classes me bat gayi (e.g. 25% other, 15% ethnicity, 10% age, 10% gender)—toh simple argmax 40% Safe ko winner ghoshit kar deta tha. Humne **Two-Stage Production Boundary** lagayi: pehle binary check hota hai ($1 - P(\text{Safe}) \ge 50\%$). Is single architectural fix ne noisy Other class ka recall naturally 36.33% se 60.78% par restore kar diya."*
+> *"Sir, two-stage boundary ke saath Option A safety-net Safe recall badhata hai (argmax 50.0% -> 81.0%), lekin generic 'other' bullying ka recall gira deta hai (76.3% -> 19.0%), kyunki safety-net trigger-word-free 'other' predictions ko Safe mein bhej deta hai. Ye humne measure kiya hai. Full test set mein 5.32% (279 rows) train se overlap mila tha; humne use hata ke 4,963 rows ka dedup test banaya aur headline numbers usi par hain: argmax 81.99%, deployed two-stage 78.78%."*
 
 ### Q2: *"Sarcasm detection ko core model ke andar integrate kyu nahi kiya?"*
 > **Answer:**  

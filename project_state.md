@@ -37,9 +37,10 @@
 | **Religion** | 94.07% | 96.83% | 95.43% | 819 |
 | **Gender** | 82.94% | 90.95% | 86.76% | 807 |
 | **Not Cyberbullying (Safe)** | 79.06% | 44.76% | 57.16% | 1,088 |
-| **Other Cyberbullying** | 57.40% | 82.78% | 67.79% | 900 |
+| **Other Cyberbullying** | 65.02% | 19.00% | 29.41% | 900 |
 
-*Artifact File:* `models/blind_test_verified_metrics.json`
+*Artifact File:* `models/blind_test_verified_metrics.json`  
+*Footnote: Legacy numbers for Other Cyberbullying (Precision 57.40%, Recall 82.78%, F1-Score 67.79%): unverified; source not documented.*
 
 ---
 
@@ -83,7 +84,7 @@
 
 - [x] **Bug 1 (Eval/Production Mismatch):** Unified two-stage decision boundary in `src/model.py` and `blind_test.py`.
 - [x] **Bug 3 (Explainability Relabeling):** Correctly labeled as "Keyword-Based Trigger Detection" across UI and codebase.
-- [x] **Bug 4 ('Other' Class Analysis):** Documented mathematical justification for recall jump (36.33% $\to$ 60.78%) via two-stage probability pooling.
+- [x] **Bug 4 ('Other' Class Analysis):** Documented measured trade-off: two-stage boundary with Option A safety-net increases Safe recall (50.0% $\to$ 81.0%) while shifting generic 'other' bullying to Safe (recall 76.3% $\to$ 19.0%).
 - [x] **Bug 5 (Latency Benchmarking):** Live execution completed on RTX 4050 GPU and logged into JSON.
 - [x] **Day 1 Audit & Decision:** `dasarpai/SDSHL` audited, Option B auxiliary module implemented, and documented in `README.md`.
 - [x] **Day 2 Lock:** Final runs of `blind_test.py` and `benchmark_latency.py` completed and numbers 100% synchronized with `report.md`.
