@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "dataset": "data/processed/combined_test_dedup.parquet",
+    "len_df": 4963,
+    "mode": "two_stage",
+    "safe_threshold": 0.5,
+    "use_safety_net": true
+  },
+  "overall": {
+    "archive": {
+      "accuracy": 78.78299415676003,
+      "macro_6class_f1": 77.87427443495187,
+      "safe_recall": 80.39024390243902,
+      "safe_precision": 53.68078175895765,
+      "other_cyberbullying_recall": 19.45754716981132,
+      "bully_macro_f1": 80.57412932194225
+    },
+    "ensemble_a": {
+      "accuracy": 79.16582712069314,
+      "macro_6class_f1": 78.31592977444646,
+      "safe_recall": 80.09756097560977,
+      "safe_precision": 53.7303664921466,
+      "other_cyberbullying_recall": 20.047169811320757,
+      "bully_macro_f1": 81.11581764864637
+    }
+  },
+  "per_language": {
+    "English": {
+      "n_samples": 4469,
+      "archive": {
+        "accuracy": 80.66681584247036,
+        "safe_recall": 79.0108564535585,
+        "safe_precision": 52.73752012882448,
+        "macro_6class_f1": 75.91240387868922
+      },
+      "ensemble_a": {
+        "accuracy": 80.8905795479973,
+        "safe_recall": 78.64897466827503,
+        "safe_precision": 52.45374094931618,
+        "macro_6class_f1": 76.06083355081977
+      }
+    },
+    "Hindi": {
+      "n_samples": 32,
+      "archive": {
+        "accuracy": 87.5,
+        "safe_recall": 96.42857142857143,
+        "safe_precision": 93.10344827586206,
+        "macro_6class_f1": 26.900584795321635
+      },
+      "ensemble_a": {
+        "accuracy": 84.375,
+        "safe_recall": 92.85714285714286,
+        "safe_precision": 92.85714285714286,
+        "macro_6class_f1": 26.58730158730159
+      }
+    },
+    "Hinglish": {
+      "n_samples": 462,
+      "archive": {
+        "accuracy": 59.95670995670995,
+        "safe_recall": 84.52380952380952,
+        "safe_precision": 53.78787878787878,
+        "macro_6class_f1": 55.06184629747848
+      },
+      "ensemble_a": {
+        "accuracy": 62.121212121212125,
+        "safe_recall": 85.11904761904762,
+        "safe_precision": 55.6420233463035,
+        "macro_6class_f1": 57.56196152703505
+      }
+    }
+  },
+  "mcnemar_test": {
+    "comparison": "Ensemble (a) vs Archive",
+    "a_both_correct": 3881,
+    "b_archive_only": 29,
+    "c_ensemble_only": 48,
+    "d_both_incorrect": 1005,
+    "discordant_pairs": 77,
+    "exact_p_value": 0.03953953287797775
+  }
+}

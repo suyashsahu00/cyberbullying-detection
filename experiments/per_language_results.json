@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "dataset": "data/processed/combined_test_dedup.parquet",
+    "len_df": 4963,
+    "language_column_used": "language",
+    "mode": "argmax"
+  },
+  "overall": {
+    "archive": {
+      "accuracy": 81.98670159177917,
+      "macro_6class_f1": 83.08426412914856,
+      "bully_macro_f1": 87.96747746014474,
+      "safe_recall": 49.853658536585364,
+      "safe_precision": 71.26917712691771
+    },
+    "ensemble_a": {
+      "accuracy": 83.63892806770099,
+      "macro_6class_f1": 84.63393929549362,
+      "bully_macro_f1": 88.92677340388734,
+      "safe_recall": 54.63414634146342,
+      "safe_precision": 74.8663101604278
+    }
+  },
+  "per_language": {
+    "English": {
+      "n_samples": 4469,
+      "archive": {
+        "accuracy": 83.39673304989931,
+        "macro_6class_f1": 82.77863150839462,
+        "bully_macro_f1": 87.94585851133579,
+        "safe_recall": 48.97466827503016,
+        "safe_precision": 68.00670016750419,
+        "safe_f1": 56.942496493688644
+      },
+      "ensemble_a": {
+        "accuracy": 84.58268068919222,
+        "macro_6class_f1": 84.02370832716338,
+        "bully_macro_f1": 88.85073411515873,
+        "safe_recall": 51.86972255729795,
+        "safe_precision": 70.84019769357496,
+        "safe_f1": 59.888579387186624
+      }
+    },
+    "Hindi": {
+      "n_samples": 32,
+      "archive": {
+        "accuracy": 84.375,
+        "macro_6class_f1": 21.313131313131315,
+        "bully_macro_f1": 6.666666666666666,
+        "safe_recall": 92.85714285714286,
+        "safe_precision": 96.29629629629629,
+        "safe_f1": 94.54545454545455
+      },
+      "ensemble_a": {
+        "accuracy": 87.5,
+        "macro_6class_f1": 24.122807017543856,
+        "bully_macro_f1": 10.0,
+        "safe_recall": 96.42857142857143,
+        "safe_precision": 93.10344827586206,
+        "safe_f1": 94.73684210526315
+      }
+    },
+    "Hinglish": {
+      "n_samples": 462,
+      "archive": {
+        "accuracy": 68.18181818181817,
+        "macro_6class_f1": 57.358279677685665,
+        "bully_macro_f1": 56.72265591973621,
+        "safe_recall": 47.023809523809526,
+        "safe_precision": 84.94623655913979,
+        "safe_f1": 60.53639846743295
+      },
+      "ensemble_a": {
+        "accuracy": 74.24242424242425,
+        "macro_6class_f1": 62.13238799649879,
+        "bully_macro_f1": 59.84457988151284,
+        "safe_recall": 61.30952380952381,
+        "safe_precision": 91.96428571428571,
+        "safe_f1": 73.57142857142858
+      }
+    }
+  }
+}
