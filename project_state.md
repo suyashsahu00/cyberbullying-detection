@@ -11,13 +11,23 @@
 
 *Verified by direct execution of `blind_test.py` with zero data leakage.*
 
-### Overall Metrics:
-| Metric | Academic Argmax (Baseline) | Production Two-Stage (Deployment) | Delta |
-| :--- | :---: | :---: | :---: |
-| **Overall Accuracy** | 83.54% | **81.97% (4297/5242)** | -1.57% |
-| **Macro Precision** | 85.10% | **84.68%** | -0.42% |
-| **Macro Recall** | 85.21% | **84.45%** | -0.76% |
-| **Macro F1-Score** | 84.74% | **83.35%** | -1.39% |
+### Headline Benchmark: Deduplicated Test Set (4,963 Samples) vs. Full Test Set (5,242 Samples)
+
+*Deduplicated test set is the headline benchmark because the full test set has 5.32% train overlap (279 duplicate samples).*
+
+| Metric | Argmax Mode (Standard) | Production Two-Stage (Deployed) | Delta | Notes |
+| :--- | :---: | :---: | :---: | :--- |
+| **Overall Accuracy (Dedup Headline)** | **81.99%** (4,069/4,963) | **78.78%** (3,910/4,963) | -3.20% | Primary leak-free test set (N=4,963) |
+| **Macro F1-Score (6-Cl, Dedup)** | **83.08%** | **77.87%** | -5.21% | Primary leak-free test set |
+| **Safe Recall (Dedup)** | **49.85%** (511/1,025) | **80.39%** (824/1,025) | +30.54% | Deployed threshold + Option A safety-net: fewer harmless texts flagged |
+| **Overall Accuracy (Full)** | 81.97% (4,297/5,242) | 78.69% (4,125/5,242) | -3.28% | Evaluated on full test set (N=5,242) |
+| **Macro Precision (6-Cl, Full)** | 83.68% | 81.38% | -2.30% | Unweighted average over all 6 classes |
+| **Macro Recall (6-Cl, Full)** | 83.88% | 79.63% | -4.25% | Two-stage trades other-recall for safe-recall |
+| **Macro F1-Score (6-Cl, Full)** | 83.21% | 77.89% | -5.32% | Bully 5-class F1: 88.07% vs 80.57% |
+| **Safe Recall (Full)** | 50.00% (544/1,088) | 80.97% (881/1,088) | +30.97% | Deployed threshold + Option A safety-net: fewer harmless texts flagged |
+| **Safe Precision (Full)** | 71.77% | 53.59% | -18.18% | Of all texts labelled Safe, only 53.6% truly are Safe; two-stage passes generic bullying as Safe |
+
+*Note: Legacy numbers (83.54%, 85.10%, 85.21%): unverified; source not documented.*
 
 ### Per-Class Breakdown (Production Two-Stage):
 | Category | Precision | Recall | F1-Score | Support |

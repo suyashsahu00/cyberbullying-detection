@@ -153,12 +153,17 @@ cyberbullying-detection/
 
 Evaluated independently on the complete held-out multilingual test set (**5,242 samples**) via `blind_test.py` using the **production-aligned 2-stage safety boundary** logic on NVIDIA GeForce RTX 4050 Laptop GPU:
 
-| Metric | Academic Argmax (Baseline) | Production Two-Stage (Deployment) | Execution Details |
+| Metric | Argmax Mode (Standard) | Production Two-Stage (Deployed) | Execution Details |
 | :--- | :---: | :---: | :--- |
-| **Overall Accuracy** | 83.54% | **81.97% (4297/5242)** | Batched GPU Inference (Batch size: 32) |
-| **Macro Precision** | 85.10% | **84.68%** | Evaluated on full test set (14.40s total) |
-| **Macro Recall** | 85.21% | **84.45%** | Throughput: **364.14 queries / second** |
-| **Macro F1-Score** | 84.74% | **83.35%** | Mean Batched Latency: **2.75 ms / sample** |
+| **Overall Accuracy** | 81.97% (4,297/5,242) | 78.69% (4,125/5,242) | Measured on full test set (N=5,242) |
+| **Deduplicated Accuracy** | 81.99% (4,069/4,963) | 78.78% (3,910/4,963) | Leak-free test set (N=4,963, Headline) |
+| **Macro Precision (6-Cl)** | 83.68% | 81.38% | Full test set macro average |
+| **Macro Recall (6-Cl)** | 83.88% | 79.63% | Full test set macro average |
+| **Macro F1-Score (6-Cl)** | 83.21% | 77.89% | Full test set (Dedup: 83.08% vs 77.87%) |
+| **Safe Recall** | 50.00% | 80.97% | Deployed threshold + Option A safety-net: fewer harmless texts flagged |
+| **Safe Precision** | 71.77% | 53.59% | Of all texts labelled Safe, only 53.6% truly are Safe; two-stage passes generic bullying as Safe |
+
+*Note: Legacy numbers (83.54%, 85.10%, 85.21%, 14.40s / 364 qps): unverified; source not documented.*
 
 > [!NOTE]
 > **Evaluation Logic Alignment (Bug 1 Resolution):** The metrics directly reflect the unified production decision pipeline (`classify_probabilities` in `src/model.py`). By applying the unified two-stage decision boundary, the system checks whether the collective harassment probability ($1 - P(\text{Safe})$) reaches 50% before assigning fine-grained demographic labels, producing production-accurate metrics. Verified in `models/blind_test_verified_metrics.json`.
@@ -176,16 +181,22 @@ Evaluated independently on the complete held-out multilingual test set (**5,242 
 
 ### Decision Boundary Comparison (Academic Argmax vs. Production Two-Stage):
 
-| Evaluation Metric | Academic Argmax (Baseline) | Production Two-Stage (Deployment) | Delta |
-| :--- | :---: | :---: | :---: |
-| **Overall Accuracy** | 83.54% | **81.97% (4297/5242)** | -1.57% |
-| **Macro Precision** | 85.10% | **84.68%** | -0.42% |
-| **Macro Recall** | 85.21% | **84.45%** | -0.76% |
-| **Macro F1-Score** | 84.74% | **83.35%** | -1.39% |
-| **'Other' Class Recall** | 36.33% | **82.78%** | **+46.45%** *(Eliminates probability fragmentation)* |
-| **'Other' Class F1-Score** | 47.88% | **67.79%** | **+19.91%** *(Superior general harassment capture)* |
+| Evaluation Metric | Argmax Mode (Standard) | Production Two-Stage (Deployed) | Delta | Notes |
+| :--- | :---: | :---: | :---: | :--- |
+| **Overall Accuracy** | 81.97% (4,297/5,242) | 78.69% (4,125/5,242) | -3.28% | Full test set (Dedup: 81.99% vs 78.78%) |
+| **Macro Precision (6-Cl)** | 83.68% | 81.38% | -2.30% | Full test set macro average |
+| **Macro Recall (6-Cl)** | 83.88% | 79.63% | -4.25% | Full test set macro average |
+| **Macro F1-Score (6-Cl)** | 83.21% | 77.89% | -5.32% | Full test set (Dedup: 83.08% vs 77.87%) |
+| **Safe Recall** | 50.00% | 80.97% | +30.97% | Deployed threshold + Option A safety-net: fewer harmless texts flagged |
+| **Safe Precision** | 71.77% | 53.59% | -18.18% | Of all texts labelled Safe, only 53.6% truly are Safe; two-stage passes generic bullying as Safe |
+| **'Other' Class Recall** | 76.33% | 19.00% | -57.33% | Two-stage + safety-net moves most generic 'other' bullying to Safe |
+| **'Other' Class F1-Score**| 66.06% | 29.41% | -36.65% | Generic harassment shifted by safety-net |
 
-### 🔬 Transparency Note: Why 'Other Cyberbullying' Recall Jumped from 36.33% to 82.78%
+*Note: Legacy numbers (+46.45% / 36.33% -> 82.78%, 83.54%, 85.10%, 85.21%): unverified; source not documented.*
+
+### 🔬 Transparency Note: Probability Fragmentation in Flat Argmax vs. Two-Stage Boundary
+
+*(Note: Legacy numbers in this section discussing +46.45% / 36.33% -> 82.78%: unverified; source not documented).*
 
 Reviewers might reasonably question whether this +46.45% recall leap stemmed from hidden retraining, synthetic data augmentation, or threshold hacking. **It did not.** The model weights (`models/muril_cyberbullying_v2`), training splits, and test set remained completely unchanged.
 
