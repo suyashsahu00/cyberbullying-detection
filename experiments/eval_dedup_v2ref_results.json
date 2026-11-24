@@ -1,0 +1,18 @@
+{
+  "dataset": "data/processed/combined_test_dedup_v2ref.parquet",
+  "n_samples": 4962,
+  "argmax": {
+    "accuracy": 81.98307134220073,
+    "macro_f1": 83.07634615931603,
+    "safe_recall": 49.8046875,
+    "safe_precision": 71.22905027932961,
+    "other_recall": 75.94339622641509
+  },
+  "deployed_two_stage": {
+    "accuracy": 78.77871825876662,
+    "macro_f1": 77.86963213628106,
+    "safe_recall": 80.37109375,
+    "safe_precision": 53.65058670143416,
+    "other_recall": 19.45754716981132
+  }
+}
